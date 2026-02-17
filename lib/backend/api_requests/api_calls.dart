@@ -1,0 +1,102 @@
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
+
+import 'api_manager.dart';
+
+export 'api_manager.dart' show ApiCallResponse;
+
+const _kPrivateApiFunctionName = 'ffPrivateApiCall';
+
+/// Start SerialStatusUpdate Group Code
+
+class SerialStatusUpdateGroup {
+  static String getBaseUrl() =>
+      'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api_test/api/v1/status';
+  static Map<String, String> headers = {};
+  static CheckSerialStatusCall checkSerialStatusCall = CheckSerialStatusCall();
+}
+
+class CheckSerialStatusCall {
+  Future<ApiCallResponse> call({
+    String? serial = '',
+  }) async {
+    final baseUrl = SerialStatusUpdateGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "serial": "${escapeStringForJson(serial)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'CheckSerialStatus',
+      apiUrl: '${baseUrl}/check-serial',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End SerialStatusUpdate Group Code
+
+class ApiPagingParams {
+  int nextPageNumber = 0;
+  int numItems = 0;
+  dynamic lastResponse;
+
+  ApiPagingParams({
+    required this.nextPageNumber,
+    required this.numItems,
+    required this.lastResponse,
+  });
+
+  @override
+  String toString() =>
+      'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
+}
+
+String _toEncodable(dynamic item) {
+  return item;
+}
+
+String _serializeList(List? list) {
+  list ??= <String>[];
+  try {
+    return json.encode(list, toEncodable: _toEncodable);
+  } catch (_) {
+    if (kDebugMode) {
+      print("List serialization failed. Returning empty list.");
+    }
+    return '[]';
+  }
+}
+
+String _serializeJson(dynamic jsonVar, [bool isList = false]) {
+  jsonVar ??= (isList ? [] : {});
+  try {
+    return json.encode(jsonVar, toEncodable: _toEncodable);
+  } catch (_) {
+    if (kDebugMode) {
+      print("Json serialization failed. Returning empty json.");
+    }
+    return isList ? '[]' : '{}';
+  }
+}
+
+String? escapeStringForJson(String? input) {
+  if (input == null) {
+    return null;
+  }
+  return input
+      .replaceAll('\\', '\\\\')
+      .replaceAll('"', '\\"')
+      .replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t');
+}

@@ -1,0 +1,600 @@
+import '/components/s_s_c_c_details_card/s_s_c_c_details_card_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'product_details_model.dart';
+export 'product_details_model.dart';
+
+/// Create a page "Product Details".
+///
+/// Top: small white card with rounded corners and shadow. Inside show:
+/// - Product Name bold
+/// - GTIN
+/// - Batch
+/// - Expiry Date
+/// - Required Qty
+/// - Scanned Qty
+///
+/// Below: section title "Scanned Codes" in bold #323394.
+/// Add vertical list of cards for each scanned item:
+/// - Left: serial or SSCC number bold
+/// - Right: small badge showing type (Case in blue, Pallet in orange)
+///
+/// Floating Action Button: bottom-right, circular, background orange
+/// (#F3601F), white barcode icon, action = scan new code.
+///
+/// Bottom of page: horizontal row with two equal-width buttons.
+/// - Left button: "Confirm", Primary Blue (#323394) background, bold white
+/// text.
+/// - Right button: "Cancel", light orange background (#FFE6DC), bold orange
+/// text (#F3601F).
+/// Both with rounded corners.
+class ProductDetailsWidget extends StatefulWidget {
+  const ProductDetailsWidget({
+    super.key,
+    this.productname,
+    this.productGTIN,
+    this.requiredQTY,
+    this.scannedQTY,
+  });
+
+  final String? productname;
+  final String? productGTIN;
+  final int? requiredQTY;
+  final int? scannedQTY;
+
+  static String routeName = 'ProductDetails';
+  static String routePath = '/productDetails';
+
+  @override
+  State<ProductDetailsWidget> createState() => _ProductDetailsWidgetState();
+}
+
+class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
+  late ProductDetailsModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ProductDetailsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      for (int loop1Index = 0;
+          loop1Index < _model.serialsdata.length;
+          loop1Index++) {
+        final currentLoop1Item = _model.serialsdata[loop1Index];
+        _model.test = _model.test + currentLoop1Item;
+        safeSetState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Color(0xFFF8F8F8),
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(2.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 8.0,
+                              color: Color(0x1A000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12.0),
+                          border: Border.all(
+                            color: Color(0xFFF3601F),
+                            width: 0.0,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                child: Container(
+                                  width: 4.0,
+                                  height: 115.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF3601F),
+                                    borderRadius: BorderRadius.circular(2.0),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 8.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          widget.productname,
+                                          'Product Name',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF14181B),
+                                              fontSize: 20.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 8.0),
+                                      child: Text(
+                                        'GTIN: ${widget.productGTIN}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 8.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              '8h4ekkxq' /* Batch: BC2024001 */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Color(0xFF14181B),
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              '7wzbet3q' /* Expiry: 12/2024 */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Color(0xFF14181B),
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 8.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Required Qty: ${valueOrDefault<String>(
+                                              widget.requiredQTY?.toString(),
+                                              '0',
+                                            )}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Color(0xFFF3601F),
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                          Text(
+                                            'Scanned Qty: ${valueOrDefault<String>(
+                                              widget.scannedQTY?.toString(),
+                                              '0',
+                                            )}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Colors.blue,
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    LinearPercentIndicator(
+                      percent: 0.5,
+                      lineHeight: 8.0,
+                      animation: true,
+                      animateFromLastPercent: true,
+                      progressColor: Color(0xFFF3601F),
+                      backgroundColor: Color(0xCCFFFFFF),
+                      barRadius: Radius.circular(4.0),
+                      padding: EdgeInsets.zero,
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'hm9wo4ix' /* Scanned Codes */,
+                        ),
+                        style:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF323394),
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
+                                ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        height: 438.64,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x1A000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ListView(
+                                padding: EdgeInsets.symmetric(vertical: 10.0),
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                children: [
+                                  wrapWithModel(
+                                    model: _model.sSCCDetailsCardModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: SSCCDetailsCardWidget(
+                                      sscc: '2',
+                                      index: 10,
+                                      itemsNo: 10,
+                                      deletefromsscclistaction: () async {},
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: 10.0)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+                      .divide(SizedBox(height: 16.0))
+                      .addToStart(SizedBox(height: 16.0))
+                      .addToEnd(SizedBox(height: 100.0)),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: Container(
+                    height: 80.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(0.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(0.0),
+                        topRight: Radius.circular(0.0),
+                      ),
+                      border: Border.all(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                context.safePop();
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'fec4gw24' /* Confirm */,
+                              ),
+                              icon: Icon(
+                                Icons.check,
+                                size: 20.0,
+                              ),
+                              options: FFButtonOptions(
+                                height: 48.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconColor: Colors.white,
+                                color: Color(0xFF323394),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: Colors.white,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                context.safePop();
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '7keun6vr' /* Cancel */,
+                              ),
+                              icon: Icon(
+                                Icons.close,
+                                size: 20.0,
+                              ),
+                              options: FFButtonOptions(
+                                height: 48.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconColor: Color(0xFFF3601F),
+                                color: Color(0xFFFFE6DC),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFFF3601F),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                            ),
+                          ),
+                        ].divide(SizedBox(width: 12.0)),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(1.0, 1.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 105.0),
+                    child: Container(
+                      width: 55.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFF3601F),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                        child: Icon(
+                          Icons.qr_code_scanner,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
