@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,6 +66,14 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
 
     _model.enterSSCCTextController ??= TextEditingController();
     _model.enterSSCCFocusNode ??= FocusNode();
+    _model.enterSSCCFocusNode!.addListener(
+      () async {
+        await _model.getSerialStatus(
+          context,
+          serial: _model.enterSSCCTextController.text,
+        );
+      },
+    );
   }
 
   @override
@@ -128,7 +135,7 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -174,24 +181,30 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'bwtya1xk' /* Scan Items */,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'bwtya1xk' /* Scan Items */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF323394),
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .fontStyle,
-                              ),
-                              color: Color(0xFF323394),
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .fontStyle,
-                            ),
                       ),
                       Container(
                         width: double.infinity,
@@ -227,80 +240,11 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                           _model.enterSSCCTextController,
                                       focusNode: _model.enterSSCCFocusNode,
                                       onFieldSubmitted: (_) async {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('kkkkkkkk'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Confirm'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        _model.alreadyScanned =
-                                            await actions.checkStringInList(
-                                          _model.enterSSCCTextController.text,
-                                          _model.scannedSerialToDecommission
-                                              .toList(),
+                                        await _model.getSerialStatus(
+                                          context,
+                                          serial: _model
+                                              .enterSSCCTextController.text,
                                         );
-                                        if (_model.alreadyScanned!) {
-                                          confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: Text(
-                                                            'Already Scanned'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                Text('adcscsd'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child:
-                                                                Text('Confirm'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                        } else {
-                                          _model
-                                              .addToScannedSerialToDecommission(
-                                                  _model.enterSSCCTextController
-                                                      .text);
-                                          safeSetState(() {});
-                                        }
-
-                                        safeSetState(() {});
                                       },
                                       autofocus: false,
                                       textInputAction: TextInputAction.done,
@@ -382,50 +326,26 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                           'fh7xw2hi' /* Cancel */,
                                         ), // cancel button text
                                         true, // whether to show the flash icon
-                                        ScanMode.QR,
+                                        ScanMode.BARCODE,
                                       );
 
-                                      _model.alreadyScannedQr =
-                                          await actions.checkStringInList(
-                                        _model.scannedcode,
-                                        _model.scannedSerialToDecommission
-                                            .toList(),
-                                      );
-                                      if (_model.alreadyScannedQr!) {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      content: Text(
-                                                          'Already Scanned'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Confirm'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                      } else {
-                                        _model.addToScannedSerialToDecommission(
-                                            _model.scannedcode);
-                                        safeSetState(() {});
-                                      }
+                                      safeSetState(() {
+                                        _model.enterSSCCTextController?.text =
+                                            _model.scannedcode;
+                                        _model.enterSSCCFocusNode
+                                            ?.requestFocus();
+                                        WidgetsBinding.instance
+                                            .addPostFrameCallback((_) {
+                                          _model.enterSSCCTextController
+                                              ?.selection = TextSelection(
+                                            baseOffset: 0,
+                                            extentOffset: _model
+                                                .enterSSCCTextController!
+                                                .text
+                                                .length,
+                                          );
+                                        });
+                                      });
 
                                       safeSetState(() {});
                                     },
@@ -447,24 +367,30 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          '5irsapa1' /* Select Reason */,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            '5irsapa1' /* Select Reason */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF323394),
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .fontStyle,
-                              ),
-                              color: Color(0xFF323394),
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .fontStyle,
-                            ),
                       ),
                       FlutterFlowDropDown<String>(
                         controller: _model.dropDownValueController ??=
@@ -556,8 +482,8 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                         borderColor: Color(0xFFE0E0E0),
                         borderWidth: 1.0,
                         borderRadius: 8.0,
-                        margin:
-                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                        margin: EdgeInsetsDirectional.fromSTEB(
+                            15.0, 0.0, 10.0, 0.0),
                         hidesUnderline: true,
                         isSearchable: false,
                         isMultiSelect: false,
@@ -571,30 +497,35 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'rueez56h' /* Scanned Items */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'rueez56h' /* Scanned Items */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF323394),
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF323394),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .fontStyle,
-                                  ),
+                              ),
                             ),
                             Container(
                               width: double.infinity,
-                              height: 313.85,
+                              height: 225.0,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
@@ -690,7 +621,7 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                         .titleMedium
                                         .fontStyle,
                                   ),
-                          elevation: 0.0,
+                          elevation: 2.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),
@@ -713,7 +644,8 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                             .bodyLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF3601F),
+                                      color: Color(0xFFD61823),
+                                      fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)

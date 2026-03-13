@@ -18,8 +18,7 @@ export '/pages/packing_related_pages/case_packing/case_packing_widget.dart'
     show CasePackingWidget;
 export '/pages/inbound_movments_pages/receive_page/receive_page_widget.dart'
     show ReceivePageWidget;
-export '/pages/status_update_pages/decommission/decommission_widget.dart'
-    show DecommissionWidget;
+export '/pages/decommission/decommission_widget.dart' show DecommissionWidget;
 export '/pages/outbound_movement_pages/orders/orders_list/orders_list_widget.dart'
     show OrdersListWidget;
 export '/pages/outbound_movement_pages/orders/order_details/order_details_widget.dart'
@@ -36,5 +35,6 @@ export '/pages/packing_related_pages/unpack/unpack_widget.dart'
     show UnpackWidget;
 export '/pages/outbound_movement_pages/return_shipping/return_shipping_widget.dart'
     show ReturnShippingWidget;
-export '/pages/status_update_pages/destruction_decommission/destruction_decommission_widget.dart'
+export '/pages/destruction_decommission/destruction_decommission_widget.dart'
     show DestructionDecommissionWidget;
+export '/pages/main_pages/login/login_widget.dart' show LoginWidget;

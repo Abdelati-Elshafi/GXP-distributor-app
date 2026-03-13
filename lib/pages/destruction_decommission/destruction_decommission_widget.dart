@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,6 +67,14 @@ class _DestructionDecommissionWidgetState
 
     _model.enterSSCCTextController ??= TextEditingController();
     _model.enterSSCCFocusNode ??= FocusNode();
+    _model.enterSSCCFocusNode!.addListener(
+      () async {
+        await _model.checkSerialStatus(
+          context,
+          serial: _model.enterSSCCTextController.text,
+        );
+      },
+    );
   }
 
   @override
@@ -129,7 +136,7 @@ class _DestructionDecommissionWidgetState
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -175,24 +182,30 @@ class _DestructionDecommissionWidgetState
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'b8l9ap0y' /* Scan Items */,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'b8l9ap0y' /* Scan Items */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF323394),
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .fontStyle,
-                              ),
-                              color: Color(0xFF323394),
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .fontStyle,
-                            ),
                       ),
                       Container(
                         width: double.infinity,
@@ -228,52 +241,11 @@ class _DestructionDecommissionWidgetState
                                           _model.enterSSCCTextController,
                                       focusNode: _model.enterSSCCFocusNode,
                                       onFieldSubmitted: (_) async {
-                                        _model.alreadyScanned =
-                                            await actions.checkStringInList(
-                                          _model.enterSSCCTextController.text,
-                                          _model.scannedSerialToDecommission
-                                              .toList(),
+                                        await _model.checkSerialStatus(
+                                          context,
+                                          serial: _model
+                                              .enterSSCCTextController.text,
                                         );
-                                        if (_model.alreadyScanned!) {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        content: Text(
-                                                            'Already Scanned'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                Text('adcscsd'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child:
-                                                                Text('Confirm'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                        } else {
-                                          _model
-                                              .addToScannedSerialToDecommission(
-                                                  _model.enterSSCCTextController
-                                                      .text);
-                                          safeSetState(() {});
-                                        }
-
-                                        safeSetState(() {});
                                       },
                                       autofocus: false,
                                       textInputAction: TextInputAction.done,
@@ -341,71 +313,52 @@ class _DestructionDecommissionWidgetState
                                           .asValidator(context),
                                     ),
                                   ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      _model.scannedcode =
-                                          await FlutterBarcodeScanner
-                                              .scanBarcode(
-                                        '#C62828', // scanning line color
-                                        FFLocalizations.of(context).getText(
-                                          '71l6wd83' /* Cancel */,
-                                        ), // cancel button text
-                                        true, // whether to show the flash icon
-                                        ScanMode.QR,
-                                      );
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 6.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        _model.scannedcode =
+                                            await FlutterBarcodeScanner
+                                                .scanBarcode(
+                                          '#C62828', // scanning line color
+                                          FFLocalizations.of(context).getText(
+                                            '71l6wd83' /* Cancel */,
+                                          ), // cancel button text
+                                          true, // whether to show the flash icon
+                                          ScanMode.QR,
+                                        );
 
-                                      _model.alreadyScannedQr =
-                                          await actions.checkStringInList(
-                                        _model.scannedcode,
-                                        _model.scannedSerialToDecommission
-                                            .toList(),
-                                      );
-                                      if (_model.alreadyScannedQr!) {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      content: Text(
-                                                          'Already Scanned'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Confirm'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                      } else {
-                                        _model.addToScannedSerialToDecommission(
-                                            _model.scannedcode);
+                                        safeSetState(() {
+                                          _model.enterSSCCTextController?.text =
+                                              _model.scannedcode;
+                                          _model.enterSSCCFocusNode
+                                              ?.requestFocus();
+                                          WidgetsBinding.instance
+                                              .addPostFrameCallback((_) {
+                                            _model.enterSSCCTextController
+                                                ?.selection = TextSelection(
+                                              baseOffset: 0,
+                                              extentOffset: _model
+                                                  .enterSSCCTextController!
+                                                  .text
+                                                  .length,
+                                            );
+                                          });
+                                        });
+
                                         safeSetState(() {});
-                                      }
-
-                                      safeSetState(() {});
-                                    },
-                                    child: wrapWithModel(
-                                      model: _model.scanButtonModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: ScanButtonWidget(),
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.scanButtonModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: ScanButtonWidget(),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -420,24 +373,30 @@ class _DestructionDecommissionWidgetState
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'cp52o7he' /* Select Reason */,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            'cp52o7he' /* Select Reason */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF323394),
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .fontStyle,
-                              ),
-                              color: Color(0xFF323394),
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .fontStyle,
-                            ),
                       ),
                       FlutterFlowDropDown<String>(
                         controller: _model.dropDownValueController ??=
@@ -497,8 +456,8 @@ class _DestructionDecommissionWidgetState
                         borderColor: Color(0xFFE0E0E0),
                         borderWidth: 1.0,
                         borderRadius: 8.0,
-                        margin:
-                            EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                        margin: EdgeInsetsDirectional.fromSTEB(
+                            15.0, 0.0, 10.0, 0.0),
                         hidesUnderline: true,
                         isSearchable: false,
                         isMultiSelect: false,
@@ -512,30 +471,35 @@ class _DestructionDecommissionWidgetState
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'yf29l2if' /* Scanned Items */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'yf29l2if' /* Scanned Items */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF323394),
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF323394),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .fontStyle,
-                                  ),
+                              ),
                             ),
                             Container(
                               width: double.infinity,
-                              height: 334.99,
+                              height: 225.0,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
@@ -631,7 +595,7 @@ class _DestructionDecommissionWidgetState
                                         .titleMedium
                                         .fontStyle,
                                   ),
-                          elevation: 0.0,
+                          elevation: 2.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),
@@ -654,7 +618,8 @@ class _DestructionDecommissionWidgetState
                                             .bodyLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF3601F),
+                                      color: Color(0xFFD61823),
+                                      fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)

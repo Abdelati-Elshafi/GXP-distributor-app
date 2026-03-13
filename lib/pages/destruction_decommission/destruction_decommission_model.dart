@@ -1,7 +1,9 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'destruction_decommission_widget.dart'
     show DestructionDecommissionWidget;
 import 'package:flutter/material.dart';
@@ -30,13 +32,9 @@ class DestructionDecommissionModel
   FocusNode? enterSSCCFocusNode;
   TextEditingController? enterSSCCTextController;
   String? Function(BuildContext, String?)? enterSSCCTextControllerValidator;
-  // Stores action output result for [Custom Action - checkStringInList] action in EnterSSCC widget.
-  bool? alreadyScanned;
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedcode = '';
-  // Stores action output result for [Custom Action - checkStringInList] action in ScanButton widget.
-  bool? alreadyScannedQr;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -57,5 +55,50 @@ class DestructionDecommissionModel
 
     scanButtonModel.dispose();
     emptyListViewDisplayModel.dispose();
+  }
+
+  /// Action blocks.
+  Future checkSerialStatus(
+    BuildContext context, {
+    String? serial,
+  }) async {
+    ApiCallResponse? checkSerialStatusApiResult;
+    bool? alreadyScanned;
+
+    if (alreadyScanned!) {
+      var confirmDialogResponse = await showDialog<bool>(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                content: Text('Already Scanned'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext, false),
+                    child: Text('adcscsd'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext, true),
+                    child: Text('Confirm'),
+                  ),
+                ],
+              );
+            },
+          ) ??
+          false;
+    } else {
+      checkSerialStatusApiResult =
+          await SerialStatusUpdateGroup.checkSerialStatusCall.call(
+        serial: serial,
+      );
+
+      if ((checkSerialStatusApiResult.succeeded ?? true)) {
+        addToScannedSerialToDecommission(serial!);
+      }
+    }
+
+    alreadyScanned = await actions.checkStringInList(
+      serial!,
+      scannedSerialToDecommission.toList(),
+    );
   }
 }

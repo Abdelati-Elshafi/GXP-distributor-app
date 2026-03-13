@@ -502,11 +502,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تأكيد إيقاف التشغيل',
       'hi': 'डीकमीशन की पुष्टि करें',
     },
-    'qb4nw6em': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-      'hi': 'रद्द करना',
-    },
     'gnbycq9y': {
       'en': 'Decommission',
       'ar': 'إيقاف التشغيل',
@@ -810,85 +805,85 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // DamagedDecommission
   {
-    'doof8fqw': {
-      'en': 'Scan Items',
-      'ar': 'مسح العناصر',
-      'hi': 'आइटम स्कैन करें',
-    },
-    'l0virjco': {
-      'en': 'Scan or enter Serial/SSCC',
-      'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
-      'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
-    },
-    'ys99be7s': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-      'hi': 'रद्द करना',
-    },
-    '20ihrgfx': {
-      'en': 'Select Reason',
-      'ar': 'حدد السبب',
-      'hi': 'कारण चुनें',
-    },
-    'g0hruc9l': {
-      'en': 'Choose Reason',
-      'ar': 'اختر السبب',
-      'hi': 'कारण चुनें',
-    },
-    'lvk0ryaf': {
-      'en': 'Broken',
-      'ar': 'مكسور',
-      'hi': 'टूटा हुआ',
-    },
-    '7fdekvfl': {
-      'en': 'Unfolded',
-      'ar': 'مكشوفة',
-      'hi': 'सामने आया',
-    },
-    'khkuj7bc': {
-      'en': 'Torn',
-      'ar': 'ممزق',
-      'hi': 'फटा हुआ',
-    },
-    '0gkrvbs5': {
-      'en': '2D Matrix not readable ',
-      'ar': 'مصفوفة ثنائية الأبعاد غير قابلة للقراءة',
-      'hi': '2D मैट्रिक्स पठनीय नहीं है',
-    },
-    'k9l8l56p': {
-      'en': 'Smashed',
-      'ar': 'محطم',
-      'hi': 'तोड़ी',
-    },
-    'fnun106h': {
-      'en': 'Damage due To liquid spill ',
-      'ar': 'الأضرار الناجمة عن انسكاب السوائل',
-      'hi': 'तरल पदार्थ के रिसाव के कारण क्षति',
-    },
-    'zpk0w0kt': {
-      'en': 'Other',
-      'ar': 'آخر',
-      'hi': 'अन्य',
-    },
-    't3kdq3pj': {
-      'en': 'Scanned Items',
-      'ar': 'العناصر الممسوحة ضوئيًا',
-      'hi': 'स्कैन की गई वस्तुएँ',
-    },
-    'ac4xvcah': {
-      'en': 'Confirm Decommission',
-      'ar': 'تأكيد إيقاف التشغيل',
-      'hi': 'डीकमीशन की पुष्टि करें',
-    },
-    '05ks6gg5': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-      'hi': 'रद्द करना',
-    },
     'avv8zg8q': {
       'en': 'Decommissionn',
       'ar': 'إيقاف التشغيل',
       'hi': 'विमुद्रीकरण',
+    },
+    'bp8peuxd': {
+      'en': 'Scan Items',
+      'ar': 'مسح العناصر',
+      'hi': 'आइटम स्कैन करें',
+    },
+    'y7zgrwxh': {
+      'en': 'Scan or enter Serial/SSCC',
+      'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
+      'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
+    },
+    'eb5ppw2s': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+      'hi': 'रद्द करना',
+    },
+    'srh2u3yg': {
+      'en': 'Select Reason',
+      'ar': 'حدد السبب',
+      'hi': 'कारण चुनें',
+    },
+    'l5glqqwp': {
+      'en': 'Choose Reason',
+      'ar': 'اختر السبب',
+      'hi': 'कारण चुनें',
+    },
+    'al87z6c1': {
+      'en': 'Broken',
+      'ar': 'مكسور',
+      'hi': 'टूटा हुआ',
+    },
+    '6akzx73g': {
+      'en': 'Unfolded',
+      'ar': 'مكشوفة',
+      'hi': 'सामने आया',
+    },
+    'wyma91l3': {
+      'en': 'Torn',
+      'ar': 'ممزق',
+      'hi': 'फटा हुआ',
+    },
+    'cs44nr7j': {
+      'en': '2D Matrix not readable ',
+      'ar': 'مصفوفة ثنائية الأبعاد غير قابلة للقراءة',
+      'hi': '2D मैट्रिक्स पठनीय नहीं है',
+    },
+    'seq7zh8w': {
+      'en': 'Smashed',
+      'ar': 'محطم',
+      'hi': 'तोड़ी',
+    },
+    'shlwul9n': {
+      'en': 'Damage due To liquid spill ',
+      'ar': 'الأضرار الناجمة عن انسكاب السوائل',
+      'hi': 'तरल पदार्थ के रिसाव के कारण क्षति',
+    },
+    'ti3jboe4': {
+      'en': 'Other',
+      'ar': 'آخر',
+      'hi': 'अन्य',
+    },
+    'fcr735ur': {
+      'en': 'Scanned Items',
+      'ar': 'العناصر الممسوحة ضوئيًا',
+      'hi': 'स्कैन की गई वस्तुएँ',
+    },
+    'zsrlf346': {
+      'en': 'Confirm Decommission',
+      'ar': 'تأكيد إيقاف التشغيل',
+      'hi': 'डीकमीशन की पुष्टि करें',
+    },
+    'c88yndw2': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+      'hi': 'रद्द करना',
     },
   },
   // Unpack
@@ -1098,6 +1093,54 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Decommissionn',
       'ar': 'إيقاف التشغيل',
       'hi': 'विमुद्रीकरण',
+    },
+  },
+  // Login
+  {
+    'skbmfv17': {
+      'en': 'Select User',
+      'ar': '',
+      'hi': '',
+    },
+    'l7790hcr': {
+      'en': 'Search...',
+      'ar': '',
+      'hi': '',
+    },
+    'mnlcnmr3': {
+      'en': 'Option 1',
+      'ar': '',
+      'hi': '',
+    },
+    'zf41hc5w': {
+      'en': 'Option 2',
+      'ar': '',
+      'hi': '',
+    },
+    'o7ar315a': {
+      'en': 'Option 3',
+      'ar': '',
+      'hi': '',
+    },
+    's7vmzsto': {
+      'en': 'Password',
+      'ar': '',
+      'hi': '',
+    },
+    'onvc2u90': {
+      'en': 'Login',
+      'ar': '',
+      'hi': '',
+    },
+    '30avdo41': {
+      'en': 'Failed To Connect to the Server',
+      'ar': '',
+      'hi': '',
+    },
+    '7enhpsre': {
+      'en': 'Home',
+      'ar': '',
+      'hi': '',
     },
   },
   // Header
