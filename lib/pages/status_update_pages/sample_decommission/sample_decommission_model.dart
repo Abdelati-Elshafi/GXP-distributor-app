@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
+import '/components/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -11,7 +12,7 @@ class SampleDecommissionModel
     extends FlutterFlowModel<SampleDecommissionWidget> {
   ///  Local state fields for this page.
 
-  List<String> scannedSerialToDecommission = ['k'];
+  List<String> scannedSerialToDecommission = [];
   void addToScannedSerialToDecommission(String item) =>
       scannedSerialToDecommission.add(item);
   void removeFromScannedSerialToDecommission(String item) =>
@@ -24,6 +25,8 @@ class SampleDecommissionModel
           int index, Function(String) updateFn) =>
       scannedSerialToDecommission[index] =
           updateFn(scannedSerialToDecommission[index]);
+
+  bool loadingIsVisable = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -41,12 +44,15 @@ class SampleDecommissionModel
   FormFieldController<String>? dropDownValueController;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
+  // Model for Loading component.
+  late LoadingModel loadingModel;
 
   @override
   void initState(BuildContext context) {
     scanButtonModel = createModel(context, () => ScanButtonModel());
     emptyListViewDisplayModel =
         createModel(context, () => EmptyListViewDisplayModel());
+    loadingModel = createModel(context, () => LoadingModel());
   }
 
   @override
@@ -56,6 +62,7 @@ class SampleDecommissionModel
 
     scanButtonModel.dispose();
     emptyListViewDisplayModel.dispose();
+    loadingModel.dispose();
   }
 
   /// Action blocks.
@@ -91,6 +98,7 @@ class SampleDecommissionModel
           ) ??
           false;
     } else {
+      loadingIsVisable = true;
       checkSerialStatusApiResult =
           await SerialStatusUpdateGroup.checkSerialStatusCall.call(
         serial: serial,
@@ -99,6 +107,7 @@ class SampleDecommissionModel
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
         addToScannedSerialToDecommission(serial);
       }
+      loadingIsVisable = false;
     }
   }
 }

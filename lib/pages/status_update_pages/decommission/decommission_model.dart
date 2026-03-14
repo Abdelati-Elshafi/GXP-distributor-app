@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
   ///  Local state fields for this page.
 
-  List<String> scannedSerialToDecommission = ['11'];
+  List<String> scannedSerialToDecommission = [];
   void addToScannedSerialToDecommission(String item) =>
       scannedSerialToDecommission.add(item);
   void removeFromScannedSerialToDecommission(String item) =>

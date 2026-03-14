@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,6 +56,14 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
 
     _model.enterSSCCTextController ??= TextEditingController();
     _model.enterSSCCFocusNode ??= FocusNode();
+    _model.enterSSCCFocusNode!.addListener(
+      () async {
+        await _model.checkSerialStatus(
+          context,
+          serial: _model.enterSSCCTextController.text,
+        );
+      },
+    );
   }
 
   @override
@@ -175,6 +184,13 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                       controller:
                                           _model.enterSSCCTextController,
                                       focusNode: _model.enterSSCCFocusNode,
+                                      onFieldSubmitted: (_) async {
+                                        await _model.checkSerialStatus(
+                                          context,
+                                          serial: _model
+                                              .enterSSCCTextController.text,
+                                        );
+                                      },
                                       autofocus: false,
                                       textInputAction: TextInputAction.done,
                                       obscureText: false,
@@ -260,9 +276,30 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                         ScanMode.QR,
                                       );
 
-                                      _model.addToScannedSSCC(
-                                          _model.scannedSSCCAction);
-                                      safeSetState(() {});
+                                      _model.parsedGs1Code =
+                                          await actions.parseGs1Scan(
+                                        _model.scannedSSCCAction,
+                                      );
+                                      safeSetState(() {
+                                        _model.enterSSCCTextController?.text =
+                                            getJsonField(
+                                          _model.parsedGs1Code,
+                                          r'''$.serial''',
+                                        ).toString();
+                                        _model.enterSSCCFocusNode
+                                            ?.requestFocus();
+                                        WidgetsBinding.instance
+                                            .addPostFrameCallback((_) {
+                                          _model.enterSSCCTextController
+                                                  ?.selection =
+                                              TextSelection.collapsed(
+                                            offset: _model
+                                                .enterSSCCTextController!
+                                                .text
+                                                .length,
+                                          );
+                                        });
+                                      });
 
                                       safeSetState(() {});
                                     },

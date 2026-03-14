@@ -167,6 +167,47 @@ class UserLoginCall {
 
 /// End UserAccessMangment Group Code
 
+/// Start OrdersAPIs Group Code
+
+class OrdersAPIsGroup {
+  static String getBaseUrl() =>
+      'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api_test/api/v1/orders';
+  static Map<String, String> headers = {};
+  static GetOrderByUserCall getOrderByUserCall = GetOrderByUserCall();
+}
+
+class GetOrderByUserCall {
+  Future<ApiCallResponse> call({
+    String? username = '',
+    String? orderStatus = '',
+  }) async {
+    final baseUrl = OrdersAPIsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "username": "${escapeStringForJson(username)}",
+  "Status": "${escapeStringForJson(orderStatus)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetOrderByUser',
+      apiUrl: '${baseUrl}/GetOrderByUser',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End OrdersAPIs Group Code
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

@@ -359,9 +359,9 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                             WidgetsBinding.instance
                                                 .addPostFrameCallback((_) {
                                               _model.enterSSCCTextController
-                                                  ?.selection = TextSelection(
-                                                baseOffset: 0,
-                                                extentOffset: _model
+                                                      ?.selection =
+                                                  TextSelection.collapsed(
+                                                offset: _model
                                                     .enterSSCCTextController!
                                                     .text
                                                     .length,

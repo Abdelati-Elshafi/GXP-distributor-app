@@ -702,97 +702,97 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SampleDecommission
   {
-    'bwtya1xk': {
+    'tcklpsdr': {
       'en': 'Scan Items',
       'ar': 'مسح العناصر',
       'hi': 'आइटम स्कैन करें',
     },
-    'y4mzfixe': {
+    'htchxdh3': {
       'en': 'Scan or enter Serial/SSCC',
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
       'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
-    'fh7xw2hi': {
+    'nrg78dy1': {
       'en': 'Cancel',
       'ar': 'يلغي',
       'hi': 'रद्द करना',
     },
-    '5irsapa1': {
+    'm7744z82': {
       'en': 'Select Reason',
       'ar': 'حدد السبب',
       'hi': 'कारण चुनें',
     },
-    'us610qpr': {
+    'y5gy94y7': {
       'en': 'Choose Reason',
       'ar': 'اختر السبب',
       'hi': 'कारण चुनें',
     },
-    'kf6rwyoz': {
+    'n72oiock': {
       'en': 'Sample for Doctors',
       'ar': 'عينة للأطباء',
       'hi': 'डॉक्टरों के लिए नमूना',
     },
-    'r5bshkz7': {
+    '7cki0c63': {
       'en': 'Packaging Review',
       'ar': 'مراجعة التعبئة والتغليف',
       'hi': 'पैकेजिंग समीक्षा',
     },
-    'j5cnjtas': {
+    'pqzegnzs': {
       'en': 'Laboratory Sample',
       'ar': 'عينة مختبرية',
       'hi': 'प्रयोगशाला नमूना',
     },
-    'qihynmp4': {
+    'axgvfmor': {
       'en': 'Criminal Investigation',
       'ar': 'التحقيق الجنائي',
       'hi': 'आपराधिक जांच',
     },
-    '6kuxvddx': {
+    '2deldfxq': {
       'en': 'Prequalification',
       'ar': 'التأهيل المسبق',
       'hi': 'पूर्व अर्हता',
     },
-    '7quay46k': {
+    'ge7udvgs': {
       'en': 'Retention for future testing',
       'ar': 'الاحتفاظ بها للاختبار في المستقبل',
       'hi': 'भविष्य के परीक्षण के लिए प्रतिधारण',
     },
-    'af89iia7': {
+    '24w2j7ub': {
       'en': 'Consumer Report',
       'ar': 'تقرير المستهلك',
       'hi': 'उपभोक्ता रिपोर्ट',
     },
-    'lk4ad3pq': {
+    'txnwi9p7': {
       'en': ' Product Documentation',
       'ar': 'وثائق المنتج',
       'hi': 'उत्पाद दस्तावेज़ीकरण',
     },
-    'vv9ivfp2': {
+    'h58uc1go': {
       'en': 'PMS Sampling',
       'ar': 'أخذ عينات من PMS',
       'hi': 'पीएमएस नमूनाकरण',
     },
-    '86bnjxmi': {
+    '5nukxh23': {
       'en': ' Suspect Activity',
       'ar': 'نشاط مشتبه به',
       'hi': 'संदिग्ध गतिविधि',
     },
-    'waam3ben': {
+    '4p73ydhj': {
       'en': ' Storing Condition',
       'ar': 'حالة التخزين',
       'hi': 'भंडारण की स्थिति',
     },
-    'rueez56h': {
+    'inbdn836': {
       'en': 'Scanned Items',
       'ar': 'العناصر الممسوحة ضوئيًا',
       'hi': 'स्कैन की गई वस्तुएँ',
     },
-    'wkp4w9yg': {
+    '7yjvze18': {
       'en': 'Confirm Decommission',
       'ar': 'تأكيد إيقاف التشغيل',
       'hi': 'डीकमीशन की पुष्टि करें',
     },
-    'wyx096o2': {
+    'd18pmrwb': {
       'en': 'Cancel',
       'ar': 'يلغي',
       'hi': 'रद्द करना',
