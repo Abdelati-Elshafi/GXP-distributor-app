@@ -74,6 +74,7 @@ class DamagedDecommissionModel
     bool? alreadyScanned;
     ApiCallResponse? checkSerialStatusApiResult;
 
+    loading = false;
     alreadyScanned = await actions.checkStringInList(
       serial!,
       scannedSerialToDecommission.toList(),
@@ -124,5 +125,7 @@ class DamagedDecommissionModel
 
       loading = false;
     }
+
+    loading = false;
   }
 }
