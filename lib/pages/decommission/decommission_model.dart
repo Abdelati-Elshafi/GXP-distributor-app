@@ -35,6 +35,8 @@ class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedcode = '';
+  // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
+  dynamic gS1ParsedData;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
   // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in Button widget.

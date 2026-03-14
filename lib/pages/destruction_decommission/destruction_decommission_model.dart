@@ -35,6 +35,8 @@ class DestructionDecommissionModel
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedcode = '';
+  // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
+  dynamic gS1ParsedData;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
