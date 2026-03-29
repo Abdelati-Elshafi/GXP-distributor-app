@@ -1,6 +1,6 @@
 // Export pages
 export '/pages/main_pages/main/main_widget.dart' show MainWidget;
-export '/pages/status_update_pages/status_update/status_update_widget.dart'
+export '/pages/packing_related_pages/status_update_pages/status_update/status_update_widget.dart'
     show StatusUpdateWidget;
 export '/pages/inbound_movments_pages/inbound_movement/inbound_movement_widget.dart'
     show InboundMovementWidget;
@@ -18,7 +18,7 @@ export '/pages/packing_related_pages/case_packing/case_packing_widget.dart'
     show CasePackingWidget;
 export '/pages/inbound_movments_pages/receive_page/receive_page_widget.dart'
     show ReceivePageWidget;
-export '/pages/status_update_pages/decommission/decommission_widget.dart'
+export '/pages/packing_related_pages/status_update_pages/decommission/decommission_widget.dart'
     show DecommissionWidget;
 export '/pages/outbound_movement_pages/orders/orders_list/orders_list_widget.dart'
     show OrdersListWidget;
@@ -28,14 +28,14 @@ export '/pages/outbound_movement_pages/orders/product_details/product_details_wi
     show ProductDetailsWidget;
 export '/pages/outbound_movement_pages/shipping/shipping_widget.dart'
     show ShippingWidget;
-export '/pages/status_update_pages/sample_decommission/sample_decommission_widget.dart'
+export '/pages/packing_related_pages/status_update_pages/sample_decommission/sample_decommission_widget.dart'
     show SampleDecommissionWidget;
-export '/pages/status_update_pages/damaged_decommission/damaged_decommission_widget.dart'
+export '/pages/packing_related_pages/status_update_pages/damaged_decommission/damaged_decommission_widget.dart'
     show DamagedDecommissionWidget;
 export '/pages/packing_related_pages/unpack/unpack_widget.dart'
     show UnpackWidget;
 export '/pages/outbound_movement_pages/return_shipping/return_shipping_widget.dart'
     show ReturnShippingWidget;
-export '/pages/status_update_pages/destruction_decommission/destruction_decommission_widget.dart'
+export '/pages/packing_related_pages/status_update_pages/destruction_decommission/destruction_decommission_widget.dart'
     show DestructionDecommissionWidget;
 export '/pages/main_pages/login/login_widget.dart' show LoginWidget;

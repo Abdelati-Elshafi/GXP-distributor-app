@@ -254,7 +254,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'प्राप्त',
     },
     '3kqcpbfo': {
-      'en': 'Receive shipments from MAH or other distributors',
+      'en': 'Receive shipments from \nMAH or other distributors',
       'ar': 'استلام الشحنات من MAH أو الموزعين الآخرين',
       'hi': 'MAH या अन्य वितरकों से शिपमेंट प्राप्त करें',
     },
@@ -264,7 +264,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'वापसी प्राप्ति',
     },
     '2um5iolq': {
-      'en': 'Process and receive returned products from customers',
+      'en': 'Process and receive returned\nproducts from customers',
       'ar': 'معالجة واستلام المنتجات المرتجعة من العملاء',
       'hi': 'ग्राहकों से लौटाए गए उत्पादों को संसाधित करना और प्राप्त करना',
     },
@@ -307,7 +307,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'वापसी शिपिंग',
     },
     'hef5xplp': {
-      'en': 'Return products back to MAH or supplier',
+      'en': 'Return products back to MAH \nor supplier',
       'ar': 'إرجاع المنتجات إلى صاحب حق الملكية أو المورد',
       'hi': 'उत्पादों को MAH या आपूर्तिकर्ता को वापस लौटाएँ',
     },
@@ -357,50 +357,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // UnpackAll
   {
-    '9ct8u92u': {
-      'en': 'Scan or Enter SSCC',
-      'ar': 'مسح أو إدخال SSCC',
-      'hi': 'SSCC स्कैन करें या दर्ज करें',
-    },
-    'etcoyqr5': {
-      'en': 'Enter SSCC manually',
-      'ar': 'أدخل SSCC يدويًا',
-      'hi': 'SSCC को मैन्युअल रूप से दर्ज करें',
-    },
-    'zmams5a9': {
-      'en': 'Scan SSCC',
-      'ar': 'مسح SSCC',
-      'hi': 'एसएससीसी स्कैन करें',
-    },
-    '2mncwvuj': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-      'hi': 'रद्द करना',
-    },
-    '167vy5hd': {
-      'en': 'SSCC: ',
-      'ar': 'إس إس سي سي:',
-      'hi': 'एसएससीसी:',
-    },
-    'pfijzhtd': {
-      'en': 'Unpack All',
-      'ar': 'فك كل شيء',
-      'hi': 'सभी को अनपैक करें',
-    },
-    'qrcaug38': {
-      'en': 'Disassemble all items in this SSCC',
-      'ar': 'تفكيك جميع العناصر الموجودة في هذا SSCC',
-      'hi': 'इस एसएससीसी में सभी वस्तुओं को अलग करें',
-    },
-    'yevmcrib': {
-      'en': 'Confirm Unpack All',
-      'ar': 'تأكيد فك كل شيء',
-      'hi': 'सभी अनपैक की पुष्टि करें',
-    },
     'lm0jm9xb': {
       'en': 'UnPack All',
       'ar': 'فك كل شيء',
       'hi': 'सभी को अनपैक करें',
+    },
+    'v5cr596z': {
+      'en': 'Scan or Enter SSCC',
+      'ar': 'مسح أو إدخال SSCC',
+      'hi': 'SSCC स्कैन करें या दर्ज करें',
+    },
+    'lez93474': {
+      'en': 'Enter SSCC manually',
+      'ar': 'أدخل SSCC يدويًا',
+      'hi': 'SSCC को मैन्युअल रूप से दर्ज करें',
+    },
+    'a3uhrh4u': {
+      'en': 'Scan SSCC',
+      'ar': 'مسح SSCC',
+      'hi': 'एसएससीसी स्कैन करें',
+    },
+    'fllxlbte': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+      'hi': 'रद्द करना',
+    },
+    'u9rytyey': {
+      'en': 'SSCC: ',
+      'ar': 'إس إس سي سي:',
+      'hi': 'एसएससीसी:',
+    },
+    'o8sbtdep': {
+      'en': 'Unpack All',
+      'ar': 'فك كل شيء',
+      'hi': 'सभी को अनपैक करें',
+    },
+    's04wfewf': {
+      'en': 'Disassemble all items in this SSCC',
+      'ar': 'تفكيك جميع العناصر الموجودة في هذا SSCC',
+      'hi': 'इस एसएससीसी में सभी वस्तुओं को अलग करें',
+    },
+    'mg4gk7q4': {
+      'en': 'Confirm Unpack All',
+      'ar': 'تأكيد فك كل شيء',
+      'hi': 'सभी अनपैक की पुष्टि करें',
     },
   },
   // PackagesList
@@ -439,32 +439,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ReceivePage
   {
-    'mhnrjs0a': {
+    '6f75ego2': {
       'en': 'Scan SSCC',
       'ar': 'مسح الشحنة',
       'hi': 'शिपमेंट स्कैन करें',
     },
-    'gk1vzmxu': {
+    'z055erdy': {
       'en': 'Scan or enter SSCC',
       'ar': 'امسح أو أدخل SSCC',
       'hi': 'SSCC स्कैन करें या दर्ज करें',
     },
-    '5zlki9yx': {
+    'py4acxlu': {
       'en': 'Cancel',
       'ar': '',
       'hi': '',
     },
-    '4ql1vfju': {
+    'np2bh3pb': {
       'en': 'Products',
       'ar': 'منتجات',
       'hi': 'उत्पादों',
     },
-    'd039g9fa': {
+    'pz6lm8qe': {
       'en': 'Confirm Receive',
       'ar': 'تأكيد الاستلام',
       'hi': 'प्राप्ति की पुष्टि करें',
     },
-    'ypzok3iv': {
+    'iem8iuzh': {
       'en': 'Return Receive',
       'ar': 'تأكيد الاستلام',
       'hi': 'प्राप्ति की पुष्टि करें',
@@ -502,11 +502,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تأكيد إيقاف التشغيل',
       'hi': 'डीकमीशन की पुष्टि करें',
     },
-    'gnbycq9y': {
-      'en': 'Decommission',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
-    },
   },
   // OrdersList
   {
@@ -533,11 +528,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الوجهة GLN:',
       'hi': 'गंतव्य जीएलएन:',
     },
-    'xz7tf9yr': {
-      'en': '1234567890000',
-      'ar': '1234567890000',
-      'hi': '1234567890000',
-    },
     '9ofmr6g1': {
       'en': 'Date:',
       'ar': 'تاريخ:',
@@ -553,11 +543,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'طلب SSCC:',
       'hi': 'एसएससीसी का आदेश:',
     },
-    'rx0oel0r': {
-      'en': '987654321012345678',
-      'ar': '987654321012345678',
-      'hi': '987654321012345678',
-    },
     'zfgk1rrz': {
       'en': 'Products in Order',
       'ar': 'المنتجات بالترتيب',
@@ -566,16 +551,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductDetails
   {
-    '8h4ekkxq': {
-      'en': 'Batch: BC2024001',
-      'ar': 'الدفعة: BC2024001',
-      'hi': 'बैच: BC2024001',
-    },
-    '7wzbet3q': {
-      'en': 'Expiry: 12/2024',
-      'ar': 'تاريخ الانتهاء: 12/2024',
-      'hi': 'समाप्ति: 12/2024',
-    },
     'hm9wo4ix': {
       'en': 'Scanned Codes',
       'ar': 'الرموز الممسوحة ضوئيًا',
@@ -594,102 +569,102 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Shipping
   {
-    '6tx3l06n': {
+    '4uexpybx': {
       'en': 'Select and Scan SSCC To Validate ',
       'ar': 'حدد وامسح SSCC للتحقق',
       'hi': 'सत्यापन के लिए SSCC का चयन करें और स्कैन करें',
     },
-    'j1r929rp': {
+    'x7zyp85l': {
       'en': 'Select Order',
       'ar': 'حدد الطلب',
       'hi': 'आदेश चुनें',
     },
-    'wauyg0lw': {
+    'uxxqlwj0': {
       'en': 'Search',
       'ar': 'يبحث',
       'hi': 'खोज',
     },
-    'lc4nabc8': {
+    '2164bcoo': {
       'en': 'Order #12345 - Pharmacy A',
       'ar': 'الطلب رقم 12345 - الصيدلية أ',
       'hi': 'आदेश #12345 - फार्मेसी A',
     },
-    '052atzb3': {
+    '5qy03shy': {
       'en': 'Order #12346 - Pharmacy B',
       'ar': 'الطلب رقم 12346 - صيدلية ب',
       'hi': 'आदेश #12346 - फ़ार्मेसी B',
     },
-    '5htonf8p': {
+    '6d9ap30f': {
       'en': 'Order #12347 - Pharmacy C',
       'ar': 'الطلب رقم 12347 - صيدلية ج',
       'hi': 'आदेश #12347 - फार्मेसी C',
     },
-    's6hxfbt9': {
+    'x4o2q86b': {
       'en': 'Scan or enter SSCC',
       'ar': 'امسح أو أدخل SSCC',
       'hi': 'SSCC स्कैन करें या दर्ज करें',
     },
-    'uejt2in0': {
+    'be9j5myc': {
       'en': 'Order #:',
       'ar': 'طلب #:',
       'hi': 'आदेश #:',
     },
-    'hyh1pnwi': {
+    '0wt3pv7p': {
       'en': '12345',
       'ar': '12345',
       'hi': '12345',
     },
-    '7sgkgvav': {
+    'xzadtsdm': {
       'en': 'Customer:',
       'ar': 'عميل:',
       'hi': 'ग्राहक:',
     },
-    'rn3ppj0t': {
+    '5o6xc5lz': {
       'en': 'Pharmacy A',
       'ar': 'صيدلية أ',
       'hi': 'फार्मेसी ए',
     },
-    'u8uupmq5': {
+    '81810qca': {
       'en': 'Destination GLN:',
       'ar': 'الوجهة GLN:',
       'hi': 'गंतव्य जीएलएन:',
     },
-    'rb60gtrf': {
+    '4rmv7rem': {
       'en': '1234567890000',
       'ar': '1234567890000',
       'hi': '1234567890000',
     },
-    'we9n0rv9': {
+    'q2bx63nz': {
       'en': 'Date:',
       'ar': 'تاريخ:',
       'hi': 'तारीख:',
     },
-    'r3124txy': {
+    'ob4j9cq1': {
       'en': '2025-09-04',
       'ar': '2025-09-03T21:00:00Z',
       'hi': '2025-09-03T21:00:00Z',
     },
-    'hjc6nog3': {
+    'uzf7pu17': {
       'en': 'Order SSCC:',
       'ar': 'طلب SSCC:',
       'hi': 'एसएससीसी का आदेश:',
     },
-    'qfhluzq4': {
+    'mpparjeq': {
       'en': '987654321012345678',
       'ar': '987654321012345678',
       'hi': '987654321012345678',
     },
-    'anagf2hl': {
+    'q64hzvjl': {
       'en': 'Products in Order',
       'ar': 'المنتجات بالترتيب',
       'hi': 'क्रम में उत्पाद',
     },
-    'ov3w59t0': {
+    'ifm652gj': {
       'en': 'Confirm Shipping',
       'ar': 'تأكيد الشحن',
       'hi': 'शिपिंग की पुष्टि करें',
     },
-    'g1uru79y': {
+    '7bnjiup6': {
       'en': 'Cancel',
       'ar': 'يلغي',
       'hi': 'रद्द करना',
@@ -792,24 +767,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تأكيد إيقاف التشغيل',
       'hi': 'डीकमीशन की पुष्टि करें',
     },
-    'd18pmrwb': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-      'hi': 'रद्द करना',
-    },
-    'o43vwrn2': {
-      'en': 'Decommission',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
-    },
   },
   // DamagedDecommission
   {
-    'avv8zg8q': {
-      'en': 'Decommissionn',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
-    },
     'bp8peuxd': {
       'en': 'Scan Items',
       'ar': 'مسح العناصر',
@@ -880,11 +840,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تأكيد إيقاف التشغيل',
       'hi': 'डीकमीशन की पुष्टि करें',
     },
-    'c88yndw2': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-      'hi': 'रद्द करना',
-    },
   },
   // Unpack
   {
@@ -893,15 +848,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'فك العبوة',
       'hi': 'खोल देना',
     },
-    '4qoka76q': {
-      'en': 'Scanned Items',
-      'ar': 'العناصر الممسوحة ضوئيًا',
-      'hi': 'स्कैन की गई वस्तुएँ',
-    },
     's8llgy9z': {
       'en': 'Scan or enter Serial/SSCC',
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
       'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
+    },
+    'tiaie4qg': {
+      'en': 'Cancel',
+      'ar': '',
+      'hi': '',
     },
     'mzp9dvp8': {
       'en': 'Scanned Items',
@@ -909,7 +864,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'स्कैन की गई वस्तुएँ',
     },
     '2kx0bgfp': {
-      'en': 'Confirm Unpack All',
+      'en': 'Unpack',
       'ar': 'تأكيد فك كل شيء',
       'hi': 'सभी अनपैक की पुष्टि करें',
     },
@@ -921,107 +876,112 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إعادة الشحن',
       'hi': 'वापसी शिपिंग',
     },
-    '60ght6ot': {
+    '15bhrale': {
       'en': 'Scan Shipment',
       'ar': 'مسح الشحنة',
       'hi': 'शिपमेंट स्कैन करें',
     },
-    'z549ukbk': {
+    '1j7unozs': {
       'en': 'Scan or enter SSCC',
       'ar': 'امسح أو أدخل SSCC',
       'hi': 'SSCC स्कैन करें या दर्ज करें',
     },
-    'fmml5i3u': {
+    '5zlki9yx': {
+      'en': 'Cancel',
+      'ar': '',
+      'hi': '',
+    },
+    '8j1jyps8': {
       'en': 'SSCC: ',
       'ar': 'إس إس سي سي:',
       'hi': 'एसएससीसी:',
     },
-    'pyyqmf0y': {
+    'wq9ult9n': {
       'en': 'Cases: ',
       'ar': 'حالات:',
       'hi': 'मामले:',
     },
-    'uixq3x3e': {
+    'jxnj3wve': {
       'en': '0',
       'ar': '0',
       'hi': '0',
     },
-    'onmdb6yn': {
+    'lqfuqvfo': {
       'en': 'Items: ',
       'ar': 'أغراض:',
       'hi': 'सामान:',
     },
-    'kaov5a5o': {
+    'kc4zfev3': {
       'en': '0',
       'ar': '0',
       'hi': '0',
     },
-    '50pfxh0u': {
+    'nw4p9uit': {
       'en': 'Choose Reason',
       'ar': 'اختر السبب',
       'hi': 'कारण चुनें',
     },
-    'y070xo7t': {
+    'i7xhir0s': {
       'en': 'Sample for Doctors',
       'ar': 'عينة للأطباء',
       'hi': 'डॉक्टरों के लिए नमूना',
     },
-    'ark956el': {
+    'u7kkrgih': {
       'en': 'Packaging Review',
       'ar': 'مراجعة التعبئة والتغليف',
       'hi': 'पैकेजिंग समीक्षा',
     },
-    '7xa3lg7f': {
+    'xhsaa2xi': {
       'en': 'Laboratory Sample',
       'ar': 'عينة مختبرية',
       'hi': 'प्रयोगशाला नमूना',
     },
-    'ow88t8ta': {
+    '7wgju90t': {
       'en': 'Criminal Investigation',
       'ar': 'التحقيق الجنائي',
       'hi': 'आपराधिक जांच',
     },
-    '5ghwtn60': {
+    'jynth320': {
       'en': 'Prequalification',
       'ar': 'التأهيل المسبق',
       'hi': 'पूर्व अर्हता',
     },
-    'dwhcqeu4': {
+    '6dbbs0tl': {
       'en': 'Retention for future testing',
       'ar': 'الاحتفاظ بها للاختبار في المستقبل',
       'hi': 'भविष्य के परीक्षण के लिए प्रतिधारण',
     },
-    'eh3tydjj': {
+    '0jhw1xhf': {
       'en': 'Consumer Report',
       'ar': 'تقرير المستهلك',
       'hi': 'उपभोक्ता रिपोर्ट',
     },
-    '00sk1dst': {
+    '8kojr2tk': {
       'en': ' Product Documentation',
       'ar': 'وثائق المنتج',
       'hi': 'उत्पाद दस्तावेज़ीकरण',
     },
-    'cjoaf8zz': {
+    'uekhburr': {
       'en': 'PMS Sampling',
       'ar': 'أخذ عينات من PMS',
       'hi': 'पीएमएस नमूनाकरण',
     },
-    'svowqiuu': {
+    'dor36wx0': {
       'en': ' Suspect Activity',
       'ar': 'نشاط مشتبه به',
       'hi': 'संदिग्ध गतिविधि',
     },
-    'j7y452x5': {
+    'fp9d94nu': {
       'en': ' Storing Condition',
       'ar': 'حالة التخزين',
       'hi': 'भंडारण की स्थिति',
     },
-    '46npcsad': {
+    '2v2rcs9k': {
       'en': 'Products',
       'ar': 'منتجات',
       'hi': 'उत्पादों',
     },
-    'e76d3z0r': {
+    'bdhb9dy8': {
       'en': 'Confirm Return',
       'ar': 'تأكيد الإرجاع',
       'hi': 'वापसी की पुष्टि करें',
@@ -1029,70 +989,60 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // DestructionDecommission
   {
-    'b8l9ap0y': {
+    '6qsvtyxl': {
       'en': 'Scan Items',
       'ar': 'مسح العناصر',
       'hi': 'आइटम स्कैन करें',
     },
-    'j04bc15s': {
+    'aomrkk2l': {
       'en': 'Scan or enter Serial/SSCC',
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
       'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
-    '71l6wd83': {
+    'hvp8ijby': {
       'en': 'Cancel',
       'ar': 'يلغي',
       'hi': 'रद्द करना',
     },
-    'cp52o7he': {
+    'cfd8hosk': {
       'en': 'Select Reason',
       'ar': 'حدد السبب',
       'hi': 'कारण चुनें',
     },
-    '40yy5d0n': {
+    '7dzsauxg': {
       'en': 'Choose Reason',
       'ar': 'اختر السبب',
       'hi': 'कारण चुनें',
     },
-    'qzwklhwp': {
+    'yewhe2sy': {
       'en': 'Item expired ',
       'ar': 'مكسور',
       'hi': 'टूटा हुआ',
     },
-    '7un15u81': {
+    'vucpz3cw': {
       'en': 'Improper storage',
       'ar': '',
       'hi': '',
     },
-    'l3kgu1s5': {
+    'zgmq2ylr': {
       'en': 'Exceeded environmental conditions',
       'ar': '',
       'hi': '',
     },
-    'py2jdoei': {
+    'e63kek0z': {
       'en': 'Contaminated',
       'ar': '',
       'hi': '',
     },
-    'yf29l2if': {
+    '64gkftie': {
       'en': 'Scanned Items',
       'ar': 'العناصر الممسوحة ضوئيًا',
       'hi': 'स्कैन की गई वस्तुएँ',
     },
-    '1mw2e7y2': {
+    'cvdh5tp5': {
       'en': 'Confirm Decommission',
       'ar': 'تأكيد إيقاف التشغيل',
       'hi': 'डीकमीशन की पुष्टि करें',
-    },
-    'k6xbv44b': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-      'hi': 'रद्द करना',
-    },
-    '0qwrj4u5': {
-      'en': 'Decommissionn',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
     },
   },
   // Login
@@ -1389,24 +1339,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يسمح:',
       'hi': 'आज्ञा देना:',
     },
-    'qqxq12ry': {
-      'en': '#123456',
-      'ar': '#123456',
-      'hi': '#123456',
-    },
-    '306c3v9t': {
-      'en': 'Pending',
-      'ar': 'قيد الانتظار',
-      'hi': 'लंबित',
-    },
-  },
-  // SSCCDetailsCard
-  {
-    'vaqlu3y6': {
-      'en': 'Case',
-      'ar': 'قضية',
-      'hi': 'मामला',
-    },
   },
   // ProductDetailsCard
   {
@@ -1419,6 +1351,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Registered',
       'ar': 'مسجل',
       'hi': 'दर्ज कराई',
+    },
+  },
+  // cancelation
+  {
+    'ii5lqwhx': {
+      'en': '⚠️',
+      'ar': '',
+      'hi': '',
+    },
+    'v6jawm31': {
+      'en': 'Warning',
+      'ar': '',
+      'hi': '',
+    },
+    'j2myiha6': {
+      'en':
+          'Are you sure you want to cancel this shipment? This action cannot be undone.',
+      'ar': '',
+      'hi': '',
+    },
+    'zydsx5lb': {
+      'en': 'Cancel',
+      'ar': '',
+      'hi': '',
+    },
+    '3nrcfo1s': {
+      'en': 'Confirm',
+      'ar': '',
+      'hi': '',
     },
   },
   // Miscellaneous

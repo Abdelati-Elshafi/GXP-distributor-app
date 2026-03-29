@@ -113,11 +113,11 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Stack(
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
-                child: Builder(
+          child: Padding(
+            padding: EdgeInsets.all(4.0),
+            child: Stack(
+              children: [
+                Builder(
                   builder: (context) {
                     final itemInlist = _model.packages.toList();
 
@@ -149,24 +149,24 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
                     );
                   },
                 ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
-                child: wrapWithModel(
-                  model: _model.addnewssccModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: AddnewssccWidget(),
-                ),
-              ),
-              if (true)
-                wrapWithModel(
-                  model: _model.emptyListViewDisplayModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: EmptyListViewDisplayWidget(
-                    listContent: _model.packages,
+                Align(
+                  alignment: AlignmentDirectional(0.0, -1.0),
+                  child: wrapWithModel(
+                    model: _model.addnewssccModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: AddnewssccWidget(),
                   ),
                 ),
-            ],
+                if (true)
+                  wrapWithModel(
+                    model: _model.emptyListViewDisplayModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: EmptyListViewDisplayWidget(
+                      listContent: _model.packages,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),

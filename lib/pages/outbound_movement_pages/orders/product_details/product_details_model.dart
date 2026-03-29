@@ -1,4 +1,5 @@
-import '/components/s_s_c_c_details_card/s_s_c_c_details_card_widget.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'product_details_widget.dart' show ProductDetailsWidget;
 import 'package:flutter/material.dart';
@@ -6,29 +7,31 @@ import 'package:flutter/material.dart';
 class ProductDetailsModel extends FlutterFlowModel<ProductDetailsWidget> {
   ///  Local state fields for this page.
 
-  List<int> serialsdata = [55, 2];
-  void addToSerialsdata(int item) => serialsdata.add(item);
-  void removeFromSerialsdata(int item) => serialsdata.remove(item);
+  List<dynamic> serialsdata = [];
+  void addToSerialsdata(dynamic item) => serialsdata.add(item);
+  void removeFromSerialsdata(dynamic item) => serialsdata.remove(item);
   void removeAtIndexFromSerialsdata(int index) => serialsdata.removeAt(index);
-  void insertAtIndexInSerialsdata(int index, int item) =>
+  void insertAtIndexInSerialsdata(int index, dynamic item) =>
       serialsdata.insert(index, item);
-  void updateSerialsdataAtIndex(int index, Function(int) updateFn) =>
+  void updateSerialsdataAtIndex(int index, Function(dynamic) updateFn) =>
       serialsdata[index] = updateFn(serialsdata[index]);
 
-  int test = 0;
+  bool loading = false;
 
   ///  State fields for stateful widgets in this page.
 
-  // Model for SSCCDetailsCard component.
-  late SSCCDetailsCardModel sSCCDetailsCardModel;
+  // Stores action output result for [Backend Call - API (ProductSerialsDetails)] action in ProductDetails widget.
+  ApiCallResponse? productSerialsDetailsApiResult;
+  // Model for Loading component.
+  late LoadingModel loadingModel;
 
   @override
   void initState(BuildContext context) {
-    sSCCDetailsCardModel = createModel(context, () => SSCCDetailsCardModel());
+    loadingModel = createModel(context, () => LoadingModel());
   }
 
   @override
   void dispose() {
-    sSCCDetailsCardModel.dispose();
+    loadingModel.dispose();
   }
 }

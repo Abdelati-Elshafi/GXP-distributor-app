@@ -1,16 +1,17 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
-import '/components/loading_widget.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'damaged_decommission_widget.dart' show DamagedDecommissionWidget;
+import 'sample_decommission_widget.dart' show SampleDecommissionWidget;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class DamagedDecommissionModel
-    extends FlutterFlowModel<DamagedDecommissionWidget> {
+class SampleDecommissionModel
+    extends FlutterFlowModel<SampleDecommissionWidget> {
   ///  Local state fields for this page.
 
   List<String> scannedSerialToDecommission = [];
@@ -27,7 +28,7 @@ class DamagedDecommissionModel
       scannedSerialToDecommission[index] =
           updateFn(scannedSerialToDecommission[index]);
 
-  bool loading = false;
+  bool loadingIsVisable = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -40,11 +41,13 @@ class DamagedDecommissionModel
   var scannedcode = '';
   // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
   dynamic gS1ParsedData;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for ReasonDropDown widget.
+  String? reasonDropDownValue;
+  FormFieldController<String>? reasonDropDownValueController;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
+  // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in Button widget.
+  ApiCallResponse? updateSerialStatusApiResult;
   // Model for Loading component.
   late LoadingModel loadingModel;
 
@@ -67,14 +70,14 @@ class DamagedDecommissionModel
   }
 
   /// Action blocks.
-  Future checkSerialStatus(
+  Future getSerialStatus(
     BuildContext context, {
     required String? serial,
   }) async {
     bool? alreadyScanned;
     ApiCallResponse? checkSerialStatusApiResult;
 
-    loading = false;
+    loadingIsVisable = true;
     alreadyScanned = await actions.checkStringInList(
       serial!,
       scannedSerialToDecommission.toList(),
@@ -88,7 +91,7 @@ class DamagedDecommissionModel
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('adcscsd'),
+                    child: Text('cancel'),
                   ),
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, true),
@@ -100,32 +103,41 @@ class DamagedDecommissionModel
           ) ??
           false;
     } else {
-      loading = true;
       checkSerialStatusApiResult =
           await SerialStatusUpdateGroup.checkSerialStatusCall.call(
-        serial: enterSSCCTextController.text,
+        serial: serial,
       );
 
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
-        addToScannedSerialToDecommission(enterSSCCTextController.text);
+        addToScannedSerialToDecommission(serial);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
               'Faild To Connect The Server',
-              style: TextStyle(
-                color: Color(0xFFDDDDDD),
-              ),
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+                    color: Color(0xFFDDDDDD),
+                    letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
+              textAlign: TextAlign.center,
             ),
             duration: Duration(milliseconds: 4000),
             backgroundColor: FlutterFlowTheme.of(context).error,
           ),
         );
       }
-
-      loading = false;
     }
 
-    loading = false;
+    loadingIsVisable = false;
   }
 }

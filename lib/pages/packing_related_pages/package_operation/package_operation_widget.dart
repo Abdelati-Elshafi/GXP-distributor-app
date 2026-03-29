@@ -177,7 +177,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                           FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
                     color: Colors.white,
-                    fontSize: 22.0,
+                    fontSize: 23.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
@@ -195,48 +195,62 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 20.0),
-                      child: wrapWithModel(
-                        model: _model.packageCardModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: PackageCardWidget(
-                          sSCC: widget.sSCC,
-                          itemsNO: widget.itemsno,
-                          caseNO: widget.caseno,
-                          product: widget.product,
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 20.0),
+                        child: wrapWithModel(
+                          model: _model.packageCardModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: PackageCardWidget(
+                            sSCC: widget.sSCC,
+                            itemsNO: widget.itemsno,
+                            caseNO: widget.caseno,
+                            product: widget.product,
+                          ),
                         ),
                       ),
-                    ),
-                    Divider(
-                      thickness: 2.0,
-                      color: Color(0xFFE0E3E7),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
-                      child: Container(
-                        width: 387.9,
-                        height: 537.99,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Align(
-                              alignment: Alignment(0.0, 0),
-                              child: TabBar(
-                                labelColor: Color(0xFF4B39EF),
-                                unselectedLabelColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                labelStyle: FlutterFlowTheme.of(context)
-                                    .titleMedium
-                                    .override(
-                                      font: GoogleFonts.interTight(
+                      Divider(
+                        thickness: 2.0,
+                        color: Color(0xFFE0E3E7),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
+                        child: Container(
+                          width: 387.9,
+                          height: 537.99,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment(0.0, 0),
+                                child: TabBar(
+                                  labelColor: Color(0xFF4B39EF),
+                                  unselectedLabelColor:
+                                      FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        font: GoogleFonts.interTight(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .fontWeight,
@@ -244,125 +258,55 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                                             .titleMedium
                                             .fontStyle,
                                       ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
+                                  unselectedLabelStyle:
+                                      FlutterFlowTheme.of(context)
                                           .titleMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontStyle,
-                                    ),
-                                unselectedLabelStyle: FlutterFlowTheme.of(
-                                        context)
-                                    .titleMedium
-                                    .override(
-                                      font: GoogleFonts.interTight(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontStyle,
-                                    ),
-                                indicatorColor:
-                                    FlutterFlowTheme.of(context).primary,
-                                tabs: [
-                                  Tab(
-                                    text: FFLocalizations.of(context).getText(
-                                      'cvze84kn' /* Packages */,
-                                    ),
-                                  ),
-                                  Tab(
-                                    text: FFLocalizations.of(context).getText(
-                                      'jqtjsmmg' /* Products */,
-                                    ),
-                                  ),
-                                ],
-                                controller: _model.tabBarController,
-                                onTap: (i) async {
-                                  [() async {}, () async {}][i]();
-                                },
-                              ),
-                            ),
-                            Expanded(
-                              child: TabBarView(
-                                controller: _model.tabBarController,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Stack(
-                                        children: [
-                                          Builder(
-                                            builder: (context) {
-                                              final iteminlist =
-                                                  _model.serialsList.toList();
-
-                                              return ListView.separated(
-                                                padding: EdgeInsets.fromLTRB(
-                                                  0,
-                                                  10.0,
-                                                  0,
-                                                  0,
-                                                ),
-                                                shrinkWrap: true,
-                                                scrollDirection: Axis.vertical,
-                                                itemCount: iteminlist.length,
-                                                separatorBuilder: (_, __) =>
-                                                    SizedBox(height: 3.0),
-                                                itemBuilder:
-                                                    (context, iteminlistIndex) {
-                                                  final iteminlistItem =
-                                                      iteminlist[
-                                                          iteminlistIndex];
-                                                  return wrapWithModel(
-                                                    model: _model
-                                                        .serialCardModels1
-                                                        .getModel(
-                                                      iteminlistIndex
-                                                          .toString(),
-                                                      iteminlistIndex,
-                                                    ),
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: SerialCardWidget(
-                                                      key: Key(
-                                                        'Keytaq_${iteminlistIndex.toString()}',
-                                                      ),
-                                                      no: iteminlistIndex,
-                                                      serial: _model.serialsList
-                                                          .elementAtOrNull(
-                                                              iteminlistIndex)!,
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                            },
-                                          ),
-                                          if (true)
-                                            wrapWithModel(
-                                              model: _model
-                                                  .emptyListViewDisplayModel1,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: EmptyListViewDisplayWidget(
-                                                listContent: _model.serialsList,
-                                              ),
+                                          .override(
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
                                             ),
-                                        ],
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
+                                  indicatorColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  tabs: [
+                                    Tab(
+                                      text: FFLocalizations.of(context).getText(
+                                        'cvze84kn' /* Packages */,
                                       ),
-                                    ],
-                                  ),
-                                  SingleChildScrollView(
-                                    child: Column(
+                                    ),
+                                    Tab(
+                                      text: FFLocalizations.of(context).getText(
+                                        'jqtjsmmg' /* Products */,
+                                      ),
+                                    ),
+                                  ],
+                                  controller: _model.tabBarController,
+                                  onTap: (i) async {
+                                    [() async {}, () async {}][i]();
+                                  },
+                                ),
+                              ),
+                              Expanded(
+                                child: TabBarView(
+                                  controller: _model.tabBarController,
+                                  children: [
+                                    Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Stack(
@@ -392,7 +336,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                                                             iteminlistIndex];
                                                     return wrapWithModel(
                                                       model: _model
-                                                          .serialCardModels2
+                                                          .serialCardModels1
                                                           .getModel(
                                                         iteminlistIndex
                                                             .toString(),
@@ -402,7 +346,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                                                           safeSetState(() {}),
                                                       child: SerialCardWidget(
                                                         key: Key(
-                                                          'Key845_${iteminlistIndex.toString()}',
+                                                          'Keytaq_${iteminlistIndex.toString()}',
                                                         ),
                                                         no: iteminlistIndex,
                                                         serial: _model
@@ -415,28 +359,104 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                                                 );
                                               },
                                             ),
-                                            wrapWithModel(
-                                              model: _model
-                                                  .emptyListViewDisplayModel2,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: EmptyListViewDisplayWidget(
-                                                listContent: _model.serialsList,
+                                            if (true)
+                                              wrapWithModel(
+                                                model: _model
+                                                    .emptyListViewDisplayModel1,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child:
+                                                    EmptyListViewDisplayWidget(
+                                                  listContent:
+                                                      _model.serialsList,
+                                                ),
                                               ),
-                                            ),
                                           ],
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ],
+                                    SingleChildScrollView(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Stack(
+                                            children: [
+                                              Builder(
+                                                builder: (context) {
+                                                  final iteminlist = _model
+                                                      .serialsList
+                                                      .toList();
+
+                                                  return ListView.separated(
+                                                    padding:
+                                                        EdgeInsets.fromLTRB(
+                                                      0,
+                                                      10.0,
+                                                      0,
+                                                      0,
+                                                    ),
+                                                    shrinkWrap: true,
+                                                    scrollDirection:
+                                                        Axis.vertical,
+                                                    itemCount:
+                                                        iteminlist.length,
+                                                    separatorBuilder: (_, __) =>
+                                                        SizedBox(height: 3.0),
+                                                    itemBuilder: (context,
+                                                        iteminlistIndex) {
+                                                      final iteminlistItem =
+                                                          iteminlist[
+                                                              iteminlistIndex];
+                                                      return wrapWithModel(
+                                                        model: _model
+                                                            .serialCardModels2
+                                                            .getModel(
+                                                          iteminlistIndex
+                                                              .toString(),
+                                                          iteminlistIndex,
+                                                        ),
+                                                        updateCallback: () =>
+                                                            safeSetState(() {}),
+                                                        child: SerialCardWidget(
+                                                          key: Key(
+                                                            'Key845_${iteminlistIndex.toString()}',
+                                                          ),
+                                                          no: iteminlistIndex,
+                                                          serial: _model
+                                                              .serialsList
+                                                              .elementAtOrNull(
+                                                                  iteminlistIndex)!,
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
+                                              wrapWithModel(
+                                                model: _model
+                                                    .emptyListViewDisplayModel2,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child:
+                                                    EmptyListViewDisplayWidget(
+                                                  listContent:
+                                                      _model.serialsList,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

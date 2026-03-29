@@ -1,9 +1,13 @@
+import '/backend/api_requests/api_calls.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/order_card/order_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'orders_list_model.dart';
 export 'orders_list_model.dart';
 
@@ -42,6 +46,45 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OrdersListModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.loading = true;
+      safeSetState(() {});
+      _model.getOrdersApiResults =
+          await OrdersAPIsGroup.getOrderByUserCall.call(
+        username: FFAppState().userName,
+        orderStatus: 'All',
+      );
+
+      if ((_model.getOrdersApiResults?.succeeded ?? true)) {
+        _model.ordersData = OrdersAPIsGroup.getOrderByUserCall
+            .ordersData(
+              (_model.getOrdersApiResults?.jsonBody ?? ''),
+            )!
+            .toList()
+            .cast<dynamic>();
+        safeSetState(() {});
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Fail to connect  the server',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).error,
+          ),
+        );
+      }
+
+      _model.loading = false;
+      safeSetState(() {});
+    });
   }
 
   @override
@@ -53,6 +96,8 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -72,7 +117,7 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 24.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.safePop();
@@ -89,6 +134,7 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
                   color: Colors.white,
+                  fontSize: 23.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
@@ -100,19 +146,61 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsets.all(5.0),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.vertical,
-              children: [
-                wrapWithModel(
-                  model: _model.orderCardModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: OrderCardWidget(),
+          child: Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Builder(
+                  builder: (context) {
+                    final itemInList = _model.ordersData.toList();
+
+                    return ListView.separated(
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.vertical,
+                      itemCount: itemInList.length,
+                      separatorBuilder: (_, __) => SizedBox(height: 16.0),
+                      itemBuilder: (context, itemInListIndex) {
+                        final itemInListItem = itemInList[itemInListIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 20.0, 10.0, 0.0),
+                          child: OrderCardWidget(
+                            key: Key(
+                                'Key9z4_${itemInListIndex}_of_${itemInList.length}'),
+                            ordernumber: getJsonField(
+                              _model.ordersData
+                                  .elementAtOrNull(itemInListIndex),
+                              r'''$.orderNo''',
+                            ).toString(),
+                            customer: getJsonField(
+                              _model.ordersData
+                                  .elementAtOrNull(itemInListIndex),
+                              r'''$.customer''',
+                            ).toString(),
+                            permitNo: getJsonField(
+                              _model.ordersData
+                                  .elementAtOrNull(itemInListIndex),
+                              r'''$.permitNo''',
+                            ).toString(),
+                            status: getJsonField(
+                              _model.ordersData
+                                  .elementAtOrNull(itemInListIndex),
+                              r'''$.status''',
+                            ).toString(),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
-              ].divide(SizedBox(height: 16.0)),
-            ),
+              ),
+              if (_model.loading)
+                wrapWithModel(
+                  model: _model.loadingModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: LoadingWidget(),
+                ),
+            ],
           ),
         ),
       ),

@@ -1,13 +1,17 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
-import '/components/loading_widget.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'decommission_widget.dart' show DecommissionWidget;
+import 'destruction_decommission_widget.dart'
+    show DestructionDecommissionWidget;
 import 'package:flutter/material.dart';
 
-class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
+class DestructionDecommissionModel
+    extends FlutterFlowModel<DestructionDecommissionWidget> {
   ///  Local state fields for this page.
 
   List<String> scannedSerialToDecommission = [];
@@ -37,6 +41,9 @@ class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
   var scannedcode = '';
   // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
   dynamic gS1ParsedData;
+  // State field(s) for reasonDropDown widget.
+  String? reasonDropDownValue;
+  FormFieldController<String>? reasonDropDownValueController;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
   // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in Button widget.
@@ -65,17 +72,37 @@ class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
   /// Action blocks.
   Future checkSerialStatus(
     BuildContext context, {
-    required String? serial,
+    String? serial,
   }) async {
     bool? alreadyScanned;
     ApiCallResponse? checkSerialStatusApiResult;
 
+    loading = true;
+    var confirmDialogResponse = await showDialog<bool>(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('rest'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext, false),
+                  child: Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext, true),
+                  child: Text('Confirm'),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false;
     alreadyScanned = await actions.checkStringInList(
       serial!,
       scannedSerialToDecommission.toList(),
     );
     if (alreadyScanned) {
-      var confirmDialogResponse = await showDialog<bool>(
+      confirmDialogResponse = await showDialog<bool>(
             context: context,
             builder: (alertDialogContext) {
               return AlertDialog(
@@ -83,7 +110,7 @@ class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('adcscsd'),
+                    child: Text('cancel'),
                   ),
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, true),
@@ -95,16 +122,29 @@ class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
           ) ??
           false;
     } else {
-      loading = true;
       checkSerialStatusApiResult =
           await SerialStatusUpdateGroup.checkSerialStatusCall.call(
-        serial: enterSSCCTextController.text,
+        serial: serial,
       );
 
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
-        addToScannedSerialToDecommission(enterSSCCTextController.text);
+        addToScannedSerialToDecommission(serial);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Faild To Connect The Server',
+              style: TextStyle(
+                color: Color(0xFFDDDDDD),
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).error,
+          ),
+        );
       }
-      loading = false;
     }
+
+    loading = false;
   }
 }

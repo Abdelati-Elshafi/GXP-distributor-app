@@ -17,6 +17,8 @@ class SerialStatusUpdateGroup {
   static CheckSerialStatusCall checkSerialStatusCall = CheckSerialStatusCall();
   static UpdateSerialStatusCall updateSerialStatusCall =
       UpdateSerialStatusCall();
+  static UnpackSSCCCall unpackSSCCCall = UnpackSSCCCall();
+  static UnpackAllSSCCCall unpackAllSSCCCall = UnpackAllSSCCCall();
 }
 
 class CheckSerialStatusCall {
@@ -45,6 +47,15 @@ class CheckSerialStatusCall {
       alwaysAllowBody: false,
     );
   }
+
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? currentStatus(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.currentStatus''',
+      ));
 }
 
 class UpdateSerialStatusCall {
@@ -70,6 +81,62 @@ class UpdateSerialStatusCall {
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateSerialStatus',
       apiUrl: '${baseUrl}/update',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnpackSSCCCall {
+  Future<ApiCallResponse> call({
+    String? sscc = '',
+  }) async {
+    final baseUrl = SerialStatusUpdateGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "SSCC": "${escapeStringForJson(sscc)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UnpackSSCC',
+      apiUrl: '${baseUrl}/Unpack',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnpackAllSSCCCall {
+  Future<ApiCallResponse> call({
+    String? sscc = '',
+  }) async {
+    final baseUrl = SerialStatusUpdateGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "SSCC": "${escapeStringForJson(sscc)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UnpackAllSSCC',
+      apiUrl: '${baseUrl}/UnpackAll',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -174,6 +241,9 @@ class OrdersAPIsGroup {
       'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api_test/api/v1/orders';
   static Map<String, String> headers = {};
   static GetOrderByUserCall getOrderByUserCall = GetOrderByUserCall();
+  static GetOrderDetailsCall getOrderDetailsCall = GetOrderDetailsCall();
+  static ProductSerialsDetailsCall productSerialsDetailsCall =
+      ProductSerialsDetailsCall();
 }
 
 class GetOrderByUserCall {
@@ -204,9 +274,237 @@ class GetOrderByUserCall {
       alwaysAllowBody: false,
     );
   }
+
+  List? ordersData(dynamic response) => getJsonField(
+        response,
+        r'''$.data.items''',
+        true,
+      ) as List?;
+  List<String>? ordersNO(dynamic response) => (getJsonField(
+        response,
+        r'''$.data.items[:].orderNo''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetOrderDetailsCall {
+  Future<ApiCallResponse> call({
+    String? orderNO = '',
+  }) async {
+    final baseUrl = OrdersAPIsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "orderNo": "${escapeStringForJson(orderNO)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetOrderDetails',
+      apiUrl: '${baseUrl}/GetOrderDetails',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List? productsData(dynamic response) => getJsonField(
+        response,
+        r'''$.products''',
+        true,
+      ) as List?;
+  String? gln(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.gln''',
+      ));
+  String? orderSSCC(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.sscc''',
+      ));
+  String? customer(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.customer''',
+      ));
+  String? orderNO(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.orderNo''',
+      ));
+}
+
+class ProductSerialsDetailsCall {
+  Future<ApiCallResponse> call({
+    String? orderNo = '',
+    String? gtin = '',
+    String? sscc = '',
+  }) async {
+    final baseUrl = OrdersAPIsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "orderNo": "${escapeStringForJson(orderNo)}",
+  "gtin": "${escapeStringForJson(gtin)}",
+  "SSCC": "${escapeStringForJson(sscc)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ProductSerialsDetails',
+      apiUrl: '${baseUrl}/ProductSerialsDetails',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List? productSerialsData(dynamic response) => getJsonField(
+        response,
+        r'''$.data.nodes''',
+        true,
+      ) as List?;
 }
 
 /// End OrdersAPIs Group Code
+
+/// Start Shipments Group Code
+
+class ShipmentsGroup {
+  static String getBaseUrl() =>
+      'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api_test/api/v1/shipments';
+  static Map<String, String> headers = {};
+  static CancelShippedCall cancelShippedCall = CancelShippedCall();
+  static ConfirmShipmentCall confirmShipmentCall = ConfirmShipmentCall();
+  static ReceivingShipmentCall receivingShipmentCall = ReceivingShipmentCall();
+}
+
+class CancelShippedCall {
+  Future<ApiCallResponse> call({
+    String? orderNo = 'SO-7781',
+  }) async {
+    final baseUrl = ShipmentsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+"order":"${escapeStringForJson(orderNo)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Cancel Shipped',
+      apiUrl: '${baseUrl}/CancelShipped',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? order(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.order''',
+      ));
+}
+
+class ConfirmShipmentCall {
+  Future<ApiCallResponse> call({
+    String? orderNo = 'SO-7781',
+  }) async {
+    final baseUrl = ShipmentsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+"order": "${escapeStringForJson(orderNo)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Confirm Shipment',
+      apiUrl: '${baseUrl}/ConfirmShipment',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? order(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.order''',
+      ));
+}
+
+class ReceivingShipmentCall {
+  Future<ApiCallResponse> call({
+    String? shipmentSSCC = '',
+    String? shipmentType = '',
+  }) async {
+    final baseUrl = ShipmentsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "ShipmentSSCC": "${escapeStringForJson(shipmentSSCC)}",
+  "ShipmentType": "${escapeStringForJson(shipmentType)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Receiving Shipment',
+      apiUrl: '${baseUrl}/ReceivingShipment',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End Shipments Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

@@ -1,10 +1,13 @@
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/components/scanned_serials_to_decommission/scanned_serials_to_decommission_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'unpack_model.dart';
 export 'unpack_model.dart';
@@ -108,7 +111,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                           FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
                     color: Colors.white,
-                    fontSize: 22.0,
+                    fontSize: 23.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
@@ -125,36 +128,13 @@ class _UnpackWidgetState extends State<UnpackWidget> {
             Align(
               alignment: AlignmentDirectional(0.0, -1.06),
               child: Padding(
-                padding: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(6.0),
                 child: SingleChildScrollView(
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '4qoka76q' /* Scanned Items */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF323394),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .fontStyle,
-                                  ),
-                        ),
-                      ),
                       Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -175,7 +155,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(20.0),
+                          padding: EdgeInsets.all(6.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -217,9 +197,16 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                               focusNode:
                                                   _model.enterSSCCFocusNode,
                                               onFieldSubmitted: (_) async {
-                                                _model.addToScannedSSCC(_model
-                                                    .enterSSCCTextController
-                                                    .text);
+                                                _model.loading = true;
+                                                safeSetState(() {});
+                                                await _model.checkSerialStatus(
+                                                  context,
+                                                  serial: _model
+                                                      .enterSSCCTextController
+                                                      .text,
+                                                );
+                                                safeSetState(() {});
+                                                _model.loading = false;
                                                 safeSetState(() {});
                                               },
                                               autofocus: false,
@@ -302,11 +289,71 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                   .asValidator(context),
                                             ),
                                           ),
-                                          wrapWithModel(
-                                            model: _model.scanButtonModel,
-                                            updateCallback: () =>
-                                                safeSetState(() {}),
-                                            child: ScanButtonWidget(),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 8.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.scannedResult =
+                                                    await FlutterBarcodeScanner
+                                                        .scanBarcode(
+                                                  '#C62828', // scanning line color
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'tiaie4qg' /* Cancel */,
+                                                  ), // cancel button text
+                                                  true, // whether to show the flash icon
+                                                  ScanMode.QR,
+                                                );
+
+                                                _model.parsedGs1Code =
+                                                    await actions.parseGs1Scan(
+                                                  _model.scannedResult,
+                                                );
+                                                safeSetState(() {
+                                                  _model.enterSSCCTextController
+                                                      ?.text = getJsonField(
+                                                    _model.parsedGs1Code,
+                                                    r'''$.serial''',
+                                                  ).toString();
+                                                  _model.enterSSCCFocusNode
+                                                      ?.requestFocus();
+                                                  WidgetsBinding.instance
+                                                      .addPostFrameCallback(
+                                                          (_) {
+                                                    _model.enterSSCCTextController
+                                                            ?.selection =
+                                                        TextSelection.collapsed(
+                                                      offset: _model
+                                                          .enterSSCCTextController!
+                                                          .text
+                                                          .length,
+                                                    );
+                                                  });
+                                                });
+                                                await _model.checkSerialStatus(
+                                                  context,
+                                                  serial: getJsonField(
+                                                    _model.parsedGs1Code,
+                                                    r'''$.serial''',
+                                                  ).toString(),
+                                                );
+
+                                                safeSetState(() {});
+                                              },
+                                              child: wrapWithModel(
+                                                model: _model.scanButtonModel,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child: ScanButtonWidget(),
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -326,83 +373,110 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                             SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'mzp9dvp8' /* Scanned Items */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w600,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'mzp9dvp8' /* Scanned Items */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFF323394),
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyLarge
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF323394),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyLarge
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 469.64,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                      ),
                                     ),
-                                    child: Builder(
-                                      builder: (context) {
-                                        final itemInList =
-                                            _model.scannedSSCC.toList();
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 6.0),
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      elevation: 2.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 518.56,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 8.0,
+                                              color: Color(0x1A000000),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          border: Border.all(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8.0, 20.0, 8.0, 0.0),
+                                          child: Builder(
+                                            builder: (context) {
+                                              final itemInList =
+                                                  _model.scannedSSCC.toList();
 
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          primary: false,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount: itemInList.length,
-                                          itemBuilder:
-                                              (context, itemInListIndex) {
-                                            final itemInListItem =
-                                                itemInList[itemInListIndex];
-                                            return ScannedSerialsToDecommissionWidget(
-                                              key: Key(
-                                                  'Keycs5_${itemInListIndex}_of_${itemInList.length}'),
-                                              scannedSerial: _model.scannedSSCC
-                                                  .elementAtOrNull(
-                                                      itemInListIndex)!,
-                                              index: itemInListIndex,
-                                              deletAction: (index) async {
-                                                _model
-                                                    .removeAtIndexFromScannedSSCC(
-                                                        itemInListIndex);
-                                                safeSetState(() {});
-                                              },
-                                            );
-                                          },
-                                        );
-                                      },
+                                              return ListView.builder(
+                                                padding: EdgeInsets.zero,
+                                                primary: false,
+                                                shrinkWrap: true,
+                                                scrollDirection: Axis.vertical,
+                                                itemCount: itemInList.length,
+                                                itemBuilder:
+                                                    (context, itemInListIndex) {
+                                                  final itemInListItem =
+                                                      itemInList[
+                                                          itemInListIndex];
+                                                  return ScannedSerialsToDecommissionWidget(
+                                                    key: Key(
+                                                        'Keycs5_${itemInListIndex}_of_${itemInList.length}'),
+                                                    scannedSerial: _model
+                                                        .scannedSSCC
+                                                        .elementAtOrNull(
+                                                            itemInListIndex)!,
+                                                    index: itemInListIndex,
+                                                    deletAction: (index) async {
+                                                      _model
+                                                          .removeAtIndexFromScannedSSCC(
+                                                              itemInListIndex);
+                                                      safeSetState(() {});
+                                                    },
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ].divide(SizedBox(height: 8.0)),
@@ -421,10 +495,10 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () {
-                          print('Button pressed ...');
+                          print('UnpackButton pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
-                          '2kx0bgfp' /* Confirm Unpack All */,
+                          '2kx0bgfp' /* Unpack */,
                         ),
                         options: FFButtonOptions(
                           width: double.infinity,
@@ -460,6 +534,12 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                 ),
               ),
             ),
+            if (_model.loading)
+              wrapWithModel(
+                model: _model.loadingModel,
+                updateCallback: () => safeSetState(() {}),
+                child: LoadingWidget(),
+              ),
           ],
         ),
       ),

@@ -1,15 +1,14 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'destruction_decommission_widget.dart'
-    show DestructionDecommissionWidget;
+import 'decommission_widget.dart' show DecommissionWidget;
 import 'package:flutter/material.dart';
 
-class DestructionDecommissionModel
-    extends FlutterFlowModel<DestructionDecommissionWidget> {
+class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
   ///  Local state fields for this page.
 
   List<String> scannedSerialToDecommission = [];
@@ -26,6 +25,8 @@ class DestructionDecommissionModel
       scannedSerialToDecommission[index] =
           updateFn(scannedSerialToDecommission[index]);
 
+  bool loading = false;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for EnterSSCC widget.
@@ -37,17 +38,19 @@ class DestructionDecommissionModel
   var scannedcode = '';
   // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
   dynamic gS1ParsedData;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
+  // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in Button widget.
+  ApiCallResponse? updateSerialStatusApiResult;
+  // Model for Loading component.
+  late LoadingModel loadingModel;
 
   @override
   void initState(BuildContext context) {
     scanButtonModel = createModel(context, () => ScanButtonModel());
     emptyListViewDisplayModel =
         createModel(context, () => EmptyListViewDisplayModel());
+    loadingModel = createModel(context, () => LoadingModel());
   }
 
   @override
@@ -57,17 +60,23 @@ class DestructionDecommissionModel
 
     scanButtonModel.dispose();
     emptyListViewDisplayModel.dispose();
+    loadingModel.dispose();
   }
 
   /// Action blocks.
   Future checkSerialStatus(
     BuildContext context, {
-    String? serial,
+    required String? serial,
   }) async {
-    ApiCallResponse? checkSerialStatusApiResult;
     bool? alreadyScanned;
+    ApiCallResponse? checkSerialStatusApiResult;
 
-    if (alreadyScanned!) {
+    loading = true;
+    alreadyScanned = await actions.checkStringInList(
+      serial!,
+      scannedSerialToDecommission.toList(),
+    );
+    if (alreadyScanned) {
       var confirmDialogResponse = await showDialog<bool>(
             context: context,
             builder: (alertDialogContext) {
@@ -76,7 +85,7 @@ class DestructionDecommissionModel
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('adcscsd'),
+                    child: Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, true),
@@ -90,17 +99,27 @@ class DestructionDecommissionModel
     } else {
       checkSerialStatusApiResult =
           await SerialStatusUpdateGroup.checkSerialStatusCall.call(
-        serial: serial,
+        serial: enterSSCCTextController.text,
       );
 
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
-        addToScannedSerialToDecommission(serial!);
+        addToScannedSerialToDecommission(enterSSCCTextController.text);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Faild To Connect The Server',
+              style: TextStyle(
+                color: Color(0xFFDDDDDD),
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).error,
+          ),
+        );
       }
     }
 
-    alreadyScanned = await actions.checkStringInList(
-      serial!,
-      scannedSerialToDecommission.toList(),
-    );
+    loading = false;
   }
 }

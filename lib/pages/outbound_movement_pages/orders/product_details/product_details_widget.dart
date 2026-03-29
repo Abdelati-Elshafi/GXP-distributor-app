@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/s_s_c_c_details_card/s_s_c_c_details_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -66,13 +68,36 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      for (int loop1Index = 0;
-          loop1Index < _model.serialsdata.length;
-          loop1Index++) {
-        final currentLoop1Item = _model.serialsdata[loop1Index];
-        _model.test = _model.test + currentLoop1Item;
+      _model.loading = true;
+      safeSetState(() {});
+      _model.productSerialsDetailsApiResult =
+          await OrdersAPIsGroup.productSerialsDetailsCall.call();
+
+      if ((_model.productSerialsDetailsApiResult?.succeeded ?? true)) {
+        _model.serialsdata = OrdersAPIsGroup.productSerialsDetailsCall
+            .productSerialsData(
+              (_model.productSerialsDetailsApiResult?.jsonBody ?? ''),
+            )!
+            .toList()
+            .cast<dynamic>();
         safeSetState(() {});
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Failed to connect to the server',
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).error,
+          ),
+        );
       }
+
+      _model.loading = false;
+      safeSetState(() {});
     });
   }
 
@@ -95,17 +120,17 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
         backgroundColor: Color(0xFFF8F8F8),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Stack(
-              children: [
-                Column(
+          child: Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(4.0),
+                child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(2.0),
+                      padding: EdgeInsets.all(16.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -127,14 +152,14 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 12.0, 0.0),
+                                    10.0, 0.0, 12.0, 0.0),
                                 child: Container(
                                   width: 4.0,
                                   height: 115.0,
@@ -146,7 +171,9 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               ),
                               Expanded(
                                 child: Column(
-                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
@@ -221,85 +248,6 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            FFLocalizations.of(context).getText(
-                                              '8h4ekkxq' /* Batch: BC2024001 */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xFF14181B),
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              '7wzbet3q' /* Expiry: 12/2024 */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xFF14181B),
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
                                             'Required Qty: ${valueOrDefault<String>(
                                               widget.requiredQTY?.toString(),
                                               '0',
@@ -356,7 +304,9 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                         ],
                                       ),
                                     ),
-                                  ],
+                                  ]
+                                      .divide(SizedBox(height: 10.0))
+                                      .around(SizedBox(height: 10.0)),
                                 ),
                               ),
                             ],
@@ -365,7 +315,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                       ),
                     ),
                     LinearPercentIndicator(
-                      percent: 0.5,
+                      percent: (widget.scannedQTY!) / (widget.requiredQTY!),
                       lineHeight: 8.0,
                       animation: true,
                       animateFromLastPercent: true,
@@ -376,7 +326,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'hm9wo4ix' /* Scanned Codes */,
@@ -390,7 +340,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                         .fontStyle,
                                   ),
                                   color: Color(0xFF323394),
-                                  fontSize: 18.0,
+                                  fontSize: 22.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)
@@ -400,46 +350,83 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                       ),
                     ),
                     Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        height: 438.64,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 4.0,
-                              color: Color(0x1A000000),
-                              offset: Offset(
-                                0.0,
-                                2.0,
-                              ),
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ListView(
-                                padding: EdgeInsets.symmetric(vertical: 10.0),
-                                primary: false,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                children: [
-                                  wrapWithModel(
-                                    model: _model.sSCCDetailsCardModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: SSCCDetailsCardWidget(
-                                      sscc: '2',
-                                      index: 10,
-                                      itemsNo: 10,
-                                      deletefromsscclistaction: () async {},
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 10.0)),
-                              ),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 438.6,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4.0,
+                                color: Color(0x1A000000),
+                                offset: Offset(
+                                  0.0,
+                                  2.0,
+                                ),
+                              )
                             ],
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 10.0, 16.0, 0.0),
+                                  child: Builder(
+                                    builder: (context) {
+                                      final itemInList =
+                                          _model.serialsdata.toList();
+
+                                      return ListView.separated(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 10.0),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: itemInList.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(height: 10.0),
+                                        itemBuilder:
+                                            (context, itemInListIndex) {
+                                          final itemInListItem =
+                                              itemInList[itemInListIndex];
+                                          return SSCCDetailsCardWidget(
+                                            key: Key(
+                                                'Keyzt0_${itemInListIndex}_of_${itemInList.length}'),
+                                            sscc: getJsonField(
+                                              _model.serialsdata
+                                                  .elementAtOrNull(
+                                                      itemInListIndex),
+                                              r'''$.serial''',
+                                            ).toString(),
+                                            index: itemInListIndex,
+                                            itemsNo: getJsonField(
+                                              _model.serialsdata
+                                                  .elementAtOrNull(
+                                                      itemInListIndex),
+                                              r'''$.childCounts.item''',
+                                            ),
+                                            type: getJsonField(
+                                              _model.serialsdata
+                                                  .elementAtOrNull(
+                                                      itemInListIndex),
+                                              r'''$.type''',
+                                            ).toString(),
+                                            deletefromsscclistaction:
+                                                () async {},
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -449,149 +436,155 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                       .addToStart(SizedBox(height: 16.0))
                       .addToEnd(SizedBox(height: 100.0)),
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 1.0),
+                child: Container(
+                  height: 80.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0.0),
+                      bottomRight: Radius.circular(0.0),
+                      topLeft: Radius.circular(0.0),
+                      topRight: Radius.circular(0.0),
+                    ),
+                    border: Border.all(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              'fec4gw24' /* Confirm */,
+                            ),
+                            icon: Icon(
+                              Icons.check,
+                              size: 20.0,
+                            ),
+                            options: FFButtonOptions(
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconColor: Colors.white,
+                              color: Color(0xFF323394),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                              elevation: 2.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              '7keun6vr' /* Cancel */,
+                            ),
+                            icon: Icon(
+                              Icons.close,
+                              size: 20.0,
+                            ),
+                            options: FFButtonOptions(
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconColor: Colors.white,
+                              color: Color(0xFFD32F2F),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                              elevation: 2.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
+                      ].divide(SizedBox(width: 12.0)),
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(1.0, 1.0),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 105.0),
                   child: Container(
-                    height: 80.0,
+                    width: 55.0,
+                    height: 55.0,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(0.0),
-                        topRight: Radius.circular(0.0),
-                      ),
-                      border: Border.all(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
+                      color: Color(0xFFF3601F),
+                      shape: BoxShape.circle,
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.safePop();
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'fec4gw24' /* Confirm */,
-                              ),
-                              icon: Icon(
-                                Icons.check,
-                                size: 20.0,
-                              ),
-                              options: FFButtonOptions(
-                                height: 48.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconColor: Colors.white,
-                                color: Color(0xFF323394),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      font: GoogleFonts.interTight(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontStyle,
-                                      ),
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                elevation: 0.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.safePop();
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                '7keun6vr' /* Cancel */,
-                              ),
-                              icon: Icon(
-                                Icons.close,
-                                size: 20.0,
-                              ),
-                              options: FFButtonOptions(
-                                height: 48.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconColor: Color(0xFFF3601F),
-                                color: Color(0xFFFFE6DC),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      font: GoogleFonts.interTight(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontStyle,
-                                      ),
-                                      color: Color(0xFFF3601F),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                elevation: 0.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                            ),
-                          ),
-                        ].divide(SizedBox(width: 12.0)),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                      child: Icon(
+                        Icons.qr_code_scanner,
+                        color: Colors.white,
+                        size: 30.0,
                       ),
                     ),
                   ),
                 ),
-                Align(
-                  alignment: AlignmentDirectional(1.0, 1.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 105.0),
-                    child: Container(
-                      width: 55.0,
-                      height: 55.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFF3601F),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                        child: Icon(
-                          Icons.qr_code_scanner,
-                          color: Colors.white,
-                          size: 30.0,
-                        ),
-                      ),
-                    ),
-                  ),
+              ),
+              if (_model.loading)
+                wrapWithModel(
+                  model: _model.loadingModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: LoadingWidget(),
                 ),
-              ],
-            ),
+            ],
           ),
         ),
       ),

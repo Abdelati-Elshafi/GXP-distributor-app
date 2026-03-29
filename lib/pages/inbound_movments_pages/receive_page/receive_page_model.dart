@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -18,6 +19,8 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
   void updateScannedSSCCAtIndex(int index, Function(String) updateFn) =>
       scannedSSCC[index] = updateFn(scannedSSCC[index]);
 
+  bool loading = false;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for EnterSSCC widget.
@@ -31,12 +34,15 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
   dynamic parsedGs1Code;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
+  // Model for Loading component.
+  late LoadingModel loadingModel;
 
   @override
   void initState(BuildContext context) {
     scanButtonModel = createModel(context, () => ScanButtonModel());
     emptyListViewDisplayModel =
         createModel(context, () => EmptyListViewDisplayModel());
+    loadingModel = createModel(context, () => LoadingModel());
   }
 
   @override
@@ -46,6 +52,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
 
     scanButtonModel.dispose();
     emptyListViewDisplayModel.dispose();
+    loadingModel.dispose();
   }
 
   /// Action blocks.
@@ -56,6 +63,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
     bool? alreadyScanned;
     ApiCallResponse? checkSerialStatusApiResult;
 
+    loading = true;
     alreadyScanned = await actions.checkStringInList(
       serial!,
       scannedSSCC.toList(),
@@ -69,7 +77,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('adcscsd'),
+                    child: Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, true),
@@ -90,5 +98,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
         addToScannedSSCC(serial);
       }
     }
+
+    loading = false;
   }
 }

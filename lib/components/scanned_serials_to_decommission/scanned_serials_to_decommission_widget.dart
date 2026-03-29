@@ -70,7 +70,7 @@ class _ScannedSerialsToDecommissionWidgetState
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(2.0),
+          padding: EdgeInsets.all(8.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +93,7 @@ class _ScannedSerialsToDecommissionWidgetState
                                 .fontStyle,
                           ),
                           color: Color(0xFF323394),
-                          fontSize: 16.0,
+                          fontSize: 18.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           fontStyle:
@@ -103,7 +103,7 @@ class _ScannedSerialsToDecommissionWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -117,7 +117,7 @@ class _ScannedSerialsToDecommissionWidgetState
                   child: Icon(
                     Icons.delete_forever,
                     color: Color(0xFFFF0006),
-                    size: 35.0,
+                    size: 28.0,
                   ),
                 ),
               ),

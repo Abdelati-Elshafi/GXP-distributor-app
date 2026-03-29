@@ -12,11 +12,15 @@ class OrderCardWidget extends StatefulWidget {
     super.key,
     String? ordernumber,
     String? customer,
+    required this.permitNo,
+    required this.status,
   })  : this.ordernumber = ordernumber ?? '12345',
         this.customer = customer ?? 'Pharmacy A';
 
   final String ordernumber;
   final String customer;
+  final String? permitNo;
+  final String? status;
 
   @override
   State<OrderCardWidget> createState() => _OrderCardWidgetState();
@@ -85,21 +89,21 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
             borderRadius: BorderRadius.circular(16.0),
           ),
           child: Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(14.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                        child: Text(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
                           'Order #${widget.ordernumber}',
                           style:
                               FlutterFlowTheme.of(context).titleMedium.override(
@@ -118,79 +122,83 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                         .fontStyle,
                                   ),
                         ),
-                      ),
-                      Text(
-                        'Customer: ${widget.customer}| Date: 2025-09-04',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.inter(
+                        Text(
+                          widget.customer,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                font: GoogleFonts.inter(
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                fontSize: 14.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.normal,
                                 fontStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 14.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.normal,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'ppyhkklf' /* Permit:  */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF2563EB),
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                            ),
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'qqxq12ry' /* #123456 */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF2563EB),
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                            ),
-                          ],
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 2.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'ppyhkklf' /* Permit:  */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF2563EB),
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                              Text(
+                                valueOrDefault<String>(
+                                  widget.permitNo,
+                                  '#',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF2563EB),
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ].divide(SizedBox(height: 12.0)),
+                    ),
                   ),
                 ),
                 Row(
@@ -199,7 +207,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 6.0, 12.0, 6.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 6.0, 0.0, 6.0),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Color(0xFF9E9E9E),
@@ -208,8 +216,9 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              '306c3v9t' /* Pending */,
+                            valueOrDefault<String>(
+                              widget.status,
+                              '#',
                             ),
                             style:
                                 FlutterFlowTheme.of(context).bodySmall.override(
@@ -231,17 +240,21 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                         ),
                       ),
                     ),
-                    FlutterFlowIconButton(
-                      borderRadius: 16.0,
-                      buttonSize: 32.0,
-                      icon: Icon(
-                        Icons.more_vert,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 20.0,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+                      child: FlutterFlowIconButton(
+                        borderRadius: 16.0,
+                        buttonSize: 32.0,
+                        icon: Icon(
+                          Icons.more_vert,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 20.0,
+                        ),
+                        onPressed: () {
+                          print('IconButton pressed ...');
+                        },
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
-                      },
                     ),
                   ].divide(SizedBox(width: 8.0)),
                 ),

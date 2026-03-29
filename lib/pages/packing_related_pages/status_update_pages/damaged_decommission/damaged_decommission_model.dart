@@ -1,15 +1,16 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
-import '/components/loading_widget.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'sample_decommission_widget.dart' show SampleDecommissionWidget;
+import 'damaged_decommission_widget.dart' show DamagedDecommissionWidget;
 import 'package:flutter/material.dart';
 
-class SampleDecommissionModel
-    extends FlutterFlowModel<SampleDecommissionWidget> {
+class DamagedDecommissionModel
+    extends FlutterFlowModel<DamagedDecommissionWidget> {
   ///  Local state fields for this page.
 
   List<String> scannedSerialToDecommission = [];
@@ -26,7 +27,7 @@ class SampleDecommissionModel
       scannedSerialToDecommission[index] =
           updateFn(scannedSerialToDecommission[index]);
 
-  bool loadingIsVisable = false;
+  bool loading = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -39,11 +40,13 @@ class SampleDecommissionModel
   var scannedcode = '';
   // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
   dynamic gS1ParsedData;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for ReasonDropDown widget.
+  String? reasonDropDownValue;
+  FormFieldController<String>? reasonDropDownValueController;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
+  // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in Button widget.
+  ApiCallResponse? updateSerialStatusApiResult;
   // Model for Loading component.
   late LoadingModel loadingModel;
 
@@ -66,13 +69,14 @@ class SampleDecommissionModel
   }
 
   /// Action blocks.
-  Future getSerialStatus(
+  Future checkSerialStatus(
     BuildContext context, {
     required String? serial,
   }) async {
     bool? alreadyScanned;
     ApiCallResponse? checkSerialStatusApiResult;
 
+    loading = true;
     alreadyScanned = await actions.checkStringInList(
       serial!,
       scannedSerialToDecommission.toList(),
@@ -86,7 +90,7 @@ class SampleDecommissionModel
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('adcscsd'),
+                    child: Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext, true),
@@ -98,16 +102,29 @@ class SampleDecommissionModel
           ) ??
           false;
     } else {
-      loadingIsVisable = true;
       checkSerialStatusApiResult =
           await SerialStatusUpdateGroup.checkSerialStatusCall.call(
-        serial: serial,
+        serial: enterSSCCTextController.text,
       );
 
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
-        addToScannedSerialToDecommission(serial);
+        addToScannedSerialToDecommission(enterSSCCTextController.text);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Faild To Connect The Server',
+              style: TextStyle(
+                color: Color(0xFFDDDDDD),
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).error,
+          ),
+        );
       }
-      loadingIsVisable = false;
     }
+
+    loading = false;
   }
 }

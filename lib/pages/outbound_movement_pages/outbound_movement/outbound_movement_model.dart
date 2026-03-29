@@ -5,6 +5,10 @@ import 'outbound_movement_widget.dart' show OutboundMovementWidget;
 import 'package:flutter/material.dart';
 
 class OutboundMovementModel extends FlutterFlowModel<OutboundMovementWidget> {
+  ///  Local state fields for this page.
+
+  bool loading = false;
+
   ///  State fields for stateful widgets in this page.
 
   // Model for SideBar component.

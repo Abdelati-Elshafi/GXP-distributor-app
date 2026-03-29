@@ -61,51 +61,6 @@ class _AddnewssccWidgetState extends State<AddnewssccWidget> {
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 25.0, 0.0),
-                            child: Container(
-                              width: 50.0,
-                              height: 50.0,
-                              decoration: BoxDecoration(),
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Container(
-                                  width: 55.0,
-                                  height: 55.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFE8E6E6),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 5.0,
-                                        color: Color(0xFFB8B4B3),
-                                        offset: Offset(
-                                          0.0,
-                                          2.0,
-                                        ),
-                                      )
-                                    ],
-                                    shape: BoxShape.circle,
-                                  ),
-                                  alignment: AlignmentDirectional(1.0, 1.0),
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Icon(
-                                      Icons.looks_one,
-                                      color: Color(0xFF2E2C2C),
-                                      size: 30.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ].divide(SizedBox(width: 10.0)),
-                      ),
                       Align(
                         alignment: AlignmentDirectional(1.0, 0.0),
                         child: Padding(

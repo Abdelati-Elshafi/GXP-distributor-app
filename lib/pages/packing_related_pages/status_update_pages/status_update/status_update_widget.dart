@@ -2,10 +2,7 @@ import '/components/side_bar/side_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/walkthroughs/test.dart';
 import '/index.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'status_update_model.dart';
@@ -123,7 +120,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                           FlutterFlowTheme.of(context).titleLarge.fontStyle,
                     ),
                     color: Colors.white,
-                    fontSize: 25.0,
+                    fontSize: 23.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
@@ -173,7 +170,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                     SampleDecommissionWidget.routeName,
                                     queryParameters: {
                                       'decommissionReason': serializeParam(
-                                        'Sample',
+                                        'Sample Items',
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -302,9 +299,6 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                     ),
                                   ),
                                 ),
-                              ).addWalkthrough(
-                                containerZpb7dhpe,
-                                _model.testController,
                               ),
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -316,7 +310,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                     DecommissionWidget.routeName,
                                     queryParameters: {
                                       'decommissionReason': serializeParam(
-                                        'Lost',
+                                        'Lost Items',
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -445,9 +439,6 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                     ),
                                   ),
                                 ),
-                              ).addWalkthrough(
-                                containerLz6k68yw,
-                                _model.testController,
                               ),
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -459,7 +450,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                     DecommissionWidget.routeName,
                                     queryParameters: {
                                       'decommissionReason': serializeParam(
-                                        'Stolen',
+                                        'Stolen Items',
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -599,7 +590,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                     DamagedDecommissionWidget.routeName,
                                     queryParameters: {
                                       'decommissionReason': serializeParam(
-                                        'Damaged',
+                                        'Damaged Items',
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -739,7 +730,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                     DestructionDecommissionWidget.routeName,
                                     queryParameters: {
                                       'decommissionReason': serializeParam(
-                                        '',
+                                        'Destruction Items',
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -886,15 +877,4 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
       ),
     );
   }
-
-  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
-      TutorialCoachMark(
-        targets: createWalkthroughTargets(context),
-        onFinish: () async {
-          safeSetState(() => _model.testController = null);
-        },
-        onSkip: () {
-          return true;
-        },
-      );
 }

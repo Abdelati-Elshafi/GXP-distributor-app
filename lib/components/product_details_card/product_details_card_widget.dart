@@ -99,7 +99,7 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(15.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -179,7 +179,7 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                           ),
                         ],
                       ),
-                    ].divide(SizedBox(height: 4.0)),
+                    ].divide(SizedBox(height: 10.0)),
                   ),
                 ),
                 Row(
