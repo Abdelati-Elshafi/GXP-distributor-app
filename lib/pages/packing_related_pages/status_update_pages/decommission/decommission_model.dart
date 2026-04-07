@@ -40,7 +40,7 @@ class DecommissionModel extends FlutterFlowModel<DecommissionWidget> {
   dynamic gS1ParsedData;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
-  // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in Button widget.
+  // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in ConfirmColumn widget.
   ApiCallResponse? updateSerialStatusApiResult;
   // Model for Loading component.
   late LoadingModel loadingModel;

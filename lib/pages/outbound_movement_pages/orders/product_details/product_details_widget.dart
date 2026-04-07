@@ -442,12 +442,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                 child: Container(
                   height: 80.0,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(0.0),
-                      bottomRight: Radius.circular(0.0),
-                      topLeft: Radius.circular(0.0),
-                      topRight: Radius.circular(0.0),
-                    ),
+                    borderRadius: BorderRadius.only(),
                     border: Border.all(
                       color: Colors.transparent,
                       width: 1.0,

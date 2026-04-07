@@ -45,7 +45,7 @@ class DamagedDecommissionModel
   FormFieldController<String>? reasonDropDownValueController;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
-  // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in Button widget.
+  // Stores action output result for [Backend Call - API (UpdateSerialStatus)] action in ConfirmButton widget.
   ApiCallResponse? updateSerialStatusApiResult;
   // Model for Loading component.
   late LoadingModel loadingModel;

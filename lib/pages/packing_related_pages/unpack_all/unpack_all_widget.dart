@@ -54,8 +54,8 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
     super.initState();
     _model = createModel(context, () => UnpackAllModel());
 
-    _model.ssccManualTextController ??= TextEditingController();
-    _model.ssccManualFocusNode ??= FocusNode();
+    _model.ssccManualEntryTextController ??= TextEditingController();
+    _model.ssccManualEntryFocusNode ??= FocusNode();
   }
 
   @override
@@ -211,24 +211,25 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                 ].divide(SizedBox(width: 12.0)),
                               ),
                               TextFormField(
-                                controller: _model.ssccManualTextController,
-                                focusNode: _model.ssccManualFocusNode,
+                                controller:
+                                    _model.ssccManualEntryTextController,
+                                focusNode: _model.ssccManualEntryFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.ssccManualTextController',
+                                  '_model.ssccManualEntryTextController',
                                   Duration(milliseconds: 2000),
                                   () async {
                                     await _model.checkSerialStatus(
                                       context,
-                                      serial:
-                                          _model.ssccManualTextController.text,
+                                      serial: _model
+                                          .ssccManualEntryTextController.text,
                                     );
                                   },
                                 ),
                                 onFieldSubmitted: (_) async {
                                   await _model.checkSerialStatus(
                                     context,
-                                    serial:
-                                        _model.ssccManualTextController.text,
+                                    serial: _model
+                                        .ssccManualEntryTextController.text,
                                   );
                                 },
                                 autofocus: false,
@@ -322,7 +323,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                     ),
                                 keyboardType: TextInputType.number,
                                 validator: _model
-                                    .ssccManualTextControllerValidator
+                                    .ssccManualEntryTextControllerValidator
                                     .asValidator(context),
                               ),
                               FFButtonWidget(
@@ -342,18 +343,21 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                     _model.scannedCode,
                                   );
                                   safeSetState(() {
-                                    _model.ssccManualTextController?.text =
+                                    _model.ssccManualEntryTextController?.text =
                                         getJsonField(
                                       _model.parsedGs1Scan,
                                       r'''$.serial''',
                                     ).toString();
-                                    _model.ssccManualFocusNode?.requestFocus();
+                                    _model.ssccManualEntryFocusNode
+                                        ?.requestFocus();
                                     WidgetsBinding.instance
                                         .addPostFrameCallback((_) {
-                                      _model.ssccManualTextController
+                                      _model.ssccManualEntryTextController
                                           ?.selection = TextSelection.collapsed(
-                                        offset: _model.ssccManualTextController!
-                                            .text.length,
+                                        offset: _model
+                                            .ssccManualEntryTextController!
+                                            .text
+                                            .length,
                                       );
                                     });
                                   });

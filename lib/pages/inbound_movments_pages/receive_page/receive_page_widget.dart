@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/s_s_c_c_details_card/s_s_c_c_details_card_widget.dart';
@@ -434,8 +435,68 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                               Align(
                                 alignment: AlignmentDirectional(0.0, 1.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('ConfirmReceive pressed ...');
+                                  onPressed: () async {
+                                    _model.loading = true;
+                                    safeSetState(() {});
+                                    _model.receivingShipmentApiResult =
+                                        await ShipmentsGroup
+                                            .receivingShipmentCall
+                                            .call();
+
+                                    if ((_model.receivingShipmentApiResult
+                                            ?.succeeded ??
+                                        true)) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            '${ShipmentsGroup.receivingShipmentCall.message(
+                                              (_model.receivingShipmentApiResult
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )}',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            '${ShipmentsGroup.receivingShipmentCall.message(
+                                              (_model.receivingShipmentApiResult
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )}',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                        ),
+                                      );
+                                    }
+
+                                    _model.loading = false;
+                                    safeSetState(() {});
+
+                                    safeSetState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'pz6lm8qe' /* Confirm Receive */,

@@ -34,6 +34,8 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
   dynamic parsedGs1Code;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
+  // Stores action output result for [Backend Call - API (Receiving Shipment)] action in ConfirmReceive widget.
+  ApiCallResponse? receivingShipmentApiResult;
   // Model for Loading component.
   late LoadingModel loadingModel;
 

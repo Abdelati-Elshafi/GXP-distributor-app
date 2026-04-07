@@ -48,12 +48,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       height: 50.0,
       decoration: BoxDecoration(
         color: Color(0xFF323394),
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0.0),
-          bottomRight: Radius.circular(0.0),
-          topLeft: Radius.circular(0.0),
-          topRight: Radius.circular(0.0),
-        ),
+        borderRadius: BorderRadius.only(),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,

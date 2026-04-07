@@ -609,30 +609,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'طلب #:',
       'hi': 'आदेश #:',
     },
-    '0wt3pv7p': {
-      'en': '12345',
-      'ar': '12345',
-      'hi': '12345',
-    },
     'xzadtsdm': {
       'en': 'Customer:',
       'ar': 'عميل:',
       'hi': 'ग्राहक:',
     },
-    '5o6xc5lz': {
-      'en': 'Pharmacy A',
-      'ar': 'صيدلية أ',
-      'hi': 'फार्मेसी ए',
-    },
     '81810qca': {
       'en': 'Destination GLN:',
       'ar': 'الوجهة GLN:',
       'hi': 'गंतव्य जीएलएन:',
-    },
-    '4rmv7rem': {
-      'en': '1234567890000',
-      'ar': '1234567890000',
-      'hi': '1234567890000',
     },
     'q2bx63nz': {
       'en': 'Date:',
@@ -648,11 +633,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Order SSCC:',
       'ar': 'طلب SSCC:',
       'hi': 'एसएससीसी का आदेश:',
-    },
-    'mpparjeq': {
-      'en': '987654321012345678',
-      'ar': '987654321012345678',
-      'hi': '987654321012345678',
     },
     'q64hzvjl': {
       'en': 'Products in Order',

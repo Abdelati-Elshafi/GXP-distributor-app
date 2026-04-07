@@ -122,6 +122,19 @@ class UnpackSSCCCall {
       alwaysAllowBody: false,
     );
   }
+
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? sscc(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.SSCC''',
+      ));
 }
 
 class UnpackAllSSCCCall {
@@ -150,6 +163,19 @@ class UnpackAllSSCCCall {
       alwaysAllowBody: false,
     );
   }
+
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? sscc(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.SSCC''',
+      ));
 }
 
 /// End SerialStatusUpdate Group Code
@@ -502,9 +528,61 @@ class ReceivingShipmentCall {
       alwaysAllowBody: false,
     );
   }
+
+  String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? sscc(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.SSCC''',
+      ));
 }
 
 /// End Shipments Group Code
+
+/// Start SSCCOperations Group Code
+
+class SSCCOperationsGroup {
+  static String getBaseUrl() =>
+      'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api/v1/ssccoperations';
+  static Map<String, String> headers = {};
+  static GenerateSSCCCall generateSSCCCall = GenerateSSCCCall();
+}
+
+class GenerateSSCCCall {
+  Future<ApiCallResponse> call({
+    String? type = '',
+  }) async {
+    final baseUrl = SSCCOperationsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "Type": "${escapeStringForJson(type)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Generate SSCC',
+      apiUrl: '${baseUrl}/GenerateSSCC',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End SSCCOperations Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

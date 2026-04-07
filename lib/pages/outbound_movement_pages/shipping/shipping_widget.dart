@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/cancelation_widget.dart';
+import '/components/cancelation/cancelation_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/product_details_card/product_details_card_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
@@ -458,8 +458,9 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                                 Text(
-                                  FFLocalizations.of(context).getText(
-                                    '0wt3pv7p' /* 12345 */,
+                                  valueOrDefault<String>(
+                                    _model.orderno,
+                                    'order',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -509,8 +510,9 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                                 Text(
-                                  FFLocalizations.of(context).getText(
-                                    '5o6xc5lz' /* Pharmacy A */,
+                                  valueOrDefault<String>(
+                                    _model.customer,
+                                    'customer',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -560,8 +562,9 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                                 Text(
-                                  FFLocalizations.of(context).getText(
-                                    '4rmv7rem' /* 1234567890000 */,
+                                  valueOrDefault<String>(
+                                    _model.gln,
+                                    'gln',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -662,8 +665,9 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                                 Text(
-                                  FFLocalizations.of(context).getText(
-                                    'mpparjeq' /* 987654321012345678 */,
+                                  valueOrDefault<String>(
+                                    _model.sscc,
+                                    'sscc',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium

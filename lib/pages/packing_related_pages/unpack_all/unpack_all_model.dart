@@ -13,12 +13,13 @@ class UnpackAllModel extends FlutterFlowModel<UnpackAllWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for ssccManual widget.
-  FocusNode? ssccManualFocusNode;
-  TextEditingController? ssccManualTextController;
-  String? Function(BuildContext, String?)? ssccManualTextControllerValidator;
+  // State field(s) for ssccManualEntry widget.
+  FocusNode? ssccManualEntryFocusNode;
+  TextEditingController? ssccManualEntryTextController;
+  String? Function(BuildContext, String?)?
+      ssccManualEntryTextControllerValidator;
   var scannedCode = '';
-  // Stores action output result for [Custom Action - parseGs1Scan] action in Button widget.
+  // Stores action output result for [Custom Action - parseGs1Scan] action in StartScanBotton widget.
   dynamic parsedGs1Scan;
   // Model for Loading component.
   late LoadingModel loadingModel;
@@ -30,8 +31,8 @@ class UnpackAllModel extends FlutterFlowModel<UnpackAllWidget> {
 
   @override
   void dispose() {
-    ssccManualFocusNode?.dispose();
-    ssccManualTextController?.dispose();
+    ssccManualEntryFocusNode?.dispose();
+    ssccManualEntryTextController?.dispose();
 
     loadingModel.dispose();
   }

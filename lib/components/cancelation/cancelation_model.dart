@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class CancelationModel extends FlutterFlowModel<CancelationWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - API (Cancel Shipped)] action in Button widget.
+  // Stores action output result for [Backend Call - API (Cancel Shipped)] action in ConfirmButton widget.
   ApiCallResponse? cancelshippedorder;
 
   @override

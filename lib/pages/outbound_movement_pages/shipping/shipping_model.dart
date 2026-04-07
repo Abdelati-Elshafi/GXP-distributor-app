@@ -30,6 +30,14 @@ class ShippingModel extends FlutterFlowModel<ShippingWidget> {
   void updateOrdersNOAtIndex(int index, Function(String) updateFn) =>
       ordersNO[index] = updateFn(ordersNO[index]);
 
+  String? orderno;
+
+  String? sscc;
+
+  String? customer;
+
+  String? gln;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (GetOrderByUser)] action in Shipping widget.
@@ -43,7 +51,7 @@ class ShippingModel extends FlutterFlowModel<ShippingWidget> {
   String? Function(BuildContext, String?)? enterSSCCTextControllerValidator;
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
-  // Stores action output result for [Backend Call - API (Confirm Shipment)] action in Button widget.
+  // Stores action output result for [Backend Call - API (Confirm Shipment)] action in ConfirmButton widget.
   ApiCallResponse? confirmShipment;
   // Model for Loading component.
   late LoadingModel loadingModel;
@@ -77,6 +85,16 @@ class ShippingModel extends FlutterFlowModel<ShippingWidget> {
 
     if ((orderrespnse.succeeded ?? true)) {
       loading = false;
+      orderno = orderNo;
+      sscc = OrdersAPIsGroup.getOrderDetailsCall.orderSSCC(
+        (orderrespnse.jsonBody ?? ''),
+      );
+      customer = OrdersAPIsGroup.getOrderDetailsCall.customer(
+        (orderrespnse.jsonBody ?? ''),
+      );
+      gln = OrdersAPIsGroup.getOrderDetailsCall.gln(
+        (orderrespnse.jsonBody ?? ''),
+      );
     } else {
       loading = false;
     }
