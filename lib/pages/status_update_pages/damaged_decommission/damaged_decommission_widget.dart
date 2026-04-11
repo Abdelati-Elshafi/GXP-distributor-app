@@ -136,15 +136,259 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
             children: [
               Padding(
                 padding: EdgeInsets.all(5.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                      child: Column(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'bp8peuxd' /* Scan Items */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF323394),
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 0.0, 5.0, 0.0),
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  border: Border.all(
+                                    color: Color(0xFFD7D1E3),
+                                    width: 2.0,
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(4.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 12.0, 0.0),
+                                            child: Icon(
+                                              Icons.qr_code_scanner,
+                                              color: Color(0xFF323394),
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: TextFormField(
+                                              controller: _model
+                                                  .enterSSCCTextController,
+                                              focusNode:
+                                                  _model.enterSSCCFocusNode,
+                                              onFieldSubmitted: (_) async {
+                                                _model.loading = true;
+                                                safeSetState(() {});
+                                                await _model.checkSerialStatus(
+                                                  context,
+                                                  serial: _model
+                                                      .enterSSCCTextController
+                                                      .text,
+                                                );
+                                                safeSetState(() {});
+                                              },
+                                              autofocus: false,
+                                              textInputAction:
+                                                  TextInputAction.done,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'y7zgrwxh' /* Scan or enter Serial/SSCC */,
+                                                ),
+                                                hintStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Color(0xFF9E9E9E),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                enabledBorder: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
+                                                errorBorder: InputBorder.none,
+                                                focusedErrorBorder:
+                                                    InputBorder.none,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF14181B),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                              validator: _model
+                                                  .enterSSCCTextControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 8.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.scannedcode =
+                                                    await FlutterBarcodeScanner
+                                                        .scanBarcode(
+                                                  '#C62828', // scanning line color
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'eb5ppw2s' /* Cancel */,
+                                                  ), // cancel button text
+                                                  true, // whether to show the flash icon
+                                                  ScanMode.BARCODE,
+                                                );
+
+                                                if (!(_model.scannedcode == '-1'
+                                                    ? true
+                                                    : false)) {
+                                                  _model.gS1ParsedData =
+                                                      await actions
+                                                          .parseGs1Scan(
+                                                    _model.scannedcode,
+                                                  );
+                                                  safeSetState(() {
+                                                    _model
+                                                        .enterSSCCTextController
+                                                        ?.text = getJsonField(
+                                                      _model.gS1ParsedData,
+                                                      r'''$.serial''',
+                                                    ).toString();
+                                                    _model.enterSSCCFocusNode
+                                                        ?.requestFocus();
+                                                    WidgetsBinding.instance
+                                                        .addPostFrameCallback(
+                                                            (_) {
+                                                      _model.enterSSCCTextController
+                                                              ?.selection =
+                                                          TextSelection
+                                                              .collapsed(
+                                                        offset: _model
+                                                            .enterSSCCTextController!
+                                                            .text
+                                                            .length,
+                                                      );
+                                                    });
+                                                  });
+                                                  await _model
+                                                      .checkSerialStatus(
+                                                    context,
+                                                    serial: _model
+                                                        .enterSSCCTextController
+                                                        .text,
+                                                  );
+                                                }
+
+                                                safeSetState(() {});
+                                              },
+                                              child: wrapWithModel(
+                                                model: _model.scanButtonModel,
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child: ScanButtonWidget(),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 4.0)),
+                        ),
+                      ),
+                      Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -153,7 +397,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                 10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'bp8peuxd' /* Scan Items */,
+                                'srh2u3yg' /* Select Reason */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
@@ -177,287 +421,62 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 5.0, 0.0, 5.0, 0.0),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(16.0),
-                                border: Border.all(
-                                  color: Color(0xFFD7D1E3),
-                                  width: 2.0,
+                            child: FlutterFlowDropDown<String>(
+                              controller:
+                                  _model.reasonDropDownValueController ??=
+                                      FormFieldController<String>(
+                                _model.reasonDropDownValue ??= '',
+                              ),
+                              options: List<String>.from([
+                                'D01',
+                                'D02',
+                                'D03',
+                                'D04',
+                                'D05',
+                                'D06',
+                                'D07'
+                              ]),
+                              optionLabels: [
+                                FFLocalizations.of(context).getText(
+                                  'al87z6c1' /* Broken */,
                                 ),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(4.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 12.0, 0.0),
-                                          child: Icon(
-                                            Icons.qr_code_scanner,
-                                            color: Color(0xFF323394),
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: TextFormField(
-                                            controller:
-                                                _model.enterSSCCTextController,
-                                            focusNode:
-                                                _model.enterSSCCFocusNode,
-                                            onFieldSubmitted: (_) async {
-                                              _model.loading = true;
-                                              safeSetState(() {});
-                                              await _model.checkSerialStatus(
-                                                context,
-                                                serial: _model
-                                                    .enterSSCCTextController
-                                                    .text,
-                                              );
-                                              safeSetState(() {});
-                                            },
-                                            autofocus: false,
-                                            textInputAction:
-                                                TextInputAction.done,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'y7zgrwxh' /* Scan or enter Serial/SSCC */,
-                                              ),
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            Color(0xFF9E9E9E),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                              enabledBorder: InputBorder.none,
-                                              focusedBorder: InputBorder.none,
-                                              errorBorder: InputBorder.none,
-                                              focusedErrorBorder:
-                                                  InputBorder.none,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xFF14181B),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                            validator: _model
-                                                .enterSSCCTextControllerValidator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 8.0, 0.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              _model.scannedcode =
-                                                  await FlutterBarcodeScanner
-                                                      .scanBarcode(
-                                                '#C62828', // scanning line color
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'eb5ppw2s' /* Cancel */,
-                                                ), // cancel button text
-                                                true, // whether to show the flash icon
-                                                ScanMode.BARCODE,
-                                              );
-
-                                              if (!(_model.scannedcode == '-1'
-                                                  ? true
-                                                  : false)) {
-                                                _model.gS1ParsedData =
-                                                    await actions.parseGs1Scan(
-                                                  _model.scannedcode,
-                                                );
-                                                safeSetState(() {
-                                                  _model.enterSSCCTextController
-                                                      ?.text = getJsonField(
-                                                    _model.gS1ParsedData,
-                                                    r'''$.serial''',
-                                                  ).toString();
-                                                  _model.enterSSCCFocusNode
-                                                      ?.requestFocus();
-                                                  WidgetsBinding.instance
-                                                      .addPostFrameCallback(
-                                                          (_) {
-                                                    _model.enterSSCCTextController
-                                                            ?.selection =
-                                                        TextSelection.collapsed(
-                                                      offset: _model
-                                                          .enterSSCCTextController!
-                                                          .text
-                                                          .length,
-                                                    );
-                                                  });
-                                                });
-                                                await _model.checkSerialStatus(
-                                                  context,
-                                                  serial: _model
-                                                      .enterSSCCTextController
-                                                      .text,
-                                                );
-                                              }
-
-                                              safeSetState(() {});
-                                            },
-                                            child: wrapWithModel(
-                                              model: _model.scanButtonModel,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: ScanButtonWidget(),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ].divide(SizedBox(height: 4.0)),
-                      ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'srh2u3yg' /* Select Reason */,
-                            ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontStyle,
-                                      ),
-                                      color: Color(0xFF323394),
-                                      fontSize: 18.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                                FFLocalizations.of(context).getText(
+                                  '6akzx73g' /* Unfolded */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'wyma91l3' /* Torn */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'cs44nr7j' /* 2D Matrix not readable  */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'seq7zh8w' /* Smashed */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'shlwul9n' /* Damage due To liquid spill  */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'ti3jboe4' /* Other */,
+                                )
+                              ],
+                              onChanged: (val) => safeSetState(
+                                  () => _model.reasonDropDownValue = val),
+                              width: double.infinity,
+                              height: 56.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
+                                          .bodyMedium
                                           .fontStyle,
                                     ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 0.0, 5.0, 0.0),
-                          child: FlutterFlowDropDown<String>(
-                            controller: _model.reasonDropDownValueController ??=
-                                FormFieldController<String>(
-                              _model.reasonDropDownValue ??= '',
-                            ),
-                            options: List<String>.from([
-                              'D01',
-                              'D02',
-                              'D03',
-                              'D04',
-                              'D05',
-                              'D06',
-                              'D07'
-                            ]),
-                            optionLabels: [
-                              FFLocalizations.of(context).getText(
-                                'al87z6c1' /* Broken */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                '6akzx73g' /* Unfolded */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'wyma91l3' /* Torn */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'cs44nr7j' /* 2D Matrix not readable  */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'seq7zh8w' /* Smashed */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'shlwul9n' /* Damage due To liquid spill  */,
-                              ),
-                              FFLocalizations.of(context).getText(
-                                'ti3jboe4' /* Other */,
-                              )
-                            ],
-                            onChanged: (val) => safeSetState(
-                                () => _model.reasonDropDownValue = val),
-                            width: double.infinity,
-                            height: 56.0,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
+                                    color: Color(0xFF454444),
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontWeight,
@@ -465,42 +484,31 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF454444),
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                            hintText: FFLocalizations.of(context).getText(
-                              'l5glqqwp' /* Choose Reason */,
+                              hintText: FFLocalizations.of(context).getText(
+                                'l5glqqwp' /* Choose Reason */,
+                              ),
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color: Color(0xFF14181B),
+                                size: 24.0,
+                              ),
+                              fillColor: Colors.white,
+                              elevation: 2.0,
+                              borderColor: Color(0xFFE0E0E0),
+                              borderWidth: 1.0,
+                              borderRadius: 8.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 10.0, 0.0),
+                              hidesUnderline: true,
+                              isSearchable: false,
+                              isMultiSelect: false,
                             ),
-                            icon: Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: Color(0xFF14181B),
-                              size: 24.0,
-                            ),
-                            fillColor: Colors.white,
-                            elevation: 2.0,
-                            borderColor: Color(0xFFE0E0E0),
-                            borderWidth: 1.0,
-                            borderRadius: 8.0,
-                            margin: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 10.0, 0.0),
-                            hidesUnderline: true,
-                            isSearchable: false,
-                            isMultiSelect: false,
                           ),
-                        ),
-                      ].divide(SizedBox(height: 4.0)),
-                    ),
-                    Stack(
-                      children: [
-                        SingleChildScrollView(
-                          child: Column(
+                        ].divide(SizedBox(height: 4.0)),
+                      ),
+                      Stack(
+                        children: [
+                          Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -597,126 +605,131 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                               ),
                             ].divide(SizedBox(height: 4.0)),
                           ),
-                        ),
-                        wrapWithModel(
-                          model: _model.emptyListViewDisplayModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: EmptyListViewDisplayWidget(
-                            listContent: _model.scannedSerialToDecommission,
+                          wrapWithModel(
+                            model: _model.emptyListViewDisplayModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: EmptyListViewDisplayWidget(
+                              listContent: _model.scannedSerialToDecommission,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FFButtonWidget(
-                          onPressed: !((_model.scannedSerialToDecommission
-                                      .isNotEmpty) &&
-                                  (_model.reasonDropDownValue != null &&
-                                      _model.reasonDropDownValue != ''))
-                              ? null
-                              : () async {
-                                  _model.loading = true;
-                                  safeSetState(() {});
-                                  _model.updateSerialStatusApiResult =
-                                      await SerialStatusUpdateGroup
-                                          .updateSerialStatusCall
-                                          .call(
-                                    status: widget.decommissionReason,
-                                    reason: _model.reasonDropDownValue,
-                                    serialsList:
-                                        _model.scannedSerialToDecommission,
-                                    userName: FFAppState().userName,
-                                  );
-
-                                  if ((_model.updateSerialStatusApiResult
-                                          ?.succeeded ??
-                                      true)) {
-                                    _model.scannedSerialToDecommission = [];
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FFButtonWidget(
+                            onPressed: !((_model.scannedSerialToDecommission
+                                        .isNotEmpty) &&
+                                    (_model.reasonDropDownValue != null &&
+                                        _model.reasonDropDownValue != ''))
+                                ? null
+                                : () async {
+                                    _model.loading = true;
                                     safeSetState(() {});
-                                    safeSetState(() {
-                                      _model.reasonDropDownValueController
-                                          ?.reset();
-                                      _model.reasonDropDownValue = null;
-                                    });
-                                    safeSetState(() {
-                                      _model.enterSSCCTextController?.clear();
-                                    });
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Serials Statues Updated ',
-                                          style: TextStyle(
-                                            color: Color(0xFFDDDDDD),
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondary,
-                                      ),
+                                    _model.updateSerialStatusApiResult =
+                                        await SerialStatusUpdateGroup
+                                            .updateSerialStatusCall
+                                            .call(
+                                      status: widget.decommissionReason,
+                                      reason: _model.reasonDropDownValue,
+                                      serialsList:
+                                          _model.scannedSerialToDecommission,
+                                      userName: FFAppState().userName,
                                     );
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Faild To Connect The Server',
-                                          style: TextStyle(
-                                            color: Color(0xFFDDDDDD),
+
+                                    if ((_model.updateSerialStatusApiResult
+                                            ?.succeeded ??
+                                        true)) {
+                                      _model.scannedSerialToDecommission = [];
+                                      safeSetState(() {});
+                                      safeSetState(() {
+                                        _model.reasonDropDownValueController
+                                            ?.reset();
+                                        _model.reasonDropDownValue = null;
+                                      });
+                                      safeSetState(() {
+                                        _model.enterSSCCTextController?.clear();
+                                      });
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Serials Statues Updated ',
+                                            style: TextStyle(
+                                              color: Color(0xFFDDDDDD),
+                                            ),
                                           ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
                                         ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context).error,
-                                      ),
-                                    );
-                                  }
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Faild To Connect The Server',
+                                            style: TextStyle(
+                                              color: Color(0xFFDDDDDD),
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                        ),
+                                      );
+                                    }
 
-                                  _model.loading = false;
-                                  safeSetState(() {});
+                                    _model.loading = false;
+                                    safeSetState(() {});
 
-                                  safeSetState(() {});
-                                },
-                          text: FFLocalizations.of(context).getText(
-                            'zsrlf346' /* Confirm Decommission */,
-                          ),
-                          options: FFButtonOptions(
-                            width: 300.0,
-                            height: 56.0,
-                            padding: EdgeInsets.all(8.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF323394),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  font: GoogleFonts.interTight(
+                                    safeSetState(() {});
+                                  },
+                            text: FFLocalizations.of(context).getText(
+                              'zsrlf346' /* Confirm Decommission */,
+                            ),
+                            options: FFButtonOptions(
+                              width: 300.0,
+                              height: 56.0,
+                              padding: EdgeInsets.all(8.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFF323394),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontStyle,
-                                ),
-                            elevation: 2.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
+                              elevation: 2.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(16.0),
+                              disabledColor:
+                                  FlutterFlowTheme.of(context).alternate,
                             ),
-                            borderRadius: BorderRadius.circular(16.0),
-                            disabledColor:
-                                FlutterFlowTheme.of(context).alternate,
                           ),
-                        ),
-                      ].divide(SizedBox(height: 16.0)),
-                    ),
-                  ].divide(SizedBox(height: 24.0)),
+                        ].divide(SizedBox(height: 16.0)),
+                      ),
+                    ].divide(SizedBox(height: 24.0)),
+                  ),
                 ),
               ),
               if (_model.loading)
