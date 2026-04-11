@@ -203,6 +203,10 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                     .text,
                                               );
                                               safeSetState(() {});
+                                              safeSetState(() {
+                                                _model.enterSSCCTextController
+                                                    ?.clear();
+                                              });
                                             },
                                             autofocus: false,
                                             textInputAction:
@@ -515,6 +519,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                             }
 
                                             _model.loading = false;
+                                            _model.scannedSSCC = [];
                                             safeSetState(() {});
 
                                             safeSetState(() {});

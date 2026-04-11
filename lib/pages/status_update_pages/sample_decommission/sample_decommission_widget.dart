@@ -224,6 +224,10 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                                       .text,
                                                 );
                                                 safeSetState(() {});
+                                                safeSetState(() {
+                                                  _model.enterSSCCTextController
+                                                      ?.clear();
+                                                });
                                               },
                                               autofocus: false,
                                               textInputAction:

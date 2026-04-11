@@ -225,6 +225,10 @@ class _DestructionDecommissionWidgetState
                                                       .text,
                                                 );
                                                 safeSetState(() {});
+                                                safeSetState(() {
+                                                  _model.enterSSCCTextController
+                                                      ?.clear();
+                                                });
                                               },
                                               autofocus: false,
                                               textInputAction:

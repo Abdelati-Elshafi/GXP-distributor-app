@@ -215,6 +215,10 @@ class _DecommissionWidgetState extends State<DecommissionWidget> {
                                                   .enterSSCCTextController.text,
                                             );
                                             safeSetState(() {});
+                                            safeSetState(() {
+                                              _model.enterSSCCTextController
+                                                  ?.clear();
+                                            });
                                           },
                                           autofocus: false,
                                           textInputAction: TextInputAction.done,

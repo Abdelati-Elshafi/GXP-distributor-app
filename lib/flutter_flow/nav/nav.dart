@@ -251,6 +251,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: LoginWidget.routeName,
           path: LoginWidget.routePath,
           builder: (context, params) => LoginWidget(),
+        ),
+        FFRoute(
+          name: QueriesWidget.routeName,
+          path: QueriesWidget.routePath,
+          builder: (context, params) => QueriesWidget(),
+        ),
+        FFRoute(
+          name: ReportsWidget.routeName,
+          path: ReportsWidget.routePath,
+          builder: (context, params) => ReportsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

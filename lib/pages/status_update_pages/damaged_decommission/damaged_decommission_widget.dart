@@ -224,6 +224,10 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                       .text,
                                                 );
                                                 safeSetState(() {});
+                                                safeSetState(() {
+                                                  _model.enterSSCCTextController
+                                                      ?.clear();
+                                                });
                                               },
                                               autofocus: false,
                                               textInputAction:

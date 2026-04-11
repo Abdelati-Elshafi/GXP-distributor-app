@@ -167,21 +167,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'التعبئة وفك التعبئة',
       'hi': 'पैक और अनपैक',
     },
-    'tavcl2ws': {
-      'en': 'Queries',
-      'ar': 'الاستعلامات',
-      'hi': 'प्रश्नों',
-    },
-    'ezouona4': {
-      'en': 'Reports',
-      'ar': 'التقارير',
-      'hi': 'रिपोर्टों',
-    },
-    'agf53u7j': {
-      'en': 'Exceptions',
-      'ar': 'الاستثناءات',
-      'hi': 'अपवाद',
-    },
     'w4vxk7v1': {
       'en': 'Distributor Operations',
       'ar': 'إيقاف التشغيل',
@@ -270,6 +255,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vwtt27b1': {
       'en': 'Inbound Movement',
+      'ar': '',
+      'hi': '',
+    },
+    'jd7wlxnv': {
+      'en': '',
       'ar': '',
       'hi': '',
     },
@@ -1071,6 +1061,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'ar': '',
       'hi': '',
+    },
+  },
+  // Queries
+  {
+    'it0j9o56': {
+      'en': 'Queries',
+      'ar': 'بيت',
+      'hi': 'घर',
+    },
+  },
+  // reports
+  {
+    'qmeux5ui': {
+      'en': 'Reports',
+      'ar': 'بيت',
+      'hi': 'घर',
     },
   },
   // Header

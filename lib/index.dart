@@ -39,3 +39,7 @@ export '/pages/outbound_movement_pages/return_shipping/return_shipping_widget.da
 export '/pages/status_update_pages/destruction_decommission/destruction_decommission_widget.dart'
     show DestructionDecommissionWidget;
 export '/pages/main_pages/login/login_widget.dart' show LoginWidget;
+export '/pages/additional_pagess/queries/queries_widget.dart'
+    show QueriesWidget;
+export '/pages/additional_pagess/reports/reports_widget.dart'
+    show ReportsWidget;

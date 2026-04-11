@@ -138,7 +138,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.settings_rounded,
+                    Icons.query_stats,
                     color: Color(0xFF8181BC),
                     size: 28.0,
                   ),

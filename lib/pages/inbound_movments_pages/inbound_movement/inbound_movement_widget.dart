@@ -1,4 +1,3 @@
-import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -454,17 +453,6 @@ MAH or... */
                         ]
                             .divide(SizedBox(height: 30.0))
                             .addToStart(SizedBox(height: 24.0)),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: wrapWithModel(
-                        model: _model.bottomBarModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: BottomBarWidget(),
                       ),
                     ),
                   ),
