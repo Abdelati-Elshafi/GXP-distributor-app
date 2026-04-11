@@ -303,35 +303,39 @@ class _DecommissionWidgetState extends State<DecommissionWidget> {
                                             ScanMode.QR,
                                           );
 
-                                          _model.gS1ParsedData =
-                                              await actions.parseGs1Scan(
-                                            _model.scannedcode,
-                                          );
-                                          safeSetState(() {
-                                            _model.enterSSCCTextController
-                                                ?.text = getJsonField(
-                                              _model.gS1ParsedData,
-                                              r'''$.serial''',
-                                            ).toString();
-                                            _model.enterSSCCFocusNode
-                                                ?.requestFocus();
-                                            WidgetsBinding.instance
-                                                .addPostFrameCallback((_) {
+                                          if (!(_model.scannedcode == '-1'
+                                              ? true
+                                              : false)) {
+                                            _model.gS1ParsedData =
+                                                await actions.parseGs1Scan(
+                                              _model.scannedcode,
+                                            );
+                                            safeSetState(() {
                                               _model.enterSSCCTextController
-                                                      ?.selection =
-                                                  TextSelection.collapsed(
-                                                offset: _model
-                                                    .enterSSCCTextController!
-                                                    .text
-                                                    .length,
-                                              );
+                                                  ?.text = getJsonField(
+                                                _model.gS1ParsedData,
+                                                r'''$.serial''',
+                                              ).toString();
+                                              _model.enterSSCCFocusNode
+                                                  ?.requestFocus();
+                                              WidgetsBinding.instance
+                                                  .addPostFrameCallback((_) {
+                                                _model.enterSSCCTextController
+                                                        ?.selection =
+                                                    TextSelection.collapsed(
+                                                  offset: _model
+                                                      .enterSSCCTextController!
+                                                      .text
+                                                      .length,
+                                                );
+                                              });
                                             });
-                                          });
-                                          await _model.checkSerialStatus(
-                                            context,
-                                            serial: _model
-                                                .enterSSCCTextController.text,
-                                          );
+                                            await _model.checkSerialStatus(
+                                              context,
+                                              serial: _model
+                                                  .enterSSCCTextController.text,
+                                            );
+                                          }
 
                                           safeSetState(() {});
                                         },
