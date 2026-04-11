@@ -91,20 +91,22 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
           backgroundColor: Color(0xFF323394),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
-            borderRadius: 20.0,
-            buttonSize: 40.0,
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 28.0,
+              size: 30.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pop();
             },
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'zzfxnkha' /* Inbound Movement */,
+              'vwtt27b1' /* Inbound Movement */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
                   font: GoogleFonts.interTight(
@@ -120,8 +122,8 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: true,
-          elevation: 0.0,
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
@@ -131,267 +133,245 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(15.0, 30.0, 15.0, 24.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.pushNamed(
-                                  ReceivePageWidget.routeName,
-                                  queryParameters: {
-                                    'inboundType': serializeParam(
-                                      '0',
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 5.0,
-                                shape: RoundedRectangleBorder(
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                ReceivePageWidget.routeName,
+                                queryParameters: {
+                                  'inboundType': serializeParam(
+                                    '0',
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 5.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 8.0,
+                                      color: Color(0x1A000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 8.0,
-                                        color: Color(0x1A000000),
-                                        offset: Offset(
-                                          0.0,
-                                          2.0,
-                                        ),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 18.0, 15.0, 18.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.asset(
-                                                'assets/images/product-received.png',
-                                                width: 70.0,
-                                                height: 80.0,
-                                                fit: BoxFit.contain,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 18.0, 12.0, 18.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/product-received.png',
+                                              width: 60.0,
+                                              height: 60.0,
+                                              fit: BoxFit.contain,
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, -1.0),
-                                                    child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'therwdmk' /* Receiving */,
-                                                      ),
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .interTight(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                            color: Color(
-                                                                0xFF171A1A),
-                                                            fontSize: 22.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                    ),
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, -1.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'therwdmk' /* Receiving */,
                                                   ),
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '3kqcpbfo' /* Receive shipments from 
-MAH or... */
-                                                      ,
-                                                    ),
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF6E7880),
-                                                          fontSize: 13.0,
-                                                          letterSpacing: 0.0,
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .interTight(
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.bold,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
+                                                                  .titleMedium
                                                                   .fontStyle,
-                                                          lineHeight: 1.4,
                                                         ),
-                                                  ),
-                                                ].divide(SizedBox(height: 3.0)),
+                                                        color:
+                                                            Color(0xFF171A1A),
+                                                        fontSize: 22.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 20.0, 0.0, 0.0),
-                                              child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color: Color(0xFF050505),
-                                                size: 22.0,
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '3kqcpbfo' /* Receive shipments from 
+MAH or... */
+                                                  ,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Color(0xFF6E7880),
+                                                      fontSize: 13.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                      lineHeight: 1.4,
+                                                    ),
                                               ),
+                                            ].divide(SizedBox(height: 3.0)),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Color(0xFF050505),
+                                              size: 22.0,
                                             ),
-                                          ],
-                                        ),
-                                      ].divide(SizedBox(height: 16.0)),
-                                    ),
+                                          ),
+                                        ],
+                                      ),
+                                    ].divide(SizedBox(height: 16.0)),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.pushNamed(
-                                  ReceivePageWidget.routeName,
-                                  queryParameters: {
-                                    'inboundType': serializeParam(
-                                      '1',
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 5.0,
-                                shape: RoundedRectangleBorder(
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                ReceivePageWidget.routeName,
+                                queryParameters: {
+                                  'inboundType': serializeParam(
+                                    '1',
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 5.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 8.0,
+                                      color: Color(0x1A000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 8.0,
-                                        color: Color(0x1A000000),
-                                        offset: Offset(
-                                          0.0,
-                                          2.0,
-                                        ),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 18.0, 15.0, 18.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.asset(
-                                                'assets/images/return-box.png',
-                                                width: 70.0,
-                                                height: 80.0,
-                                                fit: BoxFit.contain,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 18.0, 12.0, 18.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/return-box.png',
+                                              width: 60.0,
+                                              height: 60.0,
+                                              fit: BoxFit.contain,
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'deeqyzqd' /* Return Receiving */,
-                                                    ),
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'deeqyzqd' /* Return Receiving */,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .titleMedium
                                                         .override(
                                                           font: GoogleFonts
@@ -406,7 +386,7 @@ MAH or... */
                                                           ),
                                                           color:
                                                               Color(0xFF171A1A),
-                                                          fontSize: 22.0,
+                                                          fontSize: 21.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -416,67 +396,63 @@ MAH or... */
                                                                   .titleMedium
                                                                   .fontStyle,
                                                         ),
-                                                  ),
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '2um5iolq' /* Process and receive returned
-p... */
-                                                      ,
+                                              ),
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '2um5iolq' /* Process and receive returned
+ ... */
+                                                  ,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Color(0xFF6E7880),
+                                                      fontSize: 13.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                      lineHeight: 1.4,
                                                     ),
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          color:
-                                                              Color(0xFF6E7880),
-                                                          fontSize: 13.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                          lineHeight: 1.4,
-                                                        ),
-                                                  ),
-                                                ].divide(SizedBox(height: 3.0)),
                                               ),
+                                            ].divide(SizedBox(height: 3.0)),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color: Color(0xFF050505),
+                                              size: 22.0,
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 20.0, 0.0, 0.0),
-                                              child: Icon(
-                                                Icons.arrow_forward_ios,
-                                                color: Color(0xFF050505),
-                                                size: 22.0,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ].divide(SizedBox(height: 16.0)),
-                                    ),
+                                          ),
+                                        ],
+                                      ),
+                                    ].divide(SizedBox(height: 16.0)),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ]
-                            .divide(SizedBox(height: 16.0))
+                            .divide(SizedBox(height: 30.0))
                             .addToStart(SizedBox(height: 24.0)),
                       ),
                     ),

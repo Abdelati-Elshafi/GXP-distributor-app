@@ -264,14 +264,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'वापसी प्राप्ति',
     },
     '2um5iolq': {
-      'en': 'Process and receive returned\nproducts from customers',
+      'en': 'Process and receive returned\n products from customers',
       'ar': 'معالجة واستلام المنتجات المرتجعة من العملاء',
       'hi': 'ग्राहकों से लौटाए गए उत्पादों को संसाधित करना और प्राप्त करना',
     },
-    'zzfxnkha': {
+    'vwtt27b1': {
       'en': 'Inbound Movement',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
+      'ar': '',
+      'hi': '',
     },
   },
   // OutboundMovement
@@ -319,11 +319,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PackAndRepack
   {
-    'v1poeccg': {
-      'en': 'Pack & Repack',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
-    },
     'jcl7m6mo': {
       'en': 'Pack',
       'ar': 'علية',
@@ -354,14 +349,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تفكيك SSCC بأكمله',
       'hi': 'संपूर्ण एसएससीसी को अलग करें',
     },
+    'yojy2v9t': {
+      'en': 'Pack & Repack',
+      'ar': '',
+      'hi': '',
+    },
   },
   // UnpackAll
   {
-    'lm0jm9xb': {
-      'en': 'UnPack All',
-      'ar': 'فك كل شيء',
-      'hi': 'सभी को अनपैक करें',
-    },
     'v5cr596z': {
       'en': 'Scan or Enter SSCC',
       'ar': 'مسح أو إدخال SSCC',
@@ -401,6 +396,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Confirm Unpack All',
       'ar': 'تأكيد فك كل شيء',
       'hi': 'सभी अनपैक की पुष्टि करें',
+    },
+    '0jhqafl2': {
+      'en': 'UnPack All',
+      'ar': '',
+      'hi': '',
     },
   },
   // PackagesList
@@ -469,10 +469,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تأكيد الاستلام',
       'hi': 'प्राप्ति की पुष्टि करें',
     },
-    '7sb240w9': {
+    'inu0b5h5': {
       'en': 'Shipment Receive ',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
+      'ar': '',
+      'hi': '',
     },
   },
   // Decommission
@@ -505,10 +505,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OrdersList
   {
-    'yacs3hj4': {
+    'parl21z3': {
       'en': 'Order List',
-      'ar': 'قائمة الطلبات',
-      'hi': 'आदेश सूची',
+      'ar': '',
+      'hi': '',
     },
   },
   // OrderDetails
@@ -649,10 +649,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يلغي',
       'hi': 'रद्द करना',
     },
-    '9koi8ylo': {
+    '9r34yklr': {
       'en': 'Confirm Shipping',
-      'ar': 'تأكيد الشحن',
-      'hi': 'शिपिंग की पुष्टि करें',
+      'ar': '',
+      'hi': '',
     },
   },
   // SampleDecommission
@@ -823,11 +823,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Unpack
   {
-    'uqyc29jn': {
-      'en': 'UnPack',
-      'ar': 'فك العبوة',
-      'hi': 'खोल देना',
-    },
     's8llgy9z': {
       'en': 'Scan or enter Serial/SSCC',
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
@@ -848,14 +843,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تأكيد فك كل شيء',
       'hi': 'सभी अनपैक की पुष्टि करें',
     },
+    'r2vbbwln': {
+      'en': 'UnPack',
+      'ar': '',
+      'hi': '',
+    },
   },
   // ReturnShipping
   {
-    'drb52lv4': {
-      'en': 'Return Shipping ',
-      'ar': 'إعادة الشحن',
-      'hi': 'वापसी शिपिंग',
-    },
     '15bhrale': {
       'en': 'Scan Shipment',
       'ar': 'مسح الشحنة',
@@ -965,6 +960,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Confirm Return',
       'ar': 'تأكيد الإرجاع',
       'hi': 'वापसी की पुष्टि करें',
+    },
+    'kdcruz8i': {
+      'en': 'Return Shipping ',
+      'ar': '',
+      'hi': '',
     },
   },
   // DestructionDecommission

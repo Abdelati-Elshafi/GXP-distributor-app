@@ -81,20 +81,22 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
           backgroundColor: Color(0xFF323394),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
-            borderRadius: 20.0,
-            buttonSize: 40.0,
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 28.0,
+              size: 30.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pop();
             },
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              '7sb240w9' /* Shipment Receive  */,
+              'inu0b5h5' /* Shipment Receive  */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
                   font: GoogleFonts.interTight(
@@ -110,8 +112,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: true,
-          elevation: 0.0,
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: Stack(
           children: [

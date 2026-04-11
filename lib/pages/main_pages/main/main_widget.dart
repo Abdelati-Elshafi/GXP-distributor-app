@@ -134,8 +134,7 @@ class _MainWidgetState extends State<MainWidget> {
                   color: Colors.white,
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -144,15 +143,28 @@ class _MainWidgetState extends State<MainWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
+                              20.0, 0.0, 20.0, 20.0),
                           child: GridView(
                             padding: EdgeInsets.zero,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 25.0,
-                              mainAxisSpacing: 25.0,
-                              childAspectRatio: 0.7,
+                              crossAxisCount: () {
+                                if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointSmall) {
+                                  return 1;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointMedium) {
+                                  return 2;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointLarge) {
+                                  return 2;
+                                } else {
+                                  return 2;
+                                }
+                              }(),
+                              crossAxisSpacing: 30.0,
+                              mainAxisSpacing: 30.0,
+                              childAspectRatio: 1.0,
                             ),
                             primary: false,
                             shrinkWrap: true,
@@ -191,7 +203,8 @@ class _MainWidgetState extends State<MainWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -202,8 +215,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/status-update.png',
-                                              width: 70.0,
-                                              height: 80.0,
+                                              width: 65.0,
+                                              height: 65.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -243,7 +256,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                   ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -293,8 +306,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/inbound_(1).png',
-                                              width: 80.0,
-                                              height: 80.0,
+                                              width: 75.0,
+                                              height: 75.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -334,7 +347,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                   ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -387,8 +400,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: Image.asset(
                                                 'assets/images/outbound.png',
-                                                width: 80.0,
-                                                height: 80.0,
+                                                width: 75.0,
+                                                height: 75.0,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -435,7 +448,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -488,8 +501,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: Image.asset(
                                                 'assets/images/package.png',
-                                                width: 70.0,
-                                                height: 70.0,
+                                                width: 65.0,
+                                                height: 65.0,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -530,7 +543,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                   ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -608,7 +621,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                 ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 12.0)),
+                                      ].divide(SizedBox(height: 5.0)),
                                     ),
                                   ),
                                 ),
@@ -685,7 +698,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                 ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 12.0)),
+                                      ].divide(SizedBox(height: 5.0)),
                                     ),
                                   ),
                                 ),
@@ -762,7 +775,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                 ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 12.0)),
+                                      ].divide(SizedBox(height: 5.0)),
                                     ),
                                   ),
                                 ),

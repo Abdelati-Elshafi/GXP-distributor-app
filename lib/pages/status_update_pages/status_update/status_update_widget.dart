@@ -138,23 +138,36 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
             Expanded(
               child: Stack(
                 children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          GridView(
+                  SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 20.0, 20.0, 20.0),
+                          child: GridView(
                             padding: EdgeInsets.zero,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 25.0,
-                              mainAxisSpacing: 25.0,
-                              childAspectRatio: 0.7,
+                              crossAxisCount: () {
+                                if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointSmall) {
+                                  return 1;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointMedium) {
+                                  return 2;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointLarge) {
+                                  return 2;
+                                } else {
+                                  return 2;
+                                }
+                              }(),
+                              crossAxisSpacing: 30.0,
+                              mainAxisSpacing: 30.0,
+                              childAspectRatio: 1.0,
                             ),
                             primary: false,
                             shrinkWrap: true,
@@ -199,7 +212,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(20.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -212,8 +226,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/box_(1).png',
-                                              width: 70.0,
-                                              height: 70.0,
+                                              width: 60.0,
+                                              height: 60.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -291,10 +305,10 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                 .fontStyle,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 6.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -339,7 +353,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(20.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -352,8 +367,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/question.png',
-                                              width: 70.0,
-                                              height: 70.0,
+                                              width: 60.0,
+                                              height: 60.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -431,10 +446,10 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                 .fontStyle,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 6.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -479,7 +494,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(20.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -492,8 +508,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/package_(1).png',
-                                              width: 70.0,
-                                              height: 70.0,
+                                              width: 60.0,
+                                              height: 60.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -571,10 +587,10 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                 .fontStyle,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 6.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -619,7 +635,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(20.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -632,8 +649,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/damage.png',
-                                              width: 70.0,
-                                              height: 70.0,
+                                              width: 60.0,
+                                              height: 60.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -711,10 +728,10 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                 .fontStyle,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 6.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -759,7 +776,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(20.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -772,8 +790,8 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/danger.png',
-                                              width: 65.0,
-                                              height: 65.0,
+                                              width: 60.0,
+                                              height: 60.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -851,10 +869,10 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                 .fontStyle,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(SizedBox(height: 6.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -862,11 +880,11 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                               ),
                             ],
                           ),
-                        ]
-                            .divide(SizedBox(height: 16.0))
-                            .addToStart(SizedBox(height: 24.0))
-                            .addToEnd(SizedBox(height: 24.0)),
-                      ),
+                        ),
+                      ]
+                          .divide(SizedBox(height: 16.0))
+                          .addToStart(SizedBox(height: 24.0))
+                          .addToEnd(SizedBox(height: 24.0)),
                     ),
                   ),
                 ],

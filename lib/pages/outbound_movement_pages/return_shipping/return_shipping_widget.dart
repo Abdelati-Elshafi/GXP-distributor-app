@@ -73,48 +73,43 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: AppBar(
-            backgroundColor: Color(0xFF323394),
-            automaticallyImplyLeading: false,
-            leading: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 24.0,
-              borderWidth: 1.0,
-              buttonSize: 48.0,
-              icon: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
-                size: 28.0,
-              ),
-              onPressed: () async {
-                context.safePop();
-              },
+        appBar: AppBar(
+          backgroundColor: Color(0xFF323394),
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
             ),
-            title: Text(
-              FFLocalizations.of(context).getText(
-                'drb52lv4' /* Return Shipping  */,
-              ),
-              style: FlutterFlowTheme.of(context).titleLarge.override(
-                    font: GoogleFonts.interTight(
-                      fontWeight: FontWeight.w600,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                    ),
-                    color: Colors.white,
-                    fontSize: 23.0,
-                    letterSpacing: 0.0,
+            onPressed: () async {
+              context.pop();
+            },
+          ),
+          title: Text(
+            FFLocalizations.of(context).getText(
+              'kdcruz8i' /* Return Shipping  */,
+            ),
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  font: GoogleFonts.interTight(
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
-            ),
-            actions: [],
-            centerTitle: true,
-            toolbarHeight: 50.0,
-            elevation: 0.0,
+                  color: Colors.white,
+                  fontSize: 23.0,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                ),
           ),
+          actions: [],
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
@@ -706,7 +701,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                         'bdhb9dy8' /* Confirm Return */,
                       ),
                       options: FFButtonOptions(
-                        width: double.infinity,
+                        width: 300.0,
                         height: 56.0,
                         padding: EdgeInsets.all(8.0),
                         iconPadding:

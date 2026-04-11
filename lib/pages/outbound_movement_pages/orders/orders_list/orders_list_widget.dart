@@ -111,21 +111,21 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
-            borderRadius: 24.0,
+            borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 48.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 28.0,
+              size: 30.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pop();
             },
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'yacs3hj4' /* Order List */,
+              'parl21z3' /* Order List */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
                   font: GoogleFonts.interTight(
@@ -141,8 +141,8 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: true,
-          elevation: 0.0,
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,

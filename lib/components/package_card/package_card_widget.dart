@@ -67,7 +67,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 15.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,8 +109,8 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                           Align(
                             alignment: AlignmentDirectional(0.0, 1.0),
                             child: Container(
-                              width: 120.0,
-                              height: 35.9,
+                              width: 110.0,
+                              height: 40.0,
                               decoration: BoxDecoration(
                                 color: Color(0xFFF3601F),
                                 borderRadius: BorderRadius.circular(12.0),
@@ -120,7 +120,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 12.0, 0.0),
+                                    6.0, 0.0, 6.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
