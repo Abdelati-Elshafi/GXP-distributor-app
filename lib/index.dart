@@ -43,3 +43,5 @@ export '/pages/additional_pagess/queries/queries_widget.dart'
     show QueriesWidget;
 export '/pages/additional_pagess/reports/reports_widget.dart'
     show ReportsWidget;
+export '/pages/additional_pagess/exceptions/exceptions_widget.dart'
+    show ExceptionsWidget;

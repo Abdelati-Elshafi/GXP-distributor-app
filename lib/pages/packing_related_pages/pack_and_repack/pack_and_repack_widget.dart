@@ -99,7 +99,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'yojy2v9t' /* Pack & Repack */,
+              '9ndqj7tm' /* Pack & Repack */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
                   font: GoogleFonts.interTight(
@@ -115,7 +115,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: true,
+          centerTitle: false,
           elevation: 2.0,
         ),
         body: SingleChildScrollView(

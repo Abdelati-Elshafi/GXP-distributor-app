@@ -339,7 +339,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تفكيك SSCC بأكمله',
       'hi': 'संपूर्ण एसएससीसी को अलग करें',
     },
-    'yojy2v9t': {
+    '9ndqj7tm': {
       'en': 'Pack & Repack',
       'ar': '',
       'hi': '',
@@ -395,10 +395,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PackagesList
   {
-    'us27zzgv': {
+    'uukv59ly': {
       'en': 'Packages List',
-      'ar': 'قائمة الحزم',
-      'hi': 'पैकेज सूची',
+      'ar': '',
+      'hi': '',
     },
   },
   // PackageOperation
@@ -413,10 +413,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'منتجات',
       'hi': 'उत्पादों',
     },
-    '7vciuy37': {
+    'yu0f6bmp': {
       'en': 'Pack Process',
-      'ar': 'عملية التعبئة',
-      'hi': 'पैक प्रक्रिया',
+      'ar': '',
+      'hi': '',
     },
   },
   // CasePacking
@@ -1073,8 +1073,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // reports
   {
+    'jo8u5hn1': {
+      'en': 'Soon ',
+      'ar': '',
+      'hi': '',
+    },
     'qmeux5ui': {
       'en': 'Reports',
+      'ar': 'بيت',
+      'hi': 'घर',
+    },
+  },
+  // Exceptions
+  {
+    'gp28ilaq': {
+      'en': 'Home',
       'ar': 'بيت',
       'hi': 'घर',
     },
@@ -1248,7 +1261,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': 'रिपोर्टों',
     },
     'qw18vub2': {
-      'en': 'Settings',
+      'en': 'Queries',
+      'ar': 'إعدادات',
+      'hi': 'सेटिंग्स',
+    },
+    '1j1sn8q1': {
+      'en': 'Exceptions',
       'ar': 'إعدادات',
       'hi': 'सेटिंग्स',
     },

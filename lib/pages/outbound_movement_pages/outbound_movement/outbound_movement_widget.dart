@@ -291,7 +291,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
-                                    'assets/images/delivery-box.png',
+                                    'assets/images/fast-delivery.png',
                                     width: 70.0,
                                     height: 80.0,
                                     fit: BoxFit.contain,

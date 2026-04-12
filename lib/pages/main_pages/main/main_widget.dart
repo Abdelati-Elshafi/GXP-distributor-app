@@ -1,3 +1,4 @@
+import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -92,36 +93,65 @@ class _MainWidgetState extends State<MainWidget> {
             child: SideBarWidget(),
           ),
         ),
-        appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
-          automaticallyImplyLeading: false,
-          title: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
-              child: Text(
-                FFLocalizations.of(context).getText(
-                  'w4vxk7v1' /* Distributor Operations */,
-                ),
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                      font: GoogleFonts.interTight(
-                        fontWeight: FontWeight.w600,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70.0),
+          child: AppBar(
+            backgroundColor: Color(0xFF323394),
+            automaticallyImplyLeading: false,
+            title: Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: Image.asset(
+                            'assets/images/wholesaler_(2).png',
+                          ).image,
+                        ),
+                        borderRadius: BorderRadius.circular(4.0),
                       ),
-                      color: Colors.white,
-                      fontSize: 25.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w600,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
                     ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'w4vxk7v1' /* Distributor Operations */,
+                        ),
+                        style: FlutterFlowTheme.of(context).titleLarge.override(
+                              font: GoogleFonts.interTight(
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .fontStyle,
+                              ),
+                              color: Colors.white,
+                              fontSize: 25.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontStyle,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
+            actions: [],
+            centerTitle: true,
+            elevation: 0.0,
           ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
         ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
@@ -134,7 +164,7 @@ class _MainWidgetState extends State<MainWidget> {
                   color: Colors.white,
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -557,6 +587,11 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                 ),
               ),
+            ),
+            wrapWithModel(
+              model: _model.bottomBarModel,
+              updateCallback: () => safeSetState(() {}),
+              child: BottomBarWidget(),
             ),
           ],
         ),

@@ -1,5 +1,5 @@
+import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -92,21 +92,6 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
         appBar: AppBar(
           backgroundColor: Color(0xFF323394),
           automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-            child: FlutterFlowIconButton(
-              borderRadius: 20.0,
-              buttonSize: 40.0,
-              icon: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
-                size: 28.0,
-              ),
-              onPressed: () async {
-                context.safePop();
-              },
-            ),
-          ),
           title: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
             child: Text(
@@ -146,7 +131,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 20.0, 20.0, 20.0),
+                              20.0, 30.0, 20.0, 20.0),
                           child: GridView(
                             padding: EdgeInsets.zero,
                             gridDelegate:
@@ -889,6 +874,11 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                   ),
                 ],
               ),
+            ),
+            wrapWithModel(
+              model: _model.bottomBarModel,
+              updateCallback: () => safeSetState(() {}),
+              child: BottomBarWidget(),
             ),
           ],
         ),

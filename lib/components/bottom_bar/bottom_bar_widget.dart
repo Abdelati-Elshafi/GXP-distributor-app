@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'bottom_bar_model.dart';
 export 'bottom_bar_model.dart';
@@ -103,65 +104,125 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                   ].divide(SizedBox(height: 4.0)),
                 ),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.bar_chart_rounded,
-                    color: Color(0xFF8181BC),
-                    size: 28.0,
-                  ),
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'fo1p95nn' /* Reports */,
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(ReportsWidget.routeName);
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.receipt_long,
+                      color: Color(0xFF8181BC),
+                      size: 28.0,
                     ),
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                          font: GoogleFonts.inter(
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'fo1p95nn' /* Reports */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
+                            ),
+                            color: Color(0xFF8181BC),
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodySmall
                                 .fontStyle,
                           ),
-                          color: Color(0xFF8181BC),
-                          fontSize: 12.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodySmall.fontStyle,
-                        ),
-                  ),
-                ].divide(SizedBox(height: 4.0)),
+                    ),
+                  ].divide(SizedBox(height: 4.0)),
+                ),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.query_stats,
-                    color: Color(0xFF8181BC),
-                    size: 28.0,
-                  ),
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'qw18vub2' /* Settings */,
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(QueriesWidget.routeName);
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.query_stats,
+                      color: Color(0xFF8181BC),
+                      size: 28.0,
                     ),
-                    style: FlutterFlowTheme.of(context).bodySmall.override(
-                          font: GoogleFonts.inter(
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        'qw18vub2' /* Queries */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
+                            ),
+                            color: Color(0xFF8181BC),
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodySmall
                                 .fontStyle,
                           ),
-                          color: Color(0xFF8181BC),
-                          fontSize: 12.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodySmall.fontStyle,
-                        ),
-                  ),
-                ].divide(SizedBox(height: 4.0)),
+                    ),
+                  ].divide(SizedBox(height: 4.0)),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(ExceptionsWidget.routeName);
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.exclamationTriangle,
+                      color: Color(0xFF8181BC),
+                      size: 28.0,
+                    ),
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        '1j1sn8q1' /* Exceptions */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
+                            ),
+                            color: Color(0xFF8181BC),
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .fontStyle,
+                          ),
+                    ),
+                  ].divide(SizedBox(height: 4.0)),
+                ),
               ),
             ],
           ),

@@ -261,6 +261,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ReportsWidget.routeName,
           path: ReportsWidget.routePath,
           builder: (context, params) => ReportsWidget(),
+        ),
+        FFRoute(
+          name: ExceptionsWidget.routeName,
+          path: ExceptionsWidget.routePath,
+          builder: (context, params) => ExceptionsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
