@@ -56,6 +56,14 @@ class CheckSerialStatusCall {
         response,
         r'''$.currentStatus''',
       ));
+  int? itemsCount(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.ItemsCount''',
+      ));
+  String? serialType(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.SerialType''',
+      ));
 }
 
 class UpdateSerialStatusCall {
