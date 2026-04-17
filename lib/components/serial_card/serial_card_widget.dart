@@ -82,7 +82,7 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: Color(0xFF323394),
+                          color: FlutterFlowTheme.of(context).primaryTextColor,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
@@ -121,7 +121,7 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: Color(0xFF323394),
+                          color: FlutterFlowTheme.of(context).primaryTextColor,
                           fontSize: 18.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,

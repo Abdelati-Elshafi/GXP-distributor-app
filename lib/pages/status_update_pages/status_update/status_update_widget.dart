@@ -80,7 +80,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -90,7 +90,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           title: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
@@ -130,8 +130,10 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 30.0, 20.0, 20.0),
+                          padding: EdgeInsets.all(FlutterFlowTheme.of(context)
+                              .designToken
+                              .spacing
+                              .md),
                           child: GridView(
                             padding: EdgeInsets.zero,
                             gridDelegate:
@@ -150,9 +152,9 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                   return 2;
                                 }
                               }(),
-                              crossAxisSpacing: 30.0,
+                              crossAxisSpacing: 35.0,
                               mainAxisSpacing: 30.0,
-                              childAspectRatio: 1.0,
+                              childAspectRatio: 0.9,
                             ),
                             primary: false,
                             shrinkWrap: true,
@@ -183,22 +185,23 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .outline,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 15.0, 0.0),
+                                          15.0, 5.0, 15.0, 5.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -210,7 +213,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/box_(1).png',
+                                              'assets/images/box.png',
                                               width: 60.0,
                                               height: 60.0,
                                               fit: BoxFit.contain,
@@ -245,8 +248,9 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                   .titleMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            Color(0xFF323394),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryTextColor,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -324,22 +328,23 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .outline,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 15.0, 0.0),
+                                          15.0, 5.0, 15.0, 5.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -351,9 +356,9 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/question.png',
-                                              width: 60.0,
-                                              height: 60.0,
+                                              'assets/images/unboxing.png',
+                                              width: 62.0,
+                                              height: 62.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -386,9 +391,10 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                   .titleMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            Color(0xFF323394),
-                                                        fontSize: 20.0,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryTextColor,
+                                                        fontSize: 22.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -465,22 +471,23 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .outline,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 15.0, 0.0),
+                                          15.0, 5.0, 15.0, 5.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -492,7 +499,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/package_(1).png',
+                                              'assets/images/package.png',
                                               width: 60.0,
                                               height: 60.0,
                                               fit: BoxFit.contain,
@@ -527,8 +534,9 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                   .titleMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            Color(0xFF323394),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryTextColor,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -606,22 +614,23 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .outline,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 15.0, 0.0),
+                                          15.0, 5.0, 15.0, 5.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -668,8 +677,9 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                   .titleMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            Color(0xFF323394),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryTextColor,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -747,22 +757,23 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .outline,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 0.0, 15.0, 0.0),
+                                          15.0, 5.0, 15.0, 5.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -774,9 +785,9 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/danger.png',
-                                              width: 60.0,
-                                              height: 60.0,
+                                              'assets/images/warning-sign.png',
+                                              width: 55.0,
+                                              height: 55.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -809,8 +820,9 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                                   .titleMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            Color(0xFF323394),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryTextColor,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:

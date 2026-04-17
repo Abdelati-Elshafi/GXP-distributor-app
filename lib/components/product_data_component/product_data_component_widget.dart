@@ -91,7 +91,8 @@ class _ProductDataComponentWidgetState
                                   .bodyLarge
                                   .fontStyle,
                             ),
-                            color: Color(0xFF323394),
+                            color:
+                                FlutterFlowTheme.of(context).primaryTextColor,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             fontStyle: FlutterFlowTheme.of(context)

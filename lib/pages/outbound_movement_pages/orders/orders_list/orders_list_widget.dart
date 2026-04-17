@@ -105,9 +105,9 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,

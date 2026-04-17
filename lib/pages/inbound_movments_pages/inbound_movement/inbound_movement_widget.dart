@@ -77,7 +77,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -87,7 +87,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -131,8 +131,8 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
               child: Stack(
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 30.0, 15.0, 24.0),
+                    padding: EdgeInsets.all(
+                        FlutterFlowTheme.of(context).designToken.spacing.md),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -178,7 +178,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 18.0, 12.0, 18.0),
+                                      12.0, 20.0, 12.0, 20.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -194,9 +194,9 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/product-received.png',
-                                              width: 60.0,
-                                              height: 60.0,
+                                              'assets/images/box_(1).png',
+                                              width: 55.0,
+                                              height: 55.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -285,7 +285,7 @@ MAH or... */
                                             child: Icon(
                                               Icons.arrow_forward_ios,
                                               color: Color(0xFF050505),
-                                              size: 22.0,
+                                              size: 20.0,
                                             ),
                                           ),
                                         ],
@@ -336,7 +336,7 @@ MAH or... */
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 18.0, 12.0, 18.0),
+                                      12.0, 20.0, 12.0, 20.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -353,8 +353,8 @@ MAH or... */
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/return-box.png',
-                                              width: 60.0,
-                                              height: 60.0,
+                                              width: 55.0,
+                                              height: 55.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -439,7 +439,7 @@ MAH or... */
                                             child: Icon(
                                               Icons.arrow_forward_ios,
                                               color: Color(0xFF050505),
-                                              size: 22.0,
+                                              size: 20.0,
                                             ),
                                           ),
                                         ],

@@ -114,7 +114,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             context.pushNamed(
@@ -145,7 +145,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -211,7 +211,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                       ),
                       Divider(
                         thickness: 2.0,
-                        color: Color(0xFFE0E3E7),
+                        color: FlutterFlowTheme.of(context).mainButtons,
                       ),
                       Padding(
                         padding:

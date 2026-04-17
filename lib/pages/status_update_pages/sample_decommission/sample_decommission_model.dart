@@ -2,13 +2,12 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'sample_decommission_widget.dart' show SampleDecommissionWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SampleDecommissionModel
     extends FlutterFlowModel<SampleDecommissionWidget> {
@@ -111,30 +110,7 @@ class SampleDecommissionModel
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
         addToScannedSerialToDecommission(serial);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Faild To Connect The Server',
-              style: FlutterFlowTheme.of(context).titleLarge.override(
-                    font: GoogleFonts.interTight(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                    ),
-                    color: Color(0xFFDDDDDD),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-            duration: Duration(milliseconds: 4000),
-            backgroundColor: FlutterFlowTheme.of(context).error,
-          ),
-        );
+        await action_blocks.serverConnectionFail(context);
       }
     }
 

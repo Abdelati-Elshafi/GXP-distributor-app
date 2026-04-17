@@ -1,3 +1,4 @@
+import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,14 @@ class _ExceptionsWidgetState extends State<ExceptionsWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              wrapWithModel(
+                model: _model.bottomBarModel,
+                updateCallback: () => safeSetState(() {}),
+                child: BottomBarWidget(),
+              ),
+            ],
           ),
         ),
       ),

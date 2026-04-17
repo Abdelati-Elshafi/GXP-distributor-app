@@ -76,9 +76,9 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -118,7 +118,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
         body: Stack(
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 24.0),
+              padding: EdgeInsets.all(
+                  FlutterFlowTheme.of(context).designToken.spacing.sm),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -154,7 +155,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF323394),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryTextColor,
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -167,7 +169,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                 ),
                                 Container(
                                   width: double.infinity,
-                                  height: 56.0,
+                                  height: 58.0,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(16.0),
@@ -377,7 +379,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                     .titleMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF323394),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryTextColor,
                                           fontSize: 20.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -394,7 +397,24 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                       width: double.infinity,
                                       height: 425.54,
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 8.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .outline,
+                                        ),
                                       ),
                                       child: Builder(
                                         builder: (context) {
@@ -461,7 +481,11 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                             _model.receivingShipmentApiResult =
                                                 await ShipmentsGroup
                                                     .receivingShipmentCall
-                                                    .call();
+                                                    .call(
+                                              shipmentSSCCList:
+                                                  _model.scannedSSCC,
+                                              shipmentType: 'normal',
+                                            );
 
                                             if ((_model
                                                     .receivingShipmentApiResult
@@ -534,7 +558,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF323394),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryTextColor,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -570,8 +595,78 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                   child: FFButtonWidget(
                                     onPressed: !(_model.scannedSSCC.isNotEmpty)
                                         ? null
-                                        : () {
-                                            print('ReturnRecive pressed ...');
+                                        : () async {
+                                            _model.loading = true;
+                                            safeSetState(() {});
+                                            _model.returnReceivingShipmentApiResult =
+                                                await ShipmentsGroup
+                                                    .receivingShipmentCall
+                                                    .call(
+                                              shipmentSSCCList:
+                                                  _model.scannedSSCC,
+                                              shipmentType: 'return receiving',
+                                            );
+
+                                            if ((_model
+                                                    .returnReceivingShipmentApiResult
+                                                    ?.succeeded ??
+                                                true)) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    '${ShipmentsGroup.receivingShipmentCall.message(
+                                                      (_model.receivingShipmentApiResult
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )}',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                ),
+                                              );
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    '${ShipmentsGroup.receivingShipmentCall.message(
+                                                      (_model.receivingShipmentApiResult
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )}',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                            }
+
+                                            _model.loading = false;
+                                            _model.scannedSSCC = [];
+                                            safeSetState(() {});
+
+                                            safeSetState(() {});
                                           },
                                     text: FFLocalizations.of(context).getText(
                                       'iem8iuzh' /* Return Receive */,
@@ -583,7 +678,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF323394),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryTextColor,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(

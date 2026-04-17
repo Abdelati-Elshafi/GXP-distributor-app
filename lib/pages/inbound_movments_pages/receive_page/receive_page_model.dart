@@ -3,6 +3,7 @@ import '/components/empty_list_view_display/empty_list_view_display_widget.dart'
 import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'receive_page_widget.dart' show ReceivePageWidget;
 import 'package:flutter/material.dart';
@@ -36,6 +37,8 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
   // Stores action output result for [Backend Call - API (Receiving Shipment)] action in ConfirmReceive widget.
   ApiCallResponse? receivingShipmentApiResult;
+  // Stores action output result for [Backend Call - API (Receiving Shipment)] action in ReturnRecive widget.
+  ApiCallResponse? returnReceivingShipmentApiResult;
   // Model for Loading component.
   late LoadingModel loadingModel;
 
@@ -98,6 +101,8 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
 
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
         addToScannedSSCC(serial);
+      } else {
+        await action_blocks.serverConnectionFail(context);
       }
     }
 

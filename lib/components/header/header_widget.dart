@@ -47,7 +47,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       width: double.infinity,
       height: 50.0,
       decoration: BoxDecoration(
-        color: Color(0xFF323394),
+        color: FlutterFlowTheme.of(context).primaryTextColor,
         borderRadius: BorderRadius.only(),
       ),
       child: Padding(

@@ -90,9 +90,9 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -135,7 +135,8 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
           child: Stack(
             children: [
               Padding(
-                padding: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(
+                    FlutterFlowTheme.of(context).designToken.spacing.sm),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -165,7 +166,8 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                             .bodyLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF323394),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryTextColor,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
@@ -204,7 +206,9 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                                     12.0, 0.0, 12.0, 0.0),
                                             child: Icon(
                                               Icons.qr_code_scanner,
-                                              color: Color(0xFF323394),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryTextColor,
                                               size: 24.0,
                                             ),
                                           ),
@@ -412,7 +416,8 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                           .bodyLarge
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF323394),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryTextColor,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -549,7 +554,8 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                                   .bodyLarge
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF323394),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryTextColor,
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
@@ -572,20 +578,19 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                                     width: double.infinity,
                                     height: 280.0,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(20.0),
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: FlutterFlowTheme.of(context)
+                                            .outline,
+                                        width: 2.0,
                                       ),
                                     ),
                                     child: Padding(
@@ -641,133 +646,124 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
                           ),
                         ],
                       ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: !((_model.scannedSerialToDecommission
-                                          .isNotEmpty) &&
-                                      (_model.reasonDropDownValue != null &&
-                                          _model.reasonDropDownValue != ''))
-                                  ? null
-                                  : () async {
-                                      _model.loadingIsVisable = true;
-                                      safeSetState(() {});
-                                      _model.updateSerialStatusApiResult =
-                                          await SerialStatusUpdateGroup
-                                              .updateSerialStatusCall
-                                              .call(
-                                        status: widget.decommissionReason,
-                                        reason: _model.reasonDropDownValue,
-                                        serialsList:
-                                            _model.scannedSerialToDecommission,
-                                        userName: FFAppState().userName,
-                                      );
-
-                                      if ((_model.updateSerialStatusApiResult
-                                              ?.succeeded ??
-                                          true)) {
-                                        _model.scannedSerialToDecommission = [];
-                                        safeSetState(() {});
-                                        safeSetState(() {
-                                          _model.reasonDropDownValueController
-                                              ?.reset();
-                                          _model.reasonDropDownValue = null;
-                                        });
-                                        safeSetState(() {
-                                          _model.enterSSCCTextController
-                                              ?.clear();
-                                        });
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Serials Statues Updated ',
-                                              style: TextStyle(
-                                                color: Color(0xFFDDDDDD),
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Faild To Connect The Server',
-                                              style: TextStyle(
-                                                color: Color(0xFFDDDDDD),
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .error,
-                                          ),
-                                        );
-                                      }
-
-                                      _model.loadingIsVisable = false;
-                                      safeSetState(() {});
-
-                                      safeSetState(() {});
-                                    },
-                              text: FFLocalizations.of(context).getText(
-                                '7yjvze18' /* Confirm Decommission */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 300.0,
-                                height: 56.0,
-                                padding: EdgeInsets.all(8.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: Color(0xFF323394),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleMedium
-                                    .override(
-                                      font: GoogleFonts.interTight(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .fontStyle,
-                                      ),
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .fontStyle,
-                                    ),
-                                elevation: 2.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                ),
-                                borderRadius: BorderRadius.circular(16.0),
-                                disabledColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                              ),
-                            ),
-                          ].divide(SizedBox(height: 16.0)),
-                        ),
-                      ),
                     ].divide(SizedBox(height: 24.0)),
                   ),
                 ),
               ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 1.0),
+                child: Padding(
+                  padding: EdgeInsets.all(
+                      FlutterFlowTheme.of(context).designToken.spacing.sm),
+                  child: FFButtonWidget(
+                    onPressed: !((_model
+                                .scannedSerialToDecommission.isNotEmpty) &&
+                            (_model.reasonDropDownValue != null &&
+                                _model.reasonDropDownValue != ''))
+                        ? null
+                        : () async {
+                            _model.loadingIsVisable = true;
+                            safeSetState(() {});
+                            _model.updateSerialStatusApiResult =
+                                await SerialStatusUpdateGroup
+                                    .updateSerialStatusCall
+                                    .call(
+                              status: widget.decommissionReason,
+                              reason: _model.reasonDropDownValue,
+                              serialsList: _model.scannedSerialToDecommission,
+                              userName: FFAppState().userName,
+                            );
+
+                            if ((_model
+                                    .updateSerialStatusApiResult?.succeeded ??
+                                true)) {
+                              _model.scannedSerialToDecommission = [];
+                              safeSetState(() {});
+                              safeSetState(() {
+                                _model.reasonDropDownValueController?.reset();
+                                _model.reasonDropDownValue = null;
+                              });
+                              safeSetState(() {
+                                _model.enterSSCCTextController?.clear();
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Serials Statues Updated ',
+                                    style: TextStyle(
+                                      color: Color(0xFFDDDDDD),
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Faild To Connect The Server',
+                                    style: TextStyle(
+                                      color: Color(0xFFDDDDDD),
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                ),
+                              );
+                            }
+
+                            _model.loadingIsVisable = false;
+                            safeSetState(() {});
+
+                            safeSetState(() {});
+                          },
+                    text: FFLocalizations.of(context).getText(
+                      'z3c0g4t5' /* Confirm Decommission */,
+                    ),
+                    options: FFButtonOptions(
+                      width: 300.0,
+                      height: 56.0,
+                      padding: EdgeInsets.all(8.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primaryTextColor,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleMedium.override(
+                                font: GoogleFonts.interTight(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
+                                ),
+                                color: Colors.white,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .fontStyle,
+                              ),
+                      elevation: 2.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
+                      disabledColor: FlutterFlowTheme.of(context).alternate,
+                    ),
+                  ),
+                ),
+              ),
               if (_model.loadingIsVisable)
-                wrapWithModel(
-                  model: _model.loadingModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: LoadingWidget(),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.loadingModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: LoadingWidget(),
+                  ),
                 ),
             ],
           ),

@@ -71,7 +71,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -81,7 +81,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -160,7 +160,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 18.0, 12.0, 18.0),
+                                  12.0, 20.0, 12.0, 20.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -169,9 +169,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
-                                      'assets/images/unpacking_(1).png',
-                                      width: 60.0,
-                                      height: 60.0,
+                                      'assets/images/box_(3).png',
+                                      width: 55.0,
+                                      height: 55.0,
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -279,7 +279,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 18.0, 15.0, 18.0),
+                                  15.0, 20.0, 15.0, 20.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -288,9 +288,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
-                                      'assets/images/package-box.png',
-                                      width: 60.0,
-                                      height: 60.0,
+                                      'assets/images/unpacking_(1).png',
+                                      width: 55.0,
+                                      height: 55.0,
                                       fit: BoxFit.contain,
                                     ),
                                   ),
@@ -398,7 +398,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 18.0, 15.0, 18.0),
+                                  15.0, 20.0, 15.0, 20.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -407,9 +407,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
-                                      'assets/images/unpack.png',
-                                      width: 60.0,
-                                      height: 60.0,
+                                      'assets/images/unpacking_(2).png',
+                                      width: 55.0,
+                                      height: 55.0,
                                       fit: BoxFit.contain,
                                     ),
                                   ),

@@ -732,7 +732,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'العناصر الممسوحة ضوئيًا',
       'hi': 'स्कैन की गई वस्तुएँ',
     },
-    '7yjvze18': {
+    'z3c0g4t5': {
       'en': 'Confirm Decommission',
       'ar': 'تأكيد إيقاف التشغيل',
       'hi': 'डीकमीशन की पुष्टि करें',
@@ -856,30 +856,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
       'hi': '',
     },
-    '8j1jyps8': {
-      'en': 'SSCC: ',
-      'ar': 'إس إس سي سي:',
-      'hi': 'एसएससीसी:',
-    },
-    'wq9ult9n': {
-      'en': 'Cases: ',
-      'ar': 'حالات:',
-      'hi': 'मामले:',
-    },
-    'jxnj3wve': {
-      'en': '0',
-      'ar': '0',
-      'hi': '0',
-    },
-    'lqfuqvfo': {
-      'en': 'Items: ',
-      'ar': 'أغراض:',
-      'hi': 'सामान:',
-    },
-    'kc4zfev3': {
-      'en': '0',
-      'ar': '0',
-      'hi': '0',
+    'j792rer1': {
+      'en': 'Select Reason',
+      'ar': 'حدد السبب',
+      'hi': 'कारण चुनें',
     },
     'nw4p9uit': {
       'en': 'Choose Reason',
@@ -1073,11 +1053,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // reports
   {
-    'jo8u5hn1': {
-      'en': 'Soon ',
-      'ar': '',
-      'hi': '',
-    },
     'qmeux5ui': {
       'en': 'Reports',
       'ar': 'بيت',
@@ -1251,7 +1226,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // BottomBar
   {
     'dsk0rvi3': {
-      'en': 'Home',
+      'en': 'Dashboard',
       'ar': 'بيت',
       'hi': 'घर',
     },

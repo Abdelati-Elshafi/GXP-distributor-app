@@ -97,8 +97,9 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                                         .titleMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF323394),
-                                  fontSize: 16.0,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryTextColor,
+                                  fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)
@@ -109,7 +110,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                           Align(
                             alignment: AlignmentDirectional(0.0, 1.0),
                             child: Container(
-                              width: 110.0,
+                              width: 100.0,
                               height: 40.0,
                               decoration: BoxDecoration(
                                 color: Color(0xFFF3601F),
@@ -120,7 +121,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    6.0, 0.0, 6.0, 0.0),
+                                    5.0, 0.0, 5.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -151,7 +152,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Colors.white,
-                                              fontSize: 18.0,
+                                              fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -174,7 +175,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                     ),
                     Divider(
                       thickness: 2.0,
-                      color: Color(0xFFE0E3E7),
+                      color: FlutterFlowTheme.of(context).mainButtons,
                     ),
                     Padding(
                       padding:

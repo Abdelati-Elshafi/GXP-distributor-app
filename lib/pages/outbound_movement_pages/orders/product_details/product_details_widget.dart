@@ -117,7 +117,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -247,59 +247,100 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(
-                                            'Required Qty: ${valueOrDefault<String>(
-                                              widget.requiredQTY?.toString(),
-                                              '0',
-                                            )}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xFFF3601F),
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
+                                          Container(
+                                            width: 140.0,
+                                            height: 60.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFF1D6CA),
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(8.0),
+                                                topRight: Radius.circular(8.0),
+                                                bottomLeft:
+                                                    Radius.circular(8.0),
+                                                bottomRight:
+                                                    Radius.circular(8.0),
+                                              ),
+                                            ),
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Text(
+                                                'Required Qty: ${valueOrDefault<String>(
+                                                  widget.requiredQTY
+                                                      ?.toString(),
+                                                  '0',
+                                                )}',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Color(0xFFF3601F),
+                                                      fontSize: 13.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                              ),
+                                            ),
                                           ),
-                                          Text(
-                                            'Scanned Qty: ${valueOrDefault<String>(
-                                              widget.scannedQTY?.toString(),
-                                              '0',
-                                            )}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Colors.blue,
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
+                                          Container(
+                                            width: 140.0,
+                                            height: 60.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFD1E5FA),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Text(
+                                                'Scanned Qty: ${valueOrDefault<String>(
+                                                  widget.scannedQTY
+                                                      ?.toString(),
+                                                  '0',
+                                                )}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.blue,
+                                                          fontSize: 13.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -331,22 +372,24 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                         FFLocalizations.of(context).getText(
                           'hm9wo4ix' /* Scanned Codes */,
                         ),
-                        style:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0xFF323394),
-                                  fontSize: 22.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontStyle,
-                                ),
+                        style: FlutterFlowTheme.of(context)
+                            .titleMedium
+                            .override(
+                              font: GoogleFonts.interTight(
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .fontStyle,
+                              ),
+                              color:
+                                  FlutterFlowTheme.of(context).primaryTextColor,
+                              fontSize: 22.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .fontStyle,
+                            ),
                       ),
                     ),
                     Expanded(
@@ -473,7 +516,8 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconColor: Colors.white,
-                              color: Color(0xFF323394),
+                              color:
+                                  FlutterFlowTheme.of(context).primaryTextColor,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(

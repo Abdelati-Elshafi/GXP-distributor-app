@@ -116,9 +116,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -185,6 +185,10 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF323394),
+                              width: 2.0,
+                            ),
                           ),
                           child: Padding(
                             padding: EdgeInsets.all(15.0),
@@ -520,7 +524,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                           .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF323394),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryTextColor,
                                     fontSize: 22.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,

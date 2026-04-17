@@ -104,7 +104,7 @@ class _SideBarWidgetState extends State<SideBarWidget> {
                     width: 48.0,
                     height: 48.0,
                     decoration: BoxDecoration(
-                      color: Color(0xFF323394),
+                      color: FlutterFlowTheme.of(context).primaryTextColor,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: Icon(
@@ -124,7 +124,7 @@ class _SideBarWidgetState extends State<SideBarWidget> {
                                 .titleMedium
                                 .fontStyle,
                           ),
-                          color: Color(0xFF323394),
+                          color: FlutterFlowTheme.of(context).primaryTextColor,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
                           fontStyle: FlutterFlowTheme.of(context)
@@ -177,7 +177,8 @@ class _SideBarWidgetState extends State<SideBarWidget> {
                             width: double.infinity,
                             height: 40.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFF323394),
+                              color:
+                                  FlutterFlowTheme.of(context).primaryTextColor,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(

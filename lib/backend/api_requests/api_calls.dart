@@ -502,14 +502,15 @@ class ConfirmShipmentCall {
 
 class ReceivingShipmentCall {
   Future<ApiCallResponse> call({
-    String? shipmentSSCC = '',
+    List<String>? shipmentSSCCList,
     String? shipmentType = '',
   }) async {
     final baseUrl = ShipmentsGroup.getBaseUrl();
+    final shipmentSSCC = _serializeList(shipmentSSCCList);
 
     final ffApiRequestBody = '''
 {
-  "ShipmentSSCC": "${escapeStringForJson(shipmentSSCC)}",
+  "ShipmentSSCC": "${shipmentSSCC}",
   "ShipmentType": "${escapeStringForJson(shipmentType)}"
 }''';
     return ApiManager.instance.makeApiCall(

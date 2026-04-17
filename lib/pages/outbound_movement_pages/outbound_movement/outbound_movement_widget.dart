@@ -77,7 +77,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -87,7 +87,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderRadius: 20.0,
@@ -165,7 +165,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 18.0, 0.0, 18.0),
+                                12.0, 20.0, 12.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -173,9 +173,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
-                                    'assets/images/cargo.png',
-                                    width: 70.0,
-                                    height: 80.0,
+                                    'assets/images/checklist.png',
+                                    width: 55.0,
+                                    height: 55.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -283,7 +283,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 18.0, 0.0, 18.0),
+                                12.0, 20.0, 12.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -292,8 +292,8 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
                                     'assets/images/fast-delivery.png',
-                                    width: 70.0,
-                                    height: 80.0,
+                                    width: 60.0,
+                                    height: 60.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -401,7 +401,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 18.0, 0.0, 18.0),
+                                12.0, 20.0, 12.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -409,9 +409,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
-                                    'assets/images/back.png',
-                                    width: 70.0,
-                                    height: 80.0,
+                                    'assets/images/return-box_(1).png',
+                                    width: 65.0,
+                                    height: 65.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),

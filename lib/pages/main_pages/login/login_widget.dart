@@ -76,7 +76,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Padding(
@@ -98,17 +98,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: 220.0,
-                            height: 80.0,
+                            width: 250.0,
+                            height: 180.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
-                                'assets/images/WhatsApp_Image_2025-08-07_at_23.55.07_ffb6cbc4.jpg',
-                                width: 200.0,
-                                height: 200.0,
+                                'assets/images/42d43e92-c1ff-49c5-a57d-ca8aaa87260e.png',
                                 fit: BoxFit.fitWidth,
                               ),
                             ),
@@ -214,7 +212,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     FFLocalizations.of(context).getText(
                                   'l7790hcr' /* Search... */,
                                 ),
-                                searchCursorColor: Color(0xFF323394),
+                                searchCursorColor: FlutterFlowTheme.of(context)
+                                    .primaryTextColor,
                                 icon: Icon(
                                   Icons.keyboard_arrow_down_rounded,
                                   color: Color(0xFF8181BC),
@@ -301,7 +300,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0xFF323394),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryTextColor,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
@@ -362,7 +362,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                cursorColor: Color(0xFF323394),
+                                cursorColor: FlutterFlowTheme.of(context)
+                                    .primaryTextColor,
                                 validator: _model
                                     .passwordTextControllerValidator
                                     .asValidator(context),

@@ -77,9 +77,9 @@ class _UnpackWidgetState extends State<UnpackWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F8F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFF323394),
+          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -180,7 +180,9 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                     12.0, 0.0, 12.0, 0.0),
                                             child: Icon(
                                               Icons.qr_code_scanner,
-                                              color: Color(0xFF323394),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryTextColor,
                                               size: 24.0,
                                             ),
                                           ),
@@ -388,7 +390,8 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                       .bodyLarge
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF323394),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryTextColor,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
@@ -500,7 +503,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                           padding: EdgeInsets.all(8.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF323394),
+                          color: FlutterFlowTheme.of(context).primaryTextColor,
                           textStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     font: GoogleFonts.interTight(

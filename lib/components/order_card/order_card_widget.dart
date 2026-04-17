@@ -113,7 +113,8 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                           .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF323394),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryTextColor,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,

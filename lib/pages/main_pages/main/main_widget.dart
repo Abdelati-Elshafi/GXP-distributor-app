@@ -84,7 +84,7 @@ class _MainWidgetState extends State<MainWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFE0E3E7),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -96,56 +96,48 @@ class _MainWidgetState extends State<MainWidget> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70.0),
           child: AppBar(
-            backgroundColor: Color(0xFF323394),
+            backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
             automaticallyImplyLeading: false,
             title: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/warehouse_(3).png',
                       width: 50.0,
                       height: 50.0,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.asset(
-                            'assets/images/wholesaler_(2).png',
-                          ).image,
-                        ),
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
+                      fit: BoxFit.cover,
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'w4vxk7v1' /* Distributor Operations */,
-                        ),
-                        style: FlutterFlowTheme.of(context).titleLarge.override(
-                              font: GoogleFonts.interTight(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .fontStyle,
-                              ),
-                              color: Colors.white,
-                              fontSize: 25.0,
-                              letterSpacing: 0.0,
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        'w4vxk7v1' /* Distributor Operations */,
+                      ),
+                      style: FlutterFlowTheme.of(context).titleLarge.override(
+                            font: GoogleFonts.interTight(
                               fontWeight: FontWeight.w600,
                               fontStyle: FlutterFlowTheme.of(context)
                                   .titleLarge
                                   .fontStyle,
                             ),
-                      ),
+                            color: Colors.white,
+                            fontSize: 25.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             actions: [],
@@ -160,11 +152,9 @@ class _MainWidgetState extends State<MainWidget> {
               child: Container(
                 width: double.infinity,
                 height: 100.0,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -172,8 +162,10 @@ class _MainWidgetState extends State<MainWidget> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 20.0),
+                          padding: EdgeInsets.all(FlutterFlowTheme.of(context)
+                              .designToken
+                              .spacing
+                              .md),
                           child: GridView(
                             padding: EdgeInsets.zero,
                             gridDelegate:
@@ -192,9 +184,9 @@ class _MainWidgetState extends State<MainWidget> {
                                   return 2;
                                 }
                               }(),
-                              crossAxisSpacing: 30.0,
-                              mainAxisSpacing: 30.0,
-                              childAspectRatio: 1.0,
+                              crossAxisSpacing: 35.0,
+                              mainAxisSpacing: 35.0,
+                              childAspectRatio: 0.9,
                             ),
                             primary: false,
                             shrinkWrap: true,
@@ -219,18 +211,19 @@ class _MainWidgetState extends State<MainWidget> {
                                     width: 100.0,
                                     height: 100.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .mainButtons,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -274,7 +267,9 @@ class _MainWidgetState extends State<MainWidget> {
                                                               .titleMedium
                                                               .fontStyle,
                                                     ),
-                                                    color: Color(0xFF323394),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryTextColor,
                                                     fontSize: 19.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -311,18 +306,19 @@ class _MainWidgetState extends State<MainWidget> {
                                     width: 100.0,
                                     height: 100.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .mainButtons,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(16.0),
@@ -335,7 +331,7 @@ class _MainWidgetState extends State<MainWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/inbound_(1).png',
+                                              'assets/images/inbound.png',
                                               width: 75.0,
                                               height: 75.0,
                                               fit: BoxFit.contain,
@@ -365,7 +361,9 @@ class _MainWidgetState extends State<MainWidget> {
                                                               .titleMedium
                                                               .fontStyle,
                                                     ),
-                                                    color: Color(0xFF323394),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryTextColor,
                                                     fontSize: 20.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -402,18 +400,19 @@ class _MainWidgetState extends State<MainWidget> {
                                     width: 100.0,
                                     height: 100.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .mainButtons,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(16.0),
@@ -463,8 +462,9 @@ class _MainWidgetState extends State<MainWidget> {
                                                                     .titleMedium
                                                                     .fontStyle,
                                                           ),
-                                                          color:
-                                                              Color(0xFF323394),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryTextColor,
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -503,18 +503,19 @@ class _MainWidgetState extends State<MainWidget> {
                                     width: 100.0,
                                     height: 100.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE0E3E7),
+                                      color: FlutterFlowTheme.of(context)
+                                          .mainButtons,
                                       boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 8.0,
-                                          color: Color(0x1A000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .shadow
+                                            .lg
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .mainButtons,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(16.0),
@@ -530,7 +531,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Image.asset(
-                                                'assets/images/package.png',
+                                                'assets/images/unpacking.png',
                                                 width: 65.0,
                                                 height: 65.0,
                                                 fit: BoxFit.contain,
@@ -561,7 +562,9 @@ class _MainWidgetState extends State<MainWidget> {
                                                               .titleMedium
                                                               .fontStyle,
                                                     ),
-                                                    color: Color(0xFF323394),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryTextColor,
                                                     fontSize: 18.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
