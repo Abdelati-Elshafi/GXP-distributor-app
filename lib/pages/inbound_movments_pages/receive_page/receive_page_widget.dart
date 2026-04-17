@@ -317,13 +317,49 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                   await actions.parseSSCCScan(
                                                 _model.scannedSSCCAction,
                                               );
-                                              await _model.checkSerialStatus(
-                                                context,
-                                                serial: getJsonField(
-                                                  _model.parseSSCCData,
-                                                  r'''$.sscc''',
-                                                ).toString(),
-                                              );
+                                              if (getJsonField(
+                                                _model.parseSSCCData,
+                                                r'''$.success''',
+                                              )) {
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title:
+                                                                  Text('test'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Confirm'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        ) ??
+                                                        false;
+                                              } else {
+                                                await _model.checkSerialStatus(
+                                                  context,
+                                                  serial: getJsonField(
+                                                    _model.parseSSCCData,
+                                                    r'''$.sscc''',
+                                                  ).toString(),
+                                                );
+                                              }
                                             }
 
                                             safeSetState(() {});
