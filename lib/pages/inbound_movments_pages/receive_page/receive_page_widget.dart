@@ -313,14 +313,16 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                     '-1'
                                                 ? true
                                                 : false)) {
-                                              _model.parsedGs1Code =
-                                                  await actions.parseGs1Scan(
+                                              _model.parseSSCCData =
+                                                  await actions.parseSSCCScan(
                                                 _model.scannedSSCCAction,
                                               );
                                               await _model.checkSerialStatus(
                                                 context,
-                                                serial:
-                                                    _model.scannedSSCCAction,
+                                                serial: getJsonField(
+                                                  _model.parseSSCCData,
+                                                  r'''$.sscc''',
+                                                ).toString(),
                                               );
                                             }
 

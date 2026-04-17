@@ -31,8 +31,8 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedSSCCAction = '';
-  // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
-  dynamic parsedGs1Code;
+  // Stores action output result for [Custom Action - parseSSCCScan] action in ScanButton widget.
+  dynamic parseSSCCData;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
   // Stores action output result for [Backend Call - API (Receiving Shipment)] action in ConfirmReceive widget.
