@@ -176,7 +176,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // StatusUpdate
   {
     'yxawa3vr': {
-      'en': 'Sample',
+      'en': 'Samplee',
       'ar': 'عينة',
       'hi': 'नमूना',
     },

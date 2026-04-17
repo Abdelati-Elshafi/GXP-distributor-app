@@ -231,7 +231,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'yxawa3vr' /* Sample */,
+                                                    'yxawa3vr' /* Samplee */,
                                                   ),
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
