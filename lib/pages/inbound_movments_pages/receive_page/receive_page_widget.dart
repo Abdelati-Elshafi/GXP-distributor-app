@@ -319,10 +319,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                               );
                                               await _model.checkSerialStatus(
                                                 context,
-                                                serial: getJsonField(
-                                                  _model.parsedGs1Code,
-                                                  r'''$.serial''',
-                                                ).toString(),
+                                                serial:
+                                                    _model.scannedSSCCAction,
                                               );
                                             }
 
