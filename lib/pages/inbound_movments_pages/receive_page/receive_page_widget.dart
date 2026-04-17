@@ -317,26 +317,13 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                   await actions.parseGs1Scan(
                                                 _model.scannedSSCCAction,
                                               );
-                                              safeSetState(() {
-                                                _model.enterSSCCTextController
-                                                    ?.text = getJsonField(
+                                              await _model.checkSerialStatus(
+                                                context,
+                                                serial: getJsonField(
                                                   _model.parsedGs1Code,
-                                                  r'''$.serial''',
-                                                ).toString();
-                                                _model.enterSSCCFocusNode
-                                                    ?.requestFocus();
-                                                WidgetsBinding.instance
-                                                    .addPostFrameCallback((_) {
-                                                  _model.enterSSCCTextController
-                                                          ?.selection =
-                                                      TextSelection.collapsed(
-                                                    offset: _model
-                                                        .enterSSCCTextController!
-                                                        .text
-                                                        .length,
-                                                  );
-                                                });
-                                              });
+                                                  r'''$.sscc''',
+                                                ).toString(),
+                                              );
                                             }
 
                                             safeSetState(() {});
