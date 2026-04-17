@@ -306,7 +306,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                 'py4acxlu' /* Cancel */,
                                               ), // cancel button text
                                               true, // whether to show the flash icon
-                                              ScanMode.QR,
+                                              ScanMode.BARCODE,
                                             );
 
                                             if (!(_model.scannedSSCCAction ==
