@@ -317,41 +317,10 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                   await actions.parseSsccOnly(
                                                 _model.scannedSSCCAction,
                                               );
-                                              if (getJsonField(
+                                              if (!getJsonField(
                                                 _model.parseSSCCData,
                                                 r'''$.success''',
                                               )) {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title:
-                                                                  Text('test'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancel'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Confirm'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                              } else {
                                                 await _model.checkSerialStatus(
                                                   context,
                                                   serial: getJsonField(
@@ -360,6 +329,36 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                   ).toString(),
                                                 );
                                               }
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(_model
+                                                                .scannedSSCCAction),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Confirm'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
                                             }
 
                                             safeSetState(() {});
