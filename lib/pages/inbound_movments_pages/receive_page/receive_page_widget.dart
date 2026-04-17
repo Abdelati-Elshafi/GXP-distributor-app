@@ -321,7 +321,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                 context,
                                                 serial: getJsonField(
                                                   _model.parsedGs1Code,
-                                                  r'''$.sscc''',
+                                                  r'''$.serial''',
                                                 ).toString(),
                                               );
                                             }
