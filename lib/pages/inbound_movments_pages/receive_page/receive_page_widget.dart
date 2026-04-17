@@ -317,7 +317,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                   await actions.parseStrictSscc(
                                                 _model.scannedSSCCAction,
                                               );
-                                              if (!getJsonField(
+                                              if (getJsonField(
                                                 _model.parseSSCCData,
                                                 r'''$.success''',
                                               )) {
