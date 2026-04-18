@@ -459,8 +459,12 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                                 .elementAtOrNull(
                                                     itemInListIndex)!,
                                             index: itemInListIndex,
-                                            deletefromsscclistaction:
-                                                () async {},
+                                            deletefromsscclistaction: () async {
+                                              _model
+                                                  .removeAtIndexFromOrderProductserials(
+                                                      itemInListIndex);
+                                              safeSetState(() {});
+                                            },
                                           );
                                         },
                                       );
