@@ -94,7 +94,7 @@ class _SSCCDetailsCardWidgetState extends State<SSCCDetailsCardWidget> {
                   children: [
                     Expanded(
                       child: Text(
-                        'SSCC: ${widget.sscc}',
+                        'Serial: ${widget.sscc}',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.inter(
                                 fontWeight: FontWeight.bold,
