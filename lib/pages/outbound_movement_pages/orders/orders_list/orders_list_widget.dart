@@ -154,11 +154,10 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
                   builder: (context) {
                     final itemInList = _model.ordersData.toList();
 
-                    return ListView.separated(
+                    return ListView.builder(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
                       itemCount: itemInList.length,
-                      separatorBuilder: (_, __) => SizedBox(height: 16.0),
                       itemBuilder: (context, itemInListIndex) {
                         final itemInListItem = itemInList[itemInListIndex];
                         return Padding(

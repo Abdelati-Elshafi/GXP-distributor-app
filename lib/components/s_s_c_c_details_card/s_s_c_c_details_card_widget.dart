@@ -12,15 +12,11 @@ class SSCCDetailsCardWidget extends StatefulWidget {
     required this.sscc,
     required this.deletefromsscclistaction,
     required this.index,
-    required this.itemsNo,
-    required this.type,
   });
 
   final String? sscc;
   final Future Function()? deletefromsscclistaction;
   final int? index;
-  final int? itemsNo;
-  final String? type;
 
   @override
   State<SSCCDetailsCardWidget> createState() => _SSCCDetailsCardWidgetState();

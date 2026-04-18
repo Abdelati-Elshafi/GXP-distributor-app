@@ -302,7 +302,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                   '#C62828', // scanning line color
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'tiaie4qg' /* Cancel */,
+                                                    'wn7xzk6e' /* Cancel */,
                                                   ), // cancel button text
                                                   true, // whether to show the flash icon
                                                   ScanMode.QR,

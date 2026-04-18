@@ -556,6 +556,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يلغي',
       'hi': 'रद्द करना',
     },
+    'eb5ppw2s': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+      'hi': 'रद्द करना',
+    },
   },
   // Shipping
   {
@@ -750,7 +755,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
       'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
-    'eb5ppw2s': {
+    'tiaie4qg': {
       'en': 'Cancel',
       'ar': 'يلغي',
       'hi': 'रद्द करना',
@@ -818,7 +823,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
       'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
-    'tiaie4qg': {
+    'wn7xzk6e': {
       'en': 'Cancel',
       'ar': '',
       'hi': '',

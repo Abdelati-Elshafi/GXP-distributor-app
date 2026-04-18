@@ -784,6 +784,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                             .elementAtOrNull(itemInListIndex),
                                         r'''$.scannedQty''',
                                       ),
+                                      orderNO: _model.orderno!,
+                                      orderSSCC: _model.sscc!,
                                     );
                                   },
                                 );

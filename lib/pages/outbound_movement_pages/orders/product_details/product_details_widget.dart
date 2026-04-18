@@ -4,8 +4,10 @@ import '/components/s_s_c_c_details_card/s_s_c_c_details_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'product_details_model.dart';
@@ -42,12 +44,16 @@ class ProductDetailsWidget extends StatefulWidget {
     this.productGTIN,
     this.requiredQTY,
     this.scannedQTY,
+    required this.orderNO,
+    required this.orderSSCC,
   });
 
   final String? productname;
   final String? productGTIN;
   final int? requiredQTY;
   final int? scannedQTY;
+  final String? orderNO;
+  final String? orderSSCC;
 
   static String routeName = 'ProductDetails';
   static String routePath = '/productDetails';
@@ -71,15 +77,21 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
       _model.loading = true;
       safeSetState(() {});
       _model.productSerialsDetailsApiResult =
-          await OrdersAPIsGroup.productSerialsDetailsCall.call();
+          await OrdersAPIsGroup.productSerialsDetailsCall.call(
+        gtin: widget.productGTIN,
+        orderNo: widget.orderNO,
+        sscc: widget.orderSSCC,
+      );
 
       if ((_model.productSerialsDetailsApiResult?.succeeded ?? true)) {
-        _model.serialsdata = OrdersAPIsGroup.productSerialsDetailsCall
+        _model.orderProductserials = OrdersAPIsGroup.productSerialsDetailsCall
             .productSerialsData(
               (_model.productSerialsDetailsApiResult?.jsonBody ?? ''),
             )!
+            .map((e) => e.toString())
             .toList()
-            .cast<dynamic>();
+            .toList()
+            .cast<String>();
         safeSetState(() {});
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -245,11 +257,10 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Container(
-                                            width: 140.0,
-                                            height: 60.0,
+                                            height: 50.0,
                                             decoration: BoxDecoration(
                                               color: Color(0xFFF1D6CA),
                                               borderRadius: BorderRadius.only(
@@ -264,73 +275,19 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                             child: Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
-                                              child: Text(
-                                                'Required Qty: ${valueOrDefault<String>(
-                                                  widget.requiredQTY
-                                                      ?.toString(),
-                                                  '0',
-                                                )}',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color: Color(0xFFF3601F),
-                                                      fontSize: 13.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: 140.0,
-                                            height: 60.0,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFFD1E5FA),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Text(
-                                                'Scanned Qty: ${valueOrDefault<String>(
-                                                  widget.scannedQTY
-                                                      ?.toString(),
-                                                  '0',
-                                                )}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: Colors.blue,
-                                                          fontSize: 13.0,
-                                                          letterSpacing: 0.0,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Text(
+                                                  'Required Qty: ${valueOrDefault<String>(
+                                                    widget.requiredQTY
+                                                        ?.toString(),
+                                                    '0',
+                                                  )}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontStyle:
@@ -339,6 +296,65 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
+                                                        color:
+                                                            Color(0xFFF3601F),
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 50.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFD1E5FA),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Text(
+                                                  'Scanned Qty: ${valueOrDefault<String>(
+                                                    widget.scannedQTY
+                                                        ?.toString(),
+                                                    '0',
+                                                  )}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: Colors.blue,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -423,7 +439,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                   child: Builder(
                                     builder: (context) {
                                       final itemInList =
-                                          _model.serialsdata.toList();
+                                          _model.orderProductserials.toList();
 
                                       return ListView.separated(
                                         padding: EdgeInsets.symmetric(
@@ -441,25 +457,10 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                           return SSCCDetailsCardWidget(
                                             key: Key(
                                                 'Keyzt0_${itemInListIndex}_of_${itemInList.length}'),
-                                            sscc: getJsonField(
-                                              _model.serialsdata
-                                                  .elementAtOrNull(
-                                                      itemInListIndex),
-                                              r'''$.serial''',
-                                            ).toString(),
+                                            sscc: _model.orderProductserials
+                                                .elementAtOrNull(
+                                                    itemInListIndex)!,
                                             index: itemInListIndex,
-                                            itemsNo: getJsonField(
-                                              _model.serialsdata
-                                                  .elementAtOrNull(
-                                                      itemInListIndex),
-                                              r'''$.childCounts.item''',
-                                            ),
-                                            type: getJsonField(
-                                              _model.serialsdata
-                                                  .elementAtOrNull(
-                                                      itemInListIndex),
-                                              r'''$.type''',
-                                            ).toString(),
                                             deletefromsscclistaction:
                                                 () async {},
                                           );
@@ -608,10 +609,95 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
-                      child: Icon(
-                        Icons.qr_code_scanner,
-                        color: Colors.white,
-                        size: 30.0,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          _model.scannedcode =
+                              await FlutterBarcodeScanner.scanBarcode(
+                            '#C62828', // scanning line color
+                            FFLocalizations.of(context).getText(
+                              'eb5ppw2s' /* Cancel */,
+                            ), // cancel button text
+                            true, // whether to show the flash icon
+                            ScanMode.BARCODE,
+                          );
+
+                          if (!(_model.scannedcode == '-1' ? true : false)) {
+                            _model.parseSSCCData =
+                                await actions.parseStrictSscc(
+                              _model.scannedcode,
+                            );
+                            if (getJsonField(
+                              _model.parseSSCCData,
+                              r'''$.success''',
+                            )) {
+                              await _model.checkSerialStatus(
+                                context,
+                                serial: getJsonField(
+                                  _model.parseSSCCData,
+                                  r'''$.sscc''',
+                                ).toString(),
+                                scannedSerialList: _model.orderProductserials,
+                              );
+                              safeSetState(() {});
+                            } else {
+                              _model.gS1ParsedData = await actions.parseGs1Scan(
+                                _model.scannedcode,
+                              );
+                              if (getJsonField(
+                                _model.gS1ParsedData,
+                                r'''$.success''',
+                              )) {
+                                await _model.checkSerialStatus(
+                                  context,
+                                  serial: getJsonField(
+                                    _model.gS1ParsedData,
+                                    r'''$.serial''',
+                                  ).toString(),
+                                  scannedSerialList: _model.orderProductserials,
+                                );
+                                safeSetState(() {});
+                              } else {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Not GS1 Code'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Confirm'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                              }
+                            }
+                          }
+
+                          safeSetState(() {});
+                        },
+                        child: Icon(
+                          Icons.qr_code_scanner,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
                       ),
                     ),
                   ),

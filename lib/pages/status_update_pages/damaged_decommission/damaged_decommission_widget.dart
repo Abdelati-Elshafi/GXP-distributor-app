@@ -330,7 +330,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                   '#C62828', // scanning line color
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'eb5ppw2s' /* Cancel */,
+                                                    'tiaie4qg' /* Cancel */,
                                                   ), // cancel button text
                                                   true, // whether to show the flash icon
                                                   ScanMode.BARCODE,

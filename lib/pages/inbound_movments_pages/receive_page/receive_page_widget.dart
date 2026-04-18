@@ -462,8 +462,6 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                     .elementAtOrNull(
                                                         itemInListIndex)!,
                                                 index: itemInListIndex,
-                                                itemsNo: 10,
-                                                type: 't',
                                                 deletefromsscclistaction:
                                                     () async {
                                                   _model

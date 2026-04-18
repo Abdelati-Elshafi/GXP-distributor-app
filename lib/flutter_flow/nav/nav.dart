@@ -200,6 +200,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'scannedQTY',
               ParamType.int,
             ),
+            orderNO: params.getParam(
+              'orderNO',
+              ParamType.String,
+            ),
+            orderSSCC: params.getParam(
+              'orderSSCC',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(

@@ -13,6 +13,8 @@ class ProductDetailsCardWidget extends StatefulWidget {
     String? productGTIN,
     int? requiredQTY,
     int? scannedQTY,
+    required this.orderNO,
+    required this.orderSSCC,
   })  : this.productname = productname ?? 'Paracetamol 500mg',
         this.productGTIN = productGTIN ?? '123456789',
         this.requiredQTY = requiredQTY ?? 80,
@@ -22,6 +24,8 @@ class ProductDetailsCardWidget extends StatefulWidget {
   final String productGTIN;
   final int requiredQTY;
   final int scannedQTY;
+  final String? orderNO;
+  final String? orderSSCC;
 
   @override
   State<ProductDetailsCardWidget> createState() =>
@@ -78,6 +82,14 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
               'scannedQTY': serializeParam(
                 widget.scannedQTY,
                 ParamType.int,
+              ),
+              'orderNO': serializeParam(
+                widget.orderNO,
+                ParamType.String,
+              ),
+              'orderSSCC': serializeParam(
+                widget.orderSSCC,
+                ParamType.String,
               ),
             }.withoutNulls,
           );

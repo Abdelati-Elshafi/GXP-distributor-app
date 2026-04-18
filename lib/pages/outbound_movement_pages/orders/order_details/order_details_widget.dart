@@ -595,6 +595,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                               productsitemIndex),
                                           r'''$.scannedQty''',
                                         ),
+                                        orderNO: widget.ordernumber,
+                                        orderSSCC: _model.sscc!,
                                       );
                                     },
                                   );
