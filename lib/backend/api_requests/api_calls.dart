@@ -411,6 +411,15 @@ class ProductSerialsDetailsCall {
         r'''$.data.nodes''',
         true,
       ) as List?;
+  List<String>? serials(dynamic response) => (getJsonField(
+        response,
+        r'''$.data.nodes[:].serial''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 /// End OrdersAPIs Group Code

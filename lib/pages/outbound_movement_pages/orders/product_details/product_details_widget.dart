@@ -85,11 +85,9 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
 
       if ((_model.productSerialsDetailsApiResult?.succeeded ?? true)) {
         _model.orderProductserials = OrdersAPIsGroup.productSerialsDetailsCall
-            .productSerialsData(
+            .serials(
               (_model.productSerialsDetailsApiResult?.jsonBody ?? ''),
             )!
-            .map((e) => e.toString())
-            .toList()
             .toList()
             .cast<String>();
         safeSetState(() {});
