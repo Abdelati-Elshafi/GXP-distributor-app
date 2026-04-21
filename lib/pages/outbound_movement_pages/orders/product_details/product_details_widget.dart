@@ -258,6 +258,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Container(
+                                            width: 120.0,
                                             height: 50.0,
                                             decoration: BoxDecoration(
                                               color: Color(0xFFF1D6CA),
@@ -311,6 +312,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                             ),
                                           ),
                                           Container(
+                                            width: 120.0,
                                             height: 50.0,
                                             decoration: BoxDecoration(
                                               color: Color(0xFFD1E5FA),
@@ -646,28 +648,6 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               );
                               safeSetState(() {});
                             } else {
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('notsscc'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('Confirm'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
                               _model.gS1ParsedData = await actions.parseGs1Scan(
                                 _model.scannedcode,
                               );
@@ -675,37 +655,49 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                 _model.gS1ParsedData,
                                 r'''$.success''',
                               )) {
-                                await _model.checkSerialStatus(
-                                  context,
-                                  serial: getJsonField(
-                                    _model.gS1ParsedData,
-                                    r'''$.serial''',
-                                  ).toString(),
-                                  scannedSerialList: _model.orderProductserials,
-                                );
-                                safeSetState(() {});
+                                if (getJsonField(
+                                      _model.gS1ParsedData,
+                                      r'''$.serial''',
+                                    ) !=
+                                    null) {
+                                  await _model.checkSerialStatus(
+                                    context,
+                                    serial: getJsonField(
+                                      _model.gS1ParsedData,
+                                      r'''$.serial''',
+                                    ).toString(),
+                                    scannedSerialList:
+                                        _model.orderProductserials,
+                                  );
+                                  safeSetState(() {});
+                                }
                               } else {
-                                confirmDialogResponse = await showDialog<bool>(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Not GS1 Code'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, false),
-                                              child: Text('Cancel'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, true),
-                                              child: Text('Confirm'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ) ??
-                                    false;
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Not GS1 Code'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Confirm'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
                               }
                             }
                           }
