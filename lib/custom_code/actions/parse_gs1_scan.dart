@@ -53,7 +53,7 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
 
     final ai = data.substring(i, i + 2);
 
-    // AI 01 = GTIN (14 digits fixed)
+    // AI 01 = GTIN
     if (ai == '01') {
       if (i + 16 <= data.length) {
         gtin = data.substring(i + 2, i + 16);
@@ -64,7 +64,7 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       }
     }
 
-    // AI 21 = Serial (variable, ends at GS/FNC1)
+    // AI 21 = Serial
     if (ai == '21') {
       i += 2;
       final start = i;
@@ -81,7 +81,7 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       continue;
     }
 
-    // AI 17 = Expiry (6 digits fixed YYMMDD)
+    // AI 17 = Expiry
     if (ai == '17') {
       if (i + 8 <= data.length) {
         expiry = data.substring(i + 2, i + 8);
@@ -92,7 +92,7 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       }
     }
 
-    // AI 10 = Batch/Lot (variable, usually last field)
+    // AI 10 = Batch
     if (ai == '10') {
       i += 2;
       final start = i;
@@ -109,8 +109,20 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       continue;
     }
 
-    // Move forward if current chars are not recognized AI
     i++;
+  }
+
+  // لو مفيش Serial
+  if (serial.trim().isEmpty) {
+    return {
+      'success': false,
+      'message': 'Serial not found',
+      'gtin': gtin,
+      'serial': '',
+      'batch': batch,
+      'expiry': expiry,
+      'raw': rawScan,
+    };
   }
 
   return {
