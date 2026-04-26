@@ -22,40 +22,23 @@ class PackageOperationModel extends FlutterFlowModel<PackageOperationWidget> {
 
   // Model for PackageCard component.
   late PackageCardModel packageCardModel;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController;
-  int get tabBarCurrentIndex =>
-      tabBarController != null ? tabBarController!.index : 0;
-  int get tabBarPreviousIndex =>
-      tabBarController != null ? tabBarController!.previousIndex : 0;
-
   // Models for SerialCard dynamic component.
-  late FlutterFlowDynamicModels<SerialCardModel> serialCardModels1;
+  late FlutterFlowDynamicModels<SerialCardModel> serialCardModels;
   // Model for EmptyListViewDisplay component.
-  late EmptyListViewDisplayModel emptyListViewDisplayModel1;
-  // Models for SerialCard dynamic component.
-  late FlutterFlowDynamicModels<SerialCardModel> serialCardModels2;
-  // Model for EmptyListViewDisplay component.
-  late EmptyListViewDisplayModel emptyListViewDisplayModel2;
+  late EmptyListViewDisplayModel emptyListViewDisplayModel;
 
   @override
   void initState(BuildContext context) {
     packageCardModel = createModel(context, () => PackageCardModel());
-    serialCardModels1 = FlutterFlowDynamicModels(() => SerialCardModel());
-    emptyListViewDisplayModel1 =
-        createModel(context, () => EmptyListViewDisplayModel());
-    serialCardModels2 = FlutterFlowDynamicModels(() => SerialCardModel());
-    emptyListViewDisplayModel2 =
+    serialCardModels = FlutterFlowDynamicModels(() => SerialCardModel());
+    emptyListViewDisplayModel =
         createModel(context, () => EmptyListViewDisplayModel());
   }
 
   @override
   void dispose() {
     packageCardModel.dispose();
-    tabBarController?.dispose();
-    serialCardModels1.dispose();
-    emptyListViewDisplayModel1.dispose();
-    serialCardModels2.dispose();
-    emptyListViewDisplayModel2.dispose();
+    serialCardModels.dispose();
+    emptyListViewDisplayModel.dispose();
   }
 }

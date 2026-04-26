@@ -84,7 +84,7 @@ class _CasePackingWidgetState extends State<CasePackingWidget> {
                           PackageOperationWidget.routeName,
                           queryParameters: {
                             'sSCC': serializeParam(
-                              '',
+                              widget.sscc,
                               ParamType.String,
                             ),
                             'product': serializeParam(

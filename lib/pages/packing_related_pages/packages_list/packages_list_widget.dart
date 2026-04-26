@@ -137,6 +137,7 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
                             key: Key(
                               'Key0ut_${itemInlistItem}',
                             ),
+                            updateViability: false,
                           ),
                         );
                       },

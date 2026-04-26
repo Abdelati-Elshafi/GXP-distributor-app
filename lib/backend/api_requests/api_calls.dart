@@ -609,6 +609,7 @@ class SSCCOperationsGroup {
       'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api/v1/ssccoperations';
   static Map<String, String> headers = {};
   static GenerateSSCCCall generateSSCCCall = GenerateSSCCCall();
+  static GetPackedSSCClistCall getPackedSSCClistCall = GetPackedSSCClistCall();
 }
 
 class GenerateSSCCCall {
@@ -628,6 +629,27 @@ class GenerateSSCCCall {
       headers: {},
       params: {},
       body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetPackedSSCClistCall {
+  Future<ApiCallResponse> call() async {
+    final baseUrl = SSCCOperationsGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetPackedSSCClist',
+      apiUrl: '${baseUrl}/GetPackedSSCClist',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,

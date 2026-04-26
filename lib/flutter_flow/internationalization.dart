@@ -403,16 +403,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PackageOperation
   {
-    'cvze84kn': {
-      'en': 'Packages',
-      'ar': 'الحزم',
-      'hi': 'संकुल',
-    },
-    'jqtjsmmg': {
-      'en': 'Products',
-      'ar': 'منتجات',
-      'hi': 'उत्पादों',
-    },
     'yu0f6bmp': {
       'en': 'Pack Process',
       'ar': '',
@@ -1261,16 +1251,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تحديث',
       'hi': 'अद्यतन',
     },
-    'oq8h38cz': {
-      'en': 'Product: ',
-      'ar': 'منتج:',
-      'hi': 'उत्पाद:',
-    },
-    '7gh229bi': {
-      'en': 'Cases: ',
-      'ar': 'حالات:',
-      'hi': 'मामले:',
-    },
     '1q7tvq0k': {
       'en': 'Items: ',
       'ar': 'أغراض:',
@@ -1279,11 +1259,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // addnewsscc
   {
-    'u56axdix': {
-      'en': 'Unit',
-      'ar': 'وحدة',
-      'hi': 'इकाई',
-    },
     'czyu5w8a': {
       'en': 'Box',
       'ar': 'صندوق',

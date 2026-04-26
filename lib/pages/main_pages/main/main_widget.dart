@@ -128,7 +128,7 @@ class _MainWidgetState extends State<MainWidget> {
                                   .fontStyle,
                             ),
                             color: Colors.white,
-                            fontSize: 23.0,
+                            fontSize: 20.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
                             fontStyle: FlutterFlowTheme.of(context)

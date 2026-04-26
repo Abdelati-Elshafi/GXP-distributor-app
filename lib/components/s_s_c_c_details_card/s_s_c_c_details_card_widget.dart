@@ -121,7 +121,7 @@ class _SSCCDetailsCardWidgetState extends State<SSCCDetailsCardWidget> {
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.blue,
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(8.0),

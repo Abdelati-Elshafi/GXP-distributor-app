@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'addnewsscc_widget.dart' show AddnewssccWidget;
 import 'package:flutter/material.dart';
@@ -18,8 +19,8 @@ class AddnewssccModel extends FlutterFlowModel<AddnewssccWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Custom Action - generateSSCCAction] action in Container widget.
-  String? sscc;
+  // Stores action output result for [Backend Call - API (Generate SSCC)] action in Container widget.
+  ApiCallResponse? generateSSCCResult;
 
   @override
   void initState(BuildContext context) {}

@@ -1,6 +1,6 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,43 +58,6 @@ class _AddnewssccWidgetState extends State<AddnewssccWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 31.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'u56axdix' /* Unit */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0xFF2E2C2C),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                   Align(
                     alignment: AlignmentDirectional(1.0, 0.0),
                     child: Column(
@@ -121,18 +84,18 @@ class _AddnewssccWidgetState extends State<AddnewssccWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      _model.sscc =
-                                          await actions.generateSSCCAction(
-                                        '0',
-                                        '556655',
-                                        '2',
+                                      _model.generateSSCCResult =
+                                          await SSCCOperationsGroup
+                                              .generateSSCCCall
+                                              .call(
+                                        type: 'Box',
                                       );
 
                                       context.pushNamed(
                                         PackageOperationWidget.routeName,
                                         queryParameters: {
                                           'sSCC': serializeParam(
-                                            _model.sscc,
+                                            'Test',
                                             ParamType.String,
                                           ),
                                           'product': serializeParam(
@@ -226,67 +189,77 @@ class _AddnewssccWidgetState extends State<AddnewssccWidget> {
                       ],
                     ),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 25.0, 0.0),
-                            child: Container(
-                              width: 50.0,
-                              height: 50.0,
-                              decoration: BoxDecoration(),
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Container(
-                                  width: 55.0,
-                                  height: 55.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFE8E6E6),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 5.0,
-                                        color: Color(0xFFB8B4B3),
-                                        offset: Offset(
-                                          0.0,
-                                          2.0,
-                                        ),
-                                      )
-                                    ],
-                                    shape: BoxShape.circle,
-                                  ),
-                                  alignment: AlignmentDirectional(1.0, 1.0),
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Icon(
-                                      Icons.pallet,
-                                      color: Color(0xFF2E2C2C),
-                                      size: 30.0,
+                  if (false)
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 25.0, 0.0),
+                              child: Container(
+                                width: 50.0,
+                                height: 50.0,
+                                decoration: BoxDecoration(),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Container(
+                                    width: 55.0,
+                                    height: 55.0,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFE8E6E6),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 5.0,
+                                          color: Color(0xFFB8B4B3),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
+                                        )
+                                      ],
+                                      shape: BoxShape.circle,
+                                    ),
+                                    alignment: AlignmentDirectional(1.0, 1.0),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Icon(
+                                        Icons.pallet,
+                                        color: Color(0xFF2E2C2C),
+                                        size: 30.0,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ].divide(SizedBox(width: 10.0)),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 31.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'fj14cb74' /* Pallet */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
+                          ].divide(SizedBox(width: 10.0)),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(1.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 5.0, 31.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'fj14cb74' /* Pallet */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF2E2C2C),
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontWeight,
@@ -294,20 +267,11 @@ class _AddnewssccWidgetState extends State<AddnewssccWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF2E2C2C),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
                 ]
                     .divide(SizedBox(height: 10.0))
                     .addToStart(SizedBox(height: 200.0)),
