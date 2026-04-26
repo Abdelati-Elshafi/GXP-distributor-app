@@ -55,7 +55,7 @@ class PackageOperationWidget extends StatefulWidget {
     String? product,
     int? caseno,
     int? itemsno,
-    required this.ssccproductserials,
+    this.ssccproductserials,
   })  : this.sSCC = sSCC ?? 'SSCC',
         this.product = product ?? 'GXP-Pharma',
         this.caseno = caseno ?? 0,
@@ -228,8 +228,9 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                                         Builder(
                                           builder: (context) {
                                             final iteminlist = widget
-                                                .ssccproductserials!
-                                                .toList();
+                                                    .ssccproductserials
+                                                    ?.toList() ??
+                                                [];
 
                                             return ListView.separated(
                                               padding: EdgeInsets.fromLTRB(
