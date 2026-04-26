@@ -27,13 +27,10 @@ class MultiBarcodeScanner extends StatefulWidget {
 
   final double? width;
   final double? height;
-
-  /// Serials القديمة اللي جاية من FlutterFlow
   final List<String> initialCodes;
 
-  /// بيرجع Serials فقط
+  /// يرجع Serials فقط
   final Future<void> Function(List<String> codes) onSave;
-
   final Future<void> Function() onCancel;
 
   @override
@@ -45,7 +42,7 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
     facing: CameraFacing.back,
     detectionSpeed: DetectionSpeed.normal,
     returnImage: false,
-    formats: [BarcodeFormat.dataMatrix],
+    formats: [BarcodeFormat.all],
   );
 
   late List<String> _scannedCodes;
@@ -54,10 +51,8 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
   @override
   void initState() {
     super.initState();
-
     _scannedCodes = [];
     _allCodes = List<String>.from(widget.initialCodes);
-
     debugPrint("✅ initial serials: ${widget.initialCodes}");
   }
 
@@ -67,7 +62,6 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
 
     if (widget.initialCodes != oldWidget.initialCodes) {
       _allCodes = List<String>.from(widget.initialCodes)..addAll(_scannedCodes);
-      debugPrint("🔄 initial serials updated: ${widget.initialCodes}");
       setState(() {});
     }
   }
@@ -77,78 +71,57 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
 
     String data = rawScan.trim();
 
-    // يقبل GS1 DataMatrix فقط
-    if (!data.startsWith(']C1')) {
-      return '';
+    debugPrint("RAW SCAN: $data");
+
+    // Remove GS1 DataMatrix prefix if exists
+    if (data.startsWith(']C1')) {
+      data = data.substring(3);
     }
 
-    // Remove ]C1 prefix
-    data = data.substring(3);
-
-    // Normalize GS / FNC1 separators
+    // Normalize GS / FNC1
     data = data
         .replaceAll('<GS>', String.fromCharCode(29))
         .replaceAll('[GS]', String.fromCharCode(29))
         .replaceAll('{GS}', String.fromCharCode(29))
-        .replaceAll(r'\u001D', String.fromCharCode(29));
+        .replaceAll(r'\u001D', String.fromCharCode(29))
+        .replaceAll('\\u001D', String.fromCharCode(29));
 
-    int i = 0;
+    debugPrint("CLEAN DATA: $data");
 
-    while (i < data.length) {
-      if (data.codeUnitAt(i) == 29) {
-        i++;
-        continue;
-      }
+    final gs = String.fromCharCode(29);
 
-      if (i + 2 > data.length) break;
+    // Best case: find AI 21 directly
+    final index21 = data.indexOf('21');
 
-      final ai = data.substring(i, i + 2);
-
-      // AI 01 = GTIN fixed 14 digits
-      if (ai == '01') {
-        if (i + 16 <= data.length) {
-          i += 16;
-          continue;
-        } else {
-          break;
-        }
-      }
-
-      // AI 17 = Expiry fixed 6 digits
-      if (ai == '17') {
-        if (i + 8 <= data.length) {
-          i += 8;
-          continue;
-        } else {
-          break;
-        }
-      }
-
-      // AI 10 = Batch variable length
-      if (ai == '10') {
-        i += 2;
-        while (i < data.length && data.codeUnitAt(i) != 29) {
-          i++;
-        }
-        continue;
-      }
-
-      // AI 21 = Serial variable length
-      if (ai == '21') {
-        i += 2;
-        final start = i;
-
-        while (i < data.length && data.codeUnitAt(i) != 29) {
-          i++;
-        }
-
-        return data.substring(start, i).trim();
-      }
-
-      i++;
+    if (index21 == -1) {
+      debugPrint("❌ AI 21 not found");
+      return '';
     }
 
-    return '';
+    int start = index21 + 2;
+    int end = data.length;
+
+    // Serial ends at GS separator if found
+    final gsIndex = data.indexOf(gs, start);
+    if (gsIndex != -1) {
+      end = gsIndex;
+    }
+
+    String serial = data.substring(start, end).trim();
+
+    // Safety clean if another known AI appears after serial
+    final knownAIs = ['01', '17', '10', '11', '15', '30', '37'];
+    for (final ai in knownAIs) {
+      final idx = serial.indexOf(ai);
+      if (idx > 0) {
+        // سيبه زي ما هو غالبًا لأن السيريال ممكن يحتوي أرقام شبه AI
+        // مش هنقصه إلا لو محتاجين بعد التجربة
+      }
+    }
+
+    debugPrint("✅ SERIAL FOUND: $serial");
+
+    return serial;
   }
 
   @override
@@ -168,10 +141,9 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
             child: MobileScanner(
               controller: controller,
               onDetect: (BarcodeCapture capture) {
-                final barcodes = capture.barcodes;
                 bool updated = false;
 
-                for (var barcode in barcodes) {
+                for (final barcode in capture.barcodes) {
                   final rawValue = barcode.rawValue ?? '';
                   final serial = _extractGs1Serial(rawValue);
 
@@ -184,7 +156,7 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
                   }
                 }
 
-                if (updated) {
+                if (updated && mounted) {
                   setState(() {});
                 }
               },
@@ -217,8 +189,8 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
             child: FloatingActionButton(
               heroTag: "cancel_btn",
               backgroundColor: Colors.red,
-              onPressed: () {
-                widget.onCancel();
+              onPressed: () async {
+                await widget.onCancel();
               },
               child: const Icon(Icons.close, color: Colors.white),
             ),
@@ -229,8 +201,8 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
             child: FloatingActionButton.extended(
               heroTag: "save_btn",
               backgroundColor: const Color(0xFFF3601F),
-              onPressed: () {
-                widget.onSave(_allCodes);
+              onPressed: () async {
+                await widget.onSave(_allCodes);
               },
               icon: const Icon(Icons.save, color: Colors.white),
               label: Text(

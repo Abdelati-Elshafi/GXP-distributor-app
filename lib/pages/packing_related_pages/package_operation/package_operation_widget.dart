@@ -220,67 +220,69 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Stack(
-                                    children: [
-                                      Builder(
-                                        builder: (context) {
-                                          final iteminlist =
-                                              _model.serialsList.toList();
+                              SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Stack(
+                                      children: [
+                                        Builder(
+                                          builder: (context) {
+                                            final iteminlist =
+                                                _model.serialsList.toList();
 
-                                          return ListView.separated(
-                                            padding: EdgeInsets.fromLTRB(
-                                              0,
-                                              10.0,
-                                              0,
-                                              0,
-                                            ),
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount: iteminlist.length,
-                                            separatorBuilder: (_, __) =>
-                                                SizedBox(height: 3.0),
-                                            itemBuilder:
-                                                (context, iteminlistIndex) {
-                                              final iteminlistItem =
-                                                  iteminlist[iteminlistIndex];
-                                              return wrapWithModel(
-                                                model: _model.serialCardModels
-                                                    .getModel(
-                                                  iteminlistIndex.toString(),
-                                                  iteminlistIndex,
-                                                ),
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: SerialCardWidget(
-                                                  key: Key(
-                                                    'Keyx67_${iteminlistIndex.toString()}',
+                                            return ListView.separated(
+                                              padding: EdgeInsets.fromLTRB(
+                                                0,
+                                                10.0,
+                                                0,
+                                                0,
+                                              ),
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.vertical,
+                                              itemCount: iteminlist.length,
+                                              separatorBuilder: (_, __) =>
+                                                  SizedBox(height: 3.0),
+                                              itemBuilder:
+                                                  (context, iteminlistIndex) {
+                                                final iteminlistItem =
+                                                    iteminlist[iteminlistIndex];
+                                                return wrapWithModel(
+                                                  model: _model.serialCardModels
+                                                      .getModel(
+                                                    iteminlistIndex.toString(),
+                                                    iteminlistIndex,
                                                   ),
-                                                  no: iteminlistIndex,
-                                                  serial: _model.serialsList
-                                                      .elementAtOrNull(
-                                                          iteminlistIndex)!,
-                                                ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                      ),
-                                      if (true)
-                                        wrapWithModel(
-                                          model:
-                                              _model.emptyListViewDisplayModel,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: EmptyListViewDisplayWidget(
-                                            listContent: _model.serialsList,
-                                          ),
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: SerialCardWidget(
+                                                    key: Key(
+                                                      'Keyx67_${iteminlistIndex.toString()}',
+                                                    ),
+                                                    no: iteminlistIndex,
+                                                    serial: _model.serialsList
+                                                        .elementAtOrNull(
+                                                            iteminlistIndex)!,
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
-                                    ],
-                                  ),
-                                ],
+                                        if (true)
+                                          wrapWithModel(
+                                            model: _model
+                                                .emptyListViewDisplayModel,
+                                            updateCallback: () =>
+                                                safeSetState(() {}),
+                                            child: EmptyListViewDisplayWidget(
+                                              listContent: _model.serialsList,
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
