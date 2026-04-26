@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/loading/loading_widget.dart';
-import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'shipping_widget.dart' show ShippingWidget;
@@ -45,12 +44,6 @@ class ShippingModel extends FlutterFlowModel<ShippingWidget> {
   // State field(s) for OrdersDropDown widget.
   String? ordersDropDownValue;
   FormFieldController<String>? ordersDropDownValueController;
-  // State field(s) for EnterSSCC widget.
-  FocusNode? enterSSCCFocusNode;
-  TextEditingController? enterSSCCTextController;
-  String? Function(BuildContext, String?)? enterSSCCTextControllerValidator;
-  // Model for ScanButton component.
-  late ScanButtonModel scanButtonModel;
   // Stores action output result for [Backend Call - API (Confirm Shipment)] action in ConfirmButton widget.
   ApiCallResponse? confirmShipment;
   // Model for Loading component.
@@ -58,16 +51,11 @@ class ShippingModel extends FlutterFlowModel<ShippingWidget> {
 
   @override
   void initState(BuildContext context) {
-    scanButtonModel = createModel(context, () => ScanButtonModel());
     loadingModel = createModel(context, () => LoadingModel());
   }
 
   @override
   void dispose() {
-    enterSSCCFocusNode?.dispose();
-    enterSSCCTextController?.dispose();
-
-    scanButtonModel.dispose();
     loadingModel.dispose();
   }
 
@@ -84,7 +72,6 @@ class ShippingModel extends FlutterFlowModel<ShippingWidget> {
     );
 
     if ((orderrespnse.succeeded ?? true)) {
-      loading = false;
       orderno = orderNo;
       sscc = OrdersAPIsGroup.getOrderDetailsCall.orderSSCC(
         (orderrespnse.jsonBody ?? ''),
@@ -95,10 +82,13 @@ class ShippingModel extends FlutterFlowModel<ShippingWidget> {
       gln = OrdersAPIsGroup.getOrderDetailsCall.gln(
         (orderrespnse.jsonBody ?? ''),
       );
-    } else {
-      loading = false;
+      orderProducts = OrdersAPIsGroup.getOrderDetailsCall
+          .productsData(
+            (orderrespnse.jsonBody ?? ''),
+          )!
+          .toList()
+          .cast<dynamic>();
     }
-
     loading = false;
   }
 }

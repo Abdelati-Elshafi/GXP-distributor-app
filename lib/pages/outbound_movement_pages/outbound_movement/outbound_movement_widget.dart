@@ -87,23 +87,25 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
-            borderRadius: 20.0,
-            buttonSize: 40.0,
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 28.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pop();
             },
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              'wgy69j1z' /* Outbound Movement */,
+              'j1u0dx3m' /* Outbound Movement */,
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
                   font: GoogleFonts.interTight(
@@ -112,15 +114,15 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                 ),
           ),
           actions: [],
-          centerTitle: true,
-          elevation: 0.0,
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
@@ -199,7 +201,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Color(0xFF171A1A),
-                                            fontSize: 22.0,
+                                            fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -224,7 +226,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Color(0xFF6E7880),
-                                            fontSize: 13.0,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
@@ -242,7 +244,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Color(0xFF111111),
-                                    size: 22.0,
+                                    size: 16.0,
                                   ),
                                 ),
                               ],
@@ -317,7 +319,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Color(0xFF171A1A),
-                                            fontSize: 22.0,
+                                            fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -342,7 +344,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Color(0xFF6E7880),
-                                            fontSize: 13.0,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
@@ -360,7 +362,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Color(0xFF111111),
-                                    size: 22.0,
+                                    size: 16.0,
                                   ),
                                 ),
                               ],
@@ -435,7 +437,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Color(0xFF171A1A),
-                                            fontSize: 22.0,
+                                            fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -462,7 +464,7 @@ o... */
                                                       .fontStyle,
                                             ),
                                             color: Color(0xFF6E7880),
-                                            fontSize: 13.0,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
@@ -480,7 +482,7 @@ o... */
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Color(0xFF111111),
-                                    size: 22.0,
+                                    size: 16.0,
                                   ),
                                 ),
                               ],

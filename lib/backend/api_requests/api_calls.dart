@@ -278,6 +278,8 @@ class OrdersAPIsGroup {
   static GetOrderDetailsCall getOrderDetailsCall = GetOrderDetailsCall();
   static ProductSerialsDetailsCall productSerialsDetailsCall =
       ProductSerialsDetailsCall();
+  static UpdateOrderProductsSerialsCall updateOrderProductsSerialsCall =
+      UpdateOrderProductsSerialsCall();
 }
 
 class GetOrderByUserCall {
@@ -420,6 +422,43 @@ class ProductSerialsDetailsCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+}
+
+class UpdateOrderProductsSerialsCall {
+  Future<ApiCallResponse> call({
+    String? orderNO = '',
+    String? product = '',
+    String? gtin = '',
+    List<String>? newSerialsList,
+  }) async {
+    final baseUrl = OrdersAPIsGroup.getBaseUrl();
+    final newSerials = _serializeList(newSerialsList);
+
+    final ffApiRequestBody = '''
+{
+  "OrderNo": "${escapeStringForJson(orderNO)}",
+  "Product": "${escapeStringForJson(product)}",
+  "GTIN": "${escapeStringForJson(gtin)}",
+  "Serials": [
+    ${newSerials}
+  ]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateOrderProductsSerials',
+      apiUrl: '${baseUrl}/UpdateOrderProductsSerials',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 /// End OrdersAPIs Group Code

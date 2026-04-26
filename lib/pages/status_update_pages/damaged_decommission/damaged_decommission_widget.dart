@@ -92,7 +92,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -102,7 +102,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -120,7 +120,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.bold,
                   fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
@@ -330,7 +330,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                   '#C62828', // scanning line color
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'tiaie4qg' /* Cancel */,
+                                                    '2mncwvuj' /* Cancel */,
                                                   ), // cancel button text
                                                   true, // whether to show the flash icon
                                                   ScanMode.BARCODE,

@@ -26,6 +26,8 @@ class ProductDetailsModel extends FlutterFlowModel<ProductDetailsWidget> {
 
   // Stores action output result for [Backend Call - API (ProductSerialsDetails)] action in ProductDetails widget.
   ApiCallResponse? productSerialsDetailsApiResult;
+  // Stores action output result for [Backend Call - API (UpdateOrderProductsSerials)] action in ConfirmButton widget.
+  ApiCallResponse? updateOrderProductsSerialsResut;
   var scannedcode = '';
   // Stores action output result for [Custom Action - parseStrictSscc] action in ScanIcon widget.
   dynamic parseSSCCData;

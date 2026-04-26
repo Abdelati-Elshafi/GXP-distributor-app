@@ -67,7 +67,7 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -77,7 +77,7 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -94,7 +94,7 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 22.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -108,7 +108,7 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsets.all(4.0),
+            padding: EdgeInsets.all(8.0),
             child: Stack(
               children: [
                 Builder(

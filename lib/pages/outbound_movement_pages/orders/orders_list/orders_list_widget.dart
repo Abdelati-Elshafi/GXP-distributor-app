@@ -107,7 +107,7 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -117,7 +117,7 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -134,7 +134,7 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,

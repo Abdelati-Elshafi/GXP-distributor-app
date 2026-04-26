@@ -81,7 +81,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -91,7 +91,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -108,7 +108,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
@@ -196,7 +196,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF171A1A),
-                                              fontSize: 22.0,
+                                              fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -221,7 +221,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF6E7880),
-                                              fontSize: 13.0,
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -238,7 +238,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: Color(0xFF050505),
-                                      size: 22.0,
+                                      size: 16.0,
                                     ),
                                   ),
                                 ],
@@ -315,7 +315,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF171A1A),
-                                              fontSize: 22.0,
+                                              fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -340,7 +340,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF6E7880),
-                                              fontSize: 13.0,
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -357,7 +357,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: Color(0xFF050505),
-                                      size: 22.0,
+                                      size: 16.0,
                                     ),
                                   ),
                                 ],
@@ -434,7 +434,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF171A1A),
-                                              fontSize: 22.0,
+                                              fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -459,7 +459,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF6E7880),
-                                              fontSize: 13.0,
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -476,7 +476,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: Color(0xFF050505),
-                                      size: 22.0,
+                                      size: 16.0,
                                     ),
                                   ),
                                 ],

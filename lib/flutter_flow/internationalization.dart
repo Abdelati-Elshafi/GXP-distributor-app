@@ -176,7 +176,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // StatusUpdate
   {
     'yxawa3vr': {
-      'en': 'Samplee',
+      'en': 'Sample',
       'ar': 'عينة',
       'hi': 'नमूना',
     },
@@ -266,11 +266,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OutboundMovement
   {
-    'wgy69j1z': {
-      'en': 'Outbound Movement',
-      'ar': 'إيقاف التشغيل',
-      'hi': 'विमुद्रीकरण',
-    },
     '8j0347h6': {
       'en': 'Orders',
       'ar': 'طلبات',
@@ -300,6 +295,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Return products back to MAH \nor supplier',
       'ar': 'إرجاع المنتجات إلى صاحب حق الملكية أو المورد',
       'hi': 'उत्पादों को MAH या आपूर्तिकर्ता को वापस लौटाएँ',
+    },
+    'j1u0dx3m': {
+      'en': 'Outbound Movement',
+      'ar': '',
+      'hi': '',
     },
     'd708tg0a': {
       'en': 'ooo',
@@ -594,11 +594,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الطلب رقم 12347 - صيدلية ج',
       'hi': 'आदेश #12347 - फार्मेसी C',
     },
-    'x4o2q86b': {
-      'en': 'Scan or enter SSCC',
-      'ar': 'امسح أو أدخل SSCC',
-      'hi': 'SSCC स्कैन करें या दर्ज करें',
-    },
     'be9j5myc': {
       'en': 'Order #:',
       'ar': 'طلب #:',
@@ -755,7 +750,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
       'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
-    'tiaie4qg': {
+    '2mncwvuj': {
       'en': 'Cancel',
       'ar': 'يلغي',
       'hi': 'रद्द करना',
@@ -823,7 +818,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
       'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
-    'wn7xzk6e': {
+    'g4ou29ap': {
       'en': 'Cancel',
       'ar': '',
       'hi': '',
@@ -1050,7 +1045,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Queries
   {
-    'it0j9o56': {
+    '51v4bfvg': {
       'en': 'Queries',
       'ar': 'بيت',
       'hi': 'घर',
@@ -1058,7 +1053,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // reports
   {
-    'qmeux5ui': {
+    'u4i7gbe9': {
       'en': 'Reports',
       'ar': 'بيت',
       'hi': 'घर',

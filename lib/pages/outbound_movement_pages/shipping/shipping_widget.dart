@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/cancelation/cancelation_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/product_details_card/product_details_card_widget.dart';
-import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -95,9 +94,6 @@ class _ShippingWidgetState extends State<ShippingWidget> {
       _model.loading = false;
       safeSetState(() {});
     });
-
-    _model.enterSSCCTextController ??= TextEditingController();
-    _model.enterSSCCFocusNode ??= FocusNode();
   }
 
   @override
@@ -120,7 +116,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -130,7 +126,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -147,7 +143,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
@@ -289,120 +285,6 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                 hidesUnderline: true,
                                 isSearchable: true,
                                 isMultiSelect: false,
-                              ),
-                              Container(
-                                width: double.infinity,
-                                height: 55.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  border: Border.all(
-                                    color: Color(0xFFD7D1E3),
-                                    width: 2.0,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 14.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Icon(
-                                        Icons.qr_code_scanner,
-                                        color: Color(0xFF8181BC),
-                                        size: 24.0,
-                                      ),
-                                      Expanded(
-                                        child: TextFormField(
-                                          controller:
-                                              _model.enterSSCCTextController,
-                                          focusNode: _model.enterSSCCFocusNode,
-                                          autofocus: false,
-                                          textInputAction: TextInputAction.done,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'x4o2q86b' /* Scan or enter SSCC */,
-                                            ),
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color: Color(0xFF8181BC),
-                                                      fontSize: 16.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                            enabledBorder: InputBorder.none,
-                                            focusedBorder: InputBorder.none,
-                                            errorBorder: InputBorder.none,
-                                            focusedErrorBorder:
-                                                InputBorder.none,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                color: Color(0xFF14181B),
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                          validator: _model
-                                              .enterSSCCTextControllerValidator
-                                              .asValidator(context),
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.scanButtonModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: ScanButtonWidget(),
-                                      ),
-                                    ].divide(SizedBox(width: 12.0)),
-                                  ),
-                                ),
                               ),
                             ].divide(SizedBox(height: 16.0)),
                           ),
@@ -745,51 +627,44 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                     ),
                               ),
                             ),
-                            Builder(
-                              builder: (context) {
-                                final itemInList =
-                                    _model.orderProducts.toList();
+                            SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Builder(
+                                    builder: (context) {
+                                      final itemAtIndex =
+                                          _model.orderProducts.toList();
 
-                                return ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: itemInList.length,
-                                  separatorBuilder: (_, __) =>
-                                      SizedBox(height: 0.0),
-                                  itemBuilder: (context, itemInListIndex) {
-                                    final itemInListItem =
-                                        itemInList[itemInListIndex];
-                                    return ProductDetailsCardWidget(
-                                      key: Key(
-                                          'Keyg7u_${itemInListIndex}_of_${itemInList.length}'),
-                                      productname: getJsonField(
-                                        _model.orderProducts
-                                            .elementAtOrNull(itemInListIndex),
-                                        r'''$.productName''',
-                                      ).toString(),
-                                      productGTIN: getJsonField(
-                                        _model.orderProducts
-                                            .elementAtOrNull(itemInListIndex),
-                                        r'''$.requiredQty''',
-                                      ).toString(),
-                                      requiredQTY: getJsonField(
-                                        _model.orderProducts
-                                            .elementAtOrNull(itemInListIndex),
-                                        r'''$.requiredQty''',
-                                      ),
-                                      scannedQTY: getJsonField(
-                                        _model.orderProducts
-                                            .elementAtOrNull(itemInListIndex),
-                                        r'''$.scannedQty''',
-                                      ),
-                                      orderNO: _model.orderno!,
-                                      orderSSCC: _model.sscc!,
-                                    );
-                                  },
-                                );
-                              },
+                                      return ListView.separated(
+                                        padding: EdgeInsets.zero,
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: itemAtIndex.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(height: 0.0),
+                                        itemBuilder:
+                                            (context, itemAtIndexIndex) {
+                                          final itemAtIndexItem =
+                                              itemAtIndex[itemAtIndexIndex];
+                                          return ProductDetailsCardWidget(
+                                            key: Key(
+                                                'Keyajy_${itemAtIndexIndex}_of_${itemAtIndex.length}'),
+                                            productname: '4zxc',
+                                            productGTIN: '4zxczx',
+                                            requiredQTY: 44,
+                                            scannedQTY: 4,
+                                            orderNO: _model.orderno,
+                                            orderSSCC: _model.sscc,
+                                            navigateEnable: false,
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
                           ].divide(SizedBox(height: 6.0)),
                         ),

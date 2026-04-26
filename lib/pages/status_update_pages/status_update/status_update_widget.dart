@@ -90,7 +90,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           title: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
@@ -231,7 +231,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'yxawa3vr' /* Samplee */,
+                                                    'yxawa3vr' /* Sample */,
                                                   ),
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
@@ -251,7 +251,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryTextColor,
-                                                        fontSize: 20.0,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -394,7 +394,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryTextColor,
-                                                        fontSize: 22.0,
+                                                        fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -537,7 +537,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryTextColor,
-                                                        fontSize: 20.0,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -680,7 +680,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryTextColor,
-                                                        fontSize: 20.0,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -823,7 +823,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryTextColor,
-                                                        fontSize: 20.0,
+                                                        fontSize: 18.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -855,7 +855,7 @@ class _StatusUpdateWidgetState extends State<StatusUpdateWidget> {
                                                         ),
                                                         color:
                                                             Color(0xFF4A555E),
-                                                        fontSize: 12.0,
+                                                        fontSize: 11.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,

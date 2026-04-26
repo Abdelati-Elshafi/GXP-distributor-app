@@ -145,7 +145,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
           ),
         ),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -155,7 +155,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -172,7 +172,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -197,7 +197,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget>
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 10.0, 10.0, 20.0),
+                            8.0, 10.0, 8.0, 20.0),
                         child: wrapWithModel(
                           model: _model.packageCardModel,
                           updateCallback: () => safeSetState(() {}),

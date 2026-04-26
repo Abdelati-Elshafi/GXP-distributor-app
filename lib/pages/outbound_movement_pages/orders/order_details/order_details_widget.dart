@@ -118,7 +118,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -136,7 +136,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
           ),
           title: Text(
             valueOrDefault<String>(
-              'Order #: ${widget.ordernumber}',
+              'Order : ${widget.ordernumber}',
               'Order #: 12345',
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
@@ -596,7 +596,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                           r'''$.scannedQty''',
                                         ),
                                         orderNO: widget.ordernumber,
-                                        orderSSCC: _model.sscc!,
+                                        orderSSCC: _model.sscc,
+                                        navigateEnable: true,
                                       );
                                     },
                                   );

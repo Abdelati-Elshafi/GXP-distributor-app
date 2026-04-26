@@ -93,7 +93,7 @@ class _ScannedSerialsToDecommissionWidgetState
                                 .fontStyle,
                           ),
                           color: FlutterFlowTheme.of(context).primaryTextColor,
-                          fontSize: 18.0,
+                          fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           fontStyle:

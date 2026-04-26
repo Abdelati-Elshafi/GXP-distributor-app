@@ -13,19 +13,25 @@ class ProductDetailsCardWidget extends StatefulWidget {
     String? productGTIN,
     int? requiredQTY,
     int? scannedQTY,
-    required this.orderNO,
-    required this.orderSSCC,
+    this.orderNO,
+    String? orderSSCC,
+    required this.navigateEnable,
   })  : this.productname = productname ?? 'Paracetamol 500mg',
         this.productGTIN = productGTIN ?? '123456789',
         this.requiredQTY = requiredQTY ?? 80,
-        this.scannedQTY = scannedQTY ?? 15;
+        this.scannedQTY = scannedQTY ?? 15,
+        this.orderSSCC = orderSSCC ?? 'zxcvxcv';
 
   final String productname;
   final String productGTIN;
   final int requiredQTY;
   final int scannedQTY;
   final String? orderNO;
-  final String? orderSSCC;
+
+  /// xcvxcvcx
+  final String orderSSCC;
+
+  final bool? navigateEnable;
 
   @override
   State<ProductDetailsCardWidget> createState() =>
@@ -64,35 +70,37 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
         hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
         onTap: () async {
-          context.pushNamed(
-            ProductDetailsWidget.routeName,
-            queryParameters: {
-              'productname': serializeParam(
-                widget.productname,
-                ParamType.String,
-              ),
-              'productGTIN': serializeParam(
-                widget.productGTIN,
-                ParamType.String,
-              ),
-              'requiredQTY': serializeParam(
-                widget.requiredQTY,
-                ParamType.int,
-              ),
-              'scannedQTY': serializeParam(
-                widget.scannedQTY,
-                ParamType.int,
-              ),
-              'orderNO': serializeParam(
-                widget.orderNO,
-                ParamType.String,
-              ),
-              'orderSSCC': serializeParam(
-                widget.orderSSCC,
-                ParamType.String,
-              ),
-            }.withoutNulls,
-          );
+          if (widget.navigateEnable!) {
+            context.pushNamed(
+              ProductDetailsWidget.routeName,
+              queryParameters: {
+                'productname': serializeParam(
+                  widget.productname,
+                  ParamType.String,
+                ),
+                'productGTIN': serializeParam(
+                  widget.productGTIN,
+                  ParamType.String,
+                ),
+                'requiredQTY': serializeParam(
+                  widget.requiredQTY,
+                  ParamType.int,
+                ),
+                'scannedQTY': serializeParam(
+                  widget.scannedQTY,
+                  ParamType.int,
+                ),
+                'orderNO': serializeParam(
+                  widget.orderNO,
+                  ParamType.String,
+                ),
+                'orderSSCC': serializeParam(
+                  widget.orderSSCC,
+                  ParamType.String,
+                ),
+              }.withoutNulls,
+            );
+          }
         },
         child: Container(
           width: double.infinity,
@@ -208,11 +216,12 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                         shape: BoxShape.circle,
                       ),
                     ),
-                    Icon(
-                      Icons.chevron_right,
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      size: 20.0,
-                    ),
+                    if (widget.navigateEnable ?? true)
+                      Icon(
+                        Icons.chevron_right,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 20.0,
+                      ),
                   ].divide(SizedBox(width: 8.0)),
                 ),
               ].divide(SizedBox(width: 12.0)),

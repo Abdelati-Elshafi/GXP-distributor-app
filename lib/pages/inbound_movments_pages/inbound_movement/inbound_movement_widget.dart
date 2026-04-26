@@ -87,7 +87,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -97,7 +97,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -114,7 +114,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
@@ -230,7 +230,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                                                         ),
                                                         color:
                                                             Color(0xFF171A1A),
-                                                        fontSize: 22.0,
+                                                        fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -264,7 +264,7 @@ MAH or... */
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFF6E7880),
-                                                      fontSize: 13.0,
+                                                      fontSize: 12.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -285,7 +285,7 @@ MAH or... */
                                             child: Icon(
                                               Icons.arrow_forward_ios,
                                               color: Color(0xFF050505),
-                                              size: 20.0,
+                                              size: 16.0,
                                             ),
                                           ),
                                         ],
@@ -353,8 +353,8 @@ MAH or... */
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/return-box.png',
-                                              width: 55.0,
-                                              height: 55.0,
+                                              width: 50.0,
+                                              height: 50.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -385,7 +385,7 @@ MAH or... */
                                                           ),
                                                           color:
                                                               Color(0xFF171A1A),
-                                                          fontSize: 21.0,
+                                                          fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -418,7 +418,7 @@ MAH or... */
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFF6E7880),
-                                                      fontSize: 13.0,
+                                                      fontSize: 12.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -439,7 +439,7 @@ MAH or... */
                                             child: Icon(
                                               Icons.arrow_forward_ios,
                                               color: Color(0xFF050505),
-                                              size: 20.0,
+                                              size: 16.0,
                                             ),
                                           ),
                                         ],

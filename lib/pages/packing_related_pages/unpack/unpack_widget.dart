@@ -79,7 +79,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+          backgroundColor: Color(0xFF261D66),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -89,7 +89,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
@@ -106,7 +106,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 23.0,
+                  fontSize: 21.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -302,7 +302,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                   '#C62828', // scanning line color
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'wn7xzk6e' /* Cancel */,
+                                                    'g4ou29ap' /* Cancel */,
                                                   ), // cancel button text
                                                   true, // whether to show the flash icon
                                                   ScanMode.QR,

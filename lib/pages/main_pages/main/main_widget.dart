@@ -96,7 +96,7 @@ class _MainWidgetState extends State<MainWidget> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70.0),
           child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryTextColor,
+            backgroundColor: Color(0xFF261D66),
             automaticallyImplyLeading: false,
             title: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
@@ -108,9 +108,9 @@ class _MainWidgetState extends State<MainWidget> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
-                      'assets/images/warehouse_(3).png',
-                      width: 50.0,
-                      height: 50.0,
+                      'assets/images/warehouse_(4).png',
+                      width: 45.0,
+                      height: 45.0,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -128,7 +128,7 @@ class _MainWidgetState extends State<MainWidget> {
                                   .fontStyle,
                             ),
                             color: Colors.white,
-                            fontSize: 25.0,
+                            fontSize: 23.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
                             fontStyle: FlutterFlowTheme.of(context)
@@ -238,8 +238,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/status-update.png',
-                                              width: 65.0,
-                                              height: 65.0,
+                                              width: 60.0,
+                                              height: 60.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -270,7 +270,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryTextColor,
-                                                    fontSize: 19.0,
+                                                    fontSize: 17.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
@@ -332,8 +332,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
                                               'assets/images/inbound.png',
-                                              width: 75.0,
-                                              height: 75.0,
+                                              width: 70.0,
+                                              height: 70.0,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -364,7 +364,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryTextColor,
-                                                    fontSize: 20.0,
+                                                    fontSize: 17.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
@@ -429,8 +429,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: Image.asset(
                                                 'assets/images/outbound.png',
-                                                width: 75.0,
-                                                height: 75.0,
+                                                width: 70.0,
+                                                height: 70.0,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -465,7 +465,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryTextColor,
-                                                          fontSize: 20.0,
+                                                          fontSize: 17.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -532,8 +532,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: Image.asset(
                                                 'assets/images/unpacking.png',
-                                                width: 65.0,
-                                                height: 65.0,
+                                                width: 60.0,
+                                                height: 60.0,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -565,7 +565,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryTextColor,
-                                                    fontSize: 18.0,
+                                                    fontSize: 17.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
