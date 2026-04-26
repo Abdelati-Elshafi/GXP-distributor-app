@@ -21,17 +21,21 @@ class MultiBarcodeScanner extends StatefulWidget {
     this.width,
     this.height,
     this.initialCodes = const [],
-    required this.onSave,
-    required this.onCancel,
+    this.onSave,
+    this.onCancel,
   }) : super(key: key);
 
   final double? width;
   final double? height;
+
+  /// القديمة
   final List<String> initialCodes;
 
-  /// يرجع Serials فقط
-  final Future<void> Function(List<String> codes) onSave;
-  final Future<void> Function() onCancel;
+  /// FlutterFlow Action
+  final Future<dynamic> Function(List<String> codes)? onSave;
+
+  /// FlutterFlow Action
+  final Future<dynamic> Function()? onCancel;
 
   @override
   State<MultiBarcodeScanner> createState() => _MultiBarcodeScannerState();
@@ -40,19 +44,24 @@ class MultiBarcodeScanner extends StatefulWidget {
 class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
   final MobileScannerController controller = MobileScannerController(
     facing: CameraFacing.back,
-    detectionSpeed: DetectionSpeed.normal,
+    detectionSpeed: DetectionSpeed.noDuplicates,
     returnImage: false,
     formats: [BarcodeFormat.all],
   );
 
-  late List<String> _scannedCodes;
-  late List<String> _allCodes;
+  final Set<String> _newSerials = {};
+  final Set<String> _allSerials = {};
+
+  DateTime? _lastScanTime;
 
   @override
   void initState() {
     super.initState();
-    _scannedCodes = [];
-    _allCodes = List<String>.from(widget.initialCodes);
+
+    _allSerials.addAll(
+      widget.initialCodes.where((e) => e.trim().isNotEmpty),
+    );
+
     debugPrint("✅ initial serials: ${widget.initialCodes}");
   }
 
@@ -60,8 +69,12 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
   void didUpdateWidget(covariant MultiBarcodeScanner oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (widget.initialCodes != oldWidget.initialCodes) {
-      _allCodes = List<String>.from(widget.initialCodes)..addAll(_scannedCodes);
+    _allSerials
+      ..clear()
+      ..addAll(widget.initialCodes.where((e) => e.trim().isNotEmpty))
+      ..addAll(_newSerials);
+
+    if (mounted) {
       setState(() {});
     }
   }
@@ -73,12 +86,17 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
 
     debugPrint("RAW SCAN: $data");
 
-    // Remove GS1 DataMatrix prefix if exists
+    // remove ]C1
     if (data.startsWith(']C1')) {
       data = data.substring(3);
     }
 
-    // Normalize GS / FNC1
+    // remove leading D if scanner adds it
+    if (data.startsWith('D01')) {
+      data = data.substring(1);
+    }
+
+    // normalize GS
     data = data
         .replaceAll('<GS>', String.fromCharCode(29))
         .replaceAll('[GS]', String.fromCharCode(29))
@@ -88,40 +106,56 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
 
     debugPrint("CLEAN DATA: $data");
 
-    final gs = String.fromCharCode(29);
+    // get last AI 21
+    final ai21 = data.lastIndexOf('21');
 
-    // Best case: find AI 21 directly
-    final index21 = data.indexOf('21');
-
-    if (index21 == -1) {
+    if (ai21 == -1) {
       debugPrint("❌ AI 21 not found");
       return '';
     }
 
-    int start = index21 + 2;
-    int end = data.length;
+    String serial = data.substring(ai21 + 2).trim();
 
-    // Serial ends at GS separator if found
-    final gsIndex = data.indexOf(gs, start);
-    if (gsIndex != -1) {
-      end = gsIndex;
+    // stop at GS if exists
+    final gs = serial.indexOf(String.fromCharCode(29));
+    if (gs != -1) {
+      serial = serial.substring(0, gs).trim();
     }
 
-    String serial = data.substring(start, end).trim();
-
-    // Safety clean if another known AI appears after serial
-    final knownAIs = ['01', '17', '10', '11', '15', '30', '37'];
-    for (final ai in knownAIs) {
-      final idx = serial.indexOf(ai);
-      if (idx > 0) {
-        // سيبه زي ما هو غالبًا لأن السيريال ممكن يحتوي أرقام شبه AI
-        // مش هنقصه إلا لو محتاجين بعد التجربة
-      }
+    // remove extra D
+    if (serial.startsWith('D') && serial.length > 1) {
+      serial = serial.substring(1);
     }
 
     debugPrint("✅ SERIAL FOUND: $serial");
 
     return serial;
+  }
+
+  void _handleBarcode(String rawValue) {
+    final now = DateTime.now();
+
+    if (_lastScanTime != null &&
+        now.difference(_lastScanTime!).inMilliseconds < 700) {
+      return;
+    }
+
+    _lastScanTime = now;
+
+    final serial = _extractGs1Serial(rawValue);
+
+    if (serial.isEmpty) return;
+
+    if (!_allSerials.contains(serial)) {
+      setState(() {
+        _newSerials.add(serial);
+        _allSerials.add(serial);
+      });
+
+      debugPrint("✅ Added: $serial");
+    } else {
+      debugPrint("⚠️ Duplicate ignored: $serial");
+    }
   }
 
   @override
@@ -132,6 +166,9 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
 
   @override
   Widget build(BuildContext context) {
+    final allList = _allSerials.toList();
+    final newList = _newSerials.toList();
+
     return SizedBox(
       width: widget.width,
       height: widget.height,
@@ -141,23 +178,12 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
             child: MobileScanner(
               controller: controller,
               onDetect: (BarcodeCapture capture) {
-                bool updated = false;
-
                 for (final barcode in capture.barcodes) {
                   final rawValue = barcode.rawValue ?? '';
-                  final serial = _extractGs1Serial(rawValue);
 
-                  if (serial.isNotEmpty && !_allCodes.contains(serial)) {
-                    _scannedCodes.add(serial);
-                    _allCodes.add(serial);
-                    updated = true;
-
-                    debugPrint("✅ Serial added: $serial");
+                  if (rawValue.isNotEmpty) {
+                    _handleBarcode(rawValue);
                   }
-                }
-
-                if (updated && mounted) {
-                  setState(() {});
                 }
               },
             ),
@@ -169,11 +195,11 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.55),
+                color: Colors.black.withOpacity(0.6),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                "Total Serials: ${_allCodes.length} | New: ${_scannedCodes.length}",
+                "Total: ${allList.length} | New: ${newList.length}",
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.white,
@@ -190,7 +216,8 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
               heroTag: "cancel_btn",
               backgroundColor: Colors.red,
               onPressed: () async {
-                await widget.onCancel();
+                await controller.stop();
+                await widget.onCancel?.call();
               },
               child: const Icon(Icons.close, color: Colors.white),
             ),
@@ -202,11 +229,12 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
               heroTag: "save_btn",
               backgroundColor: const Color(0xFFF3601F),
               onPressed: () async {
-                await widget.onSave(_allCodes);
+                await controller.stop();
+                await widget.onSave?.call(_allSerials.toList());
               },
               icon: const Icon(Icons.save, color: Colors.white),
               label: Text(
-                "Save (${_allCodes.length})",
+                "Save (${allList.length})",
                 style: const TextStyle(color: Colors.white),
               ),
             ),
