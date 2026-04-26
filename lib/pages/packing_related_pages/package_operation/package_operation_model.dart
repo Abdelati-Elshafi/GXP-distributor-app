@@ -7,17 +7,6 @@ import 'package_operation_widget.dart' show PackageOperationWidget;
 import 'package:flutter/material.dart';
 
 class PackageOperationModel extends FlutterFlowModel<PackageOperationWidget> {
-  ///  Local state fields for this page.
-
-  List<String> serialsList = [];
-  void addToSerialsList(String item) => serialsList.add(item);
-  void removeFromSerialsList(String item) => serialsList.remove(item);
-  void removeAtIndexFromSerialsList(int index) => serialsList.removeAt(index);
-  void insertAtIndexInSerialsList(int index, String item) =>
-      serialsList.insert(index, item);
-  void updateSerialsListAtIndex(int index, Function(String) updateFn) =>
-      serialsList[index] = updateFn(serialsList[index]);
-
   ///  State fields for stateful widgets in this page.
 
   // Model for PackageCard component.

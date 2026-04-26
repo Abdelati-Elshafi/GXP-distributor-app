@@ -86,7 +86,6 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.serialsList = widget.ssccproductserials!.toList().cast<String>();
       safeSetState(() {});
     });
   }
@@ -114,7 +113,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
               CasePackingWidget.routeName,
               queryParameters: {
                 'lastSavedCodes': serializeParam(
-                  _model.serialsList,
+                  widget.ssccproductserials,
                   ParamType.String,
                   isList: true,
                 ),
@@ -197,7 +196,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                           child: PackageCardWidget(
                             sSCC: widget.sSCC,
                             itemsNO: valueOrDefault<int>(
-                              _model.serialsList.length,
+                              widget.ssccproductserials?.length,
                               9,
                             ),
                             updateViability: true,
@@ -228,8 +227,9 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                                       children: [
                                         Builder(
                                           builder: (context) {
-                                            final iteminlist =
-                                                _model.serialsList.toList();
+                                            final iteminlist = widget
+                                                .ssccproductserials!
+                                                .toList();
 
                                             return ListView.separated(
                                               padding: EdgeInsets.fromLTRB(
@@ -260,9 +260,10 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                                                       'Keyx67_${iteminlistIndex.toString()}',
                                                     ),
                                                     no: iteminlistIndex,
-                                                    serial: _model.serialsList
+                                                    serial: (widget
+                                                        .ssccproductserials!
                                                         .elementAtOrNull(
-                                                            iteminlistIndex)!,
+                                                            iteminlistIndex))!,
                                                   ),
                                                 );
                                               },
@@ -276,7 +277,8 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                                             updateCallback: () =>
                                                 safeSetState(() {}),
                                             child: EmptyListViewDisplayWidget(
-                                              listContent: _model.serialsList,
+                                              listContent:
+                                                  widget.ssccproductserials!,
                                             ),
                                           ),
                                       ],
