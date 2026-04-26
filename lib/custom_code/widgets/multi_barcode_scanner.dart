@@ -27,14 +27,9 @@ class MultiBarcodeScanner extends StatefulWidget {
 
   final double? width;
   final double? height;
-
-  /// القديمة
   final List<String> initialCodes;
 
-  /// FlutterFlow Action
   final Future<dynamic> Function(List<String> codes)? onSave;
-
-  /// FlutterFlow Action
   final Future<dynamic> Function()? onCancel;
 
   @override
@@ -51,8 +46,9 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
 
   final Set<String> _newSerials = {};
   final Set<String> _allSerials = {};
-
   DateTime? _lastScanTime;
+
+  final String gs = String.fromCharCode(29);
 
   @override
   void initState() {
@@ -74,62 +70,130 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
       ..addAll(widget.initialCodes.where((e) => e.trim().isNotEmpty))
       ..addAll(_newSerials);
 
-    if (mounted) {
-      setState(() {});
+    if (mounted) setState(() {});
+  }
+
+  String _cleanRaw(String rawScan) {
+    String data = rawScan.trim();
+
+    if (data.startsWith(']C1')) {
+      data = data.substring(3);
     }
+
+    data = data
+        .replaceAll('<GS>', gs)
+        .replaceAll('[GS]', gs)
+        .replaceAll('{GS}', gs)
+        .replaceAll(r'\u001D', gs)
+        .replaceAll('\\u001D', gs);
+
+    return data;
+  }
+
+  String _readVariableField(String data, int start) {
+    int end = data.indexOf(gs, start);
+    if (end == -1) end = data.length;
+    return data.substring(start, end);
   }
 
   String _extractGs1Serial(String rawScan) {
     if (rawScan.trim().isEmpty) return '';
 
-    String data = rawScan.trim();
+    final data = _cleanRaw(rawScan);
 
-    debugPrint("RAW SCAN: $data");
-
-    // remove ]C1
-    if (data.startsWith(']C1')) {
-      data = data.substring(3);
-    }
-
-    // remove leading D if scanner adds it
-    if (data.startsWith('D01')) {
-      data = data.substring(1);
-    }
-
-    // normalize GS
-    data = data
-        .replaceAll('<GS>', String.fromCharCode(29))
-        .replaceAll('[GS]', String.fromCharCode(29))
-        .replaceAll('{GS}', String.fromCharCode(29))
-        .replaceAll(r'\u001D', String.fromCharCode(29))
-        .replaceAll('\\u001D', String.fromCharCode(29));
-
+    debugPrint("RAW SCAN: $rawScan");
     debugPrint("CLEAN DATA: $data");
 
-    // get last AI 21
-    final ai21 = data.lastIndexOf('21');
+    String gtin = '';
+    String expiry = '';
+    String batch = '';
+    String serial = '';
 
-    if (ai21 == -1) {
-      debugPrint("❌ AI 21 not found");
-      return '';
+    int i = 0;
+
+    while (i < data.length) {
+      if (data[i] == gs) {
+        i++;
+        continue;
+      }
+
+      // AI 01 = GTIN fixed 14 digits
+      if (i + 2 <= data.length && data.substring(i, i + 2) == '01') {
+        if (i + 16 <= data.length) {
+          gtin = data.substring(i + 2, i + 16);
+          i += 16;
+          continue;
+        } else {
+          break;
+        }
+      }
+
+      // AI 17 = Expiry fixed 6 digits
+      if (i + 2 <= data.length && data.substring(i, i + 2) == '17') {
+        if (i + 8 <= data.length) {
+          expiry = data.substring(i + 2, i + 8);
+          i += 8;
+          continue;
+        } else {
+          break;
+        }
+      }
+
+      // AI 21 = Serial variable length
+      if (i + 2 <= data.length && data.substring(i, i + 2) == '21') {
+        serial = _readVariableField(data, i + 2).trim();
+        debugPrint("✅ GTIN: $gtin");
+        debugPrint("✅ EXPIRY: $expiry");
+        debugPrint("✅ BATCH: $batch");
+        debugPrint("✅ SERIAL FOUND: $serial");
+        return serial;
+      }
+
+      // AI 10 = Batch variable length
+      if (i + 2 <= data.length && data.substring(i, i + 2) == '10') {
+        batch = _readVariableField(data, i + 2).trim();
+
+        int end = data.indexOf(gs, i + 2);
+        if (end == -1) {
+          i = data.length;
+        } else {
+          i = end + 1;
+        }
+
+        continue;
+      }
+
+      // AI 422 = Country fixed 3 digits
+      if (i + 3 <= data.length && data.substring(i, i + 3) == '422') {
+        if (i + 6 <= data.length) {
+          final country = data.substring(i + 3, i + 6);
+          debugPrint("✅ COUNTRY 422: $country");
+          i += 6;
+          continue;
+        } else {
+          break;
+        }
+      }
+
+      // AI 00 = SSCC fixed 18 digits
+      if (i + 2 <= data.length && data.substring(i, i + 2) == '00') {
+        if (i + 20 <= data.length) {
+          final sscc = data.substring(i + 2, i + 20);
+          debugPrint("📦 SSCC detected, ignored: $sscc");
+          i += 20;
+          continue;
+        } else {
+          break;
+        }
+      }
+
+      i++;
     }
 
-    String serial = data.substring(ai21 + 2).trim();
+    debugPrint("❌ No AI 21 Serial found");
+    debugPrint("GTIN: $gtin | EXPIRY: $expiry | BATCH: $batch");
 
-    // stop at GS if exists
-    final gs = serial.indexOf(String.fromCharCode(29));
-    if (gs != -1) {
-      serial = serial.substring(0, gs).trim();
-    }
-
-    // remove extra D
-    if (serial.startsWith('D') && serial.length > 1) {
-      serial = serial.substring(1);
-    }
-
-    debugPrint("✅ SERIAL FOUND: $serial");
-
-    return serial;
+    return '';
   }
 
   void _handleBarcode(String rawValue) {
@@ -152,7 +216,8 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
         _allSerials.add(serial);
       });
 
-      debugPrint("✅ Added: $serial");
+      debugPrint("✅ Added Serial: $serial");
+      debugPrint("✅ All Serials: ${_allSerials.toList()}");
     } else {
       debugPrint("⚠️ Duplicate ignored: $serial");
     }
@@ -180,7 +245,6 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
               onDetect: (BarcodeCapture capture) {
                 for (final barcode in capture.barcodes) {
                   final rawValue = barcode.rawValue ?? '';
-
                   if (rawValue.isNotEmpty) {
                     _handleBarcode(rawValue);
                   }
@@ -195,7 +259,7 @@ class _MultiBarcodeScannerState extends State<MultiBarcodeScanner> {
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withOpacity(0.60),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(

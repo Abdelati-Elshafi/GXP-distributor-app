@@ -197,7 +197,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                             sSCC: widget.sSCC,
                             itemsNO: valueOrDefault<int>(
                               widget.ssccproductserials?.length,
-                              9,
+                              0,
                             ),
                             updateViability: true,
                           ),
