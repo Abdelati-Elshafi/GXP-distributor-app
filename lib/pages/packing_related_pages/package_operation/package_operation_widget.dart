@@ -211,83 +211,86 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
                         child: Container(
-                          width: 387.9,
-                          height: 537.99,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16.0),
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Builder(
-                                          builder: (context) {
-                                            final iteminlist = widget
-                                                    .ssccproductserials
-                                                    ?.toList() ??
-                                                [];
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Builder(
+                                            builder: (context) {
+                                              final iteminlist = widget
+                                                      .ssccproductserials
+                                                      ?.toList() ??
+                                                  [];
 
-                                            return ListView.separated(
-                                              padding: EdgeInsets.fromLTRB(
-                                                0,
-                                                10.0,
-                                                0,
-                                                0,
-                                              ),
-                                              shrinkWrap: true,
-                                              scrollDirection: Axis.vertical,
-                                              itemCount: iteminlist.length,
-                                              separatorBuilder: (_, __) =>
-                                                  SizedBox(height: 3.0),
-                                              itemBuilder:
-                                                  (context, iteminlistIndex) {
-                                                final iteminlistItem =
-                                                    iteminlist[iteminlistIndex];
-                                                return wrapWithModel(
-                                                  model: _model.serialCardModels
-                                                      .getModel(
-                                                    iteminlistIndex.toString(),
-                                                    iteminlistIndex,
-                                                  ),
-                                                  updateCallback: () =>
-                                                      safeSetState(() {}),
-                                                  child: SerialCardWidget(
-                                                    key: Key(
-                                                      'Keyx67_${iteminlistIndex.toString()}',
+                                              return ListView.separated(
+                                                padding: EdgeInsets.fromLTRB(
+                                                  0,
+                                                  10.0,
+                                                  0,
+                                                  0,
+                                                ),
+                                                shrinkWrap: true,
+                                                scrollDirection: Axis.vertical,
+                                                itemCount: iteminlist.length,
+                                                separatorBuilder: (_, __) =>
+                                                    SizedBox(height: 3.0),
+                                                itemBuilder:
+                                                    (context, iteminlistIndex) {
+                                                  final iteminlistItem =
+                                                      iteminlist[
+                                                          iteminlistIndex];
+                                                  return wrapWithModel(
+                                                    model: _model
+                                                        .serialCardModels
+                                                        .getModel(
+                                                      iteminlistIndex
+                                                          .toString(),
+                                                      iteminlistIndex,
                                                     ),
-                                                    no: iteminlistIndex,
-                                                    serial: (widget
-                                                        .ssccproductserials!
-                                                        .elementAtOrNull(
-                                                            iteminlistIndex))!,
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        if (true)
-                                          wrapWithModel(
-                                            model: _model
-                                                .emptyListViewDisplayModel,
-                                            updateCallback: () =>
-                                                safeSetState(() {}),
-                                            child: EmptyListViewDisplayWidget(
-                                              listContent:
-                                                  widget.ssccproductserials!,
-                                            ),
+                                                    updateCallback: () =>
+                                                        safeSetState(() {}),
+                                                    child: SerialCardWidget(
+                                                      key: Key(
+                                                        'Keyx67_${iteminlistIndex.toString()}',
+                                                      ),
+                                                      no: iteminlistIndex,
+                                                      serial: (widget
+                                                          .ssccproductserials!
+                                                          .elementAtOrNull(
+                                                              iteminlistIndex))!,
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            },
                                           ),
-                                      ],
-                                    ),
-                                  ],
+                                          if (true)
+                                            wrapWithModel(
+                                              model: _model
+                                                  .emptyListViewDisplayModel,
+                                              updateCallback: () =>
+                                                  safeSetState(() {}),
+                                              child: EmptyListViewDisplayWidget(
+                                                listContent:
+                                                    widget.ssccproductserials,
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),

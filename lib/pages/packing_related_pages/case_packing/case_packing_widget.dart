@@ -10,7 +10,7 @@ export 'case_packing_model.dart';
 class CasePackingWidget extends StatefulWidget {
   const CasePackingWidget({
     super.key,
-    required this.lastSavedCodes,
+    this.lastSavedCodes,
     required this.sscc,
     required this.product,
   });

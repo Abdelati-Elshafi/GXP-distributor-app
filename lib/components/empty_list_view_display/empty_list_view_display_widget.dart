@@ -8,7 +8,7 @@ export 'empty_list_view_display_model.dart';
 class EmptyListViewDisplayWidget extends StatefulWidget {
   const EmptyListViewDisplayWidget({
     super.key,
-    required this.listContent,
+    this.listContent,
   });
 
   final List<String>? listContent;
