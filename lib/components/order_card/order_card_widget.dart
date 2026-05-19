@@ -74,7 +74,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Color(0xFF04113D),
             boxShadow: [
               BoxShadow(
                 blurRadius: 8.0,
@@ -87,6 +87,10 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
               )
             ],
             borderRadius: BorderRadius.circular(16.0),
+            border: Border.all(
+              color: Color(0xFF1E90FF),
+              width: 1.0,
+            ),
           ),
           child: Padding(
             padding: EdgeInsets.all(14.0),
@@ -104,7 +108,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Order #${widget.ordernumber}',
+                          'Order ${widget.ordernumber}',
                           style:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     font: GoogleFonts.interTight(
@@ -114,7 +118,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                           .fontStyle,
                                     ),
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryTextColor,
+                                        .secondaryBackground,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -123,26 +127,36 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                         .fontStyle,
                                   ),
                         ),
-                        Text(
-                          widget.customer,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                font: GoogleFonts.inter(
-                                  fontWeight: FontWeight.normal,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 14.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.normal,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Icon(
+                              Icons.person_outlined,
+                              color: Color(0xFF4C6FFF),
+                              size: 20.0,
+                            ),
+                            Text(
+                              widget.customer,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                          ].divide(SizedBox(width: 3.0)),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -150,6 +164,11 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
+                              Icon(
+                                Icons.playlist_add_check_outlined,
+                                color: Color(0xFF6C4DFF),
+                                size: 20.0,
+                              ),
                               Text(
                                 FFLocalizations.of(context).getText(
                                   'ppyhkklf' /* Permit:  */,
@@ -163,7 +182,8 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF2563EB),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
@@ -186,7 +206,8 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF2563EB),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
@@ -195,7 +216,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                           .fontStyle,
                                     ),
                               ),
-                            ],
+                            ].divide(SizedBox(width: 3.0)),
                           ),
                         ),
                       ].divide(SizedBox(height: 12.0)),
@@ -249,7 +270,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                         buttonSize: 32.0,
                         icon: Icon(
                           Icons.more_vert,
-                          color: FlutterFlowTheme.of(context).secondaryText,
+                          color: FlutterFlowTheme.of(context).alternate,
                           size: 20.0,
                         ),
                         onPressed: () {

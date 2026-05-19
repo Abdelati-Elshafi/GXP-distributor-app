@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 's_s_c_c_details_card_model.dart';
 export 's_s_c_c_details_card_model.dart';
@@ -68,7 +69,7 @@ class _SSCCDetailsCardWidgetState extends State<SSCCDetailsCardWidget> {
         return Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Color(0xFF04113D),
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,
@@ -80,11 +81,15 @@ class _SSCCDetailsCardWidgetState extends State<SSCCDetailsCardWidget> {
               )
             ],
             borderRadius: BorderRadius.circular(12.0),
+            border: Border.all(
+              color: Color(0xFF1A2E6B),
+            ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -92,32 +97,32 @@ class _SSCCDetailsCardWidgetState extends State<SSCCDetailsCardWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Text(
-                        'Serial: ${widget.sscc}',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
-                              color: Color(0xFF14181B),
-                              fontSize: 14.0,
-                              letterSpacing: 0.0,
+                    Text(
+                      'Serial: ${widget.sscc}',
+                      maxLines: 1,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
                               fontWeight: FontWeight.bold,
                               fontStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                      ),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            fontSize: 14.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 4.0, 8.0, 4.0),
+                              5.0, 4.0, 5.0, 4.0),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.blue,
@@ -162,13 +167,13 @@ class _SSCCDetailsCardWidgetState extends State<SSCCDetailsCardWidget> {
                           onTap: () async {
                             await widget.deletefromsscclistaction?.call();
                           },
-                          child: Icon(
-                            Icons.delete_outline,
+                          child: FaIcon(
+                            FontAwesomeIcons.trashAlt,
                             color: Colors.red,
-                            size: 24.0,
+                            size: 21.0,
                           ),
                         ),
-                      ].divide(SizedBox(width: 8.0)),
+                      ].divide(SizedBox(width: 5.0)),
                     ),
                   ],
                 ),
@@ -183,7 +188,7 @@ class _SSCCDetailsCardWidgetState extends State<SSCCDetailsCardWidget> {
                           fontStyle:
                               FlutterFlowTheme.of(context).bodySmall.fontStyle,
                         ),
-                        color: Color(0xFFF3601F),
+                        color: FlutterFlowTheme.of(context).alternate,
                         fontSize: 12.0,
                         letterSpacing: 0.0,
                         fontWeight:

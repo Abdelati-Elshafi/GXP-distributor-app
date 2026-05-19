@@ -19,7 +19,7 @@ class AddnewssccModel extends FlutterFlowModel<AddnewssccWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - API (Generate SSCC)] action in Container widget.
+  // Stores action output result for [Backend Call - API (GenerateSSCC)] action in Container widget.
   ApiCallResponse? generateSSCCResult;
 
   @override

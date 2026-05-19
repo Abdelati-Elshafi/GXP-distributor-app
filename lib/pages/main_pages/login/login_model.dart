@@ -23,6 +23,8 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
   // Stores action output result for [Backend Call - API (GetAllUsers)] action in Login widget.
   ApiCallResponse? getUsesResp;
+  // Stores action output result for [Custom Action - getDeviceType] action in Login widget.
+  String? deviceType;
   // State field(s) for UsernameDropDown widget.
   String? usernameDropDownValue;
   FormFieldController<String>? usernameDropDownValueController;

@@ -194,7 +194,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryTextColor,
-                                              fontSize: 20.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -333,7 +333,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                     FFLocalizations.of(context).getText(
                                       'fllxlbte' /* Cancel */,
                                     ), // cancel button text
-                                    true, // whether to show the flash icon
+                                    true, // whether to show the torch (camera LED) toggle icon
                                     ScanMode.QR,
                                   );
 
@@ -476,7 +476,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.interTight(
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w600,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
@@ -485,7 +485,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryTextColor,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w600,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium
@@ -533,7 +533,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                             .headlineSmall
                                             .override(
                                               font: GoogleFonts.interTight(
-                                                fontWeight: FontWeight.bold,
+                                                fontWeight: FontWeight.w600,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineSmall
@@ -542,9 +542,9 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryTextColor,
-                                              fontSize: 21.0,
+                                              fontSize: 20.0,
                                               letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w600,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineSmall
@@ -595,8 +595,8 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                         'mg4gk7q4' /* Confirm Unpack All */,
                                       ),
                                       options: FFButtonOptions(
-                                        width: double.infinity,
-                                        height: 54.0,
+                                        width: 300.0,
+                                        height: 52.0,
                                         padding: EdgeInsets.all(8.0),
                                         iconPadding:
                                             EdgeInsetsDirectional.fromSTEB(
@@ -614,6 +614,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Colors.white,
+                                              fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -626,7 +627,7 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                           color: Colors.transparent,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(16.0),
+                                            BorderRadius.circular(15.0),
                                       ),
                                     ),
                                   ),

@@ -77,7 +77,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -87,38 +87,45 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF261D66),
+          backgroundColor: Color(0xFF04113D),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 28.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
           ),
-          title: Text(
-            FFLocalizations.of(context).getText(
-              'j1u0dx3m' /* Outbound Movement */,
-            ),
-            style: FlutterFlowTheme.of(context).titleLarge.override(
-                  font: GoogleFonts.interTight(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                'j1u0dx3m' /* Outbound Movement */,
+              ),
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
-                  color: Colors.white,
-                  fontSize: 21.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                ),
+            ),
           ),
           actions: [],
           centerTitle: false,
@@ -152,7 +159,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color(0xFF04113D),
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 8.0,
@@ -164,6 +171,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: Color(0xFF1E90FF),
+                            ),
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -176,7 +186,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
                                     'assets/images/checklist.png',
-                                    width: 55.0,
+                                    width: 50.0,
                                     height: 55.0,
                                     fit: BoxFit.contain,
                                   ),
@@ -200,8 +210,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF171A1A),
-                                            fontSize: 20.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -225,7 +236,8 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF6E7880),
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
@@ -243,7 +255,8 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
-                                    color: Color(0xFF111111),
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     size: 16.0,
                                   ),
                                 ),
@@ -270,7 +283,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color(0xFF04113D),
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 8.0,
@@ -282,6 +295,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: Color(0xFF1E90FF),
+                            ),
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -294,7 +310,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
                                     'assets/images/fast-delivery.png',
-                                    width: 60.0,
+                                    width: 58.0,
                                     height: 60.0,
                                     fit: BoxFit.contain,
                                   ),
@@ -318,8 +334,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF171A1A),
-                                            fontSize: 20.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -343,7 +360,8 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF6E7880),
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
@@ -361,7 +379,8 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
-                                    color: Color(0xFF111111),
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     size: 16.0,
                                   ),
                                 ),
@@ -388,7 +407,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color(0xFF04113D),
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 8.0,
@@ -400,6 +419,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: Color(0xFF1E90FF),
+                            ),
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -412,7 +434,7 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
                                     'assets/images/return-box_(1).png',
-                                    width: 65.0,
+                                    width: 60.0,
                                     height: 65.0,
                                     fit: BoxFit.contain,
                                   ),
@@ -436,8 +458,9 @@ class _OutboundMovementWidgetState extends State<OutboundMovementWidget> {
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF171A1A),
-                                            fontSize: 20.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -463,7 +486,8 @@ o... */
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF6E7880),
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
@@ -481,7 +505,8 @@ o... */
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
-                                    color: Color(0xFF111111),
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     size: 16.0,
                                   ),
                                 ),

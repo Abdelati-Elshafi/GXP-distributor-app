@@ -72,40 +72,47 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF261D66),
+          backgroundColor: Color(0xFF04113D),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 28.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
           ),
-          title: Text(
-            FFLocalizations.of(context).getText(
-              'kdcruz8i' /* Return Shipping  */,
-            ),
-            style: FlutterFlowTheme.of(context).titleLarge.override(
-                  font: GoogleFonts.interTight(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                'kdcruz8i' /* Return Shipping  */,
+              ),
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
-                  color: Colors.white,
-                  fontSize: 21.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                ),
+            ),
           ),
           actions: [],
           centerTitle: false,
@@ -130,38 +137,41 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                         children: [
                           Align(
                             alignment: AlignmentDirectional(-1.0, -1.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                '15bhrale' /* Scan Shipment */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleMedium
-                                  .override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FontWeight.bold,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  '15bhrale' /* Scan Shipment */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryTextColor,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
-                                  ),
+                              ),
                             ),
                           ),
                           Container(
                             width: double.infinity,
                             height: 56.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              color: Color(0xFF04113D),
                               borderRadius: BorderRadius.circular(16.0),
                               border: Border.all(
-                                color: FlutterFlowTheme.of(context).outline,
+                                color: Color(0xFF1E90FF),
                                 width: 2.0,
                               ),
                             ),
@@ -173,7 +183,8 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                 children: [
                                   Icon(
                                     Icons.qr_code_scanner,
-                                    color: Color(0xFF8181BC),
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     size: 24.0,
                                   ),
                                   Expanded(
@@ -185,11 +196,17 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                         _model.scannedSSCC =
                                             _model.enterSSCCTextController.text;
                                         safeSetState(() {});
+                                        _model.loading = true;
+                                        safeSetState(() {});
                                         await _model.checkSerialStatus(
                                           context,
                                           serial: _model
                                               .enterSSCCTextController.text,
                                         );
+                                        safeSetState(() {
+                                          _model.enterSSCCTextController
+                                              ?.clear();
+                                        });
                                       },
                                       autofocus: false,
                                       textInputAction: TextInputAction.done,
@@ -212,8 +229,10 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF8181BC),
-                                              fontSize: 16.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -242,7 +261,8 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF14181B),
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight:
@@ -272,7 +292,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                         FFLocalizations.of(context).getText(
                                           '5zlki9yx' /* Cancel */,
                                         ), // cancel button text
-                                        true, // whether to show the flash icon
+                                        true, // whether to show the torch (camera LED) toggle icon
                                         ScanMode.QR,
                                       );
 
@@ -300,27 +320,32 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                               ),
                             ),
                           ),
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'j792rer1' /* Select Reason */,
-                            ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontStyle,
-                                      ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryTextColor,
-                                      fontSize: 18.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'j792rer1' /* Select Reason */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .fontStyle,
                                     ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
+                            ),
                           ),
                           FlutterFlowDropDown<String>(
                             controller: _model.dropDownValueController ??=
@@ -390,7 +415,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF454444),
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
@@ -405,13 +430,12 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                             ),
                             icon: Icon(
                               Icons.keyboard_arrow_down_rounded,
-                              color: Color(0xFF14181B),
+                              color: FlutterFlowTheme.of(context).alternate,
                               size: 24.0,
                             ),
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            fillColor: Color(0xFF04113D),
                             elevation: 2.0,
-                            borderColor: FlutterFlowTheme.of(context).outline,
+                            borderColor: Color(0xFF1E90FF),
                             borderWidth: 2.0,
                             borderRadius: 16.0,
                             margin: EdgeInsetsDirectional.fromSTEB(
@@ -430,7 +454,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                6.0, 0.0, 0.0, 0.0),
+                                10.0, 0.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 '2v2rcs9k' /* Products */,
@@ -439,16 +463,16 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                   .titleMedium
                                   .override(
                                     font: GoogleFonts.interTight(
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .fontStyle,
                                     ),
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryTextColor,
-                                    fontSize: 20.0,
+                                        .secondaryBackground,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .fontStyle,
@@ -461,8 +485,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                 width: double.infinity,
                                 height: 346.1,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color: Color(0xFF04113D),
                                   boxShadow: [
                                     FlutterFlowTheme.of(context)
                                         .designToken
@@ -475,8 +498,8 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                           .radius
                                           .lg),
                                   border: Border.all(
-                                    color: FlutterFlowTheme.of(context).outline,
-                                    width: 2.0,
+                                    color: Color(0xFF1E90FF),
+                                    width: 1.0,
                                   ),
                                 ),
                                 child: Builder(
@@ -530,7 +553,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                       ),
                       options: FFButtonOptions(
                         width: 300.0,
-                        height: 56.0,
+                        height: 52.0,
                         padding: EdgeInsets.all(8.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
@@ -544,6 +567,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                         .fontStyle,
                                   ),
                                   color: Colors.white,
+                                  fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)

@@ -161,7 +161,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                     .bodyLarge
                                     .override(
                                       font: GoogleFonts.inter(
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .fontStyle,
@@ -170,7 +170,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                           .primaryTextColor,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .fontStyle,
@@ -332,7 +332,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                       .getText(
                                                     '2mncwvuj' /* Cancel */,
                                                   ), // cancel button text
-                                                  true, // whether to show the flash icon
+                                                  true, // whether to show the torch (camera LED) toggle icon
                                                   ScanMode.BARCODE,
                                                 );
 
@@ -411,7 +411,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                   .bodyLarge
                                   .override(
                                     font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .fontStyle,
@@ -420,7 +420,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                         .primaryTextColor,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyLarge
                                         .fontStyle,
@@ -533,7 +533,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                       .bodyLarge
                                       .override(
                                         font: GoogleFonts.inter(
-                                          fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.w600,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyLarge
@@ -543,7 +543,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                             .primaryTextColor,
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .fontStyle,
@@ -706,7 +706,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                             ),
                             options: FFButtonOptions(
                               width: 300.0,
-                              height: 56.0,
+                              height: 52.0,
                               padding: EdgeInsets.all(8.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
@@ -722,6 +722,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                           .fontStyle,
                                     ),
                                     color: Colors.white,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)

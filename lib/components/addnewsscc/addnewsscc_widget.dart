@@ -98,18 +98,6 @@ class _AddnewssccWidgetState extends State<AddnewssccWidget> {
                                             'Test',
                                             ParamType.String,
                                           ),
-                                          'product': serializeParam(
-                                            'GXP-Pharma 50mg',
-                                            ParamType.String,
-                                          ),
-                                          'caseno': serializeParam(
-                                            0,
-                                            ParamType.int,
-                                          ),
-                                          'itemsno': serializeParam(
-                                            0,
-                                            ParamType.int,
-                                          ),
                                           'ssccproductserials': serializeParam(
                                             _model.emptylist,
                                             ParamType.String,

@@ -87,18 +87,6 @@ class _CasePackingWidgetState extends State<CasePackingWidget> {
                               widget.sscc,
                               ParamType.String,
                             ),
-                            'product': serializeParam(
-                              '',
-                              ParamType.String,
-                            ),
-                            'caseno': serializeParam(
-                              0,
-                              ParamType.int,
-                            ),
-                            'itemsno': serializeParam(
-                              0,
-                              ParamType.int,
-                            ),
                             'ssccproductserials': serializeParam(
                               codes,
                               ParamType.String,
@@ -114,18 +102,6 @@ class _CasePackingWidgetState extends State<CasePackingWidget> {
                             'sSCC': serializeParam(
                               '555',
                               ParamType.String,
-                            ),
-                            'product': serializeParam(
-                              '',
-                              ParamType.String,
-                            ),
-                            'caseno': serializeParam(
-                              0,
-                              ParamType.int,
-                            ),
-                            'itemsno': serializeParam(
-                              0,
-                              ParamType.int,
                             ),
                             'ssccproductserials': serializeParam(
                               _model.initialCodes,

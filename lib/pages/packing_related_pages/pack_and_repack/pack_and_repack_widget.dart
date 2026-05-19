@@ -196,7 +196,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF171A1A),
-                                              fontSize: 20.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -315,7 +315,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF171A1A),
-                                              fontSize: 20.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -434,7 +434,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF171A1A),
-                                              fontSize: 20.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:

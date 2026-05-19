@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'product_data_component_model.dart';
 export 'product_data_component_model.dart';
@@ -53,7 +54,7 @@ class _ProductDataComponentWidgetState
         width: double.infinity,
         height: 75.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xFF04113D),
           boxShadow: [
             BoxShadow(
               blurRadius: 8.0,
@@ -73,7 +74,7 @@ class _ProductDataComponentWidgetState
             children: [
               Icon(
                 Icons.inventory_2_outlined,
-                color: Color(0xFF8181BC),
+                color: FlutterFlowTheme.of(context).alternate,
                 size: 32.0,
               ),
               Expanded(
@@ -86,15 +87,15 @@ class _ProductDataComponentWidgetState
                       'SSCC:${widget.ssccList?.elementAtOrNull(widget.index!)}',
                       style: FlutterFlowTheme.of(context).bodyLarge.override(
                             font: GoogleFonts.inter(
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                               fontStyle: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .fontStyle,
                             ),
-                            color:
-                                FlutterFlowTheme.of(context).primaryTextColor,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            fontSize: 16.0,
                             letterSpacing: 0.0,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyLarge
                                 .fontStyle,
@@ -116,7 +117,7 @@ class _ProductDataComponentWidgetState
                                     .bodySmall
                                     .fontStyle,
                               ),
-                              color: Color(0xFF8181BC),
+                              color: FlutterFlowTheme.of(context).alternate,
                               fontSize: 12.0,
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
@@ -131,10 +132,10 @@ class _ProductDataComponentWidgetState
                   ],
                 ),
               ),
-              Icon(
-                Icons.delete_forever,
-                color: FlutterFlowTheme.of(context).error,
-                size: 30.0,
+              FaIcon(
+                FontAwesomeIcons.trashAlt,
+                color: Color(0xFFF40606),
+                size: 21.0,
               ),
             ].divide(SizedBox(width: 16.0)),
           ),

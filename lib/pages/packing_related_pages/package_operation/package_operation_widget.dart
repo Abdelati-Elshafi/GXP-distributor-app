@@ -52,19 +52,10 @@ class PackageOperationWidget extends StatefulWidget {
   const PackageOperationWidget({
     super.key,
     String? sSCC,
-    String? product,
-    int? caseno,
-    int? itemsno,
     this.ssccproductserials,
-  })  : this.sSCC = sSCC ?? 'SSCC',
-        this.product = product ?? 'GXP-Pharma',
-        this.caseno = caseno ?? 0,
-        this.itemsno = itemsno ?? 0;
+  }) : this.sSCC = sSCC ?? 'SSCC';
 
   final String sSCC;
-  final String product;
-  final int caseno;
-  final int itemsno;
   final List<String>? ssccproductserials;
 
   static String routeName = 'PackageOperation';
@@ -122,7 +113,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                   ParamType.String,
                 ),
                 'product': serializeParam(
-                  widget.product,
+                  '',
                   ParamType.String,
                 ),
               }.withoutNulls,
@@ -145,9 +136,9 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
             borderWidth: 1.0,
             buttonSize: 60.0,
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.arrow_back_ios,
               color: Colors.white,
-              size: 28.0,
+              size: 24.0,
             ),
             onPressed: () async {
               context.pop();

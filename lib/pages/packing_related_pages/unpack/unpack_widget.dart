@@ -304,7 +304,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                       .getText(
                                                     'g4ou29ap' /* Cancel */,
                                                   ), // cancel button text
-                                                  true, // whether to show the flash icon
+                                                  true, // whether to show the torch (camera LED) toggle icon
                                                   ScanMode.QR,
                                                 );
 
@@ -499,7 +499,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                         ),
                         options: FFButtonOptions(
                           width: double.infinity,
-                          height: 54.0,
+                          height: 52.0,
                           padding: EdgeInsets.all(8.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),

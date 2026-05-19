@@ -46,7 +46,7 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
     return Container(
       height: 45.0,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color(0xFF04113D),
         boxShadow: [
           BoxShadow(
             blurRadius: 8.0,
@@ -58,6 +58,9 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
           )
         ],
         borderRadius: BorderRadius.circular(20.0),
+        border: Border.all(
+          color: Color(0xFF1A2E6B),
+        ),
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
@@ -82,7 +85,7 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).primaryTextColor,
+                          color: FlutterFlowTheme.of(context).alternate,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
@@ -121,7 +124,7 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).primaryTextColor,
+                          color: FlutterFlowTheme.of(context).alternate,
                           fontSize: 18.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,

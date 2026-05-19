@@ -4,6 +4,7 @@ import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'return_shipping_widget.dart' show ReturnShippingWidget;
 import 'package:flutter/material.dart';
@@ -103,6 +104,8 @@ class ReturnShippingModel extends FlutterFlowModel<ReturnShippingWidget> {
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
         scannedSSCC = serial;
         addToProducts((checkSerialStatusApiResult.jsonBody ?? ''));
+      } else {
+        await action_blocks.serverConnectionFail(context);
       }
     }
 

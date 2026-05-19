@@ -606,25 +606,29 @@ class ReceivingShipmentCall {
 
 class SSCCOperationsGroup {
   static String getBaseUrl() =>
-      'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api/v1/ssccoperations';
+      'https://nonrepentantly-noblest-jacki.ngrok-free.dev/api_test/api/v1/ssccoperations';
   static Map<String, String> headers = {};
+  static GetPackedSSCCSerialsCall getPackedSSCCSerialsCall =
+      GetPackedSSCCSerialsCall();
+  static GetPackedSSCCListCall getPackedSSCCListCall = GetPackedSSCCListCall();
+  static SavePackedSSCCSerialsCall savePackedSSCCSerialsCall =
+      SavePackedSSCCSerialsCall();
   static GenerateSSCCCall generateSSCCCall = GenerateSSCCCall();
-  static GetPackedSSCClistCall getPackedSSCClistCall = GetPackedSSCClistCall();
 }
 
-class GenerateSSCCCall {
+class GetPackedSSCCSerialsCall {
   Future<ApiCallResponse> call({
-    String? type = '',
+    String? sscc = '',
   }) async {
     final baseUrl = SSCCOperationsGroup.getBaseUrl();
 
     final ffApiRequestBody = '''
 {
-  "Type": "${escapeStringForJson(type)}"
+  "SSCC": "${escapeStringForJson(sscc)}"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'Generate SSCC',
-      apiUrl: '${baseUrl}/GenerateSSCC',
+      callName: 'GetPackedSSCCSerials',
+      apiUrl: '${baseUrl}/GetPackedSSCCSerials',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -640,16 +644,23 @@ class GenerateSSCCCall {
   }
 }
 
-class GetPackedSSCClistCall {
-  Future<ApiCallResponse> call() async {
+class GetPackedSSCCListCall {
+  Future<ApiCallResponse> call({
+    String? status = '',
+  }) async {
     final baseUrl = SSCCOperationsGroup.getBaseUrl();
 
+    final ffApiRequestBody = '''
+{
+  "Status": "${escapeStringForJson(status)}"
+}''';
     return ApiManager.instance.makeApiCall(
-      callName: 'GetPackedSSCClist',
+      callName: 'GetPackedSSCCList',
       apiUrl: '${baseUrl}/GetPackedSSCClist',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -659,6 +670,81 @@ class GetPackedSSCClistCall {
       alwaysAllowBody: false,
     );
   }
+
+  List? packedSSCCData(dynamic response) => getJsonField(
+        response,
+        r'''$.data.items''',
+        true,
+      ) as List?;
+}
+
+class SavePackedSSCCSerialsCall {
+  Future<ApiCallResponse> call({
+    String? sscc = '',
+    List<String>? serial1List,
+    List<String>? serial2List,
+  }) async {
+    final baseUrl = SSCCOperationsGroup.getBaseUrl();
+    final serial1 = _serializeList(serial1List);
+    final serial2 = _serializeList(serial2List);
+
+    final ffApiRequestBody = '''
+{
+  "SSCC": "${escapeStringForJson(sscc)}",
+  "NewSerials": [
+    "${serial1}",
+    "${serial2}"
+  ]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SavePackedSSCCSerials',
+      apiUrl: '${baseUrl}/SavePackedSSCCSerials',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GenerateSSCCCall {
+  Future<ApiCallResponse> call({
+    String? type = '',
+  }) async {
+    final baseUrl = SSCCOperationsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "Type": "${escapeStringForJson(type)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GenerateSSCC',
+      apiUrl: '${baseUrl}/GenerateSSCC',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? geteratedSSCC(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.SSCC''',
+      ));
 }
 
 /// End SSCCOperations Group Code

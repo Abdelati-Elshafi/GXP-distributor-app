@@ -50,7 +50,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color(0xFF04113D),
         boxShadow: [
           BoxShadow(
             blurRadius: 8.0,
@@ -84,7 +84,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            widget.sSCC,
+                            'SSCC: ${widget.sSCC}',
                             style: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
@@ -94,8 +94,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                                         .titleMedium
                                         .fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryTextColor,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
@@ -176,7 +175,7 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                     ),
                     Divider(
                       thickness: 2.0,
-                      color: FlutterFlowTheme.of(context).mainButtons,
+                      color: Color(0xFF949498),
                     ),
                     Padding(
                       padding:
@@ -202,7 +201,8 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF8181BC),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -229,7 +229,8 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Colors.black,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)

@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'scanned_serials_to_decommission_model.dart';
 export 'scanned_serials_to_decommission_model.dart';
@@ -52,7 +53,7 @@ class _ScannedSerialsToDecommissionWidgetState
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xFF04113D),
           boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
@@ -65,7 +66,7 @@ class _ScannedSerialsToDecommissionWidgetState
           ],
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
-            color: Color(0xFFD7D1E3),
+            color: Color(0xFF1A2E6B),
             width: 1.0,
           ),
         ),
@@ -92,7 +93,8 @@ class _ScannedSerialsToDecommissionWidgetState
                                 .bodyLarge
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).primaryTextColor,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
@@ -114,10 +116,10 @@ class _ScannedSerialsToDecommissionWidgetState
                       widget.index!,
                     );
                   },
-                  child: Icon(
-                    Icons.delete_forever,
-                    color: Color(0xFFFF0006),
-                    size: 28.0,
+                  child: FaIcon(
+                    FontAwesomeIcons.trashAlt,
+                    color: Color(0xFFF40606),
+                    size: 21.0,
                   ),
                 ),
               ),

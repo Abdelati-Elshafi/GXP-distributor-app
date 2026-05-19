@@ -37,13 +37,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ? Builder(
               builder: (context) => Container(
                 color: Colors.transparent,
-                child: Image.asset(
-                  'assets/images/20251003_1701_GXPTrace_Tech_Logo_simple_compose_01k6n603kefk1rxdd16z5es9n8.png',
-                  fit: BoxFit.contain,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/gxptrace_icon_final.png',
+                    width: 300.0,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             )
-          : MainWidget(),
+          : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -52,13 +55,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ? Builder(
                   builder: (context) => Container(
                     color: Colors.transparent,
-                    child: Image.asset(
-                      'assets/images/20251003_1701_GXPTrace_Tech_Logo_simple_compose_01k6n603kefk1rxdd16z5es9n8.png',
-                      fit: BoxFit.contain,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/gxptrace_icon_final.png',
+                        width: 300.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 )
-              : MainWidget(),
+              : LoginWidget(),
         ),
         FFRoute(
           name: MainWidget.routeName,
@@ -102,18 +108,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             sSCC: params.getParam(
               'sSCC',
               ParamType.String,
-            ),
-            product: params.getParam(
-              'product',
-              ParamType.String,
-            ),
-            caseno: params.getParam(
-              'caseno',
-              ParamType.int,
-            ),
-            itemsno: params.getParam(
-              'itemsno',
-              ParamType.int,
             ),
             ssccproductserials: params.getParam<String>(
               'ssccproductserials',

@@ -105,102 +105,102 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF261D66),
+          backgroundColor: Color(0xFF04113D),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 28.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
           ),
-          title: Text(
-            FFLocalizations.of(context).getText(
-              'parl21z3' /* Order List */,
-            ),
-            style: FlutterFlowTheme.of(context).titleLarge.override(
-                  font: GoogleFonts.interTight(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                'parl21z3' /* Order List */,
+              ),
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
-                  color: Colors.white,
-                  fontSize: 21.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                ),
+            ),
           ),
           actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Stack(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Builder(
-                  builder: (context) {
-                    final itemInList = _model.ordersData.toList();
+        body: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Builder(
+                builder: (context) {
+                  final itemInList = _model.ordersData.toList();
 
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      itemCount: itemInList.length,
-                      itemBuilder: (context, itemInListIndex) {
-                        final itemInListItem = itemInList[itemInListIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 20.0, 10.0, 0.0),
-                          child: OrderCardWidget(
-                            key: Key(
-                                'Key9z4_${itemInListIndex}_of_${itemInList.length}'),
-                            ordernumber: getJsonField(
-                              _model.ordersData
-                                  .elementAtOrNull(itemInListIndex),
-                              r'''$.orderNo''',
-                            ).toString(),
-                            customer: getJsonField(
-                              _model.ordersData
-                                  .elementAtOrNull(itemInListIndex),
-                              r'''$.customer''',
-                            ).toString(),
-                            permitNo: getJsonField(
-                              _model.ordersData
-                                  .elementAtOrNull(itemInListIndex),
-                              r'''$.permitNo''',
-                            ).toString(),
-                            status: getJsonField(
-                              _model.ordersData
-                                  .elementAtOrNull(itemInListIndex),
-                              r'''$.status''',
-                            ).toString(),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    itemCount: itemInList.length,
+                    itemBuilder: (context, itemInListIndex) {
+                      final itemInListItem = itemInList[itemInListIndex];
+                      return Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 20.0, 10.0, 0.0),
+                        child: OrderCardWidget(
+                          key: Key(
+                              'Key9z4_${itemInListIndex}_of_${itemInList.length}'),
+                          ordernumber: getJsonField(
+                            _model.ordersData.elementAtOrNull(itemInListIndex),
+                            r'''$.orderNo''',
+                          ).toString(),
+                          customer: getJsonField(
+                            _model.ordersData.elementAtOrNull(itemInListIndex),
+                            r'''$.customer''',
+                          ).toString(),
+                          permitNo: getJsonField(
+                            _model.ordersData.elementAtOrNull(itemInListIndex),
+                            r'''$.permitNo''',
+                          ).toString(),
+                          status: getJsonField(
+                            _model.ordersData.elementAtOrNull(itemInListIndex),
+                            r'''$.status''',
+                          ).toString(),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
-              if (_model.loading)
-                wrapWithModel(
-                  model: _model.loadingModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: LoadingWidget(),
-                ),
-            ],
-          ),
+            ),
+            if (_model.loading)
+              wrapWithModel(
+                model: _model.loadingModel,
+                updateCallback: () => safeSetState(() {}),
+                child: LoadingWidget(),
+              ),
+          ],
         ),
       ),
     );

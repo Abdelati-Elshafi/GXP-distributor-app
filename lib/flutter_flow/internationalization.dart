@@ -147,6 +147,86 @@ bool _isSupportedLocale(Locale locale) {
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Main
   {
+    'bfv4s7jo': {
+      'en': 'Operations Hub',
+      'ar': '',
+      'hi': '',
+    },
+    'dess6j2u': {
+      'en': 'Main Warehouse',
+      'ar': '',
+      'hi': '',
+    },
+    '485551ah': {
+      'en': 'Search...',
+      'ar': '',
+      'hi': '',
+    },
+    'v36nhibv': {
+      'en': 'Option 1',
+      'ar': '',
+      'hi': '',
+    },
+    'oek8r82a': {
+      'en': 'Option 2',
+      'ar': '',
+      'hi': '',
+    },
+    'fu9aivwj': {
+      'en': 'Option 3',
+      'ar': '',
+      'hi': '',
+    },
+    'y87k8f59': {
+      'en': 'Active Shipments',
+      'ar': '',
+      'hi': '',
+    },
+    'ryc54lh6': {
+      'en': '24',
+      'ar': '',
+      'hi': '',
+    },
+    '92m5m170': {
+      'en': 'in progress',
+      'ar': '',
+      'hi': '',
+    },
+    'rp7artn0': {
+      'en': 'Temperature Alerts',
+      'ar': '',
+      'hi': '',
+    },
+    'gfersv1q': {
+      'en': '2',
+      'ar': '',
+      'hi': '',
+    },
+    'rtzjgjwx': {
+      'en': 'Requires Attention',
+      'ar': '',
+      'hi': '',
+    },
+    'y8uh4shk': {
+      'en': 'Devices Connected',
+      'ar': '',
+      'hi': '',
+    },
+    'o6kc7zd2': {
+      'en': '18',
+      'ar': '',
+      'hi': '',
+    },
+    'j2yzqr3s': {
+      'en': 'All Online',
+      'ar': '',
+      'hi': '',
+    },
+    'eyt4t0el': {
+      'en': 'Quick Actions',
+      'ar': '',
+      'hi': '',
+    },
     'j1fnog0k': {
       'en': 'Status Update',
       'ar': 'تحديث الحالة',
@@ -423,11 +503,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Scan SSCC',
       'ar': 'مسح الشحنة',
       'hi': 'शिपमेंट स्कैन करें',
-    },
-    'z055erdy': {
-      'en': 'Scan or enter SSCC',
-      'ar': 'امسح أو أدخل SSCC',
-      'hi': 'SSCC स्कैन करें या दर्ज करें',
     },
     'py4acxlu': {
       'en': 'Cancel',
@@ -987,6 +1062,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Login
   {
+    'cwgrlcow': {
+      'en': 'GXP',
+      'ar': '',
+      'hi': '',
+    },
+    'aed3ew27': {
+      'en': 'Trace',
+      'ar': '',
+      'hi': '',
+    },
+    'dax4ap08': {
+      'en': 'TRACE EVERY STEP, ENSURE EVERY DOSE',
+      'ar': '',
+      'hi': '',
+    },
     'skbmfv17': {
       'en': 'Select User',
       'ar': '',
@@ -1018,12 +1108,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hi': '',
     },
     'onvc2u90': {
-      'en': 'Login',
+      'en': 'LOGIN',
       'ar': '',
       'hi': '',
     },
     '30avdo41': {
       'en': 'Failed To Connect to the Server',
+      'ar': '',
+      'hi': '',
+    },
+    '10rp25nn': {
+      'en': 'Version 1.0.0',
       'ar': '',
       'hi': '',
     },
@@ -1332,6 +1427,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3nrcfo1s': {
       'en': 'Confirm',
+      'ar': '',
+      'hi': '',
+    },
+  },
+  // TextField
+  {
+    'xo2v14b4': {
+      'en': 'Scan or enter SSCC',
       'ar': '',
       'hi': '',
     },

@@ -1,10 +1,13 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/addnewsscc/addnewsscc_widget.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
+import '/components/loading/loading_widget.dart';
 import '/components/package_card/package_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'packages_list_model.dart';
 export 'packages_list_model.dart';
@@ -47,6 +50,28 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PackagesListModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.loading = true;
+      safeSetState(() {});
+      _model.getPackedSSCCListApiResult =
+          await SSCCOperationsGroup.getPackedSSCCListCall.call(
+        status: 'All',
+      );
+
+      if ((_model.getPackedSSCCListApiResult?.succeeded ?? true)) {
+        _model.packages = SSCCOperationsGroup.getPackedSSCCListCall
+            .packedSSCCData(
+              (_model.getPackedSSCCListApiResult?.jsonBody ?? ''),
+            )!
+            .toList()
+            .cast<dynamic>();
+        safeSetState(() {});
+      }
+      _model.loading = false;
+      safeSetState(() {});
+    });
   }
 
   @override
@@ -105,64 +130,88 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
           centerTitle: false,
           elevation: 2.0,
         ),
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Stack(
-              children: [
-                Builder(
-                  builder: (context) {
-                    final itemInlist = _model.packages.toList();
-
-                    return ListView.separated(
-                      padding: EdgeInsets.fromLTRB(
-                        0,
-                        16.0,
-                        0,
-                        80.0,
-                      ),
-                      scrollDirection: Axis.vertical,
-                      itemCount: itemInlist.length,
-                      separatorBuilder: (_, __) => SizedBox(height: 12.0),
-                      itemBuilder: (context, itemInlistIndex) {
-                        final itemInlistItem = itemInlist[itemInlistIndex];
-                        return wrapWithModel(
-                          model: _model.packageCardModels.getModel(
-                            itemInlistItem,
-                            itemInlistIndex,
-                          ),
-                          updateCallback: () => safeSetState(() {}),
-                          child: PackageCardWidget(
-                            key: Key(
-                              'Key0ut_${itemInlistItem}',
-                            ),
-                            updateViability: false,
-                          ),
-                        );
-                      },
-                    );
-                  },
+        body: Stack(
+          children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset(
+                    'assets/images/tech_background.jpg',
+                  ).image,
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
-                  child: wrapWithModel(
-                    model: _model.addnewssccModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: AddnewssccWidget(),
-                  ),
-                ),
-                if (true)
-                  wrapWithModel(
-                    model: _model.emptyListViewDisplayModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: EmptyListViewDisplayWidget(
-                      listContent: _model.packages,
-                    ),
-                  ),
-              ],
+              ),
             ),
-          ),
+            Padding(
+              padding: EdgeInsets.all(6.0),
+              child: Builder(
+                builder: (context) {
+                  final itemAtIndex = _model.packages.toList();
+
+                  return ListView.separated(
+                    padding: EdgeInsets.fromLTRB(
+                      0,
+                      16.0,
+                      0,
+                      80.0,
+                    ),
+                    scrollDirection: Axis.vertical,
+                    itemCount: itemAtIndex.length,
+                    separatorBuilder: (_, __) => SizedBox(height: 12.0),
+                    itemBuilder: (context, itemAtIndexIndex) {
+                      final itemAtIndexItem = itemAtIndex[itemAtIndexIndex];
+                      return wrapWithModel(
+                        model: _model.packageCardModels.getModel(
+                          itemAtIndexItem.toString(),
+                          itemAtIndexIndex,
+                        ),
+                        updateCallback: () => safeSetState(() {}),
+                        updateOnChange: true,
+                        child: PackageCardWidget(
+                          key: Key(
+                            'Key0ut_${itemAtIndexItem.toString()}',
+                          ),
+                          sSCC: getJsonField(
+                            _model.packages.elementAtOrNull(itemAtIndexIndex),
+                            r'''$.SSCC''',
+                          ).toString(),
+                          itemsNO: 878787878,
+                          updateViability: false,
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            if (true)
+              Align(
+                alignment: AlignmentDirectional(0.0, -1.0),
+                child: wrapWithModel(
+                  model: _model.addnewssccModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: AddnewssccWidget(),
+                ),
+              ),
+            if (true)
+              wrapWithModel(
+                model: _model.emptyListViewDisplayModel,
+                updateCallback: () => safeSetState(() {}),
+                child: EmptyListViewDisplayWidget(
+                  listContent:
+                      _model.packages.map((e) => e.toString()).toList(),
+                ),
+              ),
+            if (_model.loading)
+              wrapWithModel(
+                model: _model.loadingModel,
+                updateCallback: () => safeSetState(() {}),
+                child: LoadingWidget(),
+              ),
+          ],
         ),
       ),
     );

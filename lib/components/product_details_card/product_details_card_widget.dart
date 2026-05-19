@@ -105,7 +105,7 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Color(0xFF08143F),
             boxShadow: [
               BoxShadow(
                 blurRadius: 8.0,
@@ -117,9 +117,13 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
               )
             ],
             borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(
+              color: Color(0xFF1A2E6B),
+              width: 2.0,
+            ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,7 +144,8 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFF14181B),
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               fontStyle: FlutterFlowTheme.of(context)
@@ -162,7 +167,8 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                                     .labelSmall
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .labelSmall
@@ -188,7 +194,7 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF10B981),
+                                  color: Color(0xFF1FE0C5),
                                   fontSize: 13.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -199,7 +205,7 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                           ),
                         ],
                       ),
-                    ].divide(SizedBox(height: 10.0)),
+                    ].divide(SizedBox(height: 4.0)),
                   ),
                 ),
                 Row(
@@ -219,7 +225,7 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                     if (widget.navigateEnable ?? true)
                       Icon(
                         Icons.chevron_right,
-                        color: FlutterFlowTheme.of(context).secondaryText,
+                        color: FlutterFlowTheme.of(context).alternate,
                         size: 20.0,
                       ),
                   ].divide(SizedBox(width: 8.0)),

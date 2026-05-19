@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
+import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
@@ -24,10 +25,8 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for EnterSSCC widget.
-  FocusNode? enterSSCCFocusNode;
-  TextEditingController? enterSSCCTextController;
-  String? Function(BuildContext, String?)? enterSSCCTextControllerValidator;
+  // Model for TextField component.
+  late TextFieldModel textFieldModel;
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedSSCCAction = '';
@@ -44,6 +43,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
 
   @override
   void initState(BuildContext context) {
+    textFieldModel = createModel(context, () => TextFieldModel());
     scanButtonModel = createModel(context, () => ScanButtonModel());
     emptyListViewDisplayModel =
         createModel(context, () => EmptyListViewDisplayModel());
@@ -52,9 +52,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
 
   @override
   void dispose() {
-    enterSSCCFocusNode?.dispose();
-    enterSSCCTextController?.dispose();
-
+    textFieldModel.dispose();
     scanButtonModel.dispose();
     emptyListViewDisplayModel.dispose();
     loadingModel.dispose();
