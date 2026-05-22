@@ -1130,6 +1130,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Queries
   {
+    'sek2b0yk': {
+      'en': 'Coming \nSoon',
+      'ar': '',
+      'hi': '',
+    },
     '51v4bfvg': {
       'en': 'Queries',
       'ar': 'بيت',
@@ -1138,6 +1143,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // reports
   {
+    '7f0xwlvs': {
+      'en': 'Coming \nSoon',
+      'ar': '',
+      'hi': '',
+    },
     'u4i7gbe9': {
       'en': 'Reports',
       'ar': 'بيت',
@@ -1146,6 +1156,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Exceptions
   {
+    '7zzztzo7': {
+      'en': 'Coming \nSoon',
+      'ar': '',
+      'hi': '',
+    },
     'gp28ilaq': {
       'en': 'Home',
       'ar': 'بيت',

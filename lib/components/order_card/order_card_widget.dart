@@ -88,8 +88,8 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
             ],
             borderRadius: BorderRadius.circular(16.0),
             border: Border.all(
-              color: Color(0xFF1E90FF),
-              width: 1.0,
+              color: Color(0xFF1A2E6B),
+              width: 2.0,
             ),
           ),
           child: Padding(

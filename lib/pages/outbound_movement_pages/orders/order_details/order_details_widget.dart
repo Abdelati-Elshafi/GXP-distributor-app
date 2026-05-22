@@ -116,9 +116,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF04113D),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
           leading: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -165,19 +165,6 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
         ),
         body: Stack(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/tech_background.jpg',
-                  ).image,
-                ),
-              ),
-            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
               child: SingleChildScrollView(
@@ -204,7 +191,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                           ],
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFF1E90FF),
+                            color: Color(0xFF1A2E6B),
                             width: 1.0,
                           ),
                         ),

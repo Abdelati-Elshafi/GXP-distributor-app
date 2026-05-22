@@ -10,11 +10,9 @@ export 'text_field_model.dart';
 class TextFieldWidget extends StatefulWidget {
   const TextFieldWidget({
     super.key,
-    required this.text,
     required this.changeAction,
   });
 
-  final String? text;
   final Future Function()? changeAction;
 
   @override
@@ -74,6 +72,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     return TextFormField(
       controller: _model.enterSSCCTextController,
       focusNode: _model.enterSSCCFocusNode,
+      onFieldSubmitted: (_) async {
+        await widget.changeAction?.call();
+      },
       autofocus: false,
       textInputAction: TextInputAction.done,
       obscureText: false,

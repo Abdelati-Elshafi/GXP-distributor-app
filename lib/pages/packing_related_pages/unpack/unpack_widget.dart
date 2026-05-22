@@ -77,41 +77,47 @@ class _UnpackWidgetState extends State<UnpackWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF261D66),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 28.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
           ),
-          title: Text(
-            FFLocalizations.of(context).getText(
-              'r2vbbwln' /* UnPack */,
-            ),
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.interTight(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                'r2vbbwln' /* UnPack */,
+              ),
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
-                  color: Colors.white,
-                  fontSize: 21.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
-                  fontStyle:
-                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                ),
+            ),
           ),
           actions: [],
           centerTitle: false,
@@ -132,7 +138,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                       Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFF04113D),
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 8.0,
@@ -144,9 +150,6 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                             )
                           ],
                           borderRadius: BorderRadius.circular(20.0),
-                          border: Border.all(
-                            color: Colors.white,
-                          ),
                         ),
                         child: Padding(
                           padding: EdgeInsets.all(6.0),
@@ -157,10 +160,10 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                               Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Color(0xFF0D214D),
                                   borderRadius: BorderRadius.circular(16.0),
                                   border: Border.all(
-                                    color: Color(0xFFD7D1E3),
+                                    color: Color(0xFF1A2E6B),
                                     width: 2.0,
                                   ),
                                 ),
@@ -182,7 +185,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                               Icons.qr_code_scanner,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryTextColor,
+                                                      .alternate,
                                               size: 24.0,
                                             ),
                                           ),
@@ -231,7 +234,10 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF9E9E9E),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
@@ -391,7 +397,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                                       .fontStyle,
                                             ),
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryTextColor,
+                                                .secondaryBackground,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
@@ -416,7 +422,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                         width: double.infinity,
                                         height: 518.56,
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: Color(0xFF04113D),
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 8.0,
@@ -430,7 +436,8 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                           borderRadius:
                                               BorderRadius.circular(20.0),
                                           border: Border.all(
-                                            color: Colors.white,
+                                            color: Color(0xFF1A2E6B),
+                                            width: 2.0,
                                           ),
                                         ),
                                         child: Padding(
@@ -503,7 +510,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                           padding: EdgeInsets.all(8.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primaryTextColor,
+                          color: Color(0x05323394),
                           textStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     font: GoogleFonts.interTight(
@@ -521,7 +528,7 @@ class _UnpackWidgetState extends State<UnpackWidget> {
                                   ),
                           elevation: 0.0,
                           borderSide: BorderSide(
-                            color: Colors.transparent,
+                            color: Color(0xFF1E90FF),
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),

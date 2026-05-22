@@ -107,7 +107,7 @@ class _OrdersListWidgetState extends State<OrdersListWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF04113D),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
           leading: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),

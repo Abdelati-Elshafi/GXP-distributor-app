@@ -44,7 +44,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
         width: double.infinity,
         height: 80.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xFF0D214D),
           boxShadow: [
             BoxShadow(
               blurRadius: 8.0,
@@ -78,7 +78,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                   children: [
                     Icon(
                       Icons.dashboard,
-                      color: FlutterFlowTheme.of(context).primaryTextColor,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
                       size: 28.0,
                     ),
                     Text(
@@ -92,8 +92,8 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                   .bodySmall
                                   .fontStyle,
                             ),
-                            color:
-                                FlutterFlowTheme.of(context).primaryTextColor,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 12.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -119,7 +119,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                   children: [
                     Icon(
                       Icons.receipt_long,
-                      color: Color(0xFF808C95),
+                      color: FlutterFlowTheme.of(context).alternate,
                       size: 28.0,
                     ),
                     Text(
@@ -133,7 +133,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                   .bodySmall
                                   .fontStyle,
                             ),
-                            color: Color(0xFF2C2B2B),
+                            color: FlutterFlowTheme.of(context).alternate,
                             fontSize: 12.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
@@ -159,7 +159,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                   children: [
                     Icon(
                       Icons.query_stats,
-                      color: Color(0xFF808C95),
+                      color: FlutterFlowTheme.of(context).alternate,
                       size: 28.0,
                     ),
                     Text(
@@ -173,7 +173,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                   .bodySmall
                                   .fontStyle,
                             ),
-                            color: Color(0xFF2C2B2B),
+                            color: FlutterFlowTheme.of(context).alternate,
                             fontSize: 12.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
@@ -199,7 +199,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                   children: [
                     FaIcon(
                       FontAwesomeIcons.exclamationTriangle,
-                      color: Color(0xFF808C95),
+                      color: FlutterFlowTheme.of(context).alternate,
                       size: 28.0,
                     ),
                     Text(
@@ -213,7 +213,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                                   .bodySmall
                                   .fontStyle,
                             ),
-                            color: Color(0xFF2C2B2B),
+                            color: FlutterFlowTheme.of(context).alternate,
                             fontSize: 12.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,

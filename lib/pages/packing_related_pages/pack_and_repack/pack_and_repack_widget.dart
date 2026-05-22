@@ -71,7 +71,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -81,38 +81,45 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF261D66),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 28.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
           ),
-          title: Text(
-            FFLocalizations.of(context).getText(
-              '9ndqj7tm' /* Pack & Repack */,
-            ),
-            style: FlutterFlowTheme.of(context).titleLarge.override(
-                  font: GoogleFonts.interTight(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                '9ndqj7tm' /* Pack & Repack */,
+              ),
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
-                  color: Colors.white,
-                  fontSize: 21.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                ),
+            ),
           ),
           actions: [],
           centerTitle: false,
@@ -145,7 +152,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color(0xFF08143F),
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 8.0,
@@ -157,6 +164,10 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                 )
                               ],
                               borderRadius: BorderRadius.circular(16.0),
+                              border: Border.all(
+                                color: Color(0xFF1A2E6B),
+                                width: 2.0,
+                              ),
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -170,7 +181,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
                                       'assets/images/box_(3).png',
-                                      width: 55.0,
+                                      width: 50.0,
                                       height: 55.0,
                                       fit: BoxFit.contain,
                                     ),
@@ -195,7 +206,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF171A1A),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
@@ -220,7 +233,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6E7880),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -237,7 +252,8 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
-                                      color: Color(0xFF050505),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       size: 16.0,
                                     ),
                                   ),
@@ -264,7 +280,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color(0xFF08143F),
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 8.0,
@@ -276,6 +292,10 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                 )
                               ],
                               borderRadius: BorderRadius.circular(16.0),
+                              border: Border.all(
+                                color: Color(0xFF1A2E6B),
+                                width: 2.0,
+                              ),
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -314,7 +334,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF171A1A),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
@@ -339,7 +361,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6E7880),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -356,7 +380,8 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
-                                      color: Color(0xFF050505),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       size: 16.0,
                                     ),
                                   ),
@@ -383,7 +408,7 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color(0xFF08143F),
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 8.0,
@@ -395,6 +420,10 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                 )
                               ],
                               borderRadius: BorderRadius.circular(16.0),
+                              border: Border.all(
+                                color: Color(0xFF1A2E6B),
+                                width: 2.0,
+                              ),
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -433,7 +462,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .titleLarge
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF171A1A),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
@@ -458,7 +489,9 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6E7880),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -475,7 +508,8 @@ class _PackAndRepackWidgetState extends State<PackAndRepackWidget> {
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
-                                      color: Color(0xFF050505),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       size: 16.0,
                                     ),
                                   ),

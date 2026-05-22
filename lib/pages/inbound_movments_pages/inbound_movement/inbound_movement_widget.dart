@@ -87,7 +87,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF04113D),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
           leading: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -172,7 +172,7 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFF04113D),
+                                    color: Color(0xFF08143F),
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: 8.0,
@@ -185,7 +185,8 @@ class _InboundMovementWidgetState extends State<InboundMovementWidget> {
                                     ],
                                     borderRadius: BorderRadius.circular(16.0),
                                     border: Border.all(
-                                      color: Color(0xFF1E90FF),
+                                      color: Color(0xFF1A2E6B),
+                                      width: 2.0,
                                     ),
                                   ),
                                   child: Padding(
@@ -342,7 +343,7 @@ MAH or... */
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF04113D),
+                                  color: Color(0xFF08143F),
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 8.0,
@@ -355,7 +356,8 @@ MAH or... */
                                   ],
                                   borderRadius: BorderRadius.circular(16.0),
                                   border: Border.all(
-                                    color: Color(0xFF1E90FF),
+                                    color: Color(0xFF1A2E6B),
+                                    width: 2.0,
                                   ),
                                 ),
                                 child: Padding(

@@ -97,7 +97,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             context.pushNamed(
@@ -128,39 +128,45 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Color(0xFF261D66),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-              size: 24.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
           ),
-          title: Text(
-            FFLocalizations.of(context).getText(
-              'yu0f6bmp' /* Pack Process */,
-            ),
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.interTight(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                'yu0f6bmp' /* Pack Process */,
+              ),
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
-                  color: Colors.white,
-                  fontSize: 21.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
-                  fontStyle:
-                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                ),
+            ),
           ),
           actions: [],
           centerTitle: false,
@@ -195,7 +201,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                         ),
                       ),
                       Divider(
-                        thickness: 2.0,
+                        thickness: 1.0,
                         color: FlutterFlowTheme.of(context).mainButtons,
                       ),
                       Padding(
@@ -204,6 +210,10 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                              width: 1.0,
+                            ),
                           ),
                           child: SingleChildScrollView(
                             child: Column(
@@ -233,7 +243,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                                                 scrollDirection: Axis.vertical,
                                                 itemCount: iteminlist.length,
                                                 separatorBuilder: (_, __) =>
-                                                    SizedBox(height: 3.0),
+                                                    SizedBox(height: 5.0),
                                                 itemBuilder:
                                                     (context, iteminlistIndex) {
                                                   final iteminlistItem =

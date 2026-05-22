@@ -90,41 +90,48 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF261D66),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 28.0,
+          leading: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
           ),
-          title: Text(
-            valueOrDefault<String>(
-              widget.decommissionReason,
-              'Reason',
-            ),
-            style: FlutterFlowTheme.of(context).titleLarge.override(
-                  font: GoogleFonts.interTight(
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+            child: Text(
+              valueOrDefault<String>(
+                widget.decommissionReason,
+                'Reason',
+              ),
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    font: GoogleFonts.interTight(
+                      fontWeight: FontWeight.bold,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.bold,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
-                  color: Colors.white,
-                  fontSize: 21.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                ),
+            ),
           ),
           actions: [],
           centerTitle: false,
@@ -152,7 +159,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 0.0, 0.0),
+                                  10.0, 0.0, 0.0, 3.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'bp8peuxd' /* Scan Items */,
@@ -167,7 +174,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                             .fontStyle,
                                       ),
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryTextColor,
+                                          .secondaryBackground,
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -183,11 +190,11 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Color(0xFF04113D),
                                   borderRadius: BorderRadius.circular(16.0),
                                   border: Border.all(
-                                    color: Color(0xFFD7D1E3),
-                                    width: 2.0,
+                                    color: Color(0xFF64B4FF),
+                                    width: 1.0,
                                   ),
                                 ),
                                 child: Column(
@@ -208,7 +215,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                               Icons.qr_code_scanner,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryTextColor,
+                                                      .alternate,
                                               size: 24.0,
                                             ),
                                           ),
@@ -259,7 +266,10 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF9E9E9E),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
@@ -402,7 +412,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
+                                10.0, 0.0, 0.0, 3.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'srh2u3yg' /* Select Reason */,
@@ -417,7 +427,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                           .fontStyle,
                                     ),
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryTextColor,
+                                        .secondaryBackground,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -483,7 +493,8 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF454444),
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
@@ -498,14 +509,13 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                               ),
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
-                                color: Color(0xFF14181B),
-                                size: 24.0,
+                                color: FlutterFlowTheme.of(context).alternate,
+                                size: 20.0,
                               ),
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              fillColor: Color(0xFF04113D),
                               elevation: 2.0,
-                              borderColor: FlutterFlowTheme.of(context).outline,
-                              borderWidth: 2.0,
+                              borderColor: Color(0xFF64B4FF),
+                              borderWidth: 1.0,
                               borderRadius: 8.0,
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 10.0, 0.0),
@@ -524,7 +534,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 0.0, 0.0),
+                                    10.0, 0.0, 0.0, 3.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'fcr735ur' /* Scanned Items */,
@@ -540,7 +550,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                   .fontStyle,
                                         ),
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryTextColor,
+                                            .secondaryBackground,
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -557,8 +567,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                   width: double.infinity,
                                   height: 280.0,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: Color(0xFF0D214D),
                                     boxShadow: [
                                       FlutterFlowTheme.of(context)
                                           .designToken
@@ -567,8 +576,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                     ],
                                     borderRadius: BorderRadius.circular(20.0),
                                     border: Border.all(
-                                      color:
-                                          FlutterFlowTheme.of(context).outline,
+                                      color: Color(0xFF1A2E6B),
                                       width: 2.0,
                                     ),
                                   ),
@@ -710,8 +718,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                               padding: EdgeInsets.all(8.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color:
-                                  FlutterFlowTheme.of(context).primaryTextColor,
+                              color: Color(0x711A8267),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
@@ -731,7 +738,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
-                                color: Colors.transparent,
+                                color: Color(0xFF1A8267),
                               ),
                               borderRadius: BorderRadius.circular(16.0),
                               disabledColor:

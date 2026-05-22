@@ -114,9 +114,9 @@ class _ShippingWidgetState extends State<ShippingWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF04113D),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
           leading: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -162,19 +162,6 @@ class _ShippingWidgetState extends State<ShippingWidget> {
         ),
         body: Stack(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/tech_background.jpg',
-                  ).image,
-                ),
-              ),
-            ),
             Padding(
               padding: EdgeInsets.all(4.0),
               child: Column(
@@ -269,8 +256,9 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Colors.black,
-                                    fontSize: 16.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -288,13 +276,12 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                               ),
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
+                                color: FlutterFlowTheme.of(context).alternate,
+                                size: 20.0,
                               ),
-                              fillColor: Colors.white,
+                              fillColor: Color(0xFF04113D),
                               elevation: 0.0,
-                              borderColor: Color(0xFFD7D1E3),
+                              borderColor: Color(0xFF64B4FF),
                               borderWidth: 1.0,
                               borderRadius: 8.0,
                               margin: EdgeInsetsDirectional.fromSTEB(
@@ -314,7 +301,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xFF0D214D),
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8.0,
@@ -327,7 +314,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                         ],
                         borderRadius: BorderRadius.circular(12.0),
                         border: Border.all(
-                          color: Color(0xFF323394),
+                          color: Color(0xFF1A2E6B),
                           width: 2.0,
                         ),
                       ),
@@ -355,7 +342,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -378,7 +366,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -387,6 +376,10 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                               ],
+                            ),
+                            Divider(
+                              thickness: 0.8,
+                              color: FlutterFlowTheme.of(context).alternate,
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -406,7 +399,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -429,7 +423,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -438,6 +433,10 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                               ],
+                            ),
+                            Divider(
+                              thickness: 0.8,
+                              color: FlutterFlowTheme.of(context).alternate,
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -457,7 +456,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -480,7 +480,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -489,6 +490,10 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                               ],
+                            ),
+                            Divider(
+                              thickness: 0.8,
+                              color: FlutterFlowTheme.of(context).alternate,
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -508,7 +513,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -530,7 +536,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -539,6 +546,10 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                       ),
                                 ),
                               ],
+                            ),
+                            Divider(
+                              thickness: 0.8,
+                              color: FlutterFlowTheme.of(context).alternate,
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -558,7 +569,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -581,7 +593,8 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF14181B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -591,7 +604,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                 ),
                               ],
                             ),
-                          ].divide(SizedBox(height: 10.0)),
+                          ].divide(SizedBox(height: 5.0)),
                         ),
                       ),
                     ),
@@ -727,8 +740,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               iconColor: Colors.white,
-                              color:
-                                  FlutterFlowTheme.of(context).primaryTextColor,
+                              color: Color(0x711A8267),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
@@ -748,7 +760,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
-                                color: Colors.transparent,
+                                color: Color(0xFF1A8267),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(12.0),
@@ -797,7 +809,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 8.0, 0.0),
                                 iconColor: Colors.white,
-                                color: Color(0xFFD32F2F),
+                                color: Color(0x5AB81212),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
@@ -817,7 +829,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                     ),
                                 elevation: 2.0,
                                 borderSide: BorderSide(
-                                  color: Colors.transparent,
+                                  color: Color(0xFFD32F2F),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(12.0),

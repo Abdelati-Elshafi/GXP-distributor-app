@@ -62,6 +62,10 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
           )
         ],
         borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(
+          color: Color(0xFF1A2E6B),
+          width: 2.0,
+        ),
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 15.0),

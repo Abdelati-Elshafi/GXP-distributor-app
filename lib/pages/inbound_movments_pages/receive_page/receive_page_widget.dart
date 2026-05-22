@@ -79,7 +79,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF04113D),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
           leading: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -191,7 +191,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                       color: Color(0xFF0D214D),
                                       borderRadius: BorderRadius.circular(16.0),
                                       border: Border.all(
-                                        color: Color(0xFF1E90FF),
+                                        color: Color(0xFF64B4FF),
                                         width: 1.0,
                                       ),
                                     ),
@@ -213,8 +213,6 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                               updateCallback: () =>
                                                   safeSetState(() {}),
                                               child: TextFieldWidget(
-                                                text:
-                                                    FFAppState().ScannedBarcode,
                                                 changeAction: () async {
                                                   _model.loading = true;
                                                   safeSetState(() {});
@@ -382,9 +380,6 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                         ],
                                         borderRadius:
                                             BorderRadius.circular(20.0),
-                                        border: Border.all(
-                                          color: Color(0xFF1E90FF),
-                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -530,8 +525,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryTextColor,
+                                      color: Color(0x711A8267),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -552,12 +546,10 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                           ),
                                       elevation: 0.0,
                                       borderSide: BorderSide(
-                                        color: Colors.transparent,
+                                        color: Color(0xFF1A8267),
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
-                                      disabledColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                      disabledColor: Color(0x711A8267),
                                     ),
                                   ),
                                 ),
@@ -650,8 +642,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryTextColor,
+                                      color: Color(0x05323394),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -673,10 +664,10 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                           ),
                                       elevation: 0.0,
                                       borderSide: BorderSide(
-                                        color: Colors.transparent,
+                                        color: Color(0xFF1E90FF),
                                       ),
                                       borderRadius: BorderRadius.circular(16.0),
-                                      disabledColor: Color(0x9E57636C),
+                                      disabledColor: Color(0x2E57636C),
                                     ),
                                   ),
                                 ),

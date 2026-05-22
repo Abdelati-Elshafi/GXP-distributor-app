@@ -74,7 +74,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0xFF04113D),
         appBar: AppBar(
-          backgroundColor: Color(0xFF04113D),
+          backgroundColor: Color(0xFF0D214D),
           automaticallyImplyLeading: false,
           leading: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
@@ -171,8 +171,8 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                               color: Color(0xFF04113D),
                               borderRadius: BorderRadius.circular(16.0),
                               border: Border.all(
-                                color: Color(0xFF1E90FF),
-                                width: 2.0,
+                                color: Color(0xFF64B4FF),
+                                width: 1.0,
                               ),
                             ),
                             child: Padding(
@@ -431,12 +431,12 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                             icon: Icon(
                               Icons.keyboard_arrow_down_rounded,
                               color: FlutterFlowTheme.of(context).alternate,
-                              size: 24.0,
+                              size: 20.0,
                             ),
                             fillColor: Color(0xFF04113D),
                             elevation: 2.0,
-                            borderColor: Color(0xFF1E90FF),
-                            borderWidth: 2.0,
+                            borderColor: Color(0xFF64B4FF),
+                            borderWidth: 1.0,
                             borderRadius: 16.0,
                             margin: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 10.0, 0.0),
@@ -498,8 +498,8 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                           .radius
                                           .lg),
                                   border: Border.all(
-                                    color: Color(0xFF1E90FF),
-                                    width: 1.0,
+                                    color: Color(0xFF1A2E6B),
+                                    width: 2.0,
                                   ),
                                 ),
                                 child: Builder(
@@ -557,7 +557,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                         padding: EdgeInsets.all(8.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primaryTextColor,
+                        color: Color(0x711A8267),
                         textStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   font: GoogleFonts.interTight(
@@ -576,7 +576,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                 ),
                         elevation: 0.0,
                         borderSide: BorderSide(
-                          color: Colors.transparent,
+                          color: Color(0xFF1A8267),
                         ),
                         borderRadius: BorderRadius.circular(16.0),
                       ),

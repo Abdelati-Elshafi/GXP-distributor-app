@@ -59,7 +59,7 @@ class _CasePackingWidgetState extends State<CasePackingWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF04113D),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [

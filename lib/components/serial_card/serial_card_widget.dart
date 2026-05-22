@@ -43,62 +43,74 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 45.0,
-      decoration: BoxDecoration(
-        color: Color(0xFF04113D),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 8.0,
-            color: Color(0x1A000000),
-            offset: Offset(
-              0.0,
-              2.0,
-            ),
-          )
-        ],
-        borderRadius: BorderRadius.circular(20.0),
-        border: Border.all(
-          color: Color(0xFF1A2E6B),
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+      child: Container(
+        height: 45.0,
+        decoration: BoxDecoration(
+          color: Color(0xFF04113D),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 8.0,
+              color: Color(0x1A000000),
+              offset: Offset(
+                0.0,
+                2.0,
+              ),
+            )
+          ],
+          borderRadius: BorderRadius.circular(20.0),
+          border: Border.all(
+            color: Color(0xFF1A2E6B),
+          ),
         ),
-      ),
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    '${valueOrDefault<String>(
-                      widget.no?.toString(),
-                      '0',
-                    )}   ',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.inter(
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      '${valueOrDefault<String>(
+                        widget.no?.toString(),
+                        '0',
+                      )}   ',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: FlutterFlowTheme.of(context).alternate,
+                            fontSize: 16.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).alternate,
-                          fontSize: 16.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
-                  ),
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      '0p8piq7w' /* 📦 */,
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.inter(
+                    Text(
+                      FFLocalizations.of(context).getText(
+                        '0p8piq7w' /* 📦 */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
                             fontWeight: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontWeight,
@@ -106,36 +118,30 @@ class _SerialCardWidgetState extends State<SerialCardWidget> {
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          fontSize: 18.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .fontWeight,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
-                  ),
-                  Text(
-                    widget.serial,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.inter(
+                    ),
+                    Text(
+                      widget.serial,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: FlutterFlowTheme.of(context).alternate,
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).alternate,
-                          fontSize: 18.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
-                  ),
-                ].divide(SizedBox(width: 5.0)),
+                    ),
+                  ].divide(SizedBox(width: 5.0)),
+                ),
               ),
-            ),
-          ].divide(SizedBox(width: 6.0)),
+            ].divide(SizedBox(width: 6.0)),
+          ),
         ),
       ),
     );

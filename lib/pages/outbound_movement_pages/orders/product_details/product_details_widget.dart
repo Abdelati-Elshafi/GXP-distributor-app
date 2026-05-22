@@ -144,7 +144,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFF04113D),
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 8.0,
@@ -157,8 +157,8 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                           ],
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: Color(0xFFF3601F),
-                            width: 0.0,
+                            color: Color(0xFF1A2E6B),
+                            width: 1.0,
                           ),
                         ),
                         child: Padding(
@@ -204,7 +204,9 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                                         .headlineMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
@@ -235,7 +237,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                               ),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                                      .alternate,
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -315,7 +317,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                             width: 120.0,
                                             height: 50.0,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFFD1E5FA),
+                                              color: Color(0xF3D1E5FA),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                             ),
@@ -373,7 +375,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                     ),
                     LinearPercentIndicator(
                       percent: (widget.scannedQTY!) / (widget.requiredQTY!),
-                      lineHeight: 3.0,
+                      lineHeight: 1.0,
                       animation: true,
                       animateFromLastPercent: true,
                       progressColor: Color(0xFFF3601F),
@@ -427,6 +429,10 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                              width: 2.0,
+                            ),
                           ),
                           child: SingleChildScrollView(
                             child: Column(
@@ -536,8 +542,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconColor: Colors.white,
-                              color:
-                                  FlutterFlowTheme.of(context).primaryTextColor,
+                              color: Color(0x711A8267),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -556,7 +561,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
-                                color: Colors.transparent,
+                                color: Color(0xFF1A8267),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(12.0),
@@ -582,7 +587,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               iconColor: Colors.white,
-                              color: Color(0xFFD32F2F),
+                              color: Color(0x5AB81212),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -601,7 +606,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(
-                                color: Colors.transparent,
+                                color: Color(0xFFD32F2F),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(12.0),

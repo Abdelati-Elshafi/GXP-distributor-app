@@ -64,6 +64,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
     required String? serial,
   }) async {
     bool? alreadyScanned;
+    dynamic parsedGs1;
     ApiCallResponse? checkSerialStatusApiResult;
 
     loading = true;
@@ -92,6 +93,28 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
           ) ??
           false;
     } else {
+      parsedGs1 = await actions.parseGs1Scan(
+        serial,
+      );
+      var confirmDialogResponse = await showDialog<bool>(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                title: Text(parsedGs1!.toString()),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext, false),
+                    child: Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext, true),
+                    child: Text('Confirm'),
+                  ),
+                ],
+              );
+            },
+          ) ??
+          false;
       checkSerialStatusApiResult =
           await SerialStatusUpdateGroup.checkSerialStatusCall.call(
         serial: serial,
