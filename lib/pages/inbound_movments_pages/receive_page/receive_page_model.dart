@@ -96,32 +96,19 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
       parsedGs1 = await actions.parseGs1Scan(
         serial,
       );
-      var confirmDialogResponse = await showDialog<bool>(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text(parsedGs1!.toString()),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext, true),
-                    child: Text('Confirm'),
-                  ),
-                ],
-              );
-            },
-          ) ??
-          false;
       checkSerialStatusApiResult =
           await SerialStatusUpdateGroup.checkSerialStatusCall.call(
-        serial: serial,
+        serial: getJsonField(
+          parsedGs1,
+          r'''$.serial''',
+        ).toString(),
       );
 
       if ((checkSerialStatusApiResult.succeeded ?? true)) {
-        addToScannedSSCC(serial);
+        addToScannedSSCC(getJsonField(
+          parsedGs1,
+          r'''$.serial''',
+        ).toString());
       } else {
         await action_blocks.serverConnectionFail(context);
       }
