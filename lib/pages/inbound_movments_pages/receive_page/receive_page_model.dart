@@ -69,25 +69,6 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
     parseSSCCData = await actions.parseStrictSscc(
       serial,
     );
-    var confirmDialogResponse = await showDialog<bool>(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text(parseSSCCData!.toString()),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext, false),
-                  child: Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext, true),
-                  child: Text('Confirm'),
-                ),
-              ],
-            );
-          },
-        ) ??
-        false;
     if (getJsonField(
       parseSSCCData,
       r'''$.success''',
@@ -95,12 +76,12 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
       alreadyScanned = await actions.checkStringInList(
         getJsonField(
           parseSSCCData,
-          r'''$.SSCC''',
+          r'''$.sscc''',
         ).toString(),
         scannedSSCC.toList(),
       );
       if (alreadyScanned) {
-        confirmDialogResponse = await showDialog<bool>(
+        var confirmDialogResponse = await showDialog<bool>(
               context: context,
               builder: (alertDialogContext) {
                 return AlertDialog(
@@ -124,19 +105,19 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
             await SerialStatusUpdateGroup.checkSerialStatusCall.call(
           serial: getJsonField(
             parseSSCCData,
-            r'''$.SSCC''',
+            r'''$.sscc''',
           ).toString(),
         );
 
         if ((checkSerialStatus.succeeded ?? true)) {
           addToScannedSSCC(getJsonField(
             parseSSCCData,
-            r'''$.SSCC''',
+            r'''$.sscc''',
           ).toString());
         }
       }
     } else {
-      confirmDialogResponse = await showDialog<bool>(
+      var confirmDialogResponse = await showDialog<bool>(
             context: context,
             builder: (alertDialogContext) {
               return AlertDialog(
@@ -157,5 +138,7 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
           ) ??
           false;
     }
+
+    loading = true;
   }
 }
