@@ -911,11 +911,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مسح الشحنة',
       'hi': 'शिपमेंट स्कैन करें',
     },
-    '1j7unozs': {
-      'en': 'Scan or enter SSCC',
-      'ar': 'امسح أو أدخل SSCC',
-      'hi': 'SSCC स्कैन करें या दर्ज करें',
-    },
     '5zlki9yx': {
       'en': 'Cancel',
       'ar': '',

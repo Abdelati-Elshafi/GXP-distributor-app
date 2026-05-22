@@ -2,13 +2,13 @@ import '/components/empty_list_view_display/empty_list_view_display_widget.dart'
 import '/components/loading/loading_widget.dart';
 import '/components/product_data_component/product_data_component_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
+import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,9 +51,6 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ReturnShippingModel());
-
-    _model.enterSSCCTextController ??= TextEditingController();
-    _model.enterSSCCFocusNode ??= FocusNode();
   }
 
   @override
@@ -188,95 +185,18 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                     size: 24.0,
                                   ),
                                   Expanded(
-                                    child: TextFormField(
-                                      controller:
-                                          _model.enterSSCCTextController,
-                                      focusNode: _model.enterSSCCFocusNode,
-                                      onFieldSubmitted: (_) async {
-                                        _model.scannedSSCC =
-                                            _model.enterSSCCTextController.text;
-                                        safeSetState(() {});
-                                        _model.loading = true;
-                                        safeSetState(() {});
-                                        await _model.checkSerialStatus(
-                                          context,
-                                          serial: _model
-                                              .enterSSCCTextController.text,
-                                        );
-                                        safeSetState(() {
-                                          _model.enterSSCCTextController
-                                              ?.clear();
-                                        });
-                                      },
-                                      autofocus: false,
-                                      textInputAction: TextInputAction.done,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            FFLocalizations.of(context).getText(
-                                          '1j7unozs' /* Scan or enter SSCC */,
-                                        ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        focusedErrorBorder: InputBorder.none,
+                                    child: wrapWithModel(
+                                      model: _model.textFieldModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: TextFieldWidget(
+                                        changeAction: () async {
+                                          await _model.getSSCCOrderData(
+                                            context,
+                                            serial: _model.textFieldModel
+                                                .enterSSCCTextController.text,
+                                          );
+                                        },
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                      validator: _model
-                                          .enterSSCCTextControllerValidator
-                                          .asValidator(context),
                                     ),
                                   ),
                                   InkWell(
@@ -296,17 +216,10 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                         ScanMode.QR,
                                       );
 
-                                      _model.gS1ParsedData =
-                                          await actions.parseGs1Scan(
-                                        'scannedCode',
+                                      await _model.getSSCCOrderData(
+                                        context,
+                                        serial: 'scannedCode',
                                       );
-                                      safeSetState(() {
-                                        _model.enterSSCCTextController?.text =
-                                            getJsonField(
-                                          _model.gS1ParsedData,
-                                          r'''$.serial''',
-                                        ).toString();
-                                      });
 
                                       safeSetState(() {});
                                     },
