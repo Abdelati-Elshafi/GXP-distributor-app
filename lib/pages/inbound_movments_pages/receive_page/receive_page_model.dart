@@ -139,6 +139,6 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
           false;
     }
 
-    loading = true;
+    loading = false;
   }
 }
