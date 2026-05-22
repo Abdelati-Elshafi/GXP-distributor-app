@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import '/custom_code/actions/index.dart';
+import '/flutter_flow/custom_functions.dart';
+
+import '/custom_code/actions/index.dart';
 
 Future<dynamic> parseStrictSscc(String? rawScan) async {
   if (rawScan == null || rawScan.trim().isEmpty) {
@@ -16,21 +19,14 @@ Future<dynamic> parseStrictSscc(String? rawScan) async {
   }
 
   String original = rawScan.trim();
+  String data = original;
 
-  // لازم يبدأ بـ ]C1
-  if (!original.startsWith(']C1')) {
-    return {
-      "success": false,
-      "message": "Not GS1-128 barcode",
-      "sscc": "",
-      "raw": rawScan
-    };
+  // لو فيه ]C1 شيله
+  if (data.startsWith(']C1')) {
+    data = data.substring(3);
   }
 
-  // Remove ]C1
-  String data = original.substring(3);
-
-  // Remove FNC1 / separators
+  // Remove GS / FNC1 separators
   data = data
       .replaceAll(String.fromCharCode(29), '')
       .replaceAll('', '')
@@ -41,26 +37,29 @@ Future<dynamic> parseStrictSscc(String? rawScan) async {
   // Keep digits only
   data = data.replaceAll(RegExp(r'[^0-9]'), '');
 
-  // لازم يكون AI 00 + 18 رقم
-  if (data.length < 20 || !data.startsWith('00')) {
+  // لازم يبدأ بـ AI 00
+  if (!data.startsWith('00')) {
     return {
       "success": false,
       "message": "SSCC AI (00) not found",
       "sscc": "",
-      "raw": rawScan
+      "raw": rawScan,
+      "cleaned": data
     };
   }
 
-  String sscc = data.substring(2, 20);
-
-  if (sscc.length != 18) {
+  // لازم يكون فيه 18 رقم بعد الـ 00
+  if (data.length < 20) {
     return {
       "success": false,
       "message": "Invalid SSCC length",
       "sscc": "",
-      "raw": rawScan
+      "raw": rawScan,
+      "cleaned": data
     };
   }
+
+  String sscc = data.substring(2, 20);
 
   return {
     "success": true,
