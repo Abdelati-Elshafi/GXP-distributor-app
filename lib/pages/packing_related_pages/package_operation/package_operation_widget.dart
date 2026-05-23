@@ -197,7 +197,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                               0,
                             ),
                             updateViability: true,
-                            serials: widget.ssccproductserials!,
+                            serials: widget.ssccproductserials,
                           ),
                         ),
                       ),

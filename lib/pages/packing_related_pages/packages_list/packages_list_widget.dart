@@ -171,6 +171,7 @@ class _PackagesListWidgetState extends State<PackagesListWidget> {
                             _model.packages.elementAtOrNull(itemAtIndexIndex),
                             r'''$.SSCC''',
                           ).toString(),
+                          itemsNO: 0,
                           updateViability: false,
                           serials: _model.addnewssccModel.emptylist,
                         ),
