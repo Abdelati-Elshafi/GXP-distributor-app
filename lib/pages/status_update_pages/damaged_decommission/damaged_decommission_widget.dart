@@ -227,6 +227,37 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                 changeAction: () async {
                                                   _model.loading = true;
                                                   safeSetState(() {});
+                                                  safeSetState(() {});
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'test'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'Cancel'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'Confirm'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
                                                   _model.alreadyScanned =
                                                       await actions
                                                           .checkStringInList(
@@ -239,7 +270,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                         .toList(),
                                                   );
                                                   if (_model.alreadyScanned!) {
-                                                    var confirmDialogResponse =
+                                                    confirmDialogResponse =
                                                         await showDialog<bool>(
                                                               context: context,
                                                               builder:
@@ -332,6 +363,36 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                   FFAppState().ScannedBarcode =
                                                       _model.scannedcode;
                                                   safeSetState(() {});
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(_model
+                                                                    .scannedcode),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'Cancel'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'Confirm'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
                                                 }
 
                                                 safeSetState(() {});
