@@ -146,6 +146,28 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           await widget.changeAction?.call();
           FFAppState().ScannedBarcode = '';
           safeSetState(() {});
+        } else {
+          var confirmDialogResponse = await showDialog<bool>(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    title: Text('empty'),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: Text('Confirm'),
+                      ),
+                    ],
+                  );
+                },
+              ) ??
+              false;
         }
       }
     });

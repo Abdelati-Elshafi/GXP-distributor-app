@@ -339,8 +339,9 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                             builder:
                                                                 (alertDialogContext) {
                                                               return AlertDialog(
-                                                                title: Text(_model
-                                                                    .scannedcode),
+                                                                title: Text(
+                                                                    FFAppState()
+                                                                        .ScannedBarcode),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
