@@ -41,34 +41,12 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       while (_model.looping) {
         await Future.delayed(
           Duration(
-            milliseconds: 200,
+            milliseconds: 100,
           ),
         );
         if (FFAppState().ScannedBarcode != '') {
-          var confirmDialogResponse = await showDialog<bool>(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text('app'),
-                    content: Text(FFAppState().ScannedBarcode),
-                    actions: [
-                      TextButton(
-                        onPressed: () =>
-                            Navigator.pop(alertDialogContext, false),
-                        child: Text('Cancel'),
-                      ),
-                      TextButton(
-                        onPressed: () =>
-                            Navigator.pop(alertDialogContext, true),
-                        child: Text('Confirm'),
-                      ),
-                    ],
-                  );
-                },
-              ) ??
-              false;
           _model.parsedGS1SSCC = await actions.parseStrictSscc(
-            '',
+            FFAppState().ScannedBarcode,
           );
           if (getJsonField(
             _model.parsedGS1SSCC,
@@ -79,6 +57,27 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               r'''$.sscc''',
             ).toString();
             safeSetState(() {});
+            var confirmDialogResponse = await showDialog<bool>(
+                  context: context,
+                  builder: (alertDialogContext) {
+                    return AlertDialog(
+                      title: Text('sscc'),
+                      actions: [
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pop(alertDialogContext, false),
+                          child: Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pop(alertDialogContext, true),
+                          child: Text('Confirm'),
+                        ),
+                      ],
+                    );
+                  },
+                ) ??
+                false;
           } else {
             _model.parsedGs1Serial = await actions.parseGs1Scan(
               FFAppState().ScannedBarcode,
@@ -92,8 +91,29 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 r'''$.serial''',
               ).toString();
               safeSetState(() {});
+              var confirmDialogResponse = await showDialog<bool>(
+                    context: context,
+                    builder: (alertDialogContext) {
+                      return AlertDialog(
+                        title: Text('Serial'),
+                        actions: [
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pop(alertDialogContext, false),
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pop(alertDialogContext, true),
+                            child: Text('Confirm'),
+                          ),
+                        ],
+                      );
+                    },
+                  ) ??
+                  false;
             } else {
-              confirmDialogResponse = await showDialog<bool>(
+              var confirmDialogResponse = await showDialog<bool>(
                     context: context,
                     builder: (alertDialogContext) {
                       return AlertDialog(
@@ -136,6 +156,12 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
 
   @override
   void dispose() {
+    // On component dispose action.
+    () async {
+      _model.looping = false;
+      safeSetState(() {});
+    }();
+
     _model.maybeDispose();
 
     super.dispose();

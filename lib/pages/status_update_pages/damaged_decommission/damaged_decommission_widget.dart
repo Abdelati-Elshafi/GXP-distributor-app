@@ -225,39 +225,9 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                   safeSetState(() {}),
                                               child: TextFieldWidget(
                                                 changeAction: () async {
+                                                  safeSetState(() {});
                                                   _model.loading = true;
                                                   safeSetState(() {});
-                                                  safeSetState(() {});
-                                                  var confirmDialogResponse =
-                                                      await showDialog<bool>(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    'test'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext,
-                                                                            false),
-                                                                    child: Text(
-                                                                        'Cancel'),
-                                                                  ),
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext,
-                                                                            true),
-                                                                    child: Text(
-                                                                        'Confirm'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          ) ??
-                                                          false;
                                                   _model.alreadyScanned =
                                                       await actions
                                                           .checkStringInList(
@@ -270,7 +240,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                         .toList(),
                                                   );
                                                   if (_model.alreadyScanned!) {
-                                                    confirmDialogResponse =
+                                                    var confirmDialogResponse =
                                                         await showDialog<bool>(
                                                               context: context,
                                                               builder:
