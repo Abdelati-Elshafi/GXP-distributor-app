@@ -57,27 +57,13 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               r'''$.sscc''',
             ).toString();
             safeSetState(() {});
-            var confirmDialogResponse = await showDialog<bool>(
-                  context: context,
-                  builder: (alertDialogContext) {
-                    return AlertDialog(
-                      title: Text('sscc'),
-                      actions: [
-                        TextButton(
-                          onPressed: () =>
-                              Navigator.pop(alertDialogContext, false),
-                          child: Text('Cancel'),
-                        ),
-                        TextButton(
-                          onPressed: () =>
-                              Navigator.pop(alertDialogContext, true),
-                          child: Text('Confirm'),
-                        ),
-                      ],
-                    );
-                  },
-                ) ??
-                false;
+            safeSetState(() {
+              _model.enterSSCCTextController?.text =
+                  FFAppState().ScannedBarcode;
+            });
+            await widget.changeAction?.call();
+            FFAppState().ScannedBarcode = '';
+            safeSetState(() {});
           } else {
             _model.parsedGs1Serial = await actions.parseGs1Scan(
               FFAppState().ScannedBarcode,
@@ -91,27 +77,13 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 r'''$.serial''',
               ).toString();
               safeSetState(() {});
-              var confirmDialogResponse = await showDialog<bool>(
-                    context: context,
-                    builder: (alertDialogContext) {
-                      return AlertDialog(
-                        title: Text('Serial'),
-                        actions: [
-                          TextButton(
-                            onPressed: () =>
-                                Navigator.pop(alertDialogContext, false),
-                            child: Text('Cancel'),
-                          ),
-                          TextButton(
-                            onPressed: () =>
-                                Navigator.pop(alertDialogContext, true),
-                            child: Text('Confirm'),
-                          ),
-                        ],
-                      );
-                    },
-                  ) ??
-                  false;
+              safeSetState(() {
+                _model.enterSSCCTextController?.text =
+                    FFAppState().ScannedBarcode;
+              });
+              await widget.changeAction?.call();
+              FFAppState().ScannedBarcode = '';
+              safeSetState(() {});
             } else {
               var confirmDialogResponse = await showDialog<bool>(
                     context: context,
@@ -138,26 +110,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                   false;
             }
           }
-
-          safeSetState(() {
-            _model.enterSSCCTextController?.text = FFAppState().ScannedBarcode;
-          });
-          await widget.changeAction?.call();
-          FFAppState().ScannedBarcode = '';
-          safeSetState(() {});
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'wmpty',
-                style: TextStyle(
-                  color: FlutterFlowTheme.of(context).primaryText,
-                ),
-              ),
-              duration: Duration(milliseconds: 20),
-              backgroundColor: FlutterFlowTheme.of(context).secondary,
-            ),
-          );
         }
       }
     });
