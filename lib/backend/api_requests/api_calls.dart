@@ -688,20 +688,15 @@ class GetPackedSSCCListCall {
 class SavePackedSSCCSerialsCall {
   Future<ApiCallResponse> call({
     String? sscc = '',
-    List<String>? serial1List,
-    List<String>? serial2List,
+    List<String>? serialsList,
   }) async {
     final baseUrl = SSCCOperationsGroup.getBaseUrl();
-    final serial1 = _serializeList(serial1List);
-    final serial2 = _serializeList(serial2List);
+    final serials = _serializeList(serialsList);
 
     final ffApiRequestBody = '''
 {
   "SSCC": "${escapeStringForJson(sscc)}",
-  "NewSerials": [
-    "${serial1}",
-    "${serial2}"
-  ]
+  "NewSerials": ${serials}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'SavePackedSSCCSerials',

@@ -100,7 +100,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
         backgroundColor: Color(0xFF04113D),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            context.pushNamed(
+            context.goNamed(
               CasePackingWidget.routeName,
               queryParameters: {
                 'lastSavedCodes': serializeParam(
@@ -143,7 +143,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                 size: 20.0,
               ),
               onPressed: () async {
-                context.pop();
+                context.pushNamed(PackagesListWidget.routeName);
               },
             ),
           ),
@@ -197,6 +197,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                               0,
                             ),
                             updateViability: true,
+                            serials: widget.ssccproductserials!,
                           ),
                         ),
                       ),

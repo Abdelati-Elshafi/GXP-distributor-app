@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class PackageCardWidget extends StatefulWidget {
     String? sSCC,
     int? itemsNO,
     bool? updateViability,
+    required this.serials,
   })  : this.sSCC = sSCC ?? 'SSCC',
         this.itemsNO = itemsNO ?? 0,
         this.updateViability = updateViability ?? false;
@@ -18,6 +20,7 @@ class PackageCardWidget extends StatefulWidget {
   final String sSCC;
   final int itemsNO;
   final bool updateViability;
+  final List<String>? serials;
 
   @override
   State<PackageCardWidget> createState() => _PackageCardWidgetState();
@@ -110,40 +113,91 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                           if (widget.updateViability)
                             Align(
                               alignment: AlignmentDirectional(0.0, 1.0),
-                              child: Container(
-                                width: 100.0,
-                                height: 40.0,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFF3601F),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  border: Border.all(
-                                    color: Color(0xFFF3601F),
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 0.0, 5.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Icon(
-                                        Icons.upgrade,
-                                        color: Colors.white,
-                                        size: 24.0,
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'r06f9t6a' /* Update */,
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  _model.savePackedSSCCSerialsapiResult =
+                                      await SSCCOperationsGroup
+                                          .savePackedSSCCSerialsCall
+                                          .call(
+                                    sscc: widget.sSCC,
+                                    serialsList: widget.serials,
+                                  );
+
+                                  if ((_model.savePackedSSCCSerialsapiResult
+                                          ?.succeeded ??
+                                      true)) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'SSCC Pack Updated',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
+                                        ),
+                                        duration: Duration(milliseconds: 1000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
+                                    );
+                                    context.safePop();
+                                  }
+
+                                  safeSetState(() {});
+                                },
+                                child: Container(
+                                  width: 100.0,
+                                  height: 40.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF3601F),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    border: Border.all(
+                                      color: Color(0xFFF3601F),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 0.0, 5.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Icon(
+                                          Icons.upgrade,
+                                          color: Colors.white,
+                                          size: 24.0,
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'r06f9t6a' /* Update */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Colors.white,
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -155,21 +209,10 @@ class _PackageCardWidgetState extends State<PackageCardWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                color: Colors.white,
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
