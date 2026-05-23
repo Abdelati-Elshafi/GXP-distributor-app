@@ -537,11 +537,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مسح العناصر',
       'hi': 'आइटम स्कैन करें',
     },
-    'rs183xie': {
-      'en': 'Scan or enter Serial/SSCC',
-      'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
-      'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
-    },
     'h4h88lf5': {
       'en': 'Cancel',
       'ar': 'يلغي',
@@ -716,11 +711,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Scan Items',
       'ar': 'مسح العناصر',
       'hi': 'आइटम स्कैन करें',
-    },
-    'htchxdh3': {
-      'en': 'Scan or enter Serial/SSCC',
-      'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
-      'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
     'nrg78dy1': {
       'en': 'Cancel',
@@ -998,11 +988,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Scan Items',
       'ar': 'مسح العناصر',
       'hi': 'आइटम स्कैन करें',
-    },
-    'aomrkk2l': {
-      'en': 'Scan or enter Serial/SSCC',
-      'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
-      'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
     },
     'hvp8ijby': {
       'en': 'Cancel',
