@@ -108,6 +108,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     },
                   ) ??
                   false;
+              FFAppState().ScannedBarcode = '';
+              safeSetState(() {});
             }
           }
         }
