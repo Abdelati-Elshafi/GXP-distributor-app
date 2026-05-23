@@ -172,7 +172,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
             ),
-            color: Color(0xFF14181B),
+            color: FlutterFlowTheme.of(context).primaryText,
             fontSize: 16.0,
             letterSpacing: 0.0,
             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
