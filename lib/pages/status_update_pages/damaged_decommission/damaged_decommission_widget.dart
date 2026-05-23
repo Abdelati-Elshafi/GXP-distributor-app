@@ -393,6 +393,7 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                             },
                                                           ) ??
                                                           false;
+                                                  safeSetState(() {});
                                                 }
 
                                                 safeSetState(() {});

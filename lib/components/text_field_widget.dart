@@ -45,6 +45,28 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           ),
         );
         if (FFAppState().ScannedBarcode != '') {
+          var confirmDialogResponse = await showDialog<bool>(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    title: Text('app'),
+                    content: Text(FFAppState().ScannedBarcode),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: Text('Confirm'),
+                      ),
+                    ],
+                  );
+                },
+              ) ??
+              false;
           _model.parsedGS1SSCC = await actions.parseStrictSscc(
             '',
           );
@@ -71,7 +93,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               ).toString();
               safeSetState(() {});
             } else {
-              var confirmDialogResponse = await showDialog<bool>(
+              confirmDialogResponse = await showDialog<bool>(
                     context: context,
                     builder: (alertDialogContext) {
                       return AlertDialog(
