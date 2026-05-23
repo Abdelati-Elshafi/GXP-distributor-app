@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,6 +45,59 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           ),
         );
         if (FFAppState().ScannedBarcode != '') {
+          _model.parsedGS1SSCC = await actions.parseStrictSscc(
+            '',
+          );
+          if (getJsonField(
+            _model.parsedGS1SSCC,
+            r'''$.success''',
+          )) {
+            FFAppState().ScannedBarcode = getJsonField(
+              _model.parsedGS1SSCC,
+              r'''$.sscc''',
+            ).toString();
+            safeSetState(() {});
+          } else {
+            _model.parsedGs1Serial = await actions.parseGs1Scan(
+              FFAppState().ScannedBarcode,
+            );
+            if (getJsonField(
+              _model.parsedGs1Serial,
+              r'''$.success''',
+            )) {
+              FFAppState().ScannedBarcode = getJsonField(
+                _model.parsedGs1Serial,
+                r'''$.serial''',
+              ).toString();
+              safeSetState(() {});
+            } else {
+              var confirmDialogResponse = await showDialog<bool>(
+                    context: context,
+                    builder: (alertDialogContext) {
+                      return AlertDialog(
+                        title: Text('Incorrect Data'),
+                        content: Text(
+                            'Please Scan GS1 DataMatrix or enter correct SSCC'),
+                        actions: [
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pop(alertDialogContext, false),
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pop(alertDialogContext, true),
+                            child: Text('Confirm'),
+                          ),
+                        ],
+                      );
+                    },
+                  ) ??
+                  false;
+              return;
+            }
+          }
+
           safeSetState(() {
             _model.enterSSCCTextController?.text = FFAppState().ScannedBarcode;
           });
@@ -73,7 +127,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       controller: _model.enterSSCCTextController,
       focusNode: _model.enterSSCCFocusNode,
       onFieldSubmitted: (_) async {
-        await widget.changeAction?.call();
+        FFAppState().ScannedBarcode = _model.enterSSCCTextController.text;
+        safeSetState(() {});
       },
       autofocus: false,
       textInputAction: TextInputAction.done,

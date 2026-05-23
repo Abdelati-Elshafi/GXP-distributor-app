@@ -389,245 +389,6 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                               ].divide(SizedBox(height: 12.0)),
                             ),
                           ),
-                          Stack(
-                            children: [
-                              if (widget.inboundType == '0')
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
-                                  child: FFButtonWidget(
-                                    onPressed: !(_model.scannedSSCC.isNotEmpty)
-                                        ? null
-                                        : () async {
-                                            _model.loading = true;
-                                            safeSetState(() {});
-                                            _model.receivingShipmentApiResult =
-                                                await ShipmentsGroup
-                                                    .receivingShipmentCall
-                                                    .call(
-                                              shipmentSSCCList:
-                                                  _model.scannedSSCC,
-                                              shipmentType: 'normal',
-                                            );
-
-                                            if ((_model
-                                                    .receivingShipmentApiResult
-                                                    ?.succeeded ??
-                                                true)) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    '${ShipmentsGroup.receivingShipmentCall.message(
-                                                      (_model.receivingShipmentApiResult
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )}',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondary,
-                                                ),
-                                              );
-                                            } else {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    '${ShipmentsGroup.receivingShipmentCall.message(
-                                                      (_model.receivingShipmentApiResult
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )}',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .error,
-                                                ),
-                                              );
-                                            }
-
-                                            _model.loading = false;
-                                            _model.scannedSSCC = [];
-                                            safeSetState(() {});
-
-                                            safeSetState(() {});
-                                          },
-                                    text: FFLocalizations.of(context).getText(
-                                      'pz6lm8qe' /* Confirm Receive */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: double.infinity,
-                                      height: 56.0,
-                                      padding: EdgeInsets.all(8.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0x711A8267),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            font: GoogleFonts.interTight(
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                      elevation: 0.0,
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF1A8267),
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                      disabledColor: Color(0x711A8267),
-                                    ),
-                                  ),
-                                ),
-                              if (widget.inboundType == '1')
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
-                                  child: FFButtonWidget(
-                                    onPressed: !(_model.scannedSSCC.isNotEmpty)
-                                        ? null
-                                        : () async {
-                                            _model.loading = true;
-                                            safeSetState(() {});
-                                            _model.returnReceivingShipmentApiResult =
-                                                await ShipmentsGroup
-                                                    .receivingShipmentCall
-                                                    .call(
-                                              shipmentSSCCList:
-                                                  _model.scannedSSCC,
-                                              shipmentType: 'return receiving',
-                                            );
-
-                                            if ((_model
-                                                    .returnReceivingShipmentApiResult
-                                                    ?.succeeded ??
-                                                true)) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    '${ShipmentsGroup.receivingShipmentCall.message(
-                                                      (_model.receivingShipmentApiResult
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )}',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondary,
-                                                ),
-                                              );
-                                            } else {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    '${ShipmentsGroup.receivingShipmentCall.message(
-                                                      (_model.receivingShipmentApiResult
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )}',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .error,
-                                                ),
-                                              );
-                                            }
-
-                                            _model.loading = false;
-                                            _model.scannedSSCC = [];
-                                            safeSetState(() {});
-
-                                            safeSetState(() {});
-                                          },
-                                    text: FFLocalizations.of(context).getText(
-                                      'iem8iuzh' /* Return Receive */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: double.infinity,
-                                      height: 52.0,
-                                      padding: EdgeInsets.all(8.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0x05323394),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            font: GoogleFonts.interTight(
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: Colors.white,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                      elevation: 0.0,
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF1E90FF),
-                                      ),
-                                      borderRadius: BorderRadius.circular(16.0),
-                                      disabledColor: Color(0x2E57636C),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
                         ].divide(SizedBox(height: 15.0)),
                       ),
                     ),
@@ -641,6 +402,212 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                 updateCallback: () => safeSetState(() {}),
                 child: LoadingWidget(),
               ),
+            Stack(
+              children: [
+                if (widget.inboundType == '0')
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: FFButtonWidget(
+                      onPressed: !(_model.scannedSSCC.isNotEmpty)
+                          ? null
+                          : () async {
+                              _model.loading = true;
+                              safeSetState(() {});
+                              _model.receivingShipmentApiResult =
+                                  await ShipmentsGroup.receivingShipmentCall
+                                      .call(
+                                shipmentSSCCList: _model.scannedSSCC,
+                                shipmentType: 'normal',
+                              );
+
+                              if ((_model
+                                      .receivingShipmentApiResult?.succeeded ??
+                                  true)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      '${ShipmentsGroup.receivingShipmentCall.message(
+                                        (_model.receivingShipmentApiResult
+                                                ?.jsonBody ??
+                                            ''),
+                                      )}',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      '${ShipmentsGroup.receivingShipmentCall.message(
+                                        (_model.receivingShipmentApiResult
+                                                ?.jsonBody ??
+                                            ''),
+                                      )}',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                              }
+
+                              _model.loading = false;
+                              _model.scannedSSCC = [];
+                              safeSetState(() {});
+
+                              safeSetState(() {});
+                            },
+                      text: FFLocalizations.of(context).getText(
+                        'pz6lm8qe' /* Confirm Receive */,
+                      ),
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 56.0,
+                        padding: EdgeInsets.all(8.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0x711A8267),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleMedium.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Color(0xFF1A8267),
+                        ),
+                        borderRadius: BorderRadius.circular(16.0),
+                        disabledColor: Color(0x711A8267),
+                      ),
+                    ),
+                  ),
+                if (widget.inboundType == '1')
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                      child: FFButtonWidget(
+                        onPressed: !(_model.scannedSSCC.isNotEmpty)
+                            ? null
+                            : () async {
+                                _model.loading = true;
+                                safeSetState(() {});
+                                _model.returnReceivingShipmentApiResult =
+                                    await ShipmentsGroup.receivingShipmentCall
+                                        .call(
+                                  shipmentSSCCList: _model.scannedSSCC,
+                                  shipmentType: 'return receiving',
+                                );
+
+                                if ((_model.returnReceivingShipmentApiResult
+                                        ?.succeeded ??
+                                    true)) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        '${ShipmentsGroup.receivingShipmentCall.message(
+                                          (_model.receivingShipmentApiResult
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )}',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        '${ShipmentsGroup.receivingShipmentCall.message(
+                                          (_model.receivingShipmentApiResult
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )}',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                }
+
+                                _model.loading = false;
+                                _model.scannedSSCC = [];
+                                safeSetState(() {});
+
+                                safeSetState(() {});
+                              },
+                        text: FFLocalizations.of(context).getText(
+                          'iem8iuzh' /* Return Receive */,
+                        ),
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 52.0,
+                          padding: EdgeInsets.all(8.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0x05323394),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
+                                  ),
+                          elevation: 0.0,
+                          borderSide: BorderSide(
+                            color: Color(0xFF1E90FF),
+                          ),
+                          borderRadius: BorderRadius.circular(16.0),
+                          disabledColor: Color(0x2E57636C),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           ],
         ),
       ),

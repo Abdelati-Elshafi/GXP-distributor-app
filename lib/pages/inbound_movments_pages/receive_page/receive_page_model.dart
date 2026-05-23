@@ -31,12 +31,12 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
   var scannedSSCCAction = '';
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
+  // Model for Loading component.
+  late LoadingModel loadingModel;
   // Stores action output result for [Backend Call - API (Receiving Shipment)] action in ConfirmReceive widget.
   ApiCallResponse? receivingShipmentApiResult;
   // Stores action output result for [Backend Call - API (Receiving Shipment)] action in ReturnRecive widget.
   ApiCallResponse? returnReceivingShipmentApiResult;
-  // Model for Loading component.
-  late LoadingModel loadingModel;
 
   @override
   void initState(BuildContext context) {

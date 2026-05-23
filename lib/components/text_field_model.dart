@@ -9,6 +9,10 @@ class TextFieldModel extends FlutterFlowModel<TextFieldWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Custom Action - parseStrictSscc] action in TextField widget.
+  dynamic parsedGS1SSCC;
+  // Stores action output result for [Custom Action - parseGs1Scan] action in TextField widget.
+  dynamic parsedGs1Serial;
   // State field(s) for EnterSSCC widget.
   FocusNode? enterSSCCFocusNode;
   TextEditingController? enterSSCCTextController;

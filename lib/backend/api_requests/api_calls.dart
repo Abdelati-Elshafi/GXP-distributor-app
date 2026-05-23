@@ -477,12 +477,14 @@ class ShipmentsGroup {
 class CancelShippedCall {
   Future<ApiCallResponse> call({
     String? orderNo = 'SO-7781',
+    String? reason = '',
   }) async {
     final baseUrl = ShipmentsGroup.getBaseUrl();
 
     final ffApiRequestBody = '''
 {
-"order":"${escapeStringForJson(orderNo)}"
+  "order": "${escapeStringForJson(orderNo)}",
+  "Reason": "${escapeStringForJson(reason)}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Cancel Shipped',
@@ -518,12 +520,16 @@ class CancelShippedCall {
 class ConfirmShipmentCall {
   Future<ApiCallResponse> call({
     String? orderNo = 'SO-7781',
+    String? shippingType = '',
+    String? reason = '',
   }) async {
     final baseUrl = ShipmentsGroup.getBaseUrl();
 
     final ffApiRequestBody = '''
 {
-"order": "${escapeStringForJson(orderNo)}"
+  "order": "${escapeStringForJson(orderNo)}",
+  "Type": "${escapeStringForJson(shippingType)}",
+  "Reason": "${escapeStringForJson(reason)}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Confirm Shipment',

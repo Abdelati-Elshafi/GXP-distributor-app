@@ -9,23 +9,23 @@ import 'package:flutter/material.dart';
 class MainModel extends FlutterFlowModel<MainWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Model for SideBar component.
+  late SideBarModel sideBarModel;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   // Model for BottomBar component.
   late BottomBarModel bottomBarModel;
-  // Model for SideBar component.
-  late SideBarModel sideBarModel;
 
   @override
   void initState(BuildContext context) {
-    bottomBarModel = createModel(context, () => BottomBarModel());
     sideBarModel = createModel(context, () => SideBarModel());
+    bottomBarModel = createModel(context, () => BottomBarModel());
   }
 
   @override
   void dispose() {
-    bottomBarModel.dispose();
     sideBarModel.dispose();
+    bottomBarModel.dispose();
   }
 }

@@ -3,12 +3,14 @@ import '/components/empty_list_view_display/empty_list_view_display_widget.dart'
 import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/components/scanned_serials_to_decommission/scanned_serials_to_decommission_widget.dart';
+import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -67,9 +69,6 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DamagedDecommissionModel());
-
-    _model.enterSSCCTextController ??= TextEditingController();
-    _model.enterSSCCFocusNode ??= FocusNode();
   }
 
   @override
@@ -220,107 +219,88 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                             ),
                                           ),
                                           Expanded(
-                                            child: TextFormField(
-                                              controller: _model
-                                                  .enterSSCCTextController,
-                                              focusNode:
-                                                  _model.enterSSCCFocusNode,
-                                              onFieldSubmitted: (_) async {
-                                                _model.loading = true;
-                                                safeSetState(() {});
-                                                await _model.checkSerialStatus(
-                                                  context,
-                                                  serial: _model
-                                                      .enterSSCCTextController
-                                                      .text,
-                                                );
-                                                safeSetState(() {});
-                                                safeSetState(() {
-                                                  _model.enterSSCCTextController
-                                                      ?.clear();
-                                                });
-                                              },
-                                              autofocus: false,
-                                              textInputAction:
-                                                  TextInputAction.done,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                hintText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'y7zgrwxh' /* Scan or enter Serial/SSCC */,
-                                                ),
-                                                hintStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                                enabledBorder: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
-                                                errorBorder: InputBorder.none,
-                                                focusedErrorBorder:
-                                                    InputBorder.none,
+                                            child: wrapWithModel(
+                                              model: _model.textFieldModel,
+                                              updateCallback: () =>
+                                                  safeSetState(() {}),
+                                              child: TextFieldWidget(
+                                                changeAction: () async {
+                                                  _model.loading = true;
+                                                  safeSetState(() {});
+                                                  _model.alreadyScanned =
+                                                      await actions
+                                                          .checkStringInList(
+                                                    _model
+                                                        .textFieldModel
+                                                        .enterSSCCTextController
+                                                        .text,
+                                                    _model
+                                                        .scannedSerialToDecommission
+                                                        .toList(),
+                                                  );
+                                                  if (_model.alreadyScanned!) {
+                                                    var confirmDialogResponse =
+                                                        await showDialog<bool>(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  content: Text(
+                                                                      'Already Scanned'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: Text(
+                                                                          'Cancel'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: Text(
+                                                                          'Confirm'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ) ??
+                                                            false;
+                                                  } else {
+                                                    _model.checkSerialStatusApiResult =
+                                                        await SerialStatusUpdateGroup
+                                                            .checkSerialStatusCall
+                                                            .call(
+                                                      serial: _model
+                                                          .textFieldModel
+                                                          .enterSSCCTextController
+                                                          .text,
+                                                    );
+
+                                                    if ((_model
+                                                            .checkSerialStatusApiResult
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      _model.addToScannedSerialToDecommission(
+                                                          _model
+                                                              .textFieldModel
+                                                              .enterSSCCTextController
+                                                              .text);
+                                                      safeSetState(() {});
+                                                    } else {
+                                                      await action_blocks
+                                                          .serverConnectionFail(
+                                                              context);
+                                                    }
+                                                  }
+
+                                                  _model.loading = false;
+                                                  safeSetState(() {});
+
+                                                  safeSetState(() {});
+                                                },
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            Color(0xFF14181B),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                              validator: _model
-                                                  .enterSSCCTextControllerValidator
-                                                  .asValidator(context),
                                             ),
                                           ),
                                           Padding(
@@ -349,41 +329,9 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                                 if (!(_model.scannedcode == '-1'
                                                     ? true
                                                     : false)) {
-                                                  _model.gS1ParsedData =
-                                                      await actions
-                                                          .parseGs1Scan(
-                                                    _model.scannedcode,
-                                                  );
-                                                  safeSetState(() {
-                                                    _model
-                                                        .enterSSCCTextController
-                                                        ?.text = getJsonField(
-                                                      _model.gS1ParsedData,
-                                                      r'''$.serial''',
-                                                    ).toString();
-                                                    _model.enterSSCCFocusNode
-                                                        ?.requestFocus();
-                                                    WidgetsBinding.instance
-                                                        .addPostFrameCallback(
-                                                            (_) {
-                                                      _model.enterSSCCTextController
-                                                              ?.selection =
-                                                          TextSelection
-                                                              .collapsed(
-                                                        offset: _model
-                                                            .enterSSCCTextController!
-                                                            .text
-                                                            .length,
-                                                      );
-                                                    });
-                                                  });
-                                                  await _model
-                                                      .checkSerialStatus(
-                                                    context,
-                                                    serial: _model
-                                                        .enterSSCCTextController
-                                                        .text,
-                                                  );
+                                                  FFAppState().ScannedBarcode =
+                                                      _model.scannedcode;
+                                                  safeSetState(() {});
                                                 }
 
                                                 safeSetState(() {});
@@ -667,7 +615,9 @@ class _DamagedDecommissionWidgetState extends State<DamagedDecommissionWidget> {
                                         _model.reasonDropDownValue = null;
                                       });
                                       safeSetState(() {
-                                        _model.enterSSCCTextController?.clear();
+                                        _model.textFieldModel
+                                            .enterSSCCTextController
+                                            ?.clear();
                                       });
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

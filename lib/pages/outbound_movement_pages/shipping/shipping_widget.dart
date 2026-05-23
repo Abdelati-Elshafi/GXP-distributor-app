@@ -613,75 +613,78 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'q64hzvjl' /* Products in Order */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    font: GoogleFonts.interTight(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.0, -1.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'q64hzvjl' /* Products in Order */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .fontStyle,
-                                  ),
+                              ),
                             ),
-                          ),
-                          SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Builder(
-                                  builder: (context) {
-                                    final itemAtIndex =
-                                        _model.orderProducts.toList();
+                            SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Builder(
+                                    builder: (context) {
+                                      final itemAtIndex =
+                                          _model.orderProducts.toList();
 
-                                    return ListView.separated(
-                                      padding: EdgeInsets.zero,
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: itemAtIndex.length,
-                                      separatorBuilder: (_, __) =>
-                                          SizedBox(height: 0.0),
-                                      itemBuilder: (context, itemAtIndexIndex) {
-                                        final itemAtIndexItem =
-                                            itemAtIndex[itemAtIndexIndex];
-                                        return ProductDetailsCardWidget(
-                                          key: Key(
-                                              'Keyajy_${itemAtIndexIndex}_of_${itemAtIndex.length}'),
-                                          productname: '4zxc',
-                                          productGTIN: '4zxczx',
-                                          requiredQTY: 44,
-                                          scannedQTY: 4,
-                                          orderNO: _model.orderno,
-                                          orderSSCC: _model.sscc,
-                                          navigateEnable: false,
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                              ],
+                                      return ListView.separated(
+                                        padding: EdgeInsets.zero,
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: itemAtIndex.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(height: 0.0),
+                                        itemBuilder:
+                                            (context, itemAtIndexIndex) {
+                                          final itemAtIndexItem =
+                                              itemAtIndex[itemAtIndexIndex];
+                                          return ProductDetailsCardWidget(
+                                            key: Key(
+                                                'Keyajy_${itemAtIndexIndex}_of_${itemAtIndex.length}'),
+                                            productname: '4zxc',
+                                            productGTIN: '4zxczx',
+                                            requiredQTY: 44,
+                                            scannedQTY: 4,
+                                            orderNO: _model.orderno,
+                                            orderSSCC: _model.sscc,
+                                            navigateEnable: false,
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ].divide(SizedBox(height: 6.0)),
+                          ].divide(SizedBox(height: 6.0)),
+                        ),
                       ),
                     ),
                   ),

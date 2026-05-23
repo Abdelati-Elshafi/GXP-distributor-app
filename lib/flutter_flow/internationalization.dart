@@ -147,110 +147,110 @@ bool _isSupportedLocale(Locale locale) {
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Main
   {
-    'bfv4s7jo': {
-      'en': 'Operations Hub',
-      'ar': '',
-      'hi': '',
-    },
-    'dess6j2u': {
-      'en': 'Main Warehouse',
-      'ar': '',
-      'hi': '',
-    },
-    '485551ah': {
-      'en': 'Search...',
-      'ar': '',
-      'hi': '',
-    },
-    'v36nhibv': {
-      'en': 'Option 1',
-      'ar': '',
-      'hi': '',
-    },
-    'oek8r82a': {
-      'en': 'Option 2',
-      'ar': '',
-      'hi': '',
-    },
-    'fu9aivwj': {
-      'en': 'Option 3',
-      'ar': '',
-      'hi': '',
-    },
-    'y87k8f59': {
-      'en': 'Active Shipments',
-      'ar': '',
-      'hi': '',
-    },
-    'ryc54lh6': {
-      'en': '24',
-      'ar': '',
-      'hi': '',
-    },
-    '92m5m170': {
-      'en': 'in progress',
-      'ar': '',
-      'hi': '',
-    },
-    'rp7artn0': {
-      'en': 'Temperature Alerts',
-      'ar': '',
-      'hi': '',
-    },
-    'gfersv1q': {
-      'en': '2',
-      'ar': '',
-      'hi': '',
-    },
-    'rtzjgjwx': {
-      'en': 'Requires Attention',
-      'ar': '',
-      'hi': '',
-    },
-    'y8uh4shk': {
-      'en': 'Devices Connected',
-      'ar': '',
-      'hi': '',
-    },
-    'o6kc7zd2': {
-      'en': '18',
-      'ar': '',
-      'hi': '',
-    },
-    'j2yzqr3s': {
-      'en': 'All Online',
-      'ar': '',
-      'hi': '',
-    },
-    'eyt4t0el': {
-      'en': 'Quick Actions',
-      'ar': '',
-      'hi': '',
-    },
-    'j1fnog0k': {
-      'en': 'Status Update',
-      'ar': 'تحديث الحالة',
-      'hi': 'स्थिति अपडेट',
-    },
-    'adhgizyq': {
-      'en': 'Inbound ',
-      'ar': 'وارد',
-      'hi': 'भीतर का',
-    },
-    'a2ljnrdl': {
-      'en': 'Outbound ',
-      'ar': 'الصادر',
-      'hi': 'आउटबाउंड',
-    },
-    'nd0wbiii': {
-      'en': 'Pack & Unpack',
-      'ar': 'التعبئة وفك التعبئة',
-      'hi': 'पैक और अनपैक',
-    },
     'w4vxk7v1': {
       'en': 'Distributor Operations',
       'ar': 'إيقاف التشغيل',
       'hi': 'विमुद्रीकरण',
+    },
+    'rv0tp582': {
+      'en': 'Operations Hub',
+      'ar': '',
+      'hi': '',
+    },
+    'bhm4ql3k': {
+      'en': 'Main Warehouse',
+      'ar': '',
+      'hi': '',
+    },
+    'f2aj13gy': {
+      'en': 'Search...',
+      'ar': '',
+      'hi': '',
+    },
+    '3yngly8c': {
+      'en': 'Option 1',
+      'ar': '',
+      'hi': '',
+    },
+    '2mrcwudd': {
+      'en': 'Option 2',
+      'ar': '',
+      'hi': '',
+    },
+    'gq1pi8wr': {
+      'en': 'Option 3',
+      'ar': '',
+      'hi': '',
+    },
+    '9796vgqt': {
+      'en': 'Active Shipments',
+      'ar': '',
+      'hi': '',
+    },
+    '5giz7aeb': {
+      'en': '24',
+      'ar': '',
+      'hi': '',
+    },
+    'qlozbnd5': {
+      'en': 'in progress',
+      'ar': '',
+      'hi': '',
+    },
+    'lsz4bsx9': {
+      'en': 'Temperature Alerts',
+      'ar': '',
+      'hi': '',
+    },
+    '6xjlk3pl': {
+      'en': '2',
+      'ar': '',
+      'hi': '',
+    },
+    '2hnlnce3': {
+      'en': 'Requires Attention',
+      'ar': '',
+      'hi': '',
+    },
+    'aodq3qxw': {
+      'en': 'Devices Connected',
+      'ar': '',
+      'hi': '',
+    },
+    '0uu5cvzu': {
+      'en': '18',
+      'ar': '',
+      'hi': '',
+    },
+    '5c2jp3bx': {
+      'en': 'All Online',
+      'ar': '',
+      'hi': '',
+    },
+    'zva7sff3': {
+      'en': 'Quick Actions',
+      'ar': '',
+      'hi': '',
+    },
+    'u9y36d02': {
+      'en': 'Status Update',
+      'ar': 'تحديث الحالة',
+      'hi': 'स्थिति अपडेट',
+    },
+    'spxqr28t': {
+      'en': 'Inbound ',
+      'ar': 'وارد',
+      'hi': 'भीतर का',
+    },
+    '0q9oo983': {
+      'en': 'Outbound ',
+      'ar': 'الصادر',
+      'hi': 'आउटबाउंड',
+    },
+    'obbjn1p9': {
+      'en': 'Pack & Unpack',
+      'ar': 'التعبئة وفك التعبئة',
+      'hi': 'पैक और अनपैक',
     },
   },
   // StatusUpdate
@@ -810,11 +810,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مسح العناصر',
       'hi': 'आइटम स्कैन करें',
     },
-    'y7zgrwxh': {
-      'en': 'Scan or enter Serial/SSCC',
-      'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
-      'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
-    },
     '2mncwvuj': {
       'en': 'Cancel',
       'ar': 'يلغي',
@@ -986,10 +981,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'منتجات',
       'hi': 'उत्पादों',
     },
-    'bdhb9dy8': {
-      'en': 'Confirm Return',
-      'ar': 'تأكيد الإرجاع',
-      'hi': 'वापसी की पुष्टि करें',
+    'm742i5sy': {
+      'en': 'Return',
+      'ar': 'تأكيد الاستلام',
+      'hi': 'प्राप्ति की पुष्टि करें',
     },
     'kdcruz8i': {
       'en': 'Return Shipping ',
@@ -1373,14 +1368,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Pallet',
       'ar': 'منصة نقالة',
       'hi': 'चटाई',
-    },
-  },
-  // ProductDataComponent
-  {
-    'fwtta0m1': {
-      'en': 'Items 24',
-      'ar': 'الدفعة B2024001 | تاريخ الانتهاء 15/12/2024 | الرقم التسلسلي 24',
-      'hi': 'बैच B2024001 | समाप्ति 15/12/2024 | सीरियल 24',
     },
   },
   // EmptyListViewDisplay

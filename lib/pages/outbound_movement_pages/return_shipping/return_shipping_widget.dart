@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/product_data_component/product_data_component_widget.dart';
@@ -190,11 +191,23 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                       updateCallback: () => safeSetState(() {}),
                                       child: TextFieldWidget(
                                         changeAction: () async {
+                                          _model.loading = true;
+                                          safeSetState(() {});
                                           await _model.getSSCCOrderData(
                                             context,
                                             serial: _model.textFieldModel
                                                 .enterSSCCTextController.text,
                                           );
+                                          safeSetState(() {
+                                            _model.textFieldModel
+                                                .enterSSCCTextController
+                                                ?.clear();
+                                          });
+                                          safeSetState(() {
+                                            _model.dropDownValueController
+                                                ?.reset();
+                                            _model.dropDownValue = null;
+                                          });
                                         },
                                       ),
                                     ),
@@ -361,137 +374,108 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                       ),
                     ),
                     Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                '2v2rcs9k' /* Products */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleMedium
-                                  .override(
-                                    font: GoogleFonts.interTight(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  '2v2rcs9k' /* Products */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 18.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
-                                  ),
+                              ),
                             ),
-                          ),
-                          Stack(
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                height: 346.1,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF04113D),
-                                  boxShadow: [
-                                    FlutterFlowTheme.of(context)
-                                        .designToken
-                                        .shadow
-                                        .lg
-                                  ],
-                                  borderRadius: BorderRadius.circular(
+                            Stack(
+                              children: [
+                                Container(
+                                  height: 300.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF04113D),
+                                    boxShadow: [
                                       FlutterFlowTheme.of(context)
                                           .designToken
-                                          .radius
-                                          .lg),
-                                  border: Border.all(
-                                    color: Color(0xFF1A2E6B),
-                                    width: 2.0,
+                                          .shadow
+                                          .lg
+                                    ],
+                                    borderRadius: BorderRadius.circular(
+                                        FlutterFlowTheme.of(context)
+                                            .designToken
+                                            .radius
+                                            .lg),
+                                    border: Border.all(
+                                      color: Color(0xFF1A2E6B),
+                                      width: 2.0,
+                                    ),
                                   ),
-                                ),
-                                child: Builder(
-                                  builder: (context) {
-                                    final itemInList = _model.products.toList();
+                                  child: Builder(
+                                    builder: (context) {
+                                      final itemInList =
+                                          _model.products.toList();
 
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: itemInList.length,
-                                      itemBuilder: (context, itemInListIndex) {
-                                        final itemInListItem =
-                                            itemInList[itemInListIndex];
-                                        return ProductDataComponentWidget(
-                                          key: Key(
-                                              'Key2pq_${itemInListIndex}_of_${itemInList.length}'),
-                                          index: 10,
-                                          itemsNo: 10,
-                                          ssccList: _model.products
-                                              .map((e) => e.toString())
-                                              .toList(),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                              ),
-                              if (true)
-                                wrapWithModel(
-                                  model: _model.emptyListViewDisplayModel,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: EmptyListViewDisplayWidget(
-                                    listContent: _model.products
-                                        .map((e) => e.toString())
-                                        .toList(),
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: itemInList.length,
+                                        itemBuilder:
+                                            (context, itemInListIndex) {
+                                          final itemInListItem =
+                                              itemInList[itemInListIndex];
+                                          return ProductDataComponentWidget(
+                                            key: Key(
+                                                'Key2pq_${itemInListIndex}_of_${itemInList.length}'),
+                                            itemsNo: getJsonField(
+                                              _model.products.elementAtOrNull(
+                                                  itemInListIndex),
+                                              r'''$.scannedQty''',
+                                            ),
+                                            text: getJsonField(
+                                              _model.products.elementAtOrNull(
+                                                  itemInListIndex),
+                                              r'''$.productName''',
+                                            ).toString(),
+                                          );
+                                        },
+                                      );
+                                    },
                                   ),
                                 ),
-                            ],
-                          ),
-                        ].divide(SizedBox(height: 12.0)),
-                      ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () {
-                        print('ConfirmButton pressed ...');
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'bdhb9dy8' /* Confirm Return */,
-                      ),
-                      options: FFButtonOptions(
-                        width: 300.0,
-                        height: 52.0,
-                        padding: EdgeInsets.all(8.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0x711A8267),
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
+                                if (true)
+                                  wrapWithModel(
+                                    model: _model.emptyListViewDisplayModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: EmptyListViewDisplayWidget(
+                                      listContent: _model.products
+                                          .map((e) => e.toString())
+                                          .toList(),
+                                    ),
                                   ),
-                                  color: Colors.white,
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Color(0xFF1A8267),
+                              ],
+                            ),
+                          ].divide(SizedBox(height: 12.0)),
                         ),
-                        borderRadius: BorderRadius.circular(16.0),
                       ),
                     ),
                   ].divide(SizedBox(height: 15.0)),
@@ -503,6 +487,101 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                   updateCallback: () => safeSetState(() {}),
                   child: LoadingWidget(),
                 ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 1.0),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 20.0),
+                  child: FFButtonWidget(
+                    onPressed: ((_model.textFieldModel.enterSSCCTextController
+                                        .text ==
+                                    '') ||
+                            (_model.dropDownValue == null ||
+                                _model.dropDownValue == ''))
+                        ? null
+                        : () async {
+                            _model.confirmShipment =
+                                await ShipmentsGroup.confirmShipmentCall.call(
+                              orderNo: _model
+                                  .textFieldModel.enterSSCCTextController.text,
+                              shippingType: 'Return',
+                              reason: _model.dropDownValue,
+                            );
+
+                            if ((_model.confirmShipment?.succeeded ?? true)) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    ShipmentsGroup.confirmShipmentCall.message(
+                                      (_model.confirmShipment?.jsonBody ?? ''),
+                                    )!,
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    ShipmentsGroup.confirmShipmentCall.message(
+                                      (_model.confirmShipment?.jsonBody ?? ''),
+                                    )!,
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                ),
+                              );
+                            }
+
+                            safeSetState(() {});
+                          },
+                    text: FFLocalizations.of(context).getText(
+                      'm742i5sy' /* Return */,
+                    ),
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 52.0,
+                      padding: EdgeInsets.all(8.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0x05323394),
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleMedium.override(
+                                font: GoogleFonts.interTight(
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .fontStyle,
+                                ),
+                                color: Colors.white,
+                                fontSize: 16.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .fontStyle,
+                              ),
+                      elevation: 0.0,
+                      borderSide: BorderSide(
+                        color: Color(0xFF1E90FF),
+                      ),
+                      borderRadius: BorderRadius.circular(16.0),
+                      disabledColor: Color(0x2E57636C),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

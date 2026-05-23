@@ -39,6 +39,8 @@ class ReturnShippingModel extends FlutterFlowModel<ReturnShippingWidget> {
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
   // Model for Loading component.
   late LoadingModel loadingModel;
+  // Stores action output result for [Backend Call - API (Confirm Shipment)] action in ReturnRecive widget.
+  ApiCallResponse? confirmShipment;
 
   @override
   void initState(BuildContext context) {

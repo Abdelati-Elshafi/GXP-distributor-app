@@ -590,7 +590,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                6.0, 10.0, 6.0, 0.0),
+                                0.0, 10.0, 0.0, 0.0),
                             child: Builder(
                               builder: (context) {
                                 final productsitem = _model.products.toList();

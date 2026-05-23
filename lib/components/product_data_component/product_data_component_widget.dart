@@ -9,13 +9,11 @@ export 'product_data_component_model.dart';
 class ProductDataComponentWidget extends StatefulWidget {
   const ProductDataComponentWidget({
     super.key,
-    required this.ssccList,
-    required this.index,
+    required this.text,
     required this.itemsNo,
   });
 
-  final List<String>? ssccList;
-  final int? index;
+  final String? text;
   final int? itemsNo;
 
   @override
@@ -84,7 +82,10 @@ class _ProductDataComponentWidgetState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'SSCC:${widget.ssccList?.elementAtOrNull(widget.index!)}',
+                      valueOrDefault<String>(
+                        widget.text,
+                        'GXP',
+                      ),
                       style: FlutterFlowTheme.of(context).bodyLarge.override(
                             font: GoogleFonts.inter(
                               fontWeight: FontWeight.w600,
@@ -105,9 +106,10 @@ class _ProductDataComponentWidgetState
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'fwtta0m1' /* Items 24 */,
-                        ),
+                        'Items: ${valueOrDefault<String>(
+                          widget.itemsNo?.toString(),
+                          '0',
+                        )}',
                         style: FlutterFlowTheme.of(context).bodySmall.override(
                               font: GoogleFonts.inter(
                                 fontWeight: FlutterFlowTheme.of(context)
