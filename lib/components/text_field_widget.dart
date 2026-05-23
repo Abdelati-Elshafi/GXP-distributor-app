@@ -147,27 +147,18 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           FFAppState().ScannedBarcode = '';
           safeSetState(() {});
         } else {
-          var confirmDialogResponse = await showDialog<bool>(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text('empty'),
-                    actions: [
-                      TextButton(
-                        onPressed: () =>
-                            Navigator.pop(alertDialogContext, false),
-                        child: Text('Cancel'),
-                      ),
-                      TextButton(
-                        onPressed: () =>
-                            Navigator.pop(alertDialogContext, true),
-                        child: Text('Confirm'),
-                      ),
-                    ],
-                  );
-                },
-              ) ??
-              false;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'wmpty',
+                style: TextStyle(
+                  color: FlutterFlowTheme.of(context).primaryText,
+                ),
+              ),
+              duration: Duration(milliseconds: 20),
+              backgroundColor: FlutterFlowTheme.of(context).secondary,
+            ),
+          );
         }
       }
     });
