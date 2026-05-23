@@ -136,7 +136,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                     },
                   ) ??
                   false;
-              return;
+              break;
             }
           }
 
