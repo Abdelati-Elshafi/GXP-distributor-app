@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/empty_list_view_display/empty_list_view_display_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
+import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'unpack_widget.dart' show UnpackWidget;
@@ -23,22 +24,25 @@ class UnpackModel extends FlutterFlowModel<UnpackWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for EnterSSCC widget.
-  FocusNode? enterSSCCFocusNode;
-  TextEditingController? enterSSCCTextController;
-  String? Function(BuildContext, String?)? enterSSCCTextControllerValidator;
+  // Model for TextField component.
+  late TextFieldModel textFieldModel;
+  // Stores action output result for [Custom Action - checkStringInList] action in TextField widget.
+  bool? alreadyScanned;
+  // Stores action output result for [Backend Call - API (CheckSerialStatus)] action in TextField widget.
+  ApiCallResponse? checkSerialStatusApiResult;
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedResult = '';
-  // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
-  dynamic parsedGs1Code;
   // Model for EmptyListViewDisplay component.
   late EmptyListViewDisplayModel emptyListViewDisplayModel;
   // Model for Loading component.
   late LoadingModel loadingModel;
+  // Stores action output result for [Backend Call - API (UnpackSSCC)] action in UnpackButton widget.
+  ApiCallResponse? apiResult7cd;
 
   @override
   void initState(BuildContext context) {
+    textFieldModel = createModel(context, () => TextFieldModel());
     scanButtonModel = createModel(context, () => ScanButtonModel());
     emptyListViewDisplayModel =
         createModel(context, () => EmptyListViewDisplayModel());
@@ -47,9 +51,7 @@ class UnpackModel extends FlutterFlowModel<UnpackWidget> {
 
   @override
   void dispose() {
-    enterSSCCFocusNode?.dispose();
-    enterSSCCTextController?.dispose();
-
+    textFieldModel.dispose();
     scanButtonModel.dispose();
     emptyListViewDisplayModel.dispose();
     loadingModel.dispose();

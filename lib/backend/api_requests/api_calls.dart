@@ -106,13 +106,14 @@ class UpdateSerialStatusCall {
 
 class UnpackSSCCCall {
   Future<ApiCallResponse> call({
-    String? sscc = '',
+    List<String>? ssccList,
   }) async {
     final baseUrl = SerialStatusUpdateGroup.getBaseUrl();
+    final sscc = _serializeList(ssccList);
 
     final ffApiRequestBody = '''
 {
-  "SSCC": "${escapeStringForJson(sscc)}"
+  "SSCC": "${sscc}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UnpackSSCC',

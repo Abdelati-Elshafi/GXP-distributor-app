@@ -1,10 +1,10 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/loading/loading_widget.dart';
+import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,9 +54,6 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UnpackAllModel());
-
-    _model.ssccManualEntryTextController ??= TextEditingController();
-    _model.ssccManualEntryFocusNode ??= FocusNode();
   }
 
   @override
@@ -216,119 +213,26 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                   ),
                                 ].divide(SizedBox(width: 12.0)),
                               ),
-                              TextFormField(
-                                controller:
-                                    _model.ssccManualEntryTextController,
-                                focusNode: _model.ssccManualEntryFocusNode,
-                                onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.ssccManualEntryTextController',
-                                  Duration(milliseconds: 2000),
-                                  () async {
-                                    await _model.checkSerialStatus(
-                                      context,
-                                      serial: _model
-                                          .ssccManualEntryTextController.text,
-                                    );
-                                  },
+                              Container(
+                                height: 50.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  border: Border.all(
+                                    color: Color(0xFF1A2E6B),
+                                    width: 2.0,
+                                  ),
                                 ),
-                                onFieldSubmitted: (_) async {
-                                  await _model.checkSerialStatus(
-                                    context,
-                                    serial: _model
-                                        .ssccManualEntryTextController.text,
-                                  );
-                                },
-                                autofocus: false,
-                                textInputAction: TextInputAction.done,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'lez93474' /* Enter SSCC manually */,
-                                  ),
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF1A2E6B),
-                                      width: 2.0,
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 0.0, 0.0, 0.0),
+                                  child: wrapWithModel(
+                                    model: _model.textFieldModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: TextFieldWidget(
+                                      changeAction: () async {},
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
                                   ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryTextColor,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  filled: true,
-                                  fillColor: Color(0xFF0D214D),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 16.0, 16.0, 16.0),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryTextColor,
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                keyboardType: TextInputType.number,
-                                validator: _model
-                                    .ssccManualEntryTextControllerValidator
-                                    .asValidator(context),
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
@@ -342,29 +246,9 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                     ScanMode.QR,
                                   );
 
-                                  _model.parsedGs1Scan =
-                                      await actions.parseGs1Scan(
-                                    _model.scannedCode,
-                                  );
-                                  safeSetState(() {
-                                    _model.ssccManualEntryTextController?.text =
-                                        getJsonField(
-                                      _model.parsedGs1Scan,
-                                      r'''$.serial''',
-                                    ).toString();
-                                    _model.ssccManualEntryFocusNode
-                                        ?.requestFocus();
-                                    WidgetsBinding.instance
-                                        .addPostFrameCallback((_) {
-                                      _model.ssccManualEntryTextController
-                                          ?.selection = TextSelection.collapsed(
-                                        offset: _model
-                                            .ssccManualEntryTextController!
-                                            .text
-                                            .length,
-                                      );
-                                    });
-                                  });
+                                  FFAppState().ScannedBarcode =
+                                      _model.scannedCode;
+                                  safeSetState(() {});
 
                                   safeSetState(() {});
                                 },
@@ -594,10 +478,55 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 15.0, 0.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print(
-                                            'ConfirmUnpackAllButton pressed ...');
-                                      },
+                                      onPressed: (/* NOT RECOMMENDED */ _model
+                                                  .textFieldModel
+                                                  .enterSSCCTextController
+                                                  .text ==
+                                              'true')
+                                          ? null
+                                          : () async {
+                                              _model.unpackAllSSCCApiResult =
+                                                  await SerialStatusUpdateGroup
+                                                      .unpackAllSSCCCall
+                                                      .call(
+                                                sscc: _model
+                                                    .textFieldModel
+                                                    .enterSSCCTextController
+                                                    .text,
+                                              );
+
+                                              if ((_model.unpackAllSSCCApiResult
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'SSCC Unpacked',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 1000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary,
+                                                  ),
+                                                );
+                                              }
+                                              safeSetState(() {
+                                                _model.textFieldModel
+                                                    .enterSSCCTextController
+                                                    ?.clear();
+                                              });
+
+                                              safeSetState(() {});
+                                            },
                                       text: FFLocalizations.of(context).getText(
                                         'mg4gk7q4' /* Confirm Unpack All */,
                                       ),
@@ -634,6 +563,9 @@ class _UnpackAllWidgetState extends State<UnpackAllWidget> {
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(15.0),
+                                        disabledColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                       ),
                                     ),
                                   ),

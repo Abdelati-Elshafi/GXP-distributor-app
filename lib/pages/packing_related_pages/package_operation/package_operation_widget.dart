@@ -208,6 +208,7 @@ class _PackageOperationWidgetState extends State<PackageOperationWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 0.0),
                         child: Container(
+                          height: 400.0,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16.0),
                             border: Border.all(

@@ -95,7 +95,12 @@ class _AddnewssccWidgetState extends State<AddnewssccWidget> {
                                         PackageOperationWidget.routeName,
                                         queryParameters: {
                                           'sSCC': serializeParam(
-                                            'Test',
+                                            SSCCOperationsGroup.generateSSCCCall
+                                                .geteratedSSCC(
+                                              (_model.generateSSCCResult
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ),
                                             ParamType.String,
                                           ),
                                           'ssccproductserials': serializeParam(

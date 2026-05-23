@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/loading/loading_widget.dart';
+import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'unpack_all_widget.dart' show UnpackAllWidget;
 import 'package:flutter/material.dart';
@@ -13,27 +14,23 @@ class UnpackAllModel extends FlutterFlowModel<UnpackAllWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for ssccManualEntry widget.
-  FocusNode? ssccManualEntryFocusNode;
-  TextEditingController? ssccManualEntryTextController;
-  String? Function(BuildContext, String?)?
-      ssccManualEntryTextControllerValidator;
+  // Model for TextField component.
+  late TextFieldModel textFieldModel;
   var scannedCode = '';
-  // Stores action output result for [Custom Action - parseGs1Scan] action in StartScanBotton widget.
-  dynamic parsedGs1Scan;
+  // Stores action output result for [Backend Call - API (UnpackAllSSCC)] action in ConfirmUnpackAllButton widget.
+  ApiCallResponse? unpackAllSSCCApiResult;
   // Model for Loading component.
   late LoadingModel loadingModel;
 
   @override
   void initState(BuildContext context) {
+    textFieldModel = createModel(context, () => TextFieldModel());
     loadingModel = createModel(context, () => LoadingModel());
   }
 
   @override
   void dispose() {
-    ssccManualEntryFocusNode?.dispose();
-    ssccManualEntryTextController?.dispose();
-
+    textFieldModel.dispose();
     loadingModel.dispose();
   }
 

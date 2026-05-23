@@ -432,11 +432,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مسح أو إدخال SSCC',
       'hi': 'SSCC स्कैन करें या दर्ज करें',
     },
-    'lez93474': {
-      'en': 'Enter SSCC manually',
-      'ar': 'أدخل SSCC يدويًا',
-      'hi': 'SSCC को मैन्युअल रूप से दर्ज करें',
-    },
     'a3uhrh4u': {
       'en': 'Scan SSCC',
       'ar': 'مسح SSCC',
@@ -863,11 +858,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Unpack
   {
-    's8llgy9z': {
-      'en': 'Scan or enter Serial/SSCC',
-      'ar': 'امسح ضوئيًا أو أدخل الرقم التسلسلي/SSCC',
-      'hi': 'स्कैन करें या सीरियल/SSCC दर्ज करें',
-    },
     'g4ou29ap': {
       'en': 'Cancel',
       'ar': '',
