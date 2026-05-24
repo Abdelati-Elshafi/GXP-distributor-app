@@ -555,6 +555,17 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                               );
                             }
 
+                            safeSetState(() {
+                              _model.dropDownValueController?.reset();
+                              _model.dropDownValue = null;
+                            });
+                            safeSetState(() {
+                              _model.textFieldModel.enterSSCCTextController
+                                  ?.clear();
+                            });
+                            _model.products = [];
+                            safeSetState(() {});
+
                             safeSetState(() {});
                           },
                     text: FFLocalizations.of(context).getText(
