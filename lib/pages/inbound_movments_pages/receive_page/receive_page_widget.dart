@@ -307,11 +307,8 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                       '-1'
                                                   ? true
                                                   : false)) {
-                                                await _model.checkSerialStatus(
-                                                  context,
-                                                  serial:
-                                                      _model.scannedSSCCAction,
-                                                );
+                                                FFAppState().ScannedBarcode =
+                                                    _model.scannedSSCCAction;
                                                 safeSetState(() {});
                                               }
 

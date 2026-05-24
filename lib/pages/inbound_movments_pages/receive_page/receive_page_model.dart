@@ -4,7 +4,6 @@ import '/components/loading/loading_widget.dart';
 import '/components/scan_button/scan_button_widget.dart';
 import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'receive_page_widget.dart' show ReceivePageWidget;
 import 'package:flutter/material.dart';
 
@@ -57,92 +56,5 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
     scanButtonModel.dispose();
     emptyListViewDisplayModel.dispose();
     loadingModel.dispose();
-  }
-
-  /// Action blocks.
-  Future checkSerialStatus(
-    BuildContext context, {
-    required String? serial,
-    bool? fromscanner,
-  }) async {
-    dynamic parseSSCCData;
-    bool? alreadyScanned;
-    ApiCallResponse? checkSerialStatus;
-
-    loading = true;
-    parseSSCCData = await actions.parseStrictSscc(
-      serial,
-    );
-    if (getJsonField(
-      parseSSCCData,
-      r'''$.success''',
-    )) {
-      alreadyScanned = await actions.checkStringInList(
-        getJsonField(
-          parseSSCCData,
-          r'''$.sscc''',
-        ).toString(),
-        scannedSSCC.toList(),
-      );
-      if (alreadyScanned) {
-        var confirmDialogResponse = await showDialog<bool>(
-              context: context,
-              builder: (alertDialogContext) {
-                return AlertDialog(
-                  content: Text('Already Scanned'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                      child: Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                      child: Text('Confirm'),
-                    ),
-                  ],
-                );
-              },
-            ) ??
-            false;
-      } else {
-        checkSerialStatus =
-            await SerialStatusUpdateGroup.checkSerialStatusCall.call(
-          serial: getJsonField(
-            parseSSCCData,
-            r'''$.sscc''',
-          ).toString(),
-        );
-
-        if ((checkSerialStatus.succeeded ?? true)) {
-          addToScannedSSCC(getJsonField(
-            parseSSCCData,
-            r'''$.sscc''',
-          ).toString());
-        }
-      }
-    } else {
-      var confirmDialogResponse = await showDialog<bool>(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text('SSCC'),
-                content: Text('Not GS1 SSCC'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext, true),
-                    child: Text('Confirm'),
-                  ),
-                ],
-              );
-            },
-          ) ??
-          false;
-    }
-
-    loading = false;
   }
 }
