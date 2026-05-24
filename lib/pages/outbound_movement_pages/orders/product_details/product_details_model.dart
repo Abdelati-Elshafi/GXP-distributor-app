@@ -22,17 +22,19 @@ class ProductDetailsModel extends FlutterFlowModel<ProductDetailsWidget> {
 
   bool loading = false;
 
+  bool looping = false;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (ProductSerialsDetails)] action in ProductDetails widget.
   ApiCallResponse? productSerialsDetailsApiResult;
+  // Stores action output result for [Custom Action - parseStrictSscc] action in ProductDetails widget.
+  dynamic parseSSCCData;
+  // Stores action output result for [Custom Action - parseGs1Scan] action in ProductDetails widget.
+  dynamic gS1ParsedData;
   // Stores action output result for [Backend Call - API (UpdateOrderProductsSerials)] action in ConfirmButton widget.
   ApiCallResponse? updateOrderProductsSerialsResut;
   var scannedcode = '';
-  // Stores action output result for [Custom Action - parseStrictSscc] action in ScanIcon widget.
-  dynamic parseSSCCData;
-  // Stores action output result for [Custom Action - parseGs1Scan] action in ScanIcon widget.
-  dynamic gS1ParsedData;
   // Model for Loading component.
   late LoadingModel loadingModel;
 
