@@ -675,6 +675,7 @@ class _ShippingWidgetState extends State<ShippingWidget> {
                                             orderNO: _model.orderno,
                                             orderSSCC: _model.sscc,
                                             navigateEnable: false,
+                                            customer: 'N/A',
                                           );
                                         },
                                       );

@@ -202,6 +202,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'orderSSCC',
               ParamType.String,
             ),
+            customer: params.getParam(
+              'customer',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(

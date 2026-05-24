@@ -16,6 +16,7 @@ class ProductDetailsCardWidget extends StatefulWidget {
     this.orderNO,
     String? orderSSCC,
     required this.navigateEnable,
+    required this.customer,
   })  : this.productname = productname ?? 'Paracetamol 500mg',
         this.productGTIN = productGTIN ?? '123456789',
         this.requiredQTY = requiredQTY ?? 80,
@@ -32,6 +33,7 @@ class ProductDetailsCardWidget extends StatefulWidget {
   final String orderSSCC;
 
   final bool? navigateEnable;
+  final String? customer;
 
   @override
   State<ProductDetailsCardWidget> createState() =>
@@ -96,6 +98,10 @@ class _ProductDetailsCardWidgetState extends State<ProductDetailsCardWidget> {
                 ),
                 'orderSSCC': serializeParam(
                   widget.orderSSCC,
+                  ParamType.String,
+                ),
+                'customer': serializeParam(
+                  widget.customer,
                   ParamType.String,
                 ),
               }.withoutNulls,

@@ -629,6 +629,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                       orderNO: widget.ordernumber,
                                       orderSSCC: _model.sscc,
                                       navigateEnable: true,
+                                      customer: widget.customer!,
                                     );
                                   },
                                 );

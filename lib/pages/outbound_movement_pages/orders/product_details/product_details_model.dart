@@ -3,6 +3,7 @@ import '/components/loading/loading_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'product_details_widget.dart' show ProductDetailsWidget;
 import 'package:flutter/material.dart';
 

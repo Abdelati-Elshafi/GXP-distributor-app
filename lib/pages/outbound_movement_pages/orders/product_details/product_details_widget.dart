@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -47,6 +48,7 @@ class ProductDetailsWidget extends StatefulWidget {
     this.scannedQTY,
     required this.orderNO,
     required this.orderSSCC,
+    required this.customer,
   });
 
   final String? productname;
@@ -55,6 +57,7 @@ class ProductDetailsWidget extends StatefulWidget {
   final int? scannedQTY;
   final String? orderNO;
   final String? orderSSCC;
+  final String? customer;
 
   static String routeName = 'ProductDetails';
   static String routePath = '/productDetails';
@@ -611,6 +614,8 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                           Expanded(
                             child: FFButtonWidget(
                               onPressed: () async {
+                                _model.looping = false;
+                                safeSetState(() {});
                                 _model.updateOrderProductsSerialsResut =
                                     await OrdersAPIsGroup
                                         .updateOrderProductsSerialsCall
@@ -624,10 +629,20 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                 if ((_model.updateOrderProductsSerialsResut
                                         ?.succeeded ??
                                     true)) {
-                                  context.safePop();
+                                  context.pushNamed(
+                                    OrderDetailsWidget.routeName,
+                                    queryParameters: {
+                                      'ordernumber': serializeParam(
+                                        widget.orderNO,
+                                        ParamType.String,
+                                      ),
+                                      'customer': serializeParam(
+                                        widget.customer,
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
                                 }
-                                _model.looping = false;
-                                safeSetState(() {});
 
                                 safeSetState(() {});
                               },
