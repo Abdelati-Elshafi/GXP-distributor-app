@@ -41,7 +41,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       while (_model.looping) {
         await Future.delayed(
           Duration(
-            milliseconds: 1000,
+            milliseconds: 200,
           ),
         );
         if (FFAppState().ScannedBarcode != '') {

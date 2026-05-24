@@ -26,6 +26,10 @@ class ReceivePageModel extends FlutterFlowModel<ReceivePageWidget> {
 
   // Model for TextField component.
   late TextFieldModel textFieldModel;
+  // Stores action output result for [Custom Action - checkStringInList] action in TextField widget.
+  bool? alreadyScanned;
+  // Stores action output result for [Backend Call - API (CheckSerialStatus)] action in TextField widget.
+  ApiCallResponse? checkSerialStatus;
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedSSCCAction = '';

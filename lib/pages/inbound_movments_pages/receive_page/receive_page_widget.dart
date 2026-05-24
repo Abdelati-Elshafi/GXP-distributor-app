@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -215,20 +216,71 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                                                 changeAction: () async {
                                                   _model.loading = true;
                                                   safeSetState(() {});
-                                                  await _model
-                                                      .checkSerialStatus(
-                                                    context,
-                                                    serial: _model
+                                                  _model.alreadyScanned =
+                                                      await actions
+                                                          .checkStringInList(
+                                                    _model
                                                         .textFieldModel
                                                         .enterSSCCTextController
                                                         .text,
+                                                    _model.scannedSSCC.toList(),
                                                   );
+                                                  if (_model.alreadyScanned!) {
+                                                    var confirmDialogResponse =
+                                                        await showDialog<bool>(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  content: Text(
+                                                                      'Already Scanned'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: Text(
+                                                                          'Cancel'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: Text(
+                                                                          'Confirm'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ) ??
+                                                            false;
+                                                  } else {
+                                                    _model.checkSerialStatus =
+                                                        await SerialStatusUpdateGroup
+                                                            .checkSerialStatusCall
+                                                            .call(
+                                                      serial: _model
+                                                          .textFieldModel
+                                                          .enterSSCCTextController
+                                                          .text,
+                                                    );
+
+                                                    if ((_model
+                                                            .checkSerialStatus
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      _model.addToScannedSSCC(_model
+                                                          .textFieldModel
+                                                          .enterSSCCTextController
+                                                          .text);
+                                                      safeSetState(() {});
+                                                    }
+                                                  }
+
+                                                  _model.loading = false;
                                                   safeSetState(() {});
-                                                  safeSetState(() {
-                                                    _model.textFieldModel
-                                                        .enterSSCCTextController
-                                                        ?.clear();
-                                                  });
+
+                                                  safeSetState(() {});
                                                 },
                                               ),
                                             ),
