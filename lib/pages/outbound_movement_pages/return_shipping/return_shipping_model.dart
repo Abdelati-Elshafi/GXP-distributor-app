@@ -29,6 +29,8 @@ class ReturnShippingModel extends FlutterFlowModel<ReturnShippingWidget> {
 
   // Model for TextField component.
   late TextFieldModel textFieldModel;
+  // Stores action output result for [Backend Call - API (GetOrderDetails)] action in TextField widget.
+  ApiCallResponse? getOrderDetails;
   // Model for ScanButton component.
   late ScanButtonModel scanButtonModel;
   var scannedCode = '';

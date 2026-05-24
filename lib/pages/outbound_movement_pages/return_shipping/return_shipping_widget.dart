@@ -193,21 +193,32 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                                         changeAction: () async {
                                           _model.loading = true;
                                           safeSetState(() {});
-                                          await _model.getSSCCOrderData(
-                                            context,
-                                            serial: _model.textFieldModel
+                                          _model.getOrderDetails =
+                                              await OrdersAPIsGroup
+                                                  .getOrderDetailsCall
+                                                  .call(
+                                            orderNO: _model.textFieldModel
                                                 .enterSSCCTextController.text,
                                           );
-                                          safeSetState(() {
-                                            _model.textFieldModel
-                                                .enterSSCCTextController
-                                                ?.clear();
-                                          });
-                                          safeSetState(() {
-                                            _model.dropDownValueController
-                                                ?.reset();
-                                            _model.dropDownValue = null;
-                                          });
+
+                                          if ((_model
+                                                  .getOrderDetails?.succeeded ??
+                                              true)) {
+                                            _model.products = OrdersAPIsGroup
+                                                .getOrderDetailsCall
+                                                .productsData(
+                                                  (_model.getOrderDetails
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                )!
+                                                .toList()
+                                                .cast<dynamic>();
+                                            safeSetState(() {});
+                                          }
+                                          _model.loading = false;
+                                          safeSetState(() {});
+
+                                          safeSetState(() {});
                                         },
                                       ),
                                     ),

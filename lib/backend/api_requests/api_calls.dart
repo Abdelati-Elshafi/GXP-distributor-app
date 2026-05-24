@@ -440,9 +440,9 @@ class UpdateOrderProductsSerialsCall {
   "OrderNo": "${escapeStringForJson(orderNO)}",
   "Product": "${escapeStringForJson(product)}",
   "GTIN": "${escapeStringForJson(gtin)}",
-  "Serials": [
+  "Serials": 
     ${newSerials}
-  ]
+  
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateOrderProductsSerials',

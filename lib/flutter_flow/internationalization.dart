@@ -659,21 +659,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'عميل:',
       'hi': 'ग्राहक:',
     },
-    '81810qca': {
-      'en': 'Destination GLN:',
-      'ar': 'الوجهة GLN:',
-      'hi': 'गंतव्य जीएलएन:',
-    },
-    'q2bx63nz': {
-      'en': 'Date:',
-      'ar': 'تاريخ:',
-      'hi': 'तारीख:',
-    },
-    'ob4j9cq1': {
-      'en': '2025-09-04',
-      'ar': '2025-09-03T21:00:00Z',
-      'hi': '2025-09-03T21:00:00Z',
-    },
     'uzf7pu17': {
       'en': 'Order SSCC:',
       'ar': 'طلب SSCC:',
