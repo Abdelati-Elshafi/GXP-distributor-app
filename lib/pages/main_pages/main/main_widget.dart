@@ -110,7 +110,7 @@ class _MainWidgetState extends State<MainWidget> {
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ClipRRect(
@@ -145,7 +145,7 @@ class _MainWidgetState extends State<MainWidget> {
                           ),
                     ),
                   ),
-                ],
+                ].divide(SizedBox(width: 15.0)),
               ),
             ),
             actions: [],
@@ -229,7 +229,7 @@ class _MainWidgetState extends State<MainWidget> {
                                         ),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        fontSize: 25.0,
+                                        fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -254,8 +254,8 @@ class _MainWidgetState extends State<MainWidget> {
                                 ],
                                 onChanged: (val) => safeSetState(
                                     () => _model.dropDownValue = val),
-                                width: 135.0,
-                                height: 35.0,
+                                width: 109.5,
+                                height: 30.06,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -265,7 +265,9 @@ class _MainWidgetState extends State<MainWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      fontSize: 11.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      fontSize: 8.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -346,7 +348,7 @@ class _MainWidgetState extends State<MainWidget> {
                                     children: [
                                       FlutterFlowIconButton(
                                         borderRadius: 8.0,
-                                        buttonSize: 35.0,
+                                        buttonSize: 30.0,
                                         fillColor: FlutterFlowTheme.of(context)
                                             .primary,
                                         icon: FaIcon(
@@ -377,7 +379,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              fontSize: 11.0,
+                                              fontSize: 9.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -404,7 +406,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              fontSize: 18.0,
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -431,7 +433,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              fontSize: 11.0,
+                                              fontSize: 10.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -476,7 +478,7 @@ class _MainWidgetState extends State<MainWidget> {
                                     children: [
                                       FlutterFlowIconButton(
                                         borderRadius: 8.0,
-                                        buttonSize: 35.0,
+                                        buttonSize: 30.0,
                                         fillColor:
                                             FlutterFlowTheme.of(context).error,
                                         icon: FaIcon(
@@ -507,7 +509,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              fontSize: 11.0,
+                                              fontSize: 9.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -534,7 +536,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              fontSize: 18.0,
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -561,7 +563,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              fontSize: 11.0,
+                                              fontSize: 10.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -606,7 +608,7 @@ class _MainWidgetState extends State<MainWidget> {
                                     children: [
                                       FlutterFlowIconButton(
                                         borderRadius: 8.0,
-                                        buttonSize: 35.0,
+                                        buttonSize: 30.0,
                                         fillColor: FlutterFlowTheme.of(context)
                                             .success,
                                         icon: Icon(
@@ -637,7 +639,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              fontSize: 11.0,
+                                              fontSize: 9.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -664,7 +666,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              fontSize: 18.0,
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -691,7 +693,7 @@ class _MainWidgetState extends State<MainWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              fontSize: 11.0,
+                                              fontSize: 10.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               fontStyle:
@@ -845,7 +847,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    fontSize: 17.0,
+                                                    fontSize: 15.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
@@ -937,7 +939,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    fontSize: 17.0,
+                                                    fontSize: 15.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
@@ -1036,7 +1038,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
-                                                          fontSize: 17.0,
+                                                          fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -1134,7 +1136,7 @@ class _MainWidgetState extends State<MainWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
-                                                    fontSize: 17.0,
+                                                    fontSize: 15.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:

@@ -623,7 +623,7 @@ class _ReceivePageWidgetState extends State<ReceivePageWidget> {
                           'iem8iuzh' /* Return Receive */,
                         ),
                         options: FFButtonOptions(
-                          width: double.infinity,
+                          width: 300.0,
                           height: 52.0,
                           padding: EdgeInsets.all(8.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(

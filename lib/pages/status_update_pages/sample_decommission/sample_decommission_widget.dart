@@ -110,26 +110,29 @@ class _SampleDecommissionWidgetState extends State<SampleDecommissionWidget> {
               },
             ),
           ),
-          title: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-            child: Text(
-              valueOrDefault<String>(
-                widget.decommissionReason,
-                'Reason',
-              ),
-              style: FlutterFlowTheme.of(context).titleLarge.override(
-                    font: GoogleFonts.interTight(
+          title: Align(
+            alignment: AlignmentDirectional(0.0, 0.0),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+              child: Text(
+                valueOrDefault<String>(
+                  widget.decommissionReason,
+                  'Reason',
+                ),
+                style: FlutterFlowTheme.of(context).titleLarge.override(
+                      font: GoogleFonts.interTight(
+                        fontWeight: FontWeight.bold,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                      ),
+                      color: Colors.white,
+                      fontSize: 21.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
                       fontStyle:
                           FlutterFlowTheme.of(context).titleLarge.fontStyle,
                     ),
-                    color: Colors.white,
-                    fontSize: 21.0,
-                    letterSpacing: 0.0,
-                    fontWeight: FontWeight.bold,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                  ),
+              ),
             ),
           ),
           actions: [],

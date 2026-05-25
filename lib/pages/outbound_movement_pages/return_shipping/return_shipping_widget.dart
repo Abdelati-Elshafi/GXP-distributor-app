@@ -572,7 +572,7 @@ class _ReturnShippingWidgetState extends State<ReturnShippingWidget> {
                       'm742i5sy' /* Return */,
                     ),
                     options: FFButtonOptions(
-                      width: double.infinity,
+                      width: 300.0,
                       height: 52.0,
                       padding: EdgeInsets.all(8.0),
                       iconPadding:
